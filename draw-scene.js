@@ -70,7 +70,6 @@ drawDots = function(shaderProgram) {
     // Bind vertex buffer object
     gl.bindBuffer(gl.ARRAY_BUFFER, dotsVBuf);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
-
     // Point an attribute to the currently bound VBO
     gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
     // Enable the attribute
@@ -92,16 +91,18 @@ drawDots = function(shaderProgram) {
     let amountX = 50;
     let amountY = 50;
     let inc = 1 / 25;
+    let inc2 = inc / 2;
     let t = (drawCount) * 2e-5;
-    for (let x = -1; x <= 1; x += inc) {
-        for (let y = -1; y <= 1; y += inc) {
-            let ix = x, iy = y;
-            ix += 1;
+    for (let x = -1 + inc2; x <= 1 + inc2; x += inc) {
+        for (let y = -1 + inc2; y <= 1 + inc2; y += inc) {
+            let ix = x,
+                iy = y;
+//             ix += 1;
             let tt = Math.sin(t) * 50;
             let m = 4e3 + tt;
             let xx = x + (Math.pow(Math.sin(m * ix * 1e-5) * Math.sin(t * iy * 1e4), 1));
             let yy = y + (Math.pow(Math.sin(m * iy * 1e-5) * Math.sin(t * ix * 1e4), 1));
-            vertices.push((xx + 2e-2) * 1.25, (yy + 2e-2) * 1.1);
+            vertices.push(xx * 1.25, yy * 1.1);
         }
     }
     // Create an empty buffer object to store the vertex buffer
