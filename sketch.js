@@ -54,6 +54,21 @@ function setup() {
     time = gl.getUniformLocation(getProgram("blue-background"), "time");
     // Get the attribute location
     coord = gl.getAttribLocation(getProgram("cyan-dots"), "coordinates");
+
+    // Hide the SuperCollider Editor because I will not need it
+    // for this project.
+    window.setTimeout(function() {
+        if (!keysActive) {
+            cmArea.style.width = "1200px";
+            jsCmArea.style.width = "1200px";
+            jsConsoleArea.setAttribute("style", "display:block;");
+            scdArea.style.display = "none";
+            scdConsoleArea.setAttribute("style", "display:none;");
+            jsCmArea.style.height = "685px";
+            jsArea.style.display = "block";
+            displayMode = "js";
+        }
+    }, 1000);
 }
 
 draw = function() {
