@@ -14,6 +14,57 @@ let vertex_buffer;
 var drawingGeometry = true;
 let dotsVBuf, bgVBuf;
 
+
+var stop = false;
+// var frameCount = 0;
+var fps, fpsInterval, startTime, now, then, elapsed;
+var animationStart;
+var framesRendered = 0;
+
+// initialize the timer variables and start the animation
+
+function startAnimating(fps) {
+    fpsInterval = 1000 / fps;
+    then = Date.now();
+    animationStart = Date.now();
+    startTime = then;
+    animate();
+}
+
+function queryFrameRate() {
+    let timeElapsed = Date.now() - animationStart;
+    let seconds = timeElapsed / 1000;
+    logJavaScriptConsole(framesRendered / seconds);
+    // logJavaScriptConsole(timeElapsed);
+}
+
+// the animation loop calculates time elapsed since the last loop
+// and only draws if your specified fps interval is achieved
+
+function animate() {
+
+    // request another frame
+
+    requestAnimationFrame(animate);
+
+    // calc elapsed time since last loop
+
+    now = Date.now();
+    elapsed = now - then;
+
+    // if enough time has elapsed, draw the next frame
+
+    if (elapsed > fpsInterval) {
+
+        // Get ready for next frame by setting then=now, but also adjust for your
+        // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+        then = now - (elapsed % fpsInterval);
+        // Put your drawing code here
+        draw();
+        framesRendered++;
+    }
+}
+
 // function preload() {
 //     // load the shader
 //     shaderProgram = loadShader('points.vert', 'points.frag');
@@ -69,6 +120,7 @@ function setup() {
             displayMode = "js";
         }
     }, 1000);
+    // noLoop();
 }
 
 draw = function() {
@@ -80,9 +132,9 @@ draw = function() {
 
     currentProgram = getProgram("cyan-dots");
     gl.useProgram(currentProgram);
-    drawDots(currentProgram);
+    // drawDots(currentProgram);
 
-    // runXSheet(xSheet);
+    runXSheet(xSheet);
     //     if (frameCount == 1) {
     // setDotsShaders();
     //     }
