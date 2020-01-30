@@ -145,6 +145,11 @@ draw = function() {
     sheetSlider.value(drawCount);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount);
     drawCount += drawIncrement;
+    if (clipping) {
+        if (drawCount > clipMax) {
+            drawCount = clipMin;
+        }
+    }
 }
 
 // function windowResized() {
@@ -204,3 +209,17 @@ document.onkeydown = function(evt) {
         }
     }
 };
+
+let clipMin = 0,
+    clipMax = 100,
+    clipping = false;
+
+function clip(min, max) {
+    clipMin = min;
+    clipMax = max;
+    clipping = true;
+}
+
+function unClip() {
+    clipping = false;
+}
