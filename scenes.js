@@ -59,42 +59,27 @@ fadeIn.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10) * 0.025 * 0.5;
-    // let a = 0.00005;
-    // let i = 0;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            // let ox = x - 100;
-            // let oy = y - 100;
             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
             let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
             let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
-            //             xx += cos(oy * 10) * sin(oy * 10)2
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);
-            //             yy += cos(oy * 10) * sin(oy * 10);
-            // if (i == 0) {
-            //     oriX = xx;
-            // }
             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
-            // i++;
         }
     }
-    // this.grow *= 1.01;
-
-
+    // 
     function logMap(position) {
-        // position will be between 0 and 100
+        // position will be between minp and maxp
         var minp = 0;
         var maxp = 1500;
-
-        // The result should be between 100 an 10000000
+        // The result should be between minv an maxv
         var minv = Math.log(1e-7);
         var maxv = Math.log(0.3852774978347468);
-
         // calculate adjustment factor
         var scale = (maxv - minv) / (maxp - minp);
-
         return Math.exp(minv + scale * (position - minp));
     }
 };
