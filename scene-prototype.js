@@ -7,8 +7,8 @@ Scene.prototype.init = function() {
 
 };
 
-Scene.prototype.run = function() {
-    this.update();
+Scene.prototype.run = function(sum) {
+    this.update(sum);
     this.display();
 };
 
@@ -16,9 +16,9 @@ Scene.prototype.update = function() {
 
 };
 
-Scene.prototype.interpolate = function(otherScene, ratio) {
-    this.update();
-    otherScene.update();
+Scene.prototype.mix = function(sum, otherScene, sumOther, ratio) {
+    this.update(sum);
+    otherScene.update(sumOther);
     for (let i = 0; i < this.vertices.length; i++) {
         let a = this.vertices[i];
         let b = otherScene.vertices[i];

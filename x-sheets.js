@@ -6,13 +6,26 @@ xSheet = {
     //         septembre.run();
     //     }
     // },
-    test: {
-        d: 10000,
+    fasterSubtleTrunk: {
+        d: 300,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.test);
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
             // oscillators[183].run(0);
             // drawBG();
-            concerto.run();
+            // concerto.run();
+            fasterSubtleTrunk.run(rN);
+        }
+    },
+    concerto: {
+        d: 300,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+            // oscillators[183].run(0);
+            // drawBG();
+            var coFade = cosineFade(sum, 100);
+            concerto.mix(sum, fasterSubtleTrunk, rN, coFade);
+            // concerto.run();
+            // fasterSubtleTrunk.run();
         }
     },
     // ailleurs0: {
