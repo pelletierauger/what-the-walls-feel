@@ -47,13 +47,9 @@ fasterSubtleTrunk.update = function(sum) {
     }
 };
 
-let fadeIn = new Scene("fade-in");
+let traffic3FadeIn = new Scene("traffic-3-fade-in");
 
-fadeIn.init = function() {
-    this.grow = 1e-7;
-};
-
-fadeIn.update = function(sum) {
+traffic3FadeIn.update = function(sum) {
     this.vertices = [];
     this.grow = logMap(Math.min(drawCount - sum, 1500));
     let amountX = 50;
@@ -83,4 +79,3 @@ fadeIn.update = function(sum) {
         return Math.exp(minv + scale * (position - minp));
     }
 };
-fadeIn.init();
