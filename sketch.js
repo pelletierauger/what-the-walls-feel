@@ -1,4 +1,4 @@
-let looping = true;
+let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
 let fileName = "./frames/sketch";
@@ -20,14 +20,21 @@ var stop = false;
 var fps, fpsInterval, startTime, now, then, elapsed;
 var animationStart;
 var framesRendered = 0;
+var framesOfASecond = 0;
+var secondStart, secondFrames;
 
 // initialize the timer variables and start the animation
 
-function startAnimating(fps) {
-    fpsInterval = 1000 / fps;
+var envirLooping = false;
+
+function startAnimating() {
+    // fpsInterval = 1000 / fps;
+    fpsInterval = 1000 / 24;
     then = Date.now();
     animationStart = Date.now();
+    secondStart = Date.now();
     startTime = then;
+    envirLooping = true;
     animate();
 }
 
@@ -44,24 +51,34 @@ function queryFrameRate() {
 function animate() {
 
     // request another frame
+    if (envirLooping) {
 
-    requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
 
-    // calc elapsed time since last loop
 
-    now = Date.now();
-    elapsed = now - then;
+        // calc elapsed time since last loop
 
-    // if enough time has elapsed, draw the next frame
+        now = Date.now();
+        elapsed = now - then;
 
-    if (elapsed > fpsInterval) {
+        // if enough time has elapsed, draw the next frame
 
-        // Get ready for next frame by setting then=now, but also adjust for your
-        // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-        then = now - (elapsed % fpsInterval);
-        // Put your drawing code here
-        draw();
-        framesRendered++;
+        if (elapsed > fpsInterval) {
+
+            // Get ready for next frame by setting then=now, but also adjust for your
+            // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+            then = now - (elapsed % fpsInterval);
+            // Put your drawing code here
+            draw();
+            framesRendered++;
+            framesOfASecond++;
+            if (framesOfASecond == 24) {
+                secondFrames = 24 / ((Date.now() - secondStart) * 0.001);
+                // logJavaScriptConsole(secondFrames);
+                framesOfASecond = 0;
+                secondStart = Date.now();
+            }
+        }
     }
 }
 
@@ -121,6 +138,9 @@ function setup() {
         }
     }, 1000);
     // noLoop();
+    if (!looping) {
+        noLoop();
+    }
 }
 
 draw = function() {
@@ -200,12 +220,13 @@ document.onkeydown = function(evt) {
         isEscape = (evt.keyCode === 18);
     }
     if (isEscape) {
-        if (looping) {
-            noLoop();
-            looping = false;
+        if (envirLooping) {
+            // noLoop();
+            envirLooping = false;
         } else {
-            loop();
-            looping = true;
+            // loop();
+            envirLooping = true;
+            startAnimating();
         }
     }
 };
