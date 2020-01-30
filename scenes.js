@@ -46,3 +46,39 @@ fasterSubtleTrunk.update = function(sum) {
         }
     }
 };
+
+let fadeIn = new Scene("fade-in");
+
+fadeIn.init = function() {
+    this.grow = 1e-7;
+};
+
+fadeIn.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025 * 0.5;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let yy = y + pow(sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            xx = lerp(x, xx, this.grow);
+            yy = lerp(y, yy, this.grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+    this.grow *= 1.01;
+};
+fadeIn.init();
