@@ -12,6 +12,7 @@ xSheet = {
             var rN = getSum(xSheet, xSheet.test);
             // oscillators[183].run(0);
             // drawBG();
+            concerto.run();
         }
     },
     // ailleurs0: {
