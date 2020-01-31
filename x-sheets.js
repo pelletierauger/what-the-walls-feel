@@ -6,6 +6,16 @@ xSheet = {
     //         septembre.run();
     //     }
     // },
+    test: {
+        d: 3000,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.test);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            traffic3.run(rN);
+        }
+    },
     fadeIn: {
         d: 3000,
         f: function(sum) {
@@ -13,7 +23,7 @@ xSheet = {
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
-            fadeIn.run(rN);
+            traffic3FadeIn.run(rN);
         }
     },
     fasterSubtleTrunk: {
