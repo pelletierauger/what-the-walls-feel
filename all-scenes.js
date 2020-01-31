@@ -297,3 +297,172 @@ smallPattern2.update = function(sum) {
         }
     }
 };
+
+
+let zestyMovements = new Scene("zesty-movements");
+
+zestyMovements.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(x + t), 100) * 1;
+            let yy = y + pow(sin(y + t), 100) * 1;
+            //  xx += cos(oy * 10) * sin(oy * 10)2
+            //  yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+let zestyMovementsFallingBranches = new Scene("zesty-movements-falling-branches");
+
+zestyMovementsFallingBranches.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(x + t * 0.25), 70) * y * 0.5;
+            let yy = y + pow(sin(y + t * 0.25), 70) * y * 0.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+let traffic = new Scene("traffic");
+
+traffic.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(y + t * 0.25), 70) * y * 0.5;
+            let yy = y + pow(sin(x + t * 0.25), 70) * y * 0.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+let cavern = new Scene("cavern");
+
+cavern.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(y * 0.1 + t * 0.25), 70) * y * 0.5;
+            let yy = y + pow(sin(x * 0.1 + t * 0.25), 70) * y * 0.5;
+            //  xx += cos(oy * 10) * sin(oy * 10)2
+            //  yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+let traffic2 = new Scene("traffic-2");
+
+traffic2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(y * 0.5 + t * 0.25), 70) * y * 0.5;
+            let yy = y + pow(sin(x * 0.5 + t * 0.25), 70) * y * 0.5;
+            //  xx += cos(oy * 10) * sin(oy * 10)2
+            //  yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+let traffic3 = new Scene("traffic-3");
+
+traffic3.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 100;
+            let oy = y - 100;
+            let dx = abs(cos(x) * 0.01 - 25);
+            let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + pow(cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let yy = y + pow(sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            //  xx += cos(oy * 10) * sin(oy * 10)2
+            //  yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            i++;
+        }
+    }
+};
