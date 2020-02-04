@@ -1,11 +1,14 @@
+let scenes = [];
+
 let Scene = function(name) {
     this.name = name;
     this.vertices = [];
+    scenes.push(this);
 };
 
-Scene.prototype.init = function() {
+// Scene.prototype.init = function() {
 
-};
+// };
 
 Scene.prototype.run = function(sum) {
     this.update(sum);
