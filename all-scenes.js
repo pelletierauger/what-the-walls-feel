@@ -1378,10 +1378,10 @@ beautifulOceanWaves.update = function(sum) {
 let centralBrain = new Scene("Central brain");
 
 centralBrain.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800 + 20000) * 0.05;
+    let t = (drawCount - sum + 120800 + 20000) * 0.05;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     let ix = 1,
@@ -1405,20 +1405,20 @@ centralBrain.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
     }
 };
 
-let plantSofter = new Scene("Plants, softer");
+let plantsSofter = new Scene("Plants, softer");
 
 plantsSofter.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800 + 20000) * 0.05;
+    let t = (drawCount - sum + 120800 + 20000) * 0.05;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     let ix = 1,
@@ -1444,7 +1444,7 @@ plantsSofter.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1454,10 +1454,10 @@ plantsSofter.update = function(sum) {
 let rotatingMouth = new Scene("Rotating mouth");
 
 rotatingMouth.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800 + 20000) * 0.05;
+    let t = (drawCount - sum + 120800 + 20000) * 0.05;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -1476,7 +1476,7 @@ rotatingMouth.update = function(sum) {
             let yy = y - 25 + sin(a * 5 + dy * 2) * dx;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx + ranX) * 0.05 * 0.88 + 0.05, (yy + ranY) * 0.05 * 0.88 + 0.025, 0.0);
+            this.vertices.push((xx + ranX) * 0.05 * 0.88 + 0.05, (yy + ranY) * 0.05 * 0.88 + 0.025);
             i++;
             //             ix++;
         }
@@ -1486,10 +1486,10 @@ rotatingMouth.update = function(sum) {
 let calmBrook = new Scene("Calm brook");
 
 calmBrook.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 0) * 0.1;
+    let t = (drawCount - sum + 0) * 0.1;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -1512,7 +1512,7 @@ calmBrook.update = function(sum) {
             //          
             xx = (xx + ranX) * 0.05 * 0.88 + 0.05;
             yy = (yy + ranY) * 0.05 * 0.88 + 0.025;
-            vertices.push(xx, yy, 0.0);
+            this.vertices.push(xx, yy);
             i++;
             //             ix++;
         }
@@ -1522,10 +1522,10 @@ calmBrook.update = function(sum) {
 let renaissanceBalconies = new Scene("Renaissance balconies");
 
 renaissanceBalconies.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 0) * 0.1;
+    let t = (drawCount - sum + 0) * 0.1;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -1548,7 +1548,7 @@ renaissanceBalconies.update = function(sum) {
             //          
             xx = (xx + ranX) * 0.05 * 0.88 + 0.05;
             yy = (yy + ranY) * 0.05 * 0.88 + 0.025;
-            vertices.push(xx, yy, 0.0);
+            this.vertices.push(xx, yy);
             i++;
             //             ix++;
         }
@@ -1558,10 +1558,10 @@ renaissanceBalconies.update = function(sum) {
 let flowyCarnival = new Scene("Flower carnival");
 
 flowyCarnival.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1579,7 +1579,7 @@ flowyCarnival.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.8 - 1.05, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.8 - 1.05, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1588,10 +1588,10 @@ flowyCarnival.update = function(sum) {
 let hungryClouds = new Scene("Hungry clouds");
 
 hungryClouds.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1609,7 +1609,7 @@ hungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1618,10 +1618,10 @@ hungryClouds.update = function(sum) {
 let moreHungryClouds = new Scene("More hungry clouds");
 
 moreHungryClouds.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1639,7 +1639,7 @@ moreHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1648,10 +1648,10 @@ moreHungryClouds.update = function(sum) {
 let yetMoreHungryClouds = new Scene("Yet more hungry clouds");
 
 yetMoreHungryClouds.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1669,7 +1669,7 @@ yetMoreHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1678,10 +1678,10 @@ yetMoreHungryClouds.update = function(sum) {
 let biggerHungryClouds = new Scene("Bigger hungry clouds");
 
 biggerHungryClouds.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1699,7 +1699,7 @@ biggerHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1708,10 +1708,10 @@ biggerHungryClouds.update = function(sum) {
 let rectangularHungryClouds = new Scene("Rectangular hungry clouds");
 
 rectangularHungryClouds.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1729,7 +1729,7 @@ rectangularHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1738,10 +1738,10 @@ rectangularHungryClouds.update = function(sum) {
 let rectangularHungryCloudsSlower = new Scene("Rectangular hungry clouds, slower");
 
 rectangularHungryCloudsSlower.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1759,7 +1759,7 @@ rectangularHungryCloudsSlower.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1768,10 +1768,10 @@ rectangularHungryCloudsSlower.update = function(sum) {
 let eggs = new Scene("Eggs");
 
 eggs.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1789,7 +1789,7 @@ eggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1798,10 +1798,10 @@ eggs.update = function(sum) {
 let eggs2 = new Scene("Eggs 2");
 
 eggs2.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1819,7 +1819,7 @@ eggs2.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1828,10 +1828,10 @@ eggs2.update = function(sum) {
 let beautifulEggs = new Scene("Beautiful eggs");
 
 beautifulEggs.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1849,7 +1849,7 @@ beautifulEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1858,10 +1858,10 @@ beautifulEggs.update = function(sum) {
 let electronicDecorativeEggs = new Scene("Electronic decorative eggs");
 
 electronicDecorativeEggs.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1879,7 +1879,7 @@ electronicDecorativeEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
@@ -1888,10 +1888,10 @@ electronicDecorativeEggs.update = function(sum) {
 let cryingFace = new Scene("Crying face");
 
 cryingFace.update = function(sum) {
-    vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (frameCount + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1909,8 +1909,568 @@ cryingFace.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2, 0.0);
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
         }
     }
+};
+
+let smallEggs = new Scene("Small eggs");
+
+smallEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y;
+            let dx = cos(x * 2 * 0.5);
+            let dy = sin(y * 0.5 * 0.5);
+            let xx = x + pow(map(cos(dx * 0.5 + dy * 2.0 + t * 12), -1, 1, -1, 0), 20) * 2;
+            let yy = y + pow(map(sin(dy * 0.5 + dy * 0.5 + t * 12), -1, 1, -1, 0), 20) * 2;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let electronicEggs = new Scene("Electronic eggs");
+
+electronicEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y;
+            let dx = cos(x * 2 * 0.15);
+            let dy = sin(y * 0.5 * 0.15);
+            let xx = x + pow(map(cos(dx * 0.5 * dy * 2.0 + t * 6), -1, 1, -1, 0), 200) * 4;
+            let yy = y + pow(map(sin(dy * 0.5 * dy * 0.5 + t * 6), -1, 1, -1, 0), 200) * 4;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let cavernousEggs = new Scene("Cavernous eggs");
+
+cavernousEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y;
+            let dx = cos((x + x * 100) * 2 * 0.15);
+            let dy = sin((y + x * 0.01) * 0.5 * 0.15);
+            let xx = x + pow(map(cos(dx * 0.5 * dy * 2.0 + t * 6), -1, 1, -1, 0), 200) * 4;
+            let yy = y + pow(map(sin(dy * 0.5 * dy * 0.5 + t * 6), -1, 1, -1, 0), 200) * 4;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let moreWorkOnTheEggs = new Scene("More work on the eggs");
+
+moreWorkOnTheEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 6;
+            let oy = y + 30;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 0.1);
+            let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 0.1);
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let stabilizingTheEggs = new Scene("Stabilizing the eggs");
+
+stabilizingTheEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 30;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 0.1) * 0.125;
+            let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 0.1) * 0.125;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let harmoniousEggs = new Scene("Harmonious eggs");
+
+harmoniousEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 4) * 0.125;
+            let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 4) * 0.125;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+
+let harmoniousEggs2 = new Scene("Harmonious eggs 2");
+
+harmoniousEggs2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125;
+            let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let harmoniousEggs2b = new Scene("Harmonious eggs 2b");
+
+harmoniousEggs2b.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, 0, 2), 6) * 0.125;
+            let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, 0, 2), 6) * 0.125;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let chaoticEggs = new Scene("Chaotic eggs");
+
+chaoticEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x + pow(map(cos(sin(dx + dy) + t * 4), -1, 1, 0, 2), 10) * 0.125;
+            let yy = y + pow(map(sin(sin(dx + dy) + t * 4), -1, 1, 0, 2), 10) * 0.125;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let workOnSymmetricalChaoticEggs = new Scene("Work on symmetrical chaotic eggs");
+
+workOnSymmetricalChaoticEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let mx = pow(map(cos(sin(dx + dy) + t * 4), -1, 1, 0, 2), 10) * 0.125;
+            let my = pow(map(sin(sin(dx + dy) + t * 4), -1, 1, 0, 2), 10) * 0.125;
+            mx = Math.sign(mx) * -1 * mx;
+            my = Math.sign(my) * 1 * my;
+            let xx = x + mx;
+            let yy = y + my;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let strangelyStabilizedEggs = new Scene("Strangely stabilized eggs");
+
+strangelyStabilizedEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let mx = pow(map(cos(sin(dx + dy) + t * 4), -1, 1, 0, 2), 10) * 0.125;
+            let my = pow(map(sin(sin(dx + dy) + t * 4), -1, 1, 0, 2), 10) * 0.125;
+            mx = Math.sign(mx) * -1 * mx;
+            my = Math.sign(my) * 1 * my;
+            let xx = x + mx;
+            let yy = y + my;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let strangelyStabilizedEggsFlowy = new Scene("Strangely stabilized eggs, flowy");
+
+strangelyStabilizedEggsFlowy.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    let oriX, oriY
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 31;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let mx = pow(map(cos(sin(dx + dy + t * 20) * 0.75), -1, 1, 0, 2), 1) * 5;
+            let my = pow(map(sin(sin(dx + dy + t * 20) * 0.75), -1, 1, 0, 2), 1) * 5;
+            //             mx = Math.sign(mx) * -1 * mx;
+            //             my = Math.sign(my) * 1 * my;
+            let xx = x + mx;
+            let yy = y + my;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+                oriY = yy;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
+            i++;
+        }
+    }
+};
+
+let moreFlowyEggs = new Scene("More flow eggs");
+
+moreFlowyEggs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    let oriX, oriY
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 7;
+            let oy = y + 20;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let mx = pow(cos((dx + dy + t * 15) * 0.75), 2) * 4;
+            let my = pow(sin((dx + dy + t * 15) * 0.75), 2) * 4;
+            //             mx = Math.sign(mx) * -1 * mx;
+            //             my = Math.sign(my) * 1 * my;
+            let xx = x + mx;
+            let yy = y + my;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+                oriY = yy;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
+            i++;
+        }
+    }
+};
+
+let balancedBrain = new Scene("Balanced brain");
+
+balancedBrain.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    let oriX, oriY
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 0;
+            let oy = y + 25;
+            let dx = cos(sin(ox * ox * 0.25) * 0.85 * 0.25 * 0.5);
+            let dy = sin(sin(oy * ox * 0.25) * 0.5 * 0.25 * 0.5);
+            let mx = pow(cos((dx + dy + t * 10) * 0.75), 4) * 10;
+            let my = pow(sin((dx + dy + t * 10) * 0.75), 4) * 10;
+            //             mx = Math.sign(mx) * -1 * mx;
+            //             my = Math.sign(my) * 1 * my;
+            let xx = x + mx;
+            let yy = y + my;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+                oriY = yy;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
+            i++;
+        }
+    }
+};
+
+let newFestive = new Scene("New festive");
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y;
+            let dx = abs(cos(x) * 0.01) * 16;
+            let dy = abs(sin(y) * 0.01) * 16;
+            let xx = x + pow(cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            let yy = y + pow(sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.8 - 1.05, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let newSpaceship = new Scene("New spaceship");
+
+newSpaceship.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x;
+            let dy = y;
+            let a = atan2(y - abs(y - 50), x - abs(x - 50));
+            let xx = x - 25 + pow(cos(pow(a, 4) + t * 1), 0.9);
+            let yy = y - 25 + pow(sin(pow(a, 4) + t * 1), 0.9);
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 0., (yy + ranY) * 0.05 * 0.85 - 0);
+            i++;
+            //             ix++;
+        }
+    }
+};
+
+let trueDynamical = new Scene("True dynamical");
+
+trueDynamical.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+trueDynamical.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oX * 0.5 + cos(oY * 0.5 + t * 5));
+            yy += sin(oY * 0.5 + sin(oX * 0.5 + t * 5));
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
 };
