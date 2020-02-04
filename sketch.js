@@ -141,6 +141,12 @@ function setup() {
     if (!looping) {
         noLoop();
     }
+    for (let i = 0; i < scenes.length; i++) {
+        if (scenes[i].init) {
+            console.log("One scene is being initialized!");
+            scenes[i].init();
+        }
+    }
 }
 
 draw = function() {
