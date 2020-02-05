@@ -2424,9 +2424,9 @@ newSpaceship.update = function(sum) {
     }
 };
 
-let trueDynamical = new Scene("True dynamical");
+let intricateDynamical = new Scene("Intricate dynamical");
 
-trueDynamical.init = function(sum) {
+intricateDynamical.init = function(sum) {
     this.oldArr = [];
     for (let i = 0; i < 50 * 50; i++) {
         this.oldArr.push({ x: 1, y: 1 });
@@ -2438,7 +2438,7 @@ trueDynamical.init = function(sum) {
     }
 };
 
-trueDynamical.update = function(sum) {
+intricateDynamical.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
@@ -2473,4 +2473,1386 @@ trueDynamical.update = function(sum) {
     }
     this.oldArr = this.newArr;
     this.innerCount++;
+};
+
+let intricateDynamical2 = new Scene("Intricate dynamical 2");
+
+intricateDynamical2.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+intricateDynamical2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oX * 0.5 + cos(oX * 0.5) + cos(oY * 0.5 + t * 5));
+            yy += sin(oY * 0.5 + cos(oX * 0.5) + sin(oX * 0.5 + t * 5));
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+
+let floatingDynamical = new Scene("Floating dynamical");
+
+floatingDynamical.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+floatingDynamical.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oX * 0.5) + cos(oY * 0.5 + t * 2) + cos(oY * 0.5);
+            yy += sin(oY * 0.5) + sin(oX * 0.5) + sin(oX * 0.5);
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let floatingDynamical2 = new Scene("Floating dynamical 2");
+
+floatingDynamical2.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+floatingDynamical2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oX * 0.75) * cos(oY * 0.5 + t * 5) + cos(oY * 0.5);
+            yy += sin(oY * 0.75) * sin(oX * 0.5 + t * 5) + sin(oX * 0.5);
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1.1, (yy + ranY) * 0.05 * 0.9 - 1.1);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let beautifulFloatingDynamical = new Scene("Beautiful floating dynamical");
+
+beautifulFloatingDynamical.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+beautifulFloatingDynamical.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oX * 0.75) * cos(oY * 0.5 + t * 2) + cos(oY * 0.5);
+            yy += sin(oY * 0.75) * sin(oX * 0.5 + t * 2) + sin(oX * 0.5);
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1.1, (yy + ranY) * 0.05 * 0.9 - 1.1);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let tornSheetInTheWind = new Scene("Torn sheet in the wind");
+
+tornSheetInTheWind.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+tornSheetInTheWind.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oY * 0.25 + t * 2) * 4 + cos(oY * 0.5);
+            yy += sin(oX * 0.25 + t * 2) * 4 + sin(oX * 0.5);
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.0, (yy + ranY) * 0.05 * 1.0 - 1.0);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let moreTorn = new Scene("More torn");
+
+moreTorn.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+moreTorn.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(pow(oY, 0.7) * 0.9 + t * 2) * 4 + cos(oY * 0.5);
+            yy += sin(pow(oX, 0.7) * 0.9 + t * 2) * 4 + sin(oX * 0.5);
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let differentlyTorn = new Scene("Differently torn");
+
+differentlyTorn.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+differentlyTorn.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(pow(oY, 0.7) * 0.9 + t * 2) * 5;
+            yy += sin(pow(oX, 0.7) * 0.9 + t * 2) * 5;
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let surprisinglyStableDynamicalLozenges = new Scene("Surprisingly stable dynamical lozenges");
+
+surprisinglyStableDynamicalLozenges.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+surprisinglyStableDynamicalLozenges.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += tan(cos((oY) * 0.4 + t * 2)) * 1.25;
+            yy += tan(sin((oY + oX) * 0.4 + t * 2)) * 1.25;
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let cicadas = new Scene("Cicadas");
+
+cicadas.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+cicadas.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015 * 2;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += tan(cos((oY) * 0.2 + t * 2)) * cos(oX) * 0.9;
+            yy += tan(sin((oY + oX) * 0.2 + t * 2)) * sin(oY) * 0.9;
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let balancedDynamicalIntricate = new Scene("Balanced dynamical intricate");
+
+balancedDynamicalIntricate.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+balancedDynamicalIntricate.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015 * 0.25;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX;
+            let oY;
+            if (this.innerCount == 0) {
+                oX = x;
+                oY = y;
+            } else {
+                let ix = this.oldArr[i].x,
+                    iy = this.oldArr[i].y;
+                oX = x + cos(ix * 0.5 + t * 8) * sin(ix * 0.5 + t * 4) * cos(iy * 0.5 + t * 4) * 2;
+                oY = y + sin(iy * 0.5 + t * 8) * sin(ix * 0.5 + t * 4) * cos(iy * 0.5 + t * 4) * 2;
+            }
+            xx = oX;
+            yy = oY;
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    // iter++;
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let balancedDynamicalIntricateFast = new Scene("Balanced dynamical intricate, fast");
+
+balancedDynamicalIntricateFast.init = function(sum) {
+    this.oldArr = [];
+    for (let i = 0; i < 50 * 50; i++) {
+        this.oldArr.push({ x: 1, y: 1 });
+    }
+    this.innerCount = 0;
+    for (let i = 0; i < 100; i++) {
+        this.update(this.innerCount);
+        this.innerCount++;
+    }
+};
+
+balancedDynamicalIntricateFast.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015 * 0.25;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX;
+            let oY;
+            if (this.innerCount == 0) {
+                oX = x;
+                oY = y;
+            } else {
+                let ix = this.oldArr[i].x,
+                    iy = this.oldArr[i].y;
+                oX = x + cos(ix * 0.5 + t * 8) * sin(ix * 0.5 + t * 40) * cos(iy * 0.5 + t * 8) * 2;
+                oY = y + sin(iy * 0.5 + t * 8) * sin(ix * 0.5 + t * 40) * cos(iy * 0.5 + t * 8) * 2;
+            }
+            xx = oX;
+            yy = oY;
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    // iter++;
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
+let subtleTrunk = new Scene("Subtle trunk");
+
+subtleTrunk.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    let m = sosc(t * 1e-3 + 10, 0.01, 2);
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x + max(cos(x * 0.125 + t * -2), sin(y + x * 0.25 + t * 0.5));
+            let dy = y + min(sin(y * 0.125 + t * -2), cos(x + x * 0.25 + t * 0.5));
+            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            i++;
+            //             ix++;
+        }
+    }
+};
+
+let trunk = new Scene("Trunk");
+
+trunk.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    let m = sosc(t * 1e-3 + 10, 0.01, 2);
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x + max(cos(x * 0.125 + t * 2), sin(y + x + t * 0.5));
+            let dy = y + min(sin(y * 0.125 + t * 2), cos(x + x + t * 0.5));
+            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            i++;
+            //             ix++;
+        }
+    }
+};
+
+let quietCanopy = new Scene("Quiet canopy");
+
+quietCanopy.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    let m = sosc(t * 1e-3 + 10, 0.01, 2);
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x + max(cos(x * 0.25 + t * -4), sin(y * 0.5 + t * 2));
+            let dy = y + min(sin(y * 0.25 + t * -4), cos(x * 0.5 + t * 2));
+            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            i++;
+            //             ix++;
+        }
+    }
+};
+
+let undulatingGround = new Scene("Undulating ground");
+
+undulatingGround.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    let m = sosc(t * 1e-3 + 10, 0.01, 2);
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x + min(cos(x * 0.25 + t * -4), sin(y * 1 + t * 5));
+            let dy = y + min(sin(y * 0.25 + t * -4), cos(x * 1 + t * 5));
+            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            i++;
+            //             ix++;
+        }
+    }
+};
+
+let escherLikeStaircases = new Scene("Escher-like staircases");
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    let m = sosc(t * 1e-3 + 10, 0.01, 2);
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x + tan(sin(y * 0.5 + t * 3));
+            let dy = y + tan(cos(x * 0.5 + t * 3));
+            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            i++;
+            //             ix++;
+        }
+    }
+};
+
+let undulatingWall3 = new Scene("Undulating wall 3");
+
+undulatingWall3.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 0.1 * Math.sin(t * 0.5));
+            let ny = Math.sin(y * 0.1 * Math.sin(t * 0.5));
+            let xx = x + (Math.pow(Math.cos(y * 0.25 + t * 0.5), 7) * ny) * 4.5;
+            let yy = y + (Math.pow(Math.sin(x * 0.25 + t * 0.5), 7) * ny + nx) * 4.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.9;
+            xx += 2;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            // oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let springs = new Scene("Springs");
+
+springs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / x * 4.1);
+            let xx = x + (Math.pow(Math.cos(y * 0.25 + t * 0.5), 700) * ny) * 4.5;
+            let yy = y + (Math.pow(Math.sin(x * 0.25 + t * 0.5), 700) * ny + nx) * 4.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.9;
+            xx += 2;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let springsSlowerLessElastic = new Scene("Springs, slower, less elastic");
+
+springsSlowerLessElastic.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            2
+            let xx = x + (Math.pow(Math.cos(y * 0.25 + t * 0.25), 700) * ny) * 4.5;
+            let yy = y + (Math.pow(Math.sin(x * 0.25 + t * 0.25), 700) * ny + nx) * 4.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.9;
+            xx += 2;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let fastDiagonalStairs = new Scene("Fast diagonal stairs");
+
+fastDiagonalStairs.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 40.1);
+            let ny = Math.sin(y / y * 40.1);
+            let xx = x + (Math.pow(Math.cos(y + y * 0.25 + t * 0.25), 700) * ny) * 4.5;
+            let yy = y + (Math.pow(Math.sin(x + y * 0.25 + t * 0.25), 700) * ny + nx) * 4.5;
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let fastJumpingDots = new Scene("Fast jumping dots");
+
+fastJumpingDots.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            let xx = x + (Math.pow(Math.cos(y + y * 5 + t * 0.25), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.25), 7000) * ny);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let slowJumpingDots = new Scene("Slow jumping dots");
+
+slowJumpingDots.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            let xx = x + (Math.pow(Math.cos(y + y * 5 + t * 0.125), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.125), 7000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let walkingInsects = new Scene("Walking insects");
+
+walkingInsects.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            let xx = x + (Math.pow(Math.cos(y / y * 5 + t * 0.125), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x / y * 5 + t * 0.125), 7000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let horizontalJumpingDots = new Scene("Horizontal jumping dots");
+
+horizontalJumpingDots.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            let xx = x + (Math.pow(Math.cos(y / (1 + x) * 5 + t * 1e-1), 70000) * ny);
+            let yy = y + (Math.pow(Math.sin(x / (1 + y) * 5 + t * 1e-1), 70000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let horizontalJumpingDots2 = new Scene("Horizontal jumping dots 2");
+
+horizontalJumpingDots2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            let xx = x + (Math.pow(Math.cos(y * (1 + x) * 5 + t * 1e-1), 70000) * ny);
+            let yy = y + (Math.pow(Math.sin(x * (1 + y) * 5 + t * 1e-1), 70000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let horizontalJumpingDots3 = new Scene("Horizontal jumping dots 3");
+
+horizontalJumpingDots3.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let xx = x + (Math.pow(Math.sin(y * (1 + x) * 1 + t * 1e-1), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x * (1 + y) * 1 + t * 1e-1), 7000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let horizontalJumpingDots4 = new Scene("Horizontal jumping dots 4");
+
+horizontalJumpingDots4.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let xx = x + (Math.pow(Math.sin(y * (0 + x) * 1 + t * 1e-1), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x * (0 + y) * 1 + t * 1e-1), 7000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let horizontalJumpingDots5 = new Scene("Horizontal jumping dots 5");
+
+horizontalJumpingDots5.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let xx = x + (Math.pow(Math.sin(y * x * t * 1e-4), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x * y * t * 1e-4), 7000) * nx);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let subtleGridFlowy2 = new Scene("Subtle grid, flowy 2");
+
+subtleGridFlowy2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.0001) * 100;
+            let xx = x + (Math.pow(Math.cos((4e3 + y + tt) * (4e3 + x + tt) * t * 1e-3), 15));
+            let yy = y + (Math.pow(Math.cos((4e3 + x + tt) * (4e3 + y + tt) * t * 1e-3), 15));
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let travellers2 = new Scene("Travellers 2");
+
+travellers2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.35) * 1000;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.cos((m - x * 100) * 100) * Math.sin(t * y * 1e-5), 25));
+            let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-5), 25));
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let travellers3 = new Scene("Travellers 3");
+
+travellers3.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.35) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.cos((m - x * 100) * 100) * Math.sin(t * y * 1e-3), 15));
+            let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-3), 15));
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let travellers4Bigger = new Scene("Travellers 4, bigger");
+
+travellers4Bigger.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.cos((m - x * 100) * 1000) * Math.sin(t * y * 1e-3), 15));
+            let yy = y + (Math.pow(Math.sin((m - y * 100) * 1000) * Math.sin(t * x * 1e-3), 15));
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            if (i == 0) {
+                oriX = xx;
+            }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            i++;
+        }
+    }
+};
+
+let travellers5EvenBigger = new Scene("Travellers 5, even bigger");
+
+travellers5EvenBigger.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    // let a = 0.00005;
+    // let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125 * 0.5) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.cos((m - x * 100) * 1000) * Math.sin(t * y * 1e-3), 5));
+            let yy = y + (Math.pow(Math.sin((m - y * 100) * 1000) * Math.sin(t * x * 1e-3), 5));
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let travellers6 = new Scene("Travellers 6");
+
+travellers6.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125 * 0.0625) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.cos((m + x * 100) * 1000) * Math.sin(t * y * 1e-3), 20)) * 100;
+            let yy = y + (Math.pow(Math.sin((m + y * 100) * 1000) * Math.sin(t * x * 1e-3), 20)) * 100;
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
+};
+
+let tinyJumpers = new Scene("Tiny jumpers");
+
+tinyJumpers.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125 * 0.0625) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.sin(m * x * 100) * Math.sin(t * y * 1e-3), 500));
+            let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e-3), 500));
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            // i++;
+        }
+    }
 };
