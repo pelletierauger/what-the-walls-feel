@@ -67,6 +67,13 @@ function createInfoDiv() {
 
     sheetSlider.input(function() {
         setSheetSlider();
+        if (!looping && !envirLooping) {
+            // drawCount = sheetSlider.value;
+            draw();
+        }
+        // if (songPlay) {
+        repositionSong = true;
+        // }
     });
     // setSheetSlider();
 

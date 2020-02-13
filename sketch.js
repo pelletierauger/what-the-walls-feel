@@ -13,7 +13,10 @@ let time, coord;
 let vertex_buffer;
 var drawingGeometry = true;
 let dotsVBuf, bgVBuf;
-
+let songPlay = true;
+let repositionSong = false;
+let montage = true;
+let player;
 
 var stop = false;
 // var frameCount = 0;
@@ -84,10 +87,14 @@ function animate() {
 
 // function preload() {
 //     // load the shader
-//     shaderProgram = loadShader('points.vert', 'points.frag');
+//     // shaderProgram = loadShader('points.vert', 'points.frag');
+
 // }
 
 function setup() {
+    // if (songPlay) {
+    //     song = loadSound("wtwf.mp3", gotSong);
+    // }
     socket = io.connect('http://localhost:8080');
     // shaders require WEBGL mode to work
     pixelDensity(1);
@@ -117,6 +124,19 @@ function setup() {
     gl.viewport(0, 0, canvas.width, canvas.height);
     createInfoDiv();
     setupInfoDiv();
+
+
+    // sheetSlider.input(function() {
+    //     logJavaScriptConsole("Moving this thing!");
+
+    //     if (songPlay) {
+    //         repositionSong = true;
+    //     }
+    //     if (!looping) {
+    //         drawCount = sheetSlider.value;
+    //         draw();
+    //     }
+    // });
     shadersReadyToInitiate = true;
     initializeShaders();
     time = gl.getUniformLocation(getProgram("blue-background"), "time");
@@ -147,7 +167,20 @@ function setup() {
             scenes[i].init();
         }
     }
+    player = document.querySelector('#wtwf .audioelement');
+    // audioElement = document.createElement('audio');
+    // audioElement.id = 'audio-player';
+    // audioElement.controls = 'controls';
+    // audioElement.src = 'wtwf.mp3';
+    // audioElement.type = 'audio/mpeg';
+    // var length = player.duration
+    // var current_time = player.currentTime;
 }
+
+// function gotSong() {
+//     // song.rate(24 / 24);
+//     logJavaScriptConsole("Song loaded.");
+// }
 
 draw = function() {
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -168,12 +201,24 @@ draw = function() {
     //     gl.uniform1f(time, drawCount);
     //     drawBG();sheetSlider.value(drawCount);
     // info1.html();
+
+    if (repositionSong && songPlay && (looping ||  envirLooping)) {
+        // logJavaScriptConsole("repositioning!");
+        // song.jump(drawCount / 24);
+        // audioElement.currentTime = drawCount /  24;
+        player.currentTime = drawCount /  24;
+        // song.rate(24 / 24);
+        repositionSong = false;
+    }
+
+
     sheetSlider.value(drawCount);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount);
     drawCount += drawIncrement;
     if (clipping) {
         if (drawCount > clipMax) {
             drawCount = clipMin;
+            repositionSong = true;
         }
     }
 }
@@ -228,10 +273,20 @@ document.onkeydown = function(evt) {
     if (isEscape) {
         if (envirLooping) {
             // noLoop();
+            if (montage && songPlay) {
+                // logJavaScriptConsole("Does this not ?");
+                player.pause();
+            }
             envirLooping = false;
         } else {
             // loop();
             envirLooping = true;
+            if (montage && songPlay) {
+                // logJavaScriptConsole("This does ?");
+                player.play();
+                // song.jump(drawCount / 24);
+                // song.rate(24 / 24);
+            }
             startAnimating();
         }
     }
@@ -249,4 +304,15 @@ function clip(min, max) {
 
 function unClip() {
     clipping = false;
+}
+
+function logLatency() {
+    let seconds = (drawCount /  24) - player.currentTime;
+    let frames = Math.floor(((drawCount /  24) - player.currentTime) * 24);
+    let frameWord = (frames > 1) ? "frames" : "frame";
+    logJavaScriptConsole(seconds + " seconds, or " + frames + " " + frameWord + ".");
+}
+
+function syncToAudio() {
+    drawCount -= Math.floor(((drawCount /  24) - player.currentTime) * 24);
 }
