@@ -198,7 +198,7 @@ withImage.init = function() {
     if (shadersReadyToInitiate) {
         // Asynchronously load an image
         this.image = new Image();
-        this.image.src = "f-texture-title-a.png";
+        this.image.src = "f-texture-title-a2.png";
         // this.image.src = "https://webglfundamentals.org/webgl/resources/f-texture.png";
         let that = this;
         console.log(that);

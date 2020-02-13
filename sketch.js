@@ -251,6 +251,11 @@ function keyPressed() {
         if (key == 'p' || key == 'P') {
             frameExport();
         }
+        if (key == 'q' || key == 'Q') {
+            drawCount = 0;
+            player.currentTime = 0;
+            repositionSong = true;
+        }
         // if (keyCode == "ESCAPE") {
         //     if (looping) {
         //         noLoop();

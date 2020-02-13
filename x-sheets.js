@@ -19,7 +19,7 @@ xSheet = {
     blank: {
         d: 5,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.test);
+            var rN = getSum(xSheet, xSheet.blank);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
@@ -29,11 +29,21 @@ xSheet = {
     title: {
         d: 185,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fadeIn);
+            var rN = getSum(xSheet, xSheet.title);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
             overture.run(rN);
+        }
+    },
+    wait: {
+        d: 185,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.wait);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            traffic3Static.run(rN);
         }
     },
     fadeIn: {
