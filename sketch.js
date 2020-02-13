@@ -187,7 +187,7 @@ function setup() {
 
 draw = function() {
     gl.clear(gl.COLOR_BUFFER_BIT);
-    if (drawCount > 5) {
+    if (drawCount >= 5) {
         currentProgram = getProgram("blue-background");
         gl.useProgram(currentProgram);
         gl.uniform1f(time, drawCount * 0.00125);
