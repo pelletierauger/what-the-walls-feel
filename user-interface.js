@@ -27,6 +27,7 @@ function setupInfoDiv() {
 
 function createInfoDiv() {
     infoDiv = createDiv('');
+    infoDiv.id('timeline-slider');
     infoDiv.style('position', 'absolute');
     infoDiv.style('right', '0');
     infoDiv.style('bottom', '35px');

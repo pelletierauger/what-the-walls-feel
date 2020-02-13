@@ -30,6 +30,8 @@ let titledLoaded = false;
 // initialize the timer variables and start the animation
 
 var envirLooping = false;
+let currentProgram;
+let cinemaMode = false;
 
 function startAnimating() {
     // fpsInterval = 1000 / fps;
@@ -185,15 +187,15 @@ function setup() {
 
 draw = function() {
     gl.clear(gl.COLOR_BUFFER_BIT);
-    let currentProgram = getProgram("blue-background");
-    gl.useProgram(currentProgram);
-    gl.uniform1f(time, drawCount * 0.00125);
-    drawBG(currentProgram);
-
+    if (drawCount > 5) {
+        currentProgram = getProgram("blue-background");
+        gl.useProgram(currentProgram);
+        gl.uniform1f(time, drawCount * 0.00125);
+        drawBG(currentProgram);
+    }
     currentProgram = getProgram("cyan-dots");
     gl.useProgram(currentProgram);
     // drawDots(currentProgram);
-
     runXSheet(xSheet);
     //     if (frameCount == 1) {
     // setDotsShaders();
@@ -202,7 +204,6 @@ draw = function() {
     //     gl.uniform1f(time, drawCount);
     //     drawBG();sheetSlider.value(drawCount);
     // info1.html();
-
     if (repositionSong && songPlay && (looping ||  envirLooping)) {
         // logJavaScriptConsole("repositioning!");
         // song.jump(drawCount / 24);
@@ -212,8 +213,6 @@ draw = function() {
         repositionSong = false;
         syncToAudio();
     }
-
-
     sheetSlider.value(drawCount);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount);
     drawCount += drawIncrement;
@@ -255,6 +254,44 @@ function keyPressed() {
             drawCount = 0;
             player.currentTime = 0;
             repositionSong = true;
+        }
+        if (key == '1') {
+            if (!cinemaMode) {
+                appControl.setAttribute("style", "display:none;");
+                let tabs = document.querySelector("#file-tabs");
+                tabs.setAttribute("style", "display:none;");
+                let slider = document.querySelector("#timeline-slider");
+                // slider.setAttribute("style", "display:none;");
+                slider.style.display = "none";
+                // canvasDOM.style.bottom = "0";
+                cinemaMode = true;
+                scdArea.style.display = "none";
+                scdConsoleArea.style.display = "none";
+                jsArea.style.display = "none";
+                jsConsoleArea.style.display = "none";
+                // hidden = true;
+            } else {
+                appControl.setAttribute("style", "display:block;");
+                let tabs = document.querySelector("#file-tabs");
+                tabs.setAttribute("style", "display:block;");
+                let slider = document.querySelector("#timeline-slider");
+                // slider.setAttribute("style", "display:block;");
+                slider.style.display = "block";
+                // canvasDOM.style.bottom = null;
+                if (displayMode === "both") {
+                    scdArea.style.display = "block";
+                    scdConsoleArea.style.display = "block";
+                    jsArea.style.display = "block";
+                    jsConsoleArea.style.display = "block";
+                } else if (displayMode == "scd") {
+                    scdArea.style.display = "block";
+                    scdConsoleArea.style.display = "block";
+                } else if (displayMode == "js") {
+                    jsArea.style.display = "block";
+                    jsConsoleArea.style.display = "block";
+                }
+                cinemaMode = false;
+            }
         }
         // if (keyCode == "ESCAPE") {
         //     if (looping) {

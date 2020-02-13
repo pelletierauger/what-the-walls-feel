@@ -52,6 +52,7 @@ let traffic3FadeIn = new Scene("traffic-3-fade-in");
 traffic3FadeIn.update = function(sum) {
     this.vertices = [];
     this.grow = logMap(Math.min(drawCount - sum, 1500));
+//     logJavaScriptConsole(drawCount - sum);
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10) * 0.025 * 0.5;
@@ -86,19 +87,19 @@ let overture = new Scene("overture");
 overture.update = function(sum) {
     this.vertices = [];
     this.dotsToDisplay = 0;
-    this.grow = logMap(Math.min(drawCount - sum, 1500));
+    this.grow = logMap(Math.min(0, 1500));
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.025 * 0.5;
+    let t = (0 + 10) * 0.025 * 0.5;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            if (y < 9 || y > 13) {
+            if (y < 11 || y > 17) {
                 let dx = Math.abs(Math.cos(x) * 0.01 - 25);
                 let dy = Math.abs(Math.sin(y) * 0.01 - 25);
                 let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
                 let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
-                xx = lerp(x, xx, 0);
-                yy = lerp(y, yy, 0);
+                xx = lerp(x, xx, this.grow);
+                yy = lerp(y, yy, this.grow);
                 this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
                 this.dotsToDisplay++;
             }
@@ -137,18 +138,19 @@ let traffic3Static = new Scene("traffic-3-static");
 
 traffic3Static.update = function(sum) {
     this.vertices = [];
-    this.grow = logMap(Math.min(drawCount - sum, 1500));
+    this.grow = logMap(Math.min(0, 1500));
+//     logJavaScriptConsole(this.grow);
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.025 * 0.5;
+    let t = (0 + 10) * 0.025 * 0.5;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
             let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
             let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
-            xx = lerp(x, xx, 0);
-            yy = lerp(y, yy, 0);
+            xx = lerp(x, xx, this.grow);
+            yy = lerp(y, yy, this.grow);
             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
         }
     }

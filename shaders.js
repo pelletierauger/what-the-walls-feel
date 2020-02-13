@@ -177,7 +177,7 @@ withImage.vertText = `
         v_texcoord = a_texcoord * vec2(1.0, -1.0) + vec2(0.0, 0.5);
         vec4 positionVec4 = vec4(a_position * vec3(1.0, 0.125, 1.0), 1.0);
         positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
-        gl_Position = positionVec4 + vec4(0.0, 0.25, 0.0, 0.0);
+        gl_Position = positionVec4 + vec4(0.0, 0.4, 0.0, 0.0);
     }
     // endGLSL
     `;
