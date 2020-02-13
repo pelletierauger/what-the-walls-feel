@@ -163,3 +163,115 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
+
+
+
+let withImage = new ShaderProgram("with-image");
+
+withImage.vertText = `
+    // beginGLSL
+    attribute vec3 a_position;
+    attribute vec2 a_texcoord;
+    varying vec2 v_texcoord;
+    void main() {
+        v_texcoord = a_texcoord * vec2(1.0, -1.0) + vec2(0.0, 0.5);
+        vec4 positionVec4 = vec4(a_position * vec3(1.0, 0.125, 1.0), 1.0);
+        positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
+        gl_Position = positionVec4 + vec4(0.0, 0.25, 0.0, 0.0);
+    }
+    // endGLSL
+    `;
+withImage.fragText = `
+    // beginGLSL
+    precision mediump float;
+    // Passed in from the vertex shader.
+    varying vec2 v_texcoord;
+    // The texture.
+    uniform sampler2D u_texture;
+    void main() {
+        gl_FragColor = texture2D(u_texture, v_texcoord);
+    }
+    // endGLSL
+`;
+
+withImage.init = function() {
+    if (shadersReadyToInitiate) {
+        // Asynchronously load an image
+        this.image = new Image();
+        this.image.src = "f-texture-title-a.png";
+        // this.image.src = "https://webglfundamentals.org/webgl/resources/f-texture.png";
+        let that = this;
+        console.log(that);
+        this.image.addEventListener('load', function() {
+            titledLoaded = true;
+            // this.image.onload = function() {
+            // Create a vertex shader object
+            var vertShader = gl.createShader(gl.VERTEX_SHADER);
+            // Attach vertex shader source code
+            gl.shaderSource(vertShader, that.vertText);
+            console.log(that.vertText);
+            // Compile the vertex shader
+            gl.compileShader(vertShader);
+            // fragment shader source code
+            // Create fragment shader object
+            var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+            // Attach fragment shader source code
+            gl.shaderSource(fragShader, that.fragText);
+            // Compile the fragmentt shader
+            gl.compileShader(fragShader);
+            // Create a shader program object to store
+            // the combined shader program
+            that.program = gl.createProgram();
+            // Attach a vertex shader
+            gl.attachShader(that.program, vertShader);
+            // Attach a fragment shader
+            gl.attachShader(that.program, fragShader);
+            // Link both programs
+            gl.linkProgram(that.program);
+            that.initialized = true;
+            that.positionLocation = gl.getAttribLocation(that.program, "a_position");
+            that.texcoordLocation = gl.getAttribLocation(that.program, "a_texcoord");
+
+            let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
+                -1, 1, 1, -1, -1, 1 // Triangle 2
+            ]);
+
+
+            that.textureLocation = gl.getUniformLocation(that.program, "u_texture");
+
+
+            // Create a buffer for texcoords.
+            that.buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, that.buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+
+
+
+            // We'll supply texcoords as floats.
+            gl.vertexAttribPointer(that.texcoordLocation, 2, gl.FLOAT, false, 0, 0);
+            gl.enableVertexAttribArray(that.texcoordLocation);
+
+            // Set Texcoords.
+            // setTexcoords(gl);
+
+
+            // Create a texture.
+            gl.activeTexture(gl.TEXTURE0);
+            that.texture = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, that.texture);
+
+            // Fill the texture with a 1x1 blue pixel.
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
+                new Uint8Array([0, 0, 255, 255]));
+            // Now that the image has loaded make copy it to the texture.
+            gl.bindTexture(gl.TEXTURE_2D, that.texture);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, that.image);
+            // gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, this.image);
+            // gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 64, 64, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.image);
+            gl.generateMipmap(gl.TEXTURE_2D);
+            // });
+        });
+    }
+};
+withImage.init();

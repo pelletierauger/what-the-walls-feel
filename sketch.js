@@ -16,7 +16,6 @@ let dotsVBuf, bgVBuf;
 let songPlay = true;
 let repositionSong = false;
 let montage = true;
-let player;
 
 var stop = false;
 // var frameCount = 0;
@@ -25,6 +24,8 @@ var animationStart;
 var framesRendered = 0;
 var framesOfASecond = 0;
 var secondStart, secondFrames;
+
+let titledLoaded = false;
 
 // initialize the timer variables and start the animation
 
@@ -167,7 +168,7 @@ function setup() {
             scenes[i].init();
         }
     }
-    player = document.querySelector('#wtwf .audioelement');
+    // player = document.querySelector('#wtwf .audioelement');
     // audioElement = document.createElement('audio');
     // audioElement.id = 'audio-player';
     // audioElement.controls = 'controls';
@@ -209,6 +210,7 @@ draw = function() {
         player.currentTime = drawCount /  24;
         // song.rate(24 / 24);
         repositionSong = false;
+        syncToAudio();
     }
 
 
@@ -221,6 +223,7 @@ draw = function() {
             repositionSong = true;
         }
     }
+    // console.log("DRAWWWW!");
 }
 
 // function windowResized() {
