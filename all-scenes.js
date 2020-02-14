@@ -389,7 +389,7 @@ cavern.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.025;
+    let t = (drawCount - sum + 10) * 0.0125;
     let a = 0.00005;
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {

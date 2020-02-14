@@ -56,6 +56,17 @@ xSheet = {
             traffic3FadeIn.run(rN);
         }
     },
+    cavern: {
+        d: 3000,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fadeIn);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            var coFade = cosineFade(sum, 300);
+            cavern.mix(sum, traffic3FadeIn, rN, coFade);
+        }
+    },
     fasterSubtleTrunk: {
         d: 300,
         f: function(sum) {
