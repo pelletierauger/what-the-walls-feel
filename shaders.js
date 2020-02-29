@@ -103,7 +103,8 @@ void main() {
     float rando = rand(uvf) * 0.075;
 //     col.r -= rando * 1.;
      col.g *= 0.5;
-    gl_FragColor = vec4((col- rando) * 1.0, 1.0);
+    // gl_FragColor = vec4((col- rando) * 1.0, 1.0);
+    gl_FragColor = vec4(col * 1.0, 1.0);
 }
     // endGLSL
 `;
