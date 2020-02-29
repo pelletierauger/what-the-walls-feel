@@ -98,11 +98,26 @@ function setup() {
     // if (songPlay) {
     //     song = loadSound("wtwf.mp3", gotSong);
     // }
-    socket = io.connect('http://localhost:8080');
+    // socket = io.connect('http://localhost:8080');
     // shaders require WEBGL mode to work
     pixelDensity(1);
     cnvs = createCanvas(windowWidth, windowWidth * 9 / 16, WEBGL);
     canvasDOM = document.getElementById('defaultCanvas0');
+    canvasDOM.onclick = function() {
+        if (envirLooping) {
+            if (montage && songPlay) {
+                player.pause();
+            }
+            envirLooping = false;
+        } else {
+            envirLooping = true;
+            if (montage && songPlay) {
+                player.play();
+            }
+            startAnimating();
+        }
+    };
+
     gl = canvas.getContext('webgl');
 
     // gl.cbf = gl.getExtension('WEBGL_color_buffer_float') || gl.getExtension('EXT_color_buffer_float');
