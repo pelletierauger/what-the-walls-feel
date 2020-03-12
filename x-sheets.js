@@ -56,6 +56,20 @@ xSheet = {
             traffic3FadeIn.run(rN);
         }
     },
+//     muscleFibers: {
+//         d: 3000,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fadeIn);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             // concerto.run();
+//             var coFade = cosineFade(sum, 300);
+// //             muscleFibersRebuildingThemselves.mix(sum, traffic3FadeIn, rN, coFade);
+// //             travellers5EvenBigger.mix(sum, traffic3FadeIn, rN, coFade);
+// //             travellers6.mix(sum, traffic3FadeIn, rN, coFade);
+//             concerto.mix(sum - 100, traffic3FadeIn, rN, coFade);
+//         }
+//     },
     cavern: {
         d: 3000,
         f: function(sum) {
@@ -65,6 +79,30 @@ xSheet = {
             // concerto.run();
             var coFade = cosineFade(sum, 300);
             cavern.mix(sum, traffic3FadeIn, rN, coFade);
+        }
+    },
+    pillars: { d: 450, f: sum => {
+            var rN = getSum(xSheet, xSheet.fadeIn);
+            var coFade = cosineFade(sum, 300);
+            pillarsInACavern.mix(sum, cavern, rN + 3000, coFade);
+        }
+    },
+    pillars2: { d: 450, f: sum => {
+            var rN = getSum(xSheet, xSheet.pillars);
+            var coFade = cosineFade(sum, 100);
+            curvierPillars.mix(sum, pillarsInACavern, rN, coFade);
+        }
+    },
+    pillars3: { d: 650, f: sum => {
+            var rN = getSum(xSheet, xSheet.pillars2);
+            var coFade = cosineFade(sum, 100);
+            curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
+        }
+    },
+    pillars4: { d: 650, f: sum => {
+            var rN = getSum(xSheet, xSheet.pillars3);
+            var coFade = cosineFade(sum, 100);
+            intricateFastPillars.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
         }
     },
     fasterSubtleTrunk: {
