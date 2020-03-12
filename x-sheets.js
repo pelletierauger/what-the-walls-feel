@@ -71,7 +71,7 @@ xSheet = {
 //         }
 //     },
     cavern: {
-        d: 3000,
+        d: 2000,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fadeIn);
             // oscillators[183].run(0);
@@ -99,10 +99,16 @@ xSheet = {
             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
         }
     },
-    pillars4: { d: 650, f: sum => {
+//     pillars4: { d: 650, f: sum => {
+//             var rN = getSum(xSheet, xSheet.pillars3);
+//             var coFade = cosineFade(sum, 100);
+//             intricateFastPillars.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
+//         }
+//     },
+    muscles: { d: 2000, f: sum => {
             var rN = getSum(xSheet, xSheet.pillars3);
             var coFade = cosineFade(sum, 100);
-            intricateFastPillars.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
+            muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
         }
     },
     fasterSubtleTrunk: {
