@@ -33,6 +33,8 @@ var envirLooping = false;
 let currentProgram;
 let cinemaMode = false;
 
+let montageCanvas, montageCanvasCtx;
+
 function startAnimating() {
     // fpsInterval = 1000 / fps;
     fpsInterval = 1000 / 24;
@@ -98,7 +100,7 @@ function setup() {
     // if (songPlay) {
     //     song = loadSound("wtwf.mp3", gotSong);
     // }
-    // socket = io.connect('http://localhost:8080');
+    socket = io.connect('http://localhost:8080');
     // shaders require WEBGL mode to work
     pixelDensity(1);
     // cnvs = createCanvas(windowWidth, windowWidth * 9 / 16, WEBGL);
@@ -118,6 +120,8 @@ function setup() {
             startAnimating();
         }
     };
+    montageCanvas = document.getElementById("montage");
+    montageCanvasCtx = montageCanvas.getContext('2d');
 
     gl = canvas.getContext('webgl');
 
