@@ -124,7 +124,7 @@ cyanDots.vertText = `
         center = vec2(gl_Position.x, gl_Position.y);
         center = 512.0 + center * 512.0;
         myposition = vec2(gl_Position.x, gl_Position.y);
-        gl_PointSize = 120.0;
+        gl_PointSize = 180.0;
     }
     // endGLSL
     `;

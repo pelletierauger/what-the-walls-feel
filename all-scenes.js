@@ -389,7 +389,7 @@ cavern.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.0125;
+    let t = (drawCount - sum + 10) * 0.0125 * 0.57;
     let a = 0.00005;
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -400,12 +400,14 @@ cavern.update = function(sum) {
             let dy = abs(sin(y) * 0.01 - 25);
             let xx = x + pow(cos(y * 0.1 + t * 0.25), 70) * y * 0.5;
             let yy = y + pow(sin(x * 0.1 + t * 0.25), 70) * y * 0.5;
-            //  xx += cos(oy * 10) * sin(oy * 10)2
-            //  yy += cos(oy * 10) * sin(oy * 10);
+//              xx += cos(oy * 10) * sin(oy * 10)2
+//              yy += cos(oy * 10) * sin(oy * 10);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
