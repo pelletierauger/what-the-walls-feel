@@ -111,6 +111,30 @@ xSheet = {
             muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
         }
     },
+    distanceMuscles: { d: 2000, f: sum => {
+            var rN = getSum(xSheet, xSheet.muscles);
+            var coFade = cosineFade(sum, 300);
+            middleOfTheMuscularDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
+    distanceMuscles2: { d: 2000, f: sum => {
+            var rN = getSum(xSheet, xSheet.muscles);
+            var coFade = cosineFade(sum, 300);
+            laceInTheDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
+    distanceMuscles3: { d: 2000, f: sum => {
+            var rN = getSum(xSheet, xSheet.muscles);
+            var coFade = cosineFade(sum, 300);
+            laceInTheVerticalMiddle.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
+    distanceMuscles4: { d: 2000, f: sum => {
+            var rN = getSum(xSheet, xSheet.muscles);
+            var coFade = cosineFade(sum, 300);
+            noodles.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
     fasterSubtleTrunk: {
         d: 300,
         f: function(sum) {

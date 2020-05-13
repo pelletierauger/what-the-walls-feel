@@ -98,7 +98,7 @@ function setup() {
     // if (songPlay) {
     //     song = loadSound("wtwf.mp3", gotSong);
     // }
-    // socket = io.connect('http://localhost:8080');
+    socket = io.connect('http://localhost:8080');
     // shaders require WEBGL mode to work
     pixelDensity(1);
     // cnvs = createCanvas(windowWidth, windowWidth * 9 / 16, WEBGL);
@@ -249,12 +249,23 @@ draw = function() {
 function keyPressed() {
     if (keysActive) {
         if (keyCode === 32) {
-            if (looping) {
-                noLoop();
-                looping = false;
+            if (envirLooping) {
+                // noLoop();
+                if (montage && songPlay) {
+                    // logJavaScriptConsole("Does this not ?");
+                    player.pause();
+                }
+                envirLooping = false;
             } else {
-                loop();
-                looping = true;
+                // loop();
+                envirLooping = true;
+                if (montage && songPlay) {
+                    // logJavaScriptConsole("This does ?");
+                    player.play();
+                    // song.jump(drawCount / 24);
+                    // song.rate(24 / 24);
+                }
+                startAnimating();
             }
         }
         if (key == 'r' || key == 'R') {

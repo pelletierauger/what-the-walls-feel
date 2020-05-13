@@ -1163,7 +1163,7 @@ muscleFibersRebuildingThemselves.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.0025;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -1181,7 +1181,7 @@ muscleFibersRebuildingThemselves.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
             i++;
         }
     }
