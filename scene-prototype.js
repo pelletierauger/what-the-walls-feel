@@ -31,6 +31,19 @@ Scene.prototype.mix = function(sum, otherScene, sumOther, ratio) {
 };
 
 Scene.prototype.display = function() {
+
+
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    if (drawCount >= 5) {
+        currentProgram = getProgram("blue-background");
+        gl.useProgram(currentProgram);
+        gl.uniform1f(time, drawCount * 0.00125);
+        drawBG(currentProgram);
+    }
+    currentProgram = getProgram("cyan-dots");
+    gl.useProgram(currentProgram);
+
+
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ARRAY_BUFFER, dotsVBuf);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);

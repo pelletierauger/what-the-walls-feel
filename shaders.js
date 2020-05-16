@@ -277,3 +277,180 @@ withImage.init = function() {
     }
 };
 withImage.init();
+
+
+
+
+let textureShader = new ShaderProgram("textu");
+
+textureShader.vertText = `
+attribute vec3 a_position;
+attribute vec2 a_texcoord;
+varying vec2 v_texcoord;
+
+void main() {
+  // Multiply the position by the matrix.
+  vec4 positionVec4 = vec4(a_position, 1.0);
+  // gl_Position = a_position;
+  positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
+  gl_Position = positionVec4;
+
+  // Pass the texcoord to the fragment shader.
+  v_texcoord = a_texcoord;
+}
+`;
+
+textureShader.fragText = `
+precision mediump float;
+
+// Passed in from the vertex shader.
+uniform float time;
+varying vec2 v_texcoord;
+
+// The texture.
+uniform sampler2D u_texture;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453 * (2.0 + sin(time)));
+}
+
+void main() {
+    vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
+   float rando = rand(vec2(uv.x, uv.y));
+   gl_FragColor = texture2D(u_texture, v_texcoord);
+   // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+   // gl_FragColor.r = gl_FragColor.r * 0.5;
+   gl_FragColor.rgb = (gl_FragColor.rgb - (rando * 0.025)) * 1.5;
+}
+`;
+textureShader.init();
+
+let processorShader = new ShaderProgram("process");
+
+processorShader.vertText = `
+attribute vec3 a_position;
+attribute vec2 a_texcoord;
+
+// uniform vec2 u_resolution;
+// uniform float u_flipY;
+
+varying vec2 v_texcoord;
+
+void main() {
+  // Multiply the position by the matrix.
+  vec4 positionVec4 = vec4(a_position, 1.0);
+  // gl_Position = a_position;
+  positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
+  gl_Position = positionVec4;
+
+  // Pass the texcoord to the fragment shader.
+  v_texcoord = a_texcoord;
+}
+`;
+
+processorShader.fragText = `
+precision mediump float;
+
+// our texture
+uniform sampler2D u_texture;
+uniform vec2 u_textureSize;
+uniform float u_kernel[9];
+uniform float u_kernelWeight;
+uniform vec2 direction;
+
+// the texCoords passed in from the vertex shader.
+varying vec2 v_texcoord;
+
+vec4 blur9(sampler2D image, vec2 uv, vec2 resolution, vec2 direction) {
+  vec4 color = vec4(0.0);
+  vec2 off1 = vec2(1.3846153846) * direction;
+  vec2 off2 = vec2(3.2307692308) * direction;
+  color += texture2D(image, uv) * 0.2270270270;
+  color += texture2D(image, uv + (off1 / resolution)) * 0.3162162162;
+  color += texture2D(image, uv - (off1 / resolution)) * 0.3162162162;
+  color += texture2D(image, uv + (off2 / resolution)) * 0.0702702703;
+  color += texture2D(image, uv - (off2 / resolution)) * 0.0702702703;
+  return color;
+}
+
+void main() {
+   vec2 uv = vec2(gl_FragCoord.xy);
+   // vec2 onePixel = vec2(1.0, 1.0) / u_textureSize;
+   // vec4 colorSum =
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2(-1, -1)) * u_kernel[0] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2( 0, -1)) * u_kernel[1] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2( 1, -1)) * u_kernel[2] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2(-1,  0)) * u_kernel[3] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2( 0,  0)) * u_kernel[4] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2( 1,  0)) * u_kernel[5] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2(-1,  1)) * u_kernel[6] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2( 0,  1)) * u_kernel[7] +
+   //     texture2D(u_texture, v_texcoord + onePixel * vec2( 1,  1)) * u_kernel[8] ;
+
+   // gl_FragColor = vec4((colorSum / u_kernelWeight).rgb, 1);
+
+   gl_FragColor = blur9(u_texture, v_texcoord, u_textureSize, direction);
+   // vec4 pass1 = blur9(u_texture, v_texcoord, u_textureSize, vec2(0.0, 1.5));
+   // gl_FragColor = (pass0 + pass1) / 2.0;
+   // gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+}
+`;
+processorShader.init();
+
+
+
+
+
+let cyanDots2 = new ShaderProgram("cyan-dots-2");
+
+cyanDots2.vertText = `
+    // beginGLSL
+    attribute vec2 coordinates;
+    varying vec2 myposition;
+    varying vec2 center;
+    void main(void) {
+        gl_Position = vec4(coordinates, 0.0, 1.0);
+        center = vec2(gl_Position.x, gl_Position.y);
+        center = 512.0 + center * 512.0;
+        myposition = vec2(gl_Position.x, gl_Position.y);
+        gl_PointSize = 180.0;
+    }
+    // endGLSL
+    `;
+cyanDots2.fragText = `
+    // beginGLSL
+    precision mediump float;
+    varying vec2 myposition;
+    varying vec2 center;
+    float rand(vec2 co){
+        return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453 * (2.0 + sin(co.x)));
+    }
+    void main(void) {
+        // vec2 uv = gl_PointCoord.xy / vec2(1600, 1600);
+        // float d = length(uv - center);
+        // vec2 pos = myposition;
+        vec2 uv = gl_FragCoord.xy / vec2(2560, 1600);
+        // uv.x = uv.x + 1.0;
+        uv = uv * 2.0;
+        uv = uv + 0.5;
+        // uv = uv * 1.0;
+        float ALPHA = 0.75;
+        vec2 pos = gl_PointCoord - vec2(0.5, 0.5);
+        float dist_squared = dot(pos, pos);
+        float alpha;
+        if (dist_squared < 0.25) {
+            alpha = ALPHA;
+        } else {
+            alpha = 0.0;
+        }
+        alpha = smoothstep(0.03, 0.0000095, dist_squared) * 0.49;
+        float rando = rand(pos);
+        // gl_FragColor = vec4(1.0, (1.0 - dist_squared * 40.) * 0.6, 0.0, alpha + ((0.12 - dist_squared) * 4.) - (rando * 0.2));
+        // gl_FragColor = vec4(0.1 - 1.1 * alpha, 0.01 + 0.9 * alpha, 0.3, (0.9 - dist_squared * 10.0) * 0.125 + alpha) * 3.0;
+        gl_FragColor = vec4(0.02 + 0.01 * alpha, 0.001 - 1.1 * alpha, 0.025, (0.9 - dist_squared * 50.0 - (rando * 0.15)) * 0.125 + alpha) * 22.0;
+//         gl_FragColor = vec4(1.0, 1.0 - dist_squared * 1.0, 0.0, 0.35 - dist_squared - (rando * 0.2));
+        // gl_FragColor = vec4(d * 0.001, uv.x, 0.0, 0.25);
+    }
+    // endGLSL
+`;
+cyanDots2.init();

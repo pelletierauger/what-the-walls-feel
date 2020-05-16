@@ -194,6 +194,14 @@ function setup() {
     // audioElement.type = 'audio/mpeg';
     // var length = player.duration
     // var current_time = player.currentTime;
+
+
+
+
+    texture = createTexture();
+    framebuf = createFrameBuffer(texture);
+    texture2 = createTexture();
+    framebuf2 = createFrameBuffer(texture2);
 }
 
 // function gotSong() {
@@ -202,15 +210,7 @@ function setup() {
 // }
 
 draw = function() {
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    if (drawCount >= 5) {
-        currentProgram = getProgram("blue-background");
-        gl.useProgram(currentProgram);
-        gl.uniform1f(time, drawCount * 0.00125);
-        drawBG(currentProgram);
-    }
-    currentProgram = getProgram("cyan-dots");
-    gl.useProgram(currentProgram);
+
     // drawDots(currentProgram);
     runXSheet(xSheet);
     //     if (frameCount == 1) {

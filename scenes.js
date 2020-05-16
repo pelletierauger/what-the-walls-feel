@@ -52,7 +52,7 @@ let traffic3FadeIn = new Scene("traffic-3-fade-in");
 traffic3FadeIn.update = function(sum) {
     this.vertices = [];
     this.grow = logMap(Math.min(drawCount - sum, 1500));
-//     logJavaScriptConsole(drawCount - sum);
+    //     logJavaScriptConsole(drawCount - sum);
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10) * 0.025 * 0.5;
@@ -120,6 +120,17 @@ overture.update = function(sum) {
 };
 
 overture.display = function() {
+
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    if (drawCount >= 5) {
+        currentProgram = getProgram("blue-background");
+        gl.useProgram(currentProgram);
+        gl.uniform1f(time, drawCount * 0.00125);
+        drawBG(currentProgram);
+    }
+    currentProgram = getProgram("cyan-dots");
+    gl.useProgram(currentProgram);
+
     if (titledLoaded) {
         drawImage(withImage);
         let currentProgram = getProgram("cyan-dots");
@@ -139,7 +150,7 @@ let traffic3Static = new Scene("traffic-3-static");
 traffic3Static.update = function(sum) {
     this.vertices = [];
     this.grow = logMap(Math.min(0, 1500));
-//     logJavaScriptConsole(this.grow);
+    //     logJavaScriptConsole(this.grow);
     let amountX = 50;
     let amountY = 50;
     let t = (0 + 10) * 0.025 * 0.5;

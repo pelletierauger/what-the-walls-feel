@@ -16,6 +16,16 @@ xSheet = {
     //         traffic3.run(rN);
     //     }
     // },
+    blurry: {
+        d: 5000,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.blurry);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            blurryCavern.run(rN);
+        }
+    },
     blank: {
         d: 5,
         f: function(sum) {
@@ -56,20 +66,20 @@ xSheet = {
             traffic3FadeIn.run(rN);
         }
     },
-//     muscleFibers: {
-//         d: 3000,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.fadeIn);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             // concerto.run();
-//             var coFade = cosineFade(sum, 300);
-// //             muscleFibersRebuildingThemselves.mix(sum, traffic3FadeIn, rN, coFade);
-// //             travellers5EvenBigger.mix(sum, traffic3FadeIn, rN, coFade);
-// //             travellers6.mix(sum, traffic3FadeIn, rN, coFade);
-//             concerto.mix(sum - 100, traffic3FadeIn, rN, coFade);
-//         }
-//     },
+    //     muscleFibers: {
+    //         d: 3000,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.fadeIn);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             // concerto.run();
+    //             var coFade = cosineFade(sum, 300);
+    // //             muscleFibersRebuildingThemselves.mix(sum, traffic3FadeIn, rN, coFade);
+    // //             travellers5EvenBigger.mix(sum, traffic3FadeIn, rN, coFade);
+    // //             travellers6.mix(sum, traffic3FadeIn, rN, coFade);
+    //             concerto.mix(sum - 100, traffic3FadeIn, rN, coFade);
+    //         }
+    //     },
     cavern: {
         d: 2000,
         f: function(sum) {
@@ -81,55 +91,71 @@ xSheet = {
             cavern.mix(sum, traffic3FadeIn, rN, coFade);
         }
     },
-    pillars: { d: 450, f: sum => {
+    pillars: {
+        d: 450,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.fadeIn);
             var coFade = cosineFade(sum, 300);
             pillarsInACavern.mix(sum, cavern, rN + 3000, coFade);
         }
     },
-    pillars2: { d: 450, f: sum => {
+    pillars2: {
+        d: 450,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.pillars);
             var coFade = cosineFade(sum, 100);
             curvierPillars.mix(sum, pillarsInACavern, rN, coFade);
         }
     },
-    pillars3: { d: 650, f: sum => {
+    pillars3: {
+        d: 650,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.pillars2);
             var coFade = cosineFade(sum, 100);
             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
         }
     },
-//     pillars4: { d: 650, f: sum => {
-//             var rN = getSum(xSheet, xSheet.pillars3);
-//             var coFade = cosineFade(sum, 100);
-//             intricateFastPillars.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
-//         }
-//     },
-    muscles: { d: 2000, f: sum => {
+    //     pillars4: { d: 650, f: sum => {
+    //             var rN = getSum(xSheet, xSheet.pillars3);
+    //             var coFade = cosineFade(sum, 100);
+    //             intricateFastPillars.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
+    //         }
+    //     },
+    muscles: {
+        d: 2000,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.pillars3);
             var coFade = cosineFade(sum, 100);
             muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
         }
     },
-    distanceMuscles: { d: 2000, f: sum => {
+    distanceMuscles: {
+        d: 2000,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.muscles);
             var coFade = cosineFade(sum, 300);
             middleOfTheMuscularDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
         }
     },
-    distanceMuscles2: { d: 2000, f: sum => {
+    distanceMuscles2: {
+        d: 2000,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.muscles);
             var coFade = cosineFade(sum, 300);
             laceInTheDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
         }
     },
-    distanceMuscles3: { d: 2000, f: sum => {
+    distanceMuscles3: {
+        d: 2000,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.muscles);
             var coFade = cosineFade(sum, 300);
             laceInTheVerticalMiddle.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
         }
     },
-    distanceMuscles4: { d: 2000, f: sum => {
+    distanceMuscles4: {
+        d: 2000,
+        f: sum => {
             var rN = getSum(xSheet, xSheet.muscles);
             var coFade = cosineFade(sum, 300);
             noodles.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
