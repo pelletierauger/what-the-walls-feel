@@ -1,7 +1,7 @@
 let blurryCavern = new Scene("blurry-cavern");
 
 blurryCavern.update = function(sum) {
-   this.vertices = [];
+    this.vertices = [];
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10) * 0.005 * 4;
@@ -35,16 +35,51 @@ blurryCavern.update = function(sum) {
 
 
 
-
-
-
-
-
 blurryCavern.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10000000000) * 0.025 * 0.001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125 * 0.0625) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.sin(m * x * x * 20) * Math.sin(t * x * y * 1e-2), 25));
+            let yy = y + (Math.pow(Math.sin(m * y * x * 20) * Math.sin(t * x * y * 1e-2), 25));
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+            //             xx *= Math.sin(xx * xx * 1e-1);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 2.0) * 0.075 * 3.0 - 1.2, (yy + -2.9) * 0.07 * 4.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+
+
+
+
+// Very beautiful
+blurryCavern.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000 + 22 + 4) * 0.025 * 0.001;
     let a = 0.00005;
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -74,6 +109,12 @@ blurryCavern.update = function(sum) {
     }
 };
 
+
+
+
+
+
+
 blurryCavern.display = function() {
 
 
@@ -85,12 +126,13 @@ blurryCavern.display = function() {
     gl.viewport(0, 0, 1280, 720);
 
 
-    if (drawCount >= 5) {
-        currentProgram = getProgram("blue-background");
-        gl.useProgram(currentProgram);
-        gl.uniform1f(time, drawCount * 0.00125);
-        drawBG(currentProgram);
-    }
+    // if (drawCount >= 5) {
+    currentProgram = getProgram("blue-background");
+    gl.useProgram(currentProgram);
+    gl.uniform1f(time, drawCount * 0.00125);
+    drawBG(currentProgram);
+    // }
+
     currentProgram = getProgram("cyan-dots-2");
     gl.useProgram(currentProgram);
 
