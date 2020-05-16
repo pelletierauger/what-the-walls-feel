@@ -379,6 +379,11 @@ blurryCavern2.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
+
+            xx += Math.random() * 0.005;
+            yy += Math.random() * 0.005;
+
+
             if (y > 6) {
                 this.verticesA.push((xx - 2.0) * 0.075 * 3.0 - 1.2, (yy + -2.9) * 0.07 * 4.0 - 1.3);
             } else {
@@ -622,7 +627,7 @@ blurryCavern2.display = function() {
     var textureLocation = gl.getUniformLocation(textureShader, "u_texture");
     gl.uniform1i(textureLocation, 0);
     var timeLocation = gl.getUniformLocation(textureShader, "time");
-    gl.uniform1f(timeLocation, frameCount * 0.01);
+    gl.uniform1f(timeLocation, drawCount * 0.01);
 
     var texcoordLocation = gl.getAttribLocation(textureShader, "a_texcoord");
     gl.enableVertexAttribArray(texcoordLocation);
