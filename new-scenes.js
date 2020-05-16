@@ -1,28 +1,74 @@
 let blurryCavern = new Scene("blurry-cavern");
 
 blurryCavern.update = function(sum) {
-    this.vertices = [];
+   this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.0125 * 0.57;
+    let t = (drawCount - sum + 10) * 0.005 * 4;
     let a = 0.00005;
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 100;
-            let oy = y - 100;
-            let dx = abs(cos(x) * 0.01 - 25);
-            let dy = abs(sin(y) * 0.01 - 25);
-            let xx = x + pow(cos(y * 0.1 + t * 0.25), 70) * y * 0.5;
-            let yy = y + pow(sin(x * 0.1 + t * 0.25), 70) * y * 0.5;
-            //              xx += cos(oy * 10) * sin(oy * 10)2
-            //              yy += cos(oy * 10) * sin(oy * 10);
-            xx += Math.random() * 0.005;
-            yy += Math.random() * 0.005;
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x / x * 4.1);
+            let ny = Math.sin(y / y * 4.1);
+            let xx = x + (Math.pow(Math.cos(y + y * 5 + t * 0.25), 7000) * ny);
+            let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.25), 7000) * ny);
+            //             xx += cos(oy * 10) * sin(oy * 10)2
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.075 * 2.0 - 1.2, (yy + -10) * 0.07 * 3.0 - 1.3);
+            this.vertices.push((xx - 2.0) * 0.075 * 3.0 - 1.2, (yy + -2.9) * 0.07 * 4.0 - 1.3);
+            i++;
+        }
+    }
+};
+
+
+
+
+
+
+
+
+
+blurryCavern.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125 * 0.0625) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.sin(m * x * 100) * Math.sin(t * y * 1e-1), 50));
+            let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e-1), 50));
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+            xx *= 0.95;
+            xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            this.vertices.push((xx - 2.0) * 0.075 * 3.0 - 1.2, (yy + -2.9) * 0.07 * 4.0 - 1.3);
             i++;
         }
     }
