@@ -37,7 +37,8 @@ Scene.prototype.display = function() {
     if (drawCount >= 5) {
         currentProgram = getProgram("blue-background");
         gl.useProgram(currentProgram);
-        gl.uniform1f(time, drawCount * 0.00125);
+        // gl.uniform1f(time, drawCount * 0.00125);
+        gl.uniform1f(time, 0.125 + drawCount * 0.00025);
         drawBG(currentProgram);
     }
     currentProgram = getProgram("cyan-dots");

@@ -411,7 +411,7 @@ blurryCavern2.display = function() {
     // if (drawCount >= 5) {
     currentProgram = getProgram("blue-background");
     gl.useProgram(currentProgram);
-    gl.uniform1f(time, drawCount * 0.00125);
+    gl.uniform1f(time, (drawCount + 4700) * 0.00125);
     drawBG(currentProgram);
     // }
 

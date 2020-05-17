@@ -57,7 +57,7 @@ drawBG = function(sh) {
     let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, 1 // Triangle 2
     ]);
-    gl.uniform1f(time, 0.125 + drawCount * 0.00025);
+    // gl.uniform1f(time, 0.125 + drawCount * 0.00025);
     // let vbuffer = gl.createBuffer();
     // gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
     // gl.bindBuffer(gl.ARRAY_BUFFER, null);

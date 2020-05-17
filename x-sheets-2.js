@@ -16,66 +16,76 @@ xSheet = {
     //         traffic3.run(rN);
     //     }
     // },
-    blurry2: {
-        d: 5000,
+    // blank: {
+    //     d: 5,
+    //     f: function(sum) {
+    //         var rN = getSum(xSheet, xSheet.blank);
+    //         // oscillators[183].run(0);
+    //         // drawBG();
+    //         // concerto.run();
+    //         // traffic3.run(rN);
+    //     }
+    // },
+    blurryFixed: {
+        d: 180,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.blurry);
+            var rN = getSum(xSheet, xSheet.blurryFixed);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            blurryCavern2.run(rN + drawCount);
+        }
+    },
+    blurry2: {
+        d: 903 - 168,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.blurry2);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
             blurryCavern2.run(rN);
         }
     },
-    blurry: {
-        d: 5000,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.blurry);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            blurryCavern.run(rN);
-        }
-    },
-    blank: {
-        d: 5,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.blank);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            // traffic3.run(rN);
-        }
-    },
-    title: {
-        d: 185,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.title);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            overture.run(rN);
-        }
-    },
-    wait: {
-        d: 185,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.wait);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            traffic3Static.run(rN);
-        }
-    },
-    fadeIn: {
-        d: 3000,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fadeIn);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            traffic3FadeIn.run(rN);
-        }
-    },
+    // blurry: {
+    //     d: 5000,
+    //     f: function(sum) {
+    //         var rN = getSum(xSheet, xSheet.blurry);
+    //         // oscillators[183].run(0);
+    //         // drawBG();
+    //         // concerto.run();
+    //         blurryCavern.run(rN);
+    //     }
+    // },
+    // title: {
+    //     d: 185,
+    //     f: function(sum) {
+    //         var rN = getSum(xSheet, xSheet.title);
+    //         // oscillators[183].run(0);
+    //         // drawBG();
+    //         // concerto.run();
+    //         overture.run(rN);
+    //     }
+    // },
+    // wait: {
+    //     d: 185,
+    //     f: function(sum) {
+    //         var rN = getSum(xSheet, xSheet.wait);
+    //         // oscillators[183].run(0);
+    //         // drawBG();
+    //         // concerto.run();
+    //         traffic3Static.run(rN);
+    //     }
+    // },
+    // fadeIn: {
+    //     d: 3000,
+    //     f: function(sum) {
+    //         var rN = getSum(xSheet, xSheet.fadeIn);
+    //         // oscillators[183].run(0);
+    //         // drawBG();
+    //         // concerto.run();
+    //         traffic3FadeIn.run(rN);
+    //     }
+    // },
     //     muscleFibers: {
     //         d: 3000,
     //         f: function(sum) {
@@ -93,12 +103,13 @@ xSheet = {
     cavern: {
         d: 2000,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fadeIn);
+            var rN = getSum(xSheet, xSheet.cavern);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
             var coFade = cosineFade(sum, 300);
-            cavern.mix(sum, traffic3FadeIn, rN, coFade);
+            // cavern.mix(sum, traffic3FadeIn, rN, coFade);
+            cavern.run(rN + 100);
         }
     },
     pillars: {
