@@ -33,6 +33,8 @@ var envirLooping = false;
 let currentProgram;
 let cinemaMode = false;
 
+let texture, texture2, texture3, texture4, framebuf, framebuf2, framebuf3, framebuf4;
+
 function startAnimating() {
     // fpsInterval = 1000 / fps;
     fpsInterval = 1000 / 24;
@@ -202,6 +204,10 @@ function setup() {
     framebuf = createFrameBuffer(texture);
     texture2 = createTexture();
     framebuf2 = createFrameBuffer(texture2);
+    texture3 = createTexture();
+    framebuf3 = createFrameBuffer(texture3);
+    texture4 = createTexture();
+    framebuf4 = createFrameBuffer(texture4);
 }
 
 // function gotSong() {

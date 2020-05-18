@@ -26,6 +26,16 @@ xSheet = {
     //         // traffic3.run(rN);
     //     }
     // },
+    blendy: {
+        d: 1800,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.blendy);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            blendyCavern.run(rN);
+        }
+    },
     blurryFixed: {
         d: 180,
         f: function(sum) {
