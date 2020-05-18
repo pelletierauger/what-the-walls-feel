@@ -794,7 +794,7 @@ vec3 BlendLuminosity(vec3 base, vec3 blend)
 // 
 /*
 ** Levels control (input (+gamma), output)
-** Details: http://blog.mouaif.org/2009/01/28/levels-control-shader/
+** Details: https://mouaif.wordpress.com/2009/01/28/levels-control-shader/
 */
 // 
 #define LevelsControlInputRange(color, minInput, maxInput)              min(max(color - vec3(minInput), vec3(0.0)) / (vec3(maxInput) - vec3(minInput)), vec3(1.0))
@@ -813,16 +813,20 @@ void main() {
     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
     vec4 texture = texture2D(u_texture, v_texcoord);
     vec4 texture2 = texture2D(u_texture2, v_texcoord);
-    vec3 blender = BlendHardLight(texture.rgb, texture2.rgb);
-    vec3 blend = (texture.rgb * 0.5) + (blender * 0.5);
-    gl_FragColor = vec4(blend, 1.0);
-//     gl_FragColor = texture2;
+    vec3 levels = LevelsControlInputRange(texture2.rgb, 0.2, 0.95);
+    vec3 blender = BlendHardLight(texture.rgb, levels);
+    float blendMix = 0.5;
+    vec3 blend = (texture.rgb * (1.0 - blendMix)) + (blender * blendMix);
+    vec3 col = blend + vec3(0.1, -0.1, -0.1);
+    col = LevelsControlInputRange(col, 0.0, 0.95);
+    gl_FragColor = vec4(col, 1.0);
+   // gl_FragColor = vec4(texture.rgb, 1.0);
    // gl_FragColor = (texture + texture2) * 0.5;
 }
 // endGLSL
 `;
 blenderProgram.init();
-
+redraw();
 
 
 let oneTextureProgram = new ShaderProgram("one-texture-program");
