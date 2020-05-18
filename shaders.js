@@ -810,19 +810,34 @@ float rand(vec2 co){
 }
 // 
 void main() {
+//     
+//     Beautiful, subtle blue and purple
+//     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
+//     vec4 texture = texture2D(u_texture, v_texcoord);
+//     vec4 texture2 = texture2D(u_texture2, v_texcoord);
+//     vec3 levels = LevelsControlInputRange(texture2.rgb, 0.2, 0.95);
+//     vec3 blender = BlendSoftLight(texture.rgb, levels);
+//     float blendMix = 0.95;
+//     vec3 blend = (texture.rgb * (1.0 - blendMix)) + (blender * blendMix);
+//     vec3 col = blend + vec3(0.24, -0.12, -0.12);
+//     col = LevelsControlInputRange(col, 0.0, 0.95);
+//     gl_FragColor = vec4(col, 1.0);
+//     gl_FragColor = vec4((col * 0.5) + texture.rgb * 0.5, 1.01);
+//     
+// A wilder, pinker version
     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
     vec4 texture = texture2D(u_texture, v_texcoord);
     vec4 texture2 = texture2D(u_texture2, v_texcoord);
     vec3 levels = LevelsControlInputRange(texture2.rgb, 0.2, 0.95);
-    vec3 blender = BlendSoftLight(texture.rgb, levels);
-    float blendMix = 0.95;
+    vec3 blender = BlendLinearDodge(texture.rgb, levels);
+    float blendMix = 0.25;
     vec3 blend = (texture.rgb * (1.0 - blendMix)) + (blender * blendMix);
-    vec3 col = blend + vec3(0.24, -0.12, -0.12);
-    col = LevelsControlInputRange(col, 0.0, 0.95);
-    gl_FragColor = vec4(col, 1.0);
-    gl_FragColor = vec4((col * 0.5) + texture.rgb * 0.5, 1.01);
-//    gl_FragColor = vec4(texture.rgb, 1.0);
-   // gl_FragColor = (texture + texture2) * 0.5;
+    vec3 col = blend + vec3(0.4, -0.12, -0.12);
+    col = LevelsControlInputRange(col, 0.15, 0.9);
+    col = (texture.rgb * uv.y * 2.0) + col * (1.0 - uv.y * 2.0);
+//     col = (col * 0.9) + (texture2.rgb * 0.1);
+//     gl_FragColor = vec4(col, 1.0);
+    gl_FragColor = vec4(col, 1.01);
 }
 // endGLSL
 `;
