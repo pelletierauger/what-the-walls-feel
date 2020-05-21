@@ -342,11 +342,11 @@ document.onkeydown = function(evt) {
     evt = evt || window.event;
     var isEscape = false;
     if ("key" in evt) {
-        // isEscape = (evt.key === "Escape" || evt.key === "Esc");
-        isEscape = (evt.key === "AltRight" || evt.key === "Alt");
+        isEscape = (evt.key === "Escape" || evt.key === "Esc");
+        // isEscape = (evt.key === "AltRight" || evt.key === "Alt");
     } else {
         // isEscape = (evt.keyCode === 27);
-        isEscape = (evt.keyCode === 18);
+        // isEscape = (evt.keyCode === 18);
     }
     if (isEscape) {
         if (envirLooping) {
