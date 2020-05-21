@@ -61,10 +61,12 @@ traffic3FadeIn.update = function(sum) {
             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
             let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
-            let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let yy = y + Math.pow(Math.sin((x + 10) * 0.5 + t * 0.025), 700) * y * x * 200.5;
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+                        xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
         }
     }
     // 
