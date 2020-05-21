@@ -842,7 +842,7 @@ void main() {
 // endGLSL
 `;
 blenderProgram.init();
-redraw();
+// redraw();
 
 
 let oneTextureProgram = new ShaderProgram("one-texture-program");
