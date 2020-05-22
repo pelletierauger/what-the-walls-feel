@@ -176,10 +176,10 @@ withImage.vertText = `
     attribute vec2 a_texcoord;
     varying vec2 v_texcoord;
     void main() {
-        v_texcoord = a_texcoord * vec2(1.0, -1.0) + vec2(0.0, 0.5);
-        vec4 positionVec4 = vec4(a_position * vec3(1.0, 0.115, 1.0), 1.0);
-        positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
-        gl_Position = positionVec4 + vec4(0.0, 0.4, 0.0, 0.0);
+        v_texcoord = a_texcoord * vec2(1.0, -1.0) + vec2(1.11, 0.485);
+        vec4 positionVec4 = vec4(a_position * vec3(0.22, 0.1, 1.0), 1.0);
+        positionVec4.xy = positionVec4.xy * -7.0;
+        gl_Position = positionVec4 + vec4(0.88 * 0.7, 0.1 * 0.7, 0.0, 0.0);
     }
     // endGLSL
     `;
@@ -195,12 +195,11 @@ withImage.fragText = `
     }
     // endGLSL
 `;
-
 withImage.init = function() {
     if (shadersReadyToInitiate) {
         // Asynchronously load an image
         this.image = new Image();
-        this.image.src = "f-texture-title-a2.png";
+        this.image.src = "f-texture-title-a6.png";
         // this.image.src = "https://webglfundamentals.org/webgl/resources/f-texture.png";
         let that = this;
         console.log(that);
@@ -233,36 +232,23 @@ withImage.init = function() {
             that.initialized = true;
             that.positionLocation = gl.getAttribLocation(that.program, "a_position");
             that.texcoordLocation = gl.getAttribLocation(that.program, "a_texcoord");
-
             let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
                 -1, 1, 1, -1, -1, 1 // Triangle 2
             ]);
-
-
             that.textureLocation = gl.getUniformLocation(that.program, "u_texture");
-
-
             // Create a buffer for texcoords.
             that.buffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, that.buffer);
             gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-
-
-
             // We'll supply texcoords as floats.
             gl.vertexAttribPointer(that.texcoordLocation, 2, gl.FLOAT, false, 0, 0);
             gl.enableVertexAttribArray(that.texcoordLocation);
-
             // Set Texcoords.
             // setTexcoords(gl);
-
-
             // Create a texture.
             gl.activeTexture(gl.TEXTURE0);
             that.texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, that.texture);
-
             // Fill the texture with a 1x1 blue pixel.
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
                 new Uint8Array([0, 0, 255, 255]));
@@ -277,7 +263,7 @@ withImage.init = function() {
     }
 };
 withImage.init();
-
+// redraw();
 
 
 

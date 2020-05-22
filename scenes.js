@@ -51,7 +51,11 @@ let traffic3FadeIn = new Scene("traffic-3-fade-in");
 
 traffic3FadeIn.update = function(sum) {
     this.vertices = [];
-    this.grow = logMap(Math.min(drawCount - sum, 1500));
+    this.grow = logMap(Math.min(drawCount - sum, 1000));
+    if (drawCount % 24 == 0) {
+//         logJavaScriptConsole(this.grow);
+    }
+//     this.grow = Math.min(this.grow, 0.000252725879421447);
     //     logJavaScriptConsole(drawCount - sum);
     let amountX = 50;
     let amountY = 50;
@@ -64,7 +68,7 @@ traffic3FadeIn.update = function(sum) {
             let yy = y + Math.pow(Math.sin((x + 10) * 0.5 + t * 0.025), 700) * y * x * 200.5;
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);
-                        xx += Math.random() * 0.01;
+            xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
         }
@@ -73,7 +77,7 @@ traffic3FadeIn.update = function(sum) {
     function logMap(position) {
         // position will be between minp and maxp
         var minp = 0;
-        var maxp = 1500;
+        var maxp = 1000;
         // The result should be between minv an maxv
         var minv = Math.log(1e-7);
         var maxv = Math.log(0.3852774978347468);
@@ -95,14 +99,16 @@ overture.update = function(sum) {
     let t = (0 + 10) * 0.025 * 0.5;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            if (y < 11 || y > 17) {
+            if (y < 12 || y > 16) {
                 let dx = Math.abs(Math.cos(x) * 0.01 - 25);
                 let dy = Math.abs(Math.sin(y) * 0.01 - 25);
                 let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
                 let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
                 xx = lerp(x, xx, this.grow);
                 yy = lerp(y, yy, this.grow);
-                this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+                xx += Math.random() * 0.01;
+                yy += Math.random() * 0.01;
+                this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -4) * 0.07 * 1.0 - 1.3);
                 this.dotsToDisplay++;
             }
         }
@@ -120,6 +126,44 @@ overture.update = function(sum) {
         return Math.exp(minv + scale * (position - minp));
     }
 };
+
+overture.update = function(sum) {
+    this.vertices = [];
+    this.dotsToDisplay = 0;
+    this.grow = logMap(Math.min(0, 1500));
+    let amountX = 50;
+    let amountY = 50;
+    let t = (0 + 10) * 0.025 * 0.5;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            if ((y < 18 || y > 30) || (x < 6 || x > 26)) {
+                let dx = Math.abs(Math.cos(x) * 0.01 - 25);
+                let dy = Math.abs(Math.sin(y) * 0.01 - 25);
+                let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+                let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
+                xx = lerp(x, xx, this.grow);
+                yy = lerp(y, yy, this.grow);
+                xx += Math.random() * 0.01;
+                yy += Math.random() * 0.01;
+                this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -4) * 0.07 * 1.0 - 1.3);
+                this.dotsToDisplay++;
+            }
+        }
+    }
+    // 
+    function logMap(position) {
+        // position will be between minp and maxp
+        var minp = 0;
+        var maxp = 1500;
+        // The result should be between minv an maxv
+        var minv = Math.log(1e-7);
+        var maxv = Math.log(0.3852774978347468);
+        // calculate adjustment factor
+        var scale = (maxv - minv) / (maxp - minp);
+        return Math.exp(minv + scale * (position - minp));
+    }
+};
+// redraw();
 
 overture.display = function() {
 

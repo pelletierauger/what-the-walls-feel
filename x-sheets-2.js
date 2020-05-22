@@ -26,6 +26,16 @@ xSheet = {
     //         // traffic3.run(rN);
     //     }
     // },
+    title: {
+        d: 185,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.title);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            overture.run(rN);
+        }
+    },
     blendy: {
         d: 1800,
         f: function(sum) {
@@ -33,7 +43,31 @@ xSheet = {
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
-            blendyCavern.run(rN);
+            traffic3FadeIn.run(rN);
+        }
+    },
+    pillars: {
+        d: 650,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.blendy);
+            var coFade = cosineFade(sum, 300);
+            pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
+        }
+    },
+    pillars2: {
+        d: 450,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.pillars);
+            var coFade = cosineFade(sum, 100);
+            curvierPillars.mix(sum, pillarsInACavern, rN, coFade);
+        }
+    },
+    pillars3: {
+        d: 650,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.pillars2);
+            var coFade = cosineFade(sum, 100);
+            curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
         }
     },
     blurryFixed: {
@@ -120,30 +154,6 @@ xSheet = {
             var coFade = cosineFade(sum, 300);
             // cavern.mix(sum, traffic3FadeIn, rN, coFade);
             cavern.run(rN + 100);
-        }
-    },
-    pillars: {
-        d: 450,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.fadeIn);
-            var coFade = cosineFade(sum, 300);
-            pillarsInACavern.mix(sum, cavern, rN + 3000, coFade);
-        }
-    },
-    pillars2: {
-        d: 450,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.pillars);
-            var coFade = cosineFade(sum, 100);
-            curvierPillars.mix(sum, pillarsInACavern, rN, coFade);
-        }
-    },
-    pillars3: {
-        d: 650,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.pillars2);
-            var coFade = cosineFade(sum, 100);
-            curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
         }
     },
     //     pillars4: { d: 650, f: sum => {
