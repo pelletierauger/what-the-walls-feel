@@ -1373,7 +1373,8 @@ beautifulOceanWaves.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1387,14 +1388,14 @@ centralBrain.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800 + 20000) * 0.05;
+    let t = (drawCount - sum + 120800 + 20000) * 0.05 * 0.5;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     let ix = 1,
         iy = 1;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 92;
+            let ox = x - 22;
             let oy = y - 95;
             let dx = abs(cos(x) * 1) * 0.25;
             let dy = abs(sin(y) * 1) * 0.25;
@@ -1411,7 +1412,8 @@ centralBrain.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1450,7 +1452,8 @@ plantsSofter.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1478,11 +1481,13 @@ rotatingMouth.update = function(sum) {
             let dx = map(abs(x - 50), 0, 200, 10 * sosc(t * 1, -0.15, 0.15), 0);
             let dy = map(abs(y - 50), 0, 200, 10 * cosc(t * 1, -0.15, 0.15), 0);
             let a = atan2(y - abs(y - 50), x - abs(x - 50));
-            let xx = x - 25 + cos(a * 5 + dy * 2) * dx;
-            let yy = y - 25 + sin(a * 5 + dy * 2) * dx;
+            let xx = x - 0 + cos(a * 5 + dy * 2) * dx;
+            let yy = y - 0 + sin(a * 5 + dy * 2) * dx;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 0.88 + 0.05, (yy + ranY) * 0.05 * 0.88 + 0.025);
+//             this.vertices.push((xx + ranX) * 0.05 * 0.88 + 0.05, (yy + ranY) * 0.05 * 0.88 + 0.025);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 + 0.025, (yy + -10) * 0.07 * 1.0 + 0.6);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1518,7 +1523,8 @@ calmBrook.update = function(sum) {
             //          
             xx = (xx + ranX) * 0.05 * 0.88 + 0.05;
             yy = (yy + ranY) * 0.05 * 0.88 + 0.025;
-            this.vertices.push(xx, yy);
+            this.vertices.push(xx * 2, yy * 1.25);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1687,15 +1693,15 @@ biggerHungryClouds.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800) * 0.005;
+    let t = (drawCount - sum + 120800) * 0.005 * 0.5;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x;
+            let ox = x + 17;
             let oy = y;
-            let dx = cos(x * 0.85 * 0.35);
-            let dy = sin(y * 0.5 * 0.35);
+            let dx = cos(ox * 0.85 * 0.35);
+            let dy = sin(oy * 0.5 * 0.35);
             let xx = x + pow(map(cos((sin(dx + dy)) + t * 25), -1, 1, -0.25, 2), 0.1);
             let yy = y + pow(map(sin((sin(dx + dy)) + t * 25), -1, 1, -0.25, 2), 0.1);
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
@@ -1705,7 +1711,8 @@ biggerHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }

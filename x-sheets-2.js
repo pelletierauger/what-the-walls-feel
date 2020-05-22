@@ -121,6 +121,38 @@ xSheet = {
             fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
         }
     },
+    oceanWaves: {
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.jumpingDots);
+            var coFade = cosineFade(sum, 100);
+            beautifulOceanWaves.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+        }
+    },
+    plantsSofter: {
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.jumpingDots);
+            var coFade = cosineFade(sum, 100);
+            plantsSofter.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+        }
+    },
+    conclusion0: { //maybe
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.jumpingDots);
+            var coFade = cosineFade(sum, 100);
+            biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+        }
+    },
+//     conclusion: { //maybe
+//         d: 2000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.jumpingDots);
+//             var coFade = cosineFade(sum, 100);
+//             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+//         }
+//     },
     blurryFixed: {
         d: 180,
         f: function(sum) {
