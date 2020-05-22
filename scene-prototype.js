@@ -52,3 +52,16 @@ Scene.prototype.display = function() {
     gl.enableVertexAttribArray(coord);
     gl.drawArrays(gl.POINTS, 0, 2500);
 };
+
+
+Scene.prototype.blend = function(sum, otherScene, sumOther, ratio) {
+    this.update(sum);
+    otherScene.update(sumOther);
+    for (let i = 0; i < this.vertices.length; i++) {
+        let a = this.vertices[i];
+        let b = otherScene.vertices[i];
+        this.vertices[i] = lerp(a, b, ratio);
+    }
+    this.display(1);
+    otherScene.display(ratio);
+};
