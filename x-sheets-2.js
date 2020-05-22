@@ -114,37 +114,88 @@ xSheet = {
         }
     },
     jumpingDots: {
-        d: 2000,
+        d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.travellers6);
             var coFade = cosineFade(sum, 100);
             fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
         }
     },
-    oceanWaves: {
-        d: 2000,
+//-------------------  The Egg Sequence -----------------------------------------//
+    eggs0: {
+        d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.jumpingDots);
             var coFade = cosineFade(sum, 100);
-            beautifulOceanWaves.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+            eggs.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+        }
+    },
+    eggs1: {
+        d: 300,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.eggs0);
+            var coFade = cosineFade(sum, 100);
+            electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
+        }
+    },
+//     eggs2: {
+//         d: 500,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.eggs1);
+//             var coFade = cosineFade(sum, 100);
+//             harmoniousEggs.mix(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+//         }
+//     },
+//  Probably the conclusion of the Egg Sequence
+    eggs2b: {
+        d: 700,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.eggs1);
+            var coFade = cosineFade(sum, 100);
+            harmoniousEggs2.mix(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+        }
+    },
+    eggsTests: {
+        d: 1000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.eggs2b);
+            var coFade = cosineFade(sum, 10);
+            strangelyStabilizedEggs.mix(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
+        }
+    },
+    eggs3: {
+        d: 1000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.jumpingDots);
+            var coFade = cosineFade(sum, 100);
+            moreWorkOnTheEggs.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+        }
+    },
+//----------------------- A quiet, flowy sequence ------------------------------//
+    oceanWaves: {
+        d: 400,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.eggs3);
+            var coFade = cosineFade(sum, 200);
+            beautifulOceanWaves.mix(sum + 1000, moreWorkOnTheEggs, rN + 1000, coFade);
         }
     },
     plantsSofter: {
-        d: 2000,
+        d: 400,
         f: sum => {
             var rN = getSum(xSheet, xSheet.jumpingDots);
             var coFade = cosineFade(sum, 100);
             plantsSofter.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
         }
     },
-    conclusion0: { //maybe
-        d: 2000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.jumpingDots);
-            var coFade = cosineFade(sum, 100);
-            biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
-        }
-    },
+//     conclusion0: { //maybe
+//         d: 2000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.jumpingDots);
+//             var coFade = cosineFade(sum, 100);
+//             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+//         }
+//     },
 //     conclusion: { //maybe
 //         d: 2000,
 //         f: sum => {
