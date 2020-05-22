@@ -1186,7 +1186,8 @@ muscleFibersRebuildingThemselves.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }

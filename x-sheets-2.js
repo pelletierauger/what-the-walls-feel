@@ -70,6 +70,25 @@ xSheet = {
             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
         }
     },
+    blendyCav: {
+        d: 1800,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.pillars3);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            var coFade = cosineFade(sum, 100);
+            blendyCavern.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
+        }
+    },
+    blendyMuscles: {
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.blendyCav);
+            var coFade = cosineFade(sum, 100);
+            muscleFibersRebuildingThemselves.mix(sum, blendyCavern, rN, coFade);
+        }
+    },
     blurryFixed: {
         d: 180,
         f: function(sum) {

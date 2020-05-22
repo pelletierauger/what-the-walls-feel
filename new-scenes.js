@@ -1344,3 +1344,7 @@ overture.display = function() {
 };
 
 traffic3FadeIn.display = blendyCavern.display;
+pillarsInACavern.display = blendyCavern.display;
+curvierPillars.display = blendyCavern.display;
+curvierPillarsEvenSmaller.display = blendyCavern.display;
+muscleFibersRebuildingThemselves.display = blendyCavern.display;
