@@ -82,7 +82,7 @@ xSheet = {
         }
     },
     blendyMuscles: {
-        d: 2000,
+        d: 600,
         f: sum => {
             var rN = getSum(xSheet, xSheet.blendyCav);
             var coFade = cosineFade(sum, 100);
