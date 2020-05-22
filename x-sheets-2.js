@@ -71,7 +71,7 @@ xSheet = {
         }
     },
     blendyCav: {
-        d: 1800,
+        d: 900,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.pillars3);
             // oscillators[183].run(0);
@@ -87,6 +87,30 @@ xSheet = {
             var rN = getSum(xSheet, xSheet.blendyCav);
             var coFade = cosineFade(sum, 100);
             muscleFibersRebuildingThemselves.mix(sum, blendyCavern, rN, coFade);
+        }
+    },
+    travellers2: {
+        d: 500,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.blendyMuscles);
+            var coFade = cosineFade(sum, 100);
+            travellers2.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
+    jumpers: {
+        d: 500,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.travellers2);
+            var coFade = cosineFade(sum, 100);
+            travellers4Bigger.mix(sum, travellers2, rN, coFade);
+        }
+    },
+    travellers6: {
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.jumpers);
+            var coFade = cosineFade(sum, 100);
+            travellers6.mix(sum + 1000, travellers4Bigger, rN, coFade);
         }
     },
     blurryFixed: {

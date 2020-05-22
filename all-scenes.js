@@ -3670,14 +3670,15 @@ travellers2.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-5), 25));
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-            xx *= 0.95;
-            xx += 3.12;
+//             xx *= 0.95;
+//             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3706,14 +3707,15 @@ travellers3.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-3), 15));
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-            xx *= 0.95;
-            xx += 3.12;
+//             xx *= 0.95;
+//             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3725,7 +3727,7 @@ travellers4Bigger.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001 * 0.5;
     let a = 0.00005;
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -3742,14 +3744,15 @@ travellers4Bigger.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 1000) * Math.sin(t * x * 1e-3), 15));
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-            xx *= 0.95;
-            xx += 3.12;
+//             xx *= 0.95;
+//             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
@@ -3785,7 +3788,8 @@ travellers5EvenBigger.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3797,7 +3801,7 @@ travellers6.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001 * 0.5;
     let a = 0.00005;
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
@@ -3814,14 +3818,15 @@ travellers6.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m + y * 100) * 1000) * Math.sin(t * x * 1e-3), 20)) * 100;
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-            xx *= 0.95;
-            xx += 3.12;
+//             xx *= 0.95;
+//             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3850,14 +3855,15 @@ tinyJumpers.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e-3), 500));
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-            xx *= 0.95;
-            xx += 3.12;
+//             xx *= 0.95;
+//             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
