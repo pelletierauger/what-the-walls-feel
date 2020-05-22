@@ -98,7 +98,7 @@ xSheet = {
         }
     },
     jumpers: {
-        d: 500,
+        d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.travellers2);
             var coFade = cosineFade(sum, 100);
@@ -106,11 +106,19 @@ xSheet = {
         }
     },
     travellers6: {
-        d: 2000,
+        d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.jumpers);
             var coFade = cosineFade(sum, 100);
-            travellers6.mix(sum + 1000, travellers4Bigger, rN, coFade);
+            horizontalJumpingDots2.mix(sum + 1000, travellers4Bigger, rN, coFade);
+        }
+    },
+    jumpingDots: {
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.travellers6);
+            var coFade = cosineFade(sum, 100);
+            fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
         }
     },
     blurryFixed: {
