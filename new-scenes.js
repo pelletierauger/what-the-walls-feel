@@ -164,7 +164,7 @@ blurryCavern.display = function() {
     let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, -1 // Triangle 2
     ]);
-    let vbuffer = gl.createBuffer();
+    // let vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     let itemSize = 2;
@@ -311,7 +311,7 @@ blurryCavern.display = function() {
     vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, -1 // Triangle 2
     ]);
-    vbuffer = gl.createBuffer();
+    // vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     itemSize = 2;
@@ -454,7 +454,7 @@ blurryCavern2.display = function() {
     let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, -1 // Triangle 2
     ]);
-    let vbuffer = gl.createBuffer();
+    // let vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     let itemSize = 2;
@@ -615,7 +615,7 @@ blurryCavern2.display = function() {
     vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, -1 // Triangle 2
     ]);
-    vbuffer = gl.createBuffer();
+    // vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     itemSize = 2;
@@ -758,7 +758,7 @@ blendyCavern.display = function(alpha) {
     let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, -1 // Triangle 2
     ]);
-    let vbuffer = gl.createBuffer();
+    // let vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     let itemSize = 2;
@@ -1095,7 +1095,7 @@ overture.display = function(alpha) {
     let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
         -1, 1, 1, -1, -1, -1 // Triangle 2
     ]);
-    let vbuffer = gl.createBuffer();
+    // let vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     let itemSize = 2;
@@ -1356,3 +1356,4 @@ pillarsInACavern.display = blendyCavern.display;
 curvierPillars.display = blendyCavern.display;
 curvierPillarsEvenSmaller.display = blendyCavern.display;
 muscleFibersRebuildingThemselves.display = blendyCavern.display;
+harmoniousEggs2.display = blendyCavern.display;

@@ -35,6 +35,8 @@ let cinemaMode = false;
 
 let texture, texture2, texture3, texture4, framebuf, framebuf2, framebuf3, framebuf4;
 
+let vbuffer;
+
 function startAnimating() {
     // fpsInterval = 1000 / fps;
     fpsInterval = 1000 / 24;
@@ -208,6 +210,13 @@ function setup() {
     framebuf3 = createFrameBuffer(texture3);
     texture4 = createTexture();
     framebuf4 = createFrameBuffer(texture4);
+
+    vbuffer = gl.createBuffer();
+    let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
+        -1, 1, 1, -1, -1, -1 // Triangle 2
+    ]);
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 }
 
 // function gotSong() {

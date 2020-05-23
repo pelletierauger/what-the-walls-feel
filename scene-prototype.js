@@ -65,7 +65,7 @@ Scene.prototype.display = function(alpha) {
     ]);
     let itemSize = 2;
     let numItems = vertices.length / itemSize;
-    let vbuffer = gl.createBuffer();
+    // let vbuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
@@ -105,8 +105,8 @@ Scene.prototype.blend = function(sum, otherScene, sumOther, ratio) {
     }
     if (ratio > 0) {
         otherScene.vertices = this.vertices;
-        otherScene.display(1);        
+        otherScene.display(1);
     }
     this.display(1 - ratio);
-//     logJavaScriptConsole(ratio);
+    //     logJavaScriptConsole(ratio);
 };
