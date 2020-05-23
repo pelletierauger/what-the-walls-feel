@@ -152,7 +152,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs1);
             var coFade = cosineFade(sum, 100);
-            harmoniousEggs2.mix(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+            harmoniousEggs2.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
         }
     },
     eggsTests: {
