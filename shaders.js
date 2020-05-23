@@ -202,7 +202,7 @@ withImage.init = function() {
         this.image.src = "f-texture-title-a7.png";
         // this.image.src = "https://webglfundamentals.org/webgl/resources/f-texture.png";
         let that = this;
-        console.log(that);
+        // console.log(that);
         this.image.addEventListener('load', function() {
             titledLoaded = true;
             // this.image.onload = function() {
@@ -210,7 +210,7 @@ withImage.init = function() {
             var vertShader = gl.createShader(gl.VERTEX_SHADER);
             // Attach vertex shader source code
             gl.shaderSource(vertShader, that.vertText);
-            console.log(that.vertText);
+            // console.log(that.vertText);
             // Compile the vertex shader
             gl.compileShader(vertShader);
             // fragment shader source code
