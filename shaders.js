@@ -855,6 +855,7 @@ precision mediump float;
 
 // Passed in from the vertex shader.
 uniform float time;
+uniform float alpha;
 varying vec2 v_texcoord;
 
 // The texture.
@@ -868,6 +869,7 @@ void main() {
     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
    float rando = rand(vec2(uv.x, uv.y));
    gl_FragColor = texture2D(u_texture, v_texcoord);
+   gl_FragColor.a *= alpha;
    // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
    // gl_FragColor.r = gl_FragColor.r * 2.5;
    // gl_FragColor.a = 0.5;

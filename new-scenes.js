@@ -682,7 +682,7 @@ blendyCavern.update = function(sum) {
 
 
 
-blendyCavern.display = function() {
+blendyCavern.display = function(alpha) {
 
     var vb = map(cos(frameCount * 0.01), -1, 1, 0, 0.75);
 
@@ -692,7 +692,7 @@ blendyCavern.display = function() {
     let blenderProgram = getProgram("blender-program");
 
     // We start by drawing the whole image on the first texture, "texture"
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
     gl.viewport(0, 0, 1280, 720);
@@ -771,6 +771,8 @@ blendyCavern.display = function() {
     gl.uniform1i(textureLocation, 0);
     var timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
+    var alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
+    gl.uniform1f(alphaLocation, 1);
 
     var texcoordLocation = gl.getAttribLocation(currentProgram, "a_texcoord");
     gl.enableVertexAttribArray(texcoordLocation);
@@ -1001,6 +1003,8 @@ blendyCavern.display = function() {
     gl.uniform1i(textureLocation, 0);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
+    alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
+    gl.uniform1f(alphaLocation, alpha);
 
     texcoordLocation = gl.getAttribLocation(currentProgram, "a_texcoord");
     gl.enableVertexAttribArray(texcoordLocation);
@@ -1013,7 +1017,7 @@ blendyCavern.display = function() {
 
 
 
-overture.display = function() {
+overture.display = function(alpha) {
 
     var vb = map(cos(frameCount * 0.01), -1, 1, 0, 0.75);
 
@@ -1023,7 +1027,7 @@ overture.display = function() {
     let blenderProgram = getProgram("blender-program");
 
     // We start by drawing the whole image on the first texture, "texture"
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
     gl.viewport(0, 0, 1280, 720);
@@ -1104,6 +1108,8 @@ overture.display = function() {
     gl.uniform1i(textureLocation, 0);
     var timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
+    var alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
+    gl.uniform1f(alphaLocation, 1);
 
     var texcoordLocation = gl.getAttribLocation(currentProgram, "a_texcoord");
     gl.enableVertexAttribArray(texcoordLocation);
@@ -1334,6 +1340,8 @@ overture.display = function() {
     gl.uniform1i(textureLocation, 0);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
+    alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
+    gl.uniform1f(alphaLocation, alpha);
 
     texcoordLocation = gl.getAttribLocation(currentProgram, "a_texcoord");
     gl.enableVertexAttribArray(texcoordLocation);

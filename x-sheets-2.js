@@ -94,7 +94,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.blendyMuscles);
             var coFade = cosineFade(sum, 100);
-            travellers2.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+            travellers2.blend(sum, muscleFibersRebuildingThemselves, rN, coFade);
         }
     },
     jumpers: {
@@ -121,7 +121,7 @@ xSheet = {
             fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
         }
     },
-//-------------------  The Egg Sequence -----------------------------------------//
+    //-------------------  The Egg Sequence -----------------------------------------//
     eggs0: {
         d: 300,
         f: sum => {
@@ -138,15 +138,15 @@ xSheet = {
             electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
         }
     },
-//     eggs2: {
-//         d: 500,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.eggs1);
-//             var coFade = cosineFade(sum, 100);
-//             harmoniousEggs.mix(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
-//         }
-//     },
-//  Probably the conclusion of the Egg Sequence
+    //     eggs2: {
+    //         d: 500,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.eggs1);
+    //             var coFade = cosineFade(sum, 100);
+    //             harmoniousEggs.mix(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+    //         }
+    //     },
+    //  Probably the conclusion of the Egg Sequence
     eggs2b: {
         d: 700,
         f: sum => {
@@ -171,7 +171,7 @@ xSheet = {
             moreWorkOnTheEggs.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
         }
     },
-//----------------------- A quiet, flowy sequence ------------------------------//
+    //----------------------- A quiet, flowy sequence ------------------------------//
     oceanWaves: {
         d: 400,
         f: sum => {
@@ -188,22 +188,22 @@ xSheet = {
             plantsSofter.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
         }
     },
-//     conclusion0: { //maybe
-//         d: 2000,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.jumpingDots);
-//             var coFade = cosineFade(sum, 100);
-//             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
-//         }
-//     },
-//     conclusion: { //maybe
-//         d: 2000,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.jumpingDots);
-//             var coFade = cosineFade(sum, 100);
-//             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
-//         }
-//     },
+    //     conclusion0: { //maybe
+    //         d: 2000,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.jumpingDots);
+    //             var coFade = cosineFade(sum, 100);
+    //             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+    //         }
+    //     },
+    //     conclusion: { //maybe
+    //         d: 2000,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.jumpingDots);
+    //             var coFade = cosineFade(sum, 100);
+    //             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+    //         }
+    //     },
     blurryFixed: {
         d: 180,
         f: function(sum) {
