@@ -225,7 +225,6 @@ function setup() {
 // }
 
 draw = function() {
-
     // drawDots(currentProgram);
     runXSheet(xSheet);
     //     if (frameCount == 1) {
@@ -239,10 +238,16 @@ draw = function() {
         // logJavaScriptConsole("repositioning!");
         // song.jump(drawCount / 24);
         // audioElement.currentTime = drawCount /  24;
-        player.currentTime = drawCount /  24;
+        if (drawCount <= player.duration * 24) {
+            player.currentTime = drawCount /  24;
+            syncToAudio();
+        } else {
+            player.pause();
+        }
+        
         // song.rate(24 / 24);
         repositionSong = false;
-        syncToAudio();
+//         syncToAudio();
     }
     sheetSlider.value(drawCount);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount);
