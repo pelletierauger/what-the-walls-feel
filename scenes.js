@@ -15,7 +15,8 @@ concerto.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e3), 1));
             xx *= 0.95;
             xx += 3.12;
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.3, yy * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.3, yy * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
         }
     }
 };
@@ -41,7 +42,8 @@ fasterSubtleTrunk.update = function(sum) {
         for (let y = 0; y < amountY; y += 1) {
             let dx = x + max(cos(x * 0.125 + t * -10), sin(y + x * 0.25 + t * 0.5));
             let dy = y + min(sin(y * 0.125 + t * -10), cos(x + x * 0.25 + t * 0.5));
-            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+//             this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            this.vertices.push((dx - 0) * 0.075 * 1.0 - 1.2, (dy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
@@ -53,9 +55,9 @@ traffic3FadeIn.update = function(sum) {
     this.vertices = [];
     this.grow = logMap(Math.min(drawCount - sum, 1000));
     if (drawCount % 24 == 0) {
-//         logJavaScriptConsole(this.grow);
+        //         logJavaScriptConsole(this.grow);
     }
-//     this.grow = Math.min(this.grow, 0.000252725879421447);
+    //     this.grow = Math.min(this.grow, 0.000252725879421447);
     //     logJavaScriptConsole(drawCount - sum);
     let amountX = 50;
     let amountY = 50;
