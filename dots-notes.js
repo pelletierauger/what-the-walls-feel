@@ -56,7 +56,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 cyanDots.vertText = `
     // beginGLSL
@@ -114,7 +114,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 cyanDots.vertText = `
     // beginGLSL
@@ -172,7 +172,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 
 cyanDots.vertText = `
@@ -231,7 +231,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 
 cyanDots.vertText = `
@@ -290,7 +290,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 
 
@@ -351,7 +351,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 
 
@@ -412,7 +412,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 
 
@@ -473,7 +473,7 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
 
 
 
@@ -534,4 +534,4 @@ cyanDots.fragText = `
     // endGLSL
 `;
 cyanDots.init();
-redraw();
+// redraw();
