@@ -240,14 +240,19 @@ draw = function() {
         // audioElement.currentTime = drawCount /  24;
         if (drawCount <= player.duration * 24) {
             player.currentTime = drawCount /  24;
+            if (player.paused) {
+                player.play();
+            }
             syncToAudio();
         } else {
-            player.pause();
+            if (!player.paused) {
+                player.pause();
+            }
         }
-        
+
         // song.rate(24 / 24);
         repositionSong = false;
-//         syncToAudio();
+        //         syncToAudio();
     }
     sheetSlider.value(drawCount);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount);
@@ -269,24 +274,7 @@ draw = function() {
 function keyPressed() {
     if (keysActive) {
         if (keyCode === 32) {
-            if (envirLooping) {
-                // noLoop();
-                if (montage && songPlay) {
-                    // logJavaScriptConsole("Does this not ?");
-                    player.pause();
-                }
-                envirLooping = false;
-            } else {
-                // loop();
-                envirLooping = true;
-                if (montage && songPlay) {
-                    // logJavaScriptConsole("This does ?");
-                    player.play();
-                    // song.jump(drawCount / 24);
-                    // song.rate(24 / 24);
-                }
-                startAnimating();
-            }
+            togglePlay();
         }
         if (key == 'r' || key == 'R') {
             window.location.reload();
@@ -363,26 +351,31 @@ document.onkeydown = function(evt) {
         // isEscape = (evt.keyCode === 18);
     }
     if (isEscape) {
-        if (envirLooping) {
-            // noLoop();
-            if (montage && songPlay) {
-                // logJavaScriptConsole("Does this not ?");
-                player.pause();
-            }
-            envirLooping = false;
-        } else {
-            // loop();
-            envirLooping = true;
-            if (montage && songPlay) {
-                // logJavaScriptConsole("This does ?");
-                player.play();
-                // song.jump(drawCount / 24);
-                // song.rate(24 / 24);
-            }
-            startAnimating();
-        }
+        togglePlay();
     }
 };
+
+function togglePlay() {
+    if (envirLooping) {
+        // noLoop();
+        if (montage && songPlay) {
+            // logJavaScriptConsole("Does this not ?");
+            player.pause();
+        }
+        envirLooping = false;
+    } else {
+        // loop();
+        envirLooping = true;
+        if (montage && songPlay && (drawCount <= player.duration * 24)) {
+            // logJavaScriptConsole("This does ?");
+            player.play();
+            // song.jump(drawCount / 24);
+            // song.rate(24 / 24);
+        }
+        startAnimating();
+    }
+}
+
 
 let clipMin = 0,
     clipMax = 100,
