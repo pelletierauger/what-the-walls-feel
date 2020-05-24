@@ -90,6 +90,54 @@ traffic3FadeIn.update = function(sum) {
 };
 
 
+
+let traffic3FadeInNoodles = new Scene("traffic-3-fade-in-noodles");
+
+traffic3FadeInNoodles.update = function(sum) {
+    this.vertices = [];
+    this.grow = logMap(Math.min(drawCount - sum, 1000));
+    if (drawCount % 24 == 0) {
+        //         logJavaScriptConsole(this.grow);
+    }
+    //     this.grow = Math.min(this.grow, 0.000252725879421447);
+    //     logJavaScriptConsole(drawCount - sum);
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025 * 0.5;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = Math.abs(Math.cos(x) * 0.01 - 25);
+            let dy = Math.abs(Math.sin(y) * 0.01 - 25);
+            let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let yy = y + Math.pow(Math.sin((x + 10) * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            xx = lerp(x, xx, this.grow);
+            yy = lerp(y, yy, this.grow);
+            let ox = x - 25;
+            let oy = y + 25;
+            let dx2 = abs(cos(x) * 1) * 0.25;
+            let dy2 = abs(sin(y) * 1) * 0.25;
+            xx += pow(cos((dx2 * ox * oy * 0.01) + t * 2 * 2e-1), 200) * -5;
+//             yy += pow(sin((dy2 * oy * ox * 0.01) + t * 2), 200) * -5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+        }
+    }
+    // 
+    function logMap(position) {
+        // position will be between minp and maxp
+        var minp = 0;
+        var maxp = 1000;
+        // The result should be between minv an maxv
+        var minv = Math.log(1e-7);
+        var maxv = Math.log(0.3852774978347468);
+        // calculate adjustment factor
+        var scale = (maxv - minv) / (maxp - minp);
+        return Math.exp(minv + scale * (position - minp));
+    }
+};
+
+
 let overture = new Scene("overture");
 
 overture.update = function(sum) {

@@ -36,20 +36,31 @@ xSheet = {
             overture.run(rN);
         }
     },
-    blendy: {
+    trafficFadeIn: {
         d: 1800,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.blendy);
+            var rN = getSum(xSheet, xSheet.trafficFadeIn);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
             traffic3FadeIn.run(rN);
         }
     },
+//     trafficAndNoodles: {
+//         d: 1800,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.trafficFadeIn);
+//             var coFade = cosineFade(sum, 300);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             // concerto.run();
+//             noodlesHorizontal.mix(sum, traffic3FadeIn, rN + 0, coFade);
+//         }
+//     },
     pillars: {
         d: 650,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.blendy);
+            var rN = getSum(xSheet, xSheet.trafficFadeIn);
             var coFade = cosineFade(sum, 300);
             pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
         }
@@ -156,19 +167,19 @@ xSheet = {
         }
     },
     eggsTests: {
-        d: 1000,
+        d: 500,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs2b);
-            var coFade = cosineFade(sum, 10);
+            var coFade = cosineFade(sum, 100);
             strangelyStabilizedEggs.mix(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
         }
     },
     eggs3: {
         d: 1000,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.jumpingDots);
+            var rN = getSum(xSheet, xSheet.eggsTests);
             var coFade = cosineFade(sum, 100);
-            moreWorkOnTheEggs.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+            surprisinglyStableDynamicalLozenges.mix(sum + 1000, strangelyStabilizedEggs, rN + 1000, coFade);
         }
     },
     //----------------------- A quiet, flowy sequence ------------------------------//
@@ -176,8 +187,8 @@ xSheet = {
         d: 400,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs3);
-            var coFade = cosineFade(sum, 200);
-            beautifulOceanWaves.mix(sum + 1000, moreWorkOnTheEggs, rN + 1000, coFade);
+            var coFade = cosineFade(sum, 100);
+            beautifulOceanWaves.mix(sum + 1000, surprisinglyStableDynamicalLozenges, rN + 1000, coFade);
         }
     },
     plantsSofter: {
@@ -357,6 +368,35 @@ xSheet = {
             // drawBG();
             var coFade = cosineFade(sum, 10);
             concerto.mix(sum, fasterSubtleTrunk, rN, coFade);
+            // concerto.run();
+            // fasterSubtleTrunk.run();
+        }
+    },
+//     endTests0: {
+//         d: 3000,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             var coFade = cosineFade(sum, 10);
+// //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
+// //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
+// //             escherLikeStaircases.mix(sum, fasterSubtleTrunk, rN, coFade);
+//             tinyJumpers.mix(sum, fasterSubtleTrunk, rN, coFade);
+//             // concerto.run();
+//             // fasterSubtleTrunk.run();
+//         }
+//     },
+    endTests: {
+        d: 3000,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+            // oscillators[183].run(0);
+            // drawBG();
+            var coFade = cosineFade(sum, 10);
+//             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
+//             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
+            balancedDynamicalIntricate.mix(sum, fasterSubtleTrunk, rN, coFade);
             // concerto.run();
             // fasterSubtleTrunk.run();
         }

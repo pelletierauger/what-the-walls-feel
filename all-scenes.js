@@ -1358,8 +1358,8 @@ noodlesHorizontal.update = function(sum) {
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 25;
-            let oy = y + 25;
+            let ox = x - 0;
+            let oy = y + 250;
             let dx = abs(cos(x) * 1) * 0.25;
             let dy = abs(sin(y) * 1) * 0.25;
             let xx = x + pow(cos((dx * ox * oy * 0.01) + t * 2), 200) * -5;
@@ -1371,6 +1371,8 @@ noodlesHorizontal.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
 //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
@@ -2165,8 +2167,8 @@ harmoniousEggs2.update = function(sum) {
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 7;
-            let oy = y + 31;
+            let ox = x - 9;
+            let oy = y + 29;
             let dx = cos(ox * 0.85 * 0.5);
             let dy = sin(oy * 0.5 * 0.5);
             let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125;
@@ -2184,6 +2186,7 @@ harmoniousEggs2.update = function(sum) {
         }
     }
 };
+redraw();
 
 let harmoniousEggs2b = new Scene("Harmonious eggs 2b");
 
@@ -2294,8 +2297,8 @@ strangelyStabilizedEggs.update = function(sum) {
     let oriX, oriY
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 7;
-            let oy = y + 31;
+            let ox = x - 9;
+            let oy = y + 22;
             let dx = cos(ox * 0.85 * 0.5);
             let dy = sin(oy * 0.5 * 0.5);
             let mx = pow(map(cos(sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 5;
@@ -2310,10 +2313,10 @@ strangelyStabilizedEggs.update = function(sum) {
                 oriX = xx;
                 oriY = yy;
             }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
+//             let ranX = Math.random() * 0.025 * 0.5;
+//             let ranY = Math.random() * 0.025 * 0.5;
             // this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.045 * 1.0 - 1.1, 0.0);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 2.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.75, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
@@ -2765,7 +2768,7 @@ tornSheetInTheWind.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (this.innerCount) * 0.015 * 1;
+    let t = (this.innerCount) * 0.015 * 0.5;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -2921,7 +2924,7 @@ surprisinglyStableDynamicalLozenges.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (this.innerCount) * 0.015;
+    let t = (this.innerCount) * 0.015 * 0.75;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -2944,7 +2947,8 @@ surprisinglyStableDynamicalLozenges.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -2995,7 +2999,8 @@ cicadas.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -3055,7 +3060,8 @@ balancedDynamicalIntricate.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -3116,7 +3122,8 @@ balancedDynamicalIntricateFast.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -3217,7 +3224,7 @@ undulatingGround.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum) * 0.025;
+    let t = (drawCount - sum) * 0.025 * 0.5;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -3232,7 +3239,7 @@ undulatingGround.update = function(sum) {
         for (let y = 0; y < amountY; y += 1) {
             let dx = x + min(cos(x * 0.25 + t * -4), sin(y * 1 + t * 5));
             let dy = y + min(sin(y * 0.25 + t * -4), cos(x * 1 + t * 5));
-            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            this.vertices.push(((dx * 0.05) - 1.25) * 2, ((dy * 0.05) - 1.25) * 1.5);
             i++;
             //             ix++;
         }
@@ -3260,7 +3267,7 @@ escherLikeStaircases.update = function(sum) {
         for (let y = 0; y < amountY; y += 1) {
             let dx = x + tan(sin(y * 0.5 + t * 3));
             let dy = y + tan(cos(x * 0.5 + t * 3));
-            this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
+            this.vertices.push(((dx * 0.05) - 1.25) * 1.5, ((dy * 0.05) - 1.25) * 1.7);
             i++;
             //             ix++;
         }
@@ -3295,7 +3302,8 @@ undulatingWall3.update = function(sum) {
             // if (i == 0) {
             // oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3934,6 +3942,44 @@ tinyJumpers.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
+            // i++;
+        }
+    }
+};
+
+tinyJumpers.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let a = 0.00005;
+    let i = 0;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            //             let ox = x - 100;
+            //             let oy = y - 100;
+            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
+            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
+            let nx = Math.cos(x * 4.1);
+            let ny = Math.sin(y * 4.1);
+            let tt = Math.sin(t * 0.125 * 0.0625) * 750;
+            let m = 4e3 + tt;
+            let xx = x + (Math.pow(Math.sin(m * x * 100) * Math.sin(t * (y - 4) * 1e-3), 125)) * 1.5;
+            let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e-3), 500));
+            yy = y;
+            //                         xx += cos(oy * 10) * sin(oy * 10);
+            //             xx = lerp(x, xx, grow);
+//             xx *= 0.95;
+//             xx += 3.12;
+            //             yy = lerp(y, yy, grow);
+            //             yy += cos(oy * 10) * sin(oy * 10);
+            // if (i == 0) {
+            //     oriX = xx;
+            // }
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
 //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
