@@ -400,8 +400,8 @@ cavern.update = function(sum) {
             let dy = abs(sin(y) * 0.01 - 25);
             let xx = x + pow(cos(y * 0.1 + t * 0.25), 70) * y * 0.5;
             let yy = y + pow(sin(x * 0.1 + t * 0.25), 70) * y * 0.5;
-//              xx += cos(oy * 10) * sin(oy * 10)2
-//              yy += cos(oy * 10) * sin(oy * 10);
+            //              xx += cos(oy * 10) * sin(oy * 10)2
+            //              yy += cos(oy * 10) * sin(oy * 10);
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             if (i == 0) {
@@ -1033,7 +1033,7 @@ pillarsInACavern.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1064,7 +1064,7 @@ curvierPillars.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);           
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);           
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1125,7 +1125,7 @@ curvierPillarsEvenSmaller.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1186,7 +1186,7 @@ muscleFibersRebuildingThemselves.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1247,7 +1247,7 @@ middleOfTheMuscularDistanceField.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1278,7 +1278,7 @@ laceInTheDistanceField.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1309,7 +1309,7 @@ laceInTheVerticalMiddle.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1340,7 +1340,7 @@ noodles.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1373,7 +1373,7 @@ noodlesHorizontal.update = function(sum) {
             let ranY = Math.random() * 0.025 * 0.5;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1410,7 +1410,7 @@ beautifulOceanWaves.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
@@ -1449,7 +1449,7 @@ centralBrain.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
@@ -1489,7 +1489,7 @@ plantsSofter.update = function(sum) {
             iy = yy;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
@@ -1522,8 +1522,8 @@ rotatingMouth.update = function(sum) {
             let yy = y - 0 + sin(a * 5 + dy * 2) * dx;
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 0.88 + 0.05, (yy + ranY) * 0.05 * 0.88 + 0.025);
-//             this.vertices.push((xx - 0) * 0.075 * 1.0 + 0.025, (yy + -10) * 0.07 * 1.0 + 0.6);
+            //             this.vertices.push((xx + ranX) * 0.05 * 0.88 + 0.05, (yy + ranY) * 0.05 * 0.88 + 0.025);
+            //             this.vertices.push((xx - 0) * 0.075 * 1.0 + 0.025, (yy + -10) * 0.07 * 1.0 + 0.6);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
@@ -1561,7 +1561,7 @@ calmBrook.update = function(sum) {
             xx = (xx + ranX) * 0.05 * 0.88 + 0.05;
             yy = (yy + ranY) * 0.05 * 0.88 + 0.025;
             this.vertices.push(xx * 2, yy * 1.25);
-//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             ix++;
         }
@@ -1748,7 +1748,7 @@ biggerHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1839,7 +1839,7 @@ eggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1870,7 +1870,7 @@ eggs2.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1901,7 +1901,7 @@ beautifulEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1932,7 +1932,7 @@ electronicDecorativeEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -1993,7 +1993,7 @@ smallEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2024,7 +2024,7 @@ electronicEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2055,7 +2055,7 @@ cavernousEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2086,7 +2086,7 @@ moreWorkOnTheEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2117,7 +2117,7 @@ stabilizingTheEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2148,7 +2148,7 @@ harmoniousEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2180,13 +2180,13 @@ harmoniousEggs2.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
 };
-redraw();
+// redraw();
 
 let harmoniousEggs2b = new Scene("Harmonious eggs 2b");
 
@@ -2212,7 +2212,7 @@ harmoniousEggs2b.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2243,7 +2243,7 @@ chaoticEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2278,7 +2278,7 @@ workOnSymmetricalChaoticEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2303,18 +2303,18 @@ strangelyStabilizedEggs.update = function(sum) {
             let dy = sin(oy * 0.5 * 0.5);
             let mx = pow(map(cos(sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 5;
             let my = pow(map(sin(sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 5;
-//             mx = Math.sign(mx) * -1 * mx;
-//             my = Math.sign(my) * 1 * my;
+            //             mx = Math.sign(mx) * -1 * mx;
+            //             my = Math.sign(my) * 1 * my;
             let xx = x + mx;
             let yy = y + my;
-//             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
-//             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
             if (i == 0) {
                 oriX = xx;
                 oriY = yy;
             }
-//             let ranX = Math.random() * 0.025 * 0.5;
-//             let ranY = Math.random() * 0.025 * 0.5;
+            //             let ranX = Math.random() * 0.025 * 0.5;
+            //             let ranY = Math.random() * 0.025 * 0.5;
             // this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.045 * 1.0 - 1.1, 0.0);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.75, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
@@ -2352,7 +2352,7 @@ strangelyStabilizedEggsFlowy.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
+            //             this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2389,7 +2389,7 @@ moreFlowyEggs.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
+            //             this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.05 * 1.0 - 1.25);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -2791,7 +2791,7 @@ tornSheetInTheWind.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.0, (yy + ranY) * 0.05 * 1.0 - 1.0);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.0, (yy + ranY) * 0.05 * 1.0 - 1.0);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -2843,7 +2843,7 @@ moreTorn.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -2895,7 +2895,7 @@ differentlyTorn.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -2947,7 +2947,7 @@ surprisinglyStableDynamicalLozenges.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -2999,7 +2999,7 @@ cicadas.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -3060,7 +3060,7 @@ balancedDynamicalIntricate.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -3122,7 +3122,7 @@ balancedDynamicalIntricateFast.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-//             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
@@ -3302,7 +3302,7 @@ undulatingWall3.update = function(sum) {
             // if (i == 0) {
             // oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3433,14 +3433,14 @@ fastJumpingDots.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.25), 7000) * ny);
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -3468,14 +3468,14 @@ slowJumpingDots.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.125), 7000) * nx);
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -3503,14 +3503,14 @@ walkingInsects.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(x / y * 5 + t * 0.125), 7000) * nx);
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -3538,14 +3538,14 @@ horizontalJumpingDots.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(x / (1 + y) * 5 + t * 1e-1), 70000) * nx);
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -3573,14 +3573,14 @@ horizontalJumpingDots2.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(x * (1 + y) * 5 + t * 1e-1), 70000) * nx);
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3615,7 +3615,7 @@ horizontalJumpingDots3.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -3650,7 +3650,7 @@ horizontalJumpingDots4.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3685,7 +3685,7 @@ horizontalJumpingDots5.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3750,14 +3750,14 @@ travellers2.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-5), 25));
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3787,14 +3787,14 @@ travellers3.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-3), 15));
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3824,14 +3824,14 @@ travellers4Bigger.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 1000) * Math.sin(t * x * 1e-3), 15));
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             if (i == 0) {
                 oriX = xx;
             }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
@@ -3868,7 +3868,7 @@ travellers5EvenBigger.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3898,14 +3898,14 @@ travellers6.update = function(sum) {
             let yy = y + (Math.pow(Math.sin((m + y * 100) * 1000) * Math.sin(t * x * 1e-3), 20)) * 100;
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3935,14 +3935,14 @@ tinyJumpers.update = function(sum) {
             let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e-3), 500));
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
@@ -3971,8 +3971,8 @@ tinyJumpers.update = function(sum) {
             yy = y;
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
-//             xx *= 0.95;
-//             xx += 3.12;
+            //             xx *= 0.95;
+            //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
@@ -3980,7 +3980,7 @@ tinyJumpers.update = function(sum) {
             // }
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
