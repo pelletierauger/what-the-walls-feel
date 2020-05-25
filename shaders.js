@@ -944,9 +944,9 @@ void main() {
     vec3 col2 = CircleRGB(uv, p2, 0.5, 0.4, vec3(1.0, 0.0, 0.0));
     float rando = rand(vec2(uv.x, uv.y));
     gl_FragColor = texture2D(u_texture, v_texcoord);
-    gl_FragColor.rgb -= col * 1.0;
+    gl_FragColor.rgb -= col * 0.75;
     gl_FragColor.rgb += col2 * 0.75;
-    gl_FragColor.rgb += colb * 1.0;
+    gl_FragColor.rgb += colb * 0.85;
     gl_FragColor.a *= alpha;
     // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
     // gl_FragColor.r = gl_FragColor.r * 2.5;
@@ -955,3 +955,4 @@ void main() {
 // endGLSL
 `;
 mistyProgram.init();
+// redraw();
