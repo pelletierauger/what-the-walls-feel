@@ -1360,7 +1360,7 @@ harmoniousEggs2.display = blendyCavern.display;
 
 
 
-noodlesHorizontal.display = function(alpha) {
+noodlesHorizontal.displayExperimental = function(alpha) {
     // We start by drawing the whole image on the first texture, "texture"
     let oneTextureProgram = getProgram("one-texture-program");
     let mistyProgram = getProgram("misty-program");
