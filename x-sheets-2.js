@@ -37,7 +37,7 @@ xSheet = {
         }
     },
     trafficFadeIn: {
-        d: 1800,
+        d: 1600,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.trafficFadeIn);
             // oscillators[183].run(0);

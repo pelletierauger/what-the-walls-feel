@@ -54,8 +54,11 @@ let traffic3FadeIn = new Scene("traffic-3-fade-in");
 traffic3FadeIn.update = function(sum) {
     this.vertices = [];
     let cutoff = 1000;
-    let growth = (drawCount - sum < cutoff) ? drawCount - sum : cutoff - ((drawCount - sum) - cutoff) * 1;
+//     let growth = (drawCount - sum < cutoff) ? drawCount - sum : cutoff - ((drawCount - sum) - cutoff) * 1;
+    let growth = (1 - ((Math.cos((drawCount - sum) / 1900 * Math.PI * 2) + 1) * 0.5)) * 1000;
+//     logJavaScriptConsole(growth);
     this.grow = logMap(Math.min(growth, 1000));
+//     this.grow = growth / 1000000;
 //     logJavaScriptConsole(drawCount - sum);
 //     if (drawCount % 24 == 0) {
         //         logJavaScriptConsole(this.grow);
