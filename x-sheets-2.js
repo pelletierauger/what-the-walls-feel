@@ -46,6 +46,14 @@ xSheet = {
             traffic3FadeIn.run(rN);
         }
     },
+    trafficFadeIn2: { // This is a keeper.
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.trafficFadeIn);
+            var coFade = cosineFade(sum, 300);
+            springsSlowerLessElastic.mix(sum, traffic3FadeIn, rN, coFade);
+        }
+    },
 //     trafficAndNoodles: {
 //         d: 1800,
 //         f: function(sum) {
@@ -192,11 +200,11 @@ xSheet = {
         }
     },
     plantsSofter: {
-        d: 400,
+        d: 800,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.jumpingDots);
-            var coFade = cosineFade(sum, 100);
-            plantsSofter.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+            var rN = getSum(xSheet, xSheet.oceanWaves);
+            var coFade = cosineFade(sum, 200);
+            plantsSofter.mix(sum + 1000, beautifulOceanWaves, rN + 1000, coFade);
         }
     },
     //     conclusion0: { //maybe
@@ -348,6 +356,22 @@ xSheet = {
             var rN = getSum(xSheet, xSheet.muscles);
             var coFade = cosineFade(sum, 10);
             noodlesHorizontal.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
+    springsSlowerLessElastic: { // This is a keeper.
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.muscles);
+            var coFade = cosineFade(sum, 300);
+            springsSlowerLessElastic.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+        }
+    },
+    exploring: {
+        d: 4000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.muscles);
+            var coFade = cosineFade(sum, 300);
+            newBreakingApartAndGatheringAgain.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
         }
     },
     fasterSubtleTrunk: {

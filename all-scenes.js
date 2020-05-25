@@ -236,7 +236,9 @@ skatingBubbles.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -264,7 +266,9 @@ smallPattern.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -321,7 +325,9 @@ zestyMovements.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -349,7 +355,9 @@ zestyMovementsFallingBranches.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -377,7 +385,9 @@ traffic.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -493,7 +503,9 @@ ringsOnALake.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -523,7 +535,9 @@ biggerRingsOnALake.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -553,7 +567,9 @@ giantMagicalRingsOnALake.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -583,7 +599,9 @@ breakingApartAndGatheringAgain.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -613,7 +631,9 @@ anotherBreakingApartAndGatheringAgain.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -641,9 +661,11 @@ moreBreakingAndGathering.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             let ranX = Math.random() * 0.025 * 0.5;
+//             let ranY = Math.random() * 0.025 * 0.5;
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
@@ -655,26 +677,28 @@ bigTravelInABrokenLand.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 14000) * 0.025;
+    let t = (drawCount - sum + 14000) * 0.025 * 1e-3;
     let a = 0.005 * sin(t * 0.05);
-    let i = 0;
+//     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x + 100 * cos(t * 0.5);
-            let oy = y + 100 * sin(t * 0.5);
-            let dx = abs(cos(x) * 0.01 - 25);
-            let dy = abs(sin(y) * 0.01 - 25);
-            let xx = x + pow(cos(a * ox * oy + t * 0.000005), 70) * sin(ox * oy) * ox * ox * 2.5;
-            let yy = y + pow(sin(a * ox * oy + t * 0.0005), 700) * sin(ox * oy) * ox * ox * 2.5;
+            let ox = x + 100 * Math.cos(t * 0.5);
+            let oy = y + 100 * Math.sin(t * 0.5);
+//             let dx = abs(cos(x) * 0.01 - 25);
+//             let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x + Math.pow(Math.cos(a * ox * oy + t * 0.000005), 70) * Math.sin(ox * oy) * ox * ox * 2.5;
+            let yy = y + Math.pow(Math.sin(a * ox * oy + t * 0.0005), 700) * Math.sin(ox * oy) * ox * ox * 2.5;
             //  xx += map(cos(x * t), -1, 1, 0.5, 1) * 0.5;
             //  yy += map(sin(y * t), -1, 1, 0.5, 1) * 0.5;
-            if (i == 0) {
-                oriX = xx;
-            }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
-            i++;
+//             if (i == 0) {
+//                 oriX = xx;
+//             }
+//             let ranX = Math.random() * 0.025 * 0.5;
+//             let ranY = Math.random() * 0.025 * 0.5;
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
+//             i++;
         }
     }
 };
@@ -703,7 +727,9 @@ subtleTravelInADistanceField.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -733,7 +759,9 @@ holesInThePatternLaterInTime.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -763,7 +791,9 @@ fourmillements.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -793,7 +823,9 @@ fourmillementsPlusLoin.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -823,7 +855,9 @@ fourmillementsEncorePlusLoin.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -853,7 +887,9 @@ fourmillementsEncorePlusLoin2.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -883,7 +919,9 @@ newTraffic.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -973,7 +1011,9 @@ shiftingWithDepthFasterMoreChaotic.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -1003,7 +1043,9 @@ shiftingWithDepthEvenMoreFaster.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
             i++;
         }
     }
@@ -1642,7 +1684,8 @@ hungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
@@ -1672,7 +1715,8 @@ moreHungryClouds.update = function(sum) {
             }
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
         }
     }
@@ -2519,7 +2563,8 @@ intricateDynamical.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+//             this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -2570,7 +2615,8 @@ intricateDynamical2.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+//             this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1., (yy + ranY) * 0.05 * 0.9 - 1);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -2724,7 +2770,8 @@ beautifulFloatingDynamical.update = function(sum) {
             //             
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1.1, (yy + ranY) * 0.05 * 0.9 - 1.1);
+//             this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1.1, (yy + ranY) * 0.05 * 0.9 - 1.1);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
             //             console.log(i);
             //             ix++;
@@ -3321,7 +3368,8 @@ springs.update = function(sum) {
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3333,31 +3381,15 @@ springsSlowerLessElastic.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.025;
-    // let a = 0.00005;
-    // let i = 0;
+    let t = (drawCount - sum + 10) * 0.025 * 0.35;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            //             let ox = x - 100;
-            //             let oy = y - 100;
-            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
-            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
-            let nx = Math.cos(x / x * 4.1);
             let ny = Math.sin(y / y * 4.1);
-            2
             let xx = x + (Math.pow(Math.cos(y * 0.25 + t * 0.25), 700) * ny) * 4.5;
-            let yy = y + (Math.pow(Math.sin(x * 0.25 + t * 0.25), 700) * ny + nx) * 4.5;
-            //             xx += cos(oy * 10) * sin(oy * 10)2
-            //             xx = lerp(x, xx, grow);
-            xx *= 0.9;
-            xx += 2;
-            //             yy = lerp(y, yy, grow);
-            //             yy += cos(oy * 10) * sin(oy * 10);
-            // if (i == 0) {
-            //     oriX = xx;
-            // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            // i++;
+            let yy = y + (Math.pow(Math.sin(x * 0.25 + t * 0.25), 700) * ny) * 4.5;
+            xx *= 0.95;
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
         }
     }
 };
@@ -3384,13 +3416,15 @@ fastDiagonalStairs.update = function(sum) {
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
             xx *= 0.95;
-            xx += 3.12;
+//             yy *= 0.85;
+//             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
             // if (i == 0) {
             //     oriX = xx;
             // }
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
+            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
         }
     }
@@ -3967,6 +4001,31 @@ tinyJumpers.update = function(sum) {
             //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
             // i++;
+        }
+    }
+};
+
+
+let newBreakingApartAndGatheringAgain = new Scene("new-breaking-apart-and-gathering-again");
+
+newBreakingApartAndGatheringAgain.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 14000) * 0.025;
+    let a = 0.00005 * sin(t * 0.5);
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 200;
+            let oy = y - 50;
+            let mx = map(Math.cos(a * ox * oy + t * 0.05), -1, 1, 0.25, 1);
+            let my = map(Math.sin(a * ox * oy + t * 0.05), -1, 1, 0.25, 1);
+            let xx = x + Math.pow(mx, 700) * Math.sin(ox * oy) * ox * ox * 5e-2;
+            let yy = y + Math.pow(my, 700) * Math.sin(ox * oy) * ox * ox * 5e-2;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
         }
     }
 };

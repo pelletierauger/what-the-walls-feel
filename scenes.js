@@ -53,10 +53,13 @@ let traffic3FadeIn = new Scene("traffic-3-fade-in");
 
 traffic3FadeIn.update = function(sum) {
     this.vertices = [];
-    this.grow = logMap(Math.min(drawCount - sum, 1000));
-    if (drawCount % 24 == 0) {
+    let cutoff = 1000;
+    let growth = (drawCount - sum < cutoff) ? drawCount - sum : cutoff - ((drawCount - sum) - cutoff) * 1;
+    this.grow = logMap(Math.min(growth, 1000));
+//     logJavaScriptConsole(drawCount - sum);
+//     if (drawCount % 24 == 0) {
         //         logJavaScriptConsole(this.grow);
-    }
+//     }
     //     this.grow = Math.min(this.grow, 0.000252725879421447);
     //     logJavaScriptConsole(drawCount - sum);
     let amountX = 50;
@@ -64,14 +67,15 @@ traffic3FadeIn.update = function(sum) {
     let t = (drawCount - sum + 10) * 0.025 * 0.5;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let dx = Math.abs(Math.cos(x) * 0.01 - 25);
-            let dy = Math.abs(Math.sin(y) * 0.01 - 25);
+//             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
+//             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
             let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
             let yy = y + Math.pow(Math.sin((x + 10) * 0.5 + t * 0.025), 700) * y * x * 200.5;
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
+            xx *= 0.95;
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
         }
     }
@@ -195,6 +199,7 @@ overture.update = function(sum) {
                 yy = lerp(y, yy, this.grow);
                 xx += Math.random() * 0.01;
                 yy += Math.random() * 0.01;
+                            xx *= 0.95;
                 this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -4) * 0.07 * 1.0 - 1.3);
                 this.dotsToDisplay++;
             }
