@@ -1464,35 +1464,19 @@ plantsSofter.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 120800 + 20000) * 0.05;
-    let a = 0.005 * sin(t * 0.05);
-    let i = 0;
     let ix = 1,
         iy = 1;
     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 92;
-            let oy = y - 95;
-            let dx = abs(cos(x) * 1) * 0.25;
-            let dy = abs(sin(y) * 1) * 0.25;
             let xx = x;
             let yy = y;
-            //             xx += map(cos(x + t), -1, 1, 0.5, 0.4) * sin(ox) * 20;
-            //             yy += map(sin(y + t), -1, 1, 0.5, 0.4) * sin(ox) * 20;
-            xx += cos((ix - 45) * iy * 1.5e-2 + t);
-            yy += sin(ix * iy * 1.5e-2 + t);
-            xx += cos((ix - 45) * (iy - 50) * 1.5e-2 + t);
-            yy += sin(ix * (iy - 50) * 1.5e-2 + t);
-            if (i == 0) {
-                oriX = xx;
-            }
+            xx += Math.cos((ix - 45) * iy * 1.5e-2 + t);
+            yy += Math.sin(ix * iy * 1.5e-2 + t);
+            xx += Math.cos((ix - 45) * (iy - 50) * 1.5e-2 + t);
+            yy += Math.sin(ix * (iy - 50) * 1.5e-2 + t);
             ix = xx;
             iy = yy;
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
-            i++;
-            //             ix++;
+            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
         }
     }
 };
