@@ -1557,17 +1557,22 @@ plantsSofter.update = function(sum) {
     let t = (drawCount - sum + 120800 + 20000) * 0.05;
     let ix = 1,
         iy = 1;
-    for (let x = 0; x < amountX; x += 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let xx = x;
             let yy = y;
-            xx += Math.cos((ix - 45) * iy * 1.5e-2 + t);
+            xx -= Math.cos((ix - 45) * iy * 1.5e-2 + t);
             yy += Math.sin(ix * iy * 1.5e-2 + t);
-            xx += Math.cos((ix - 45) * (iy - 50) * 1.5e-2 + t);
+            xx -= Math.cos((ix - 45) * (iy - 50) * 1.5e-2 + t);
             yy += Math.sin(ix * (iy - 50) * 1.5e-2 + t);
             ix = xx;
             iy = yy;
-            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };
