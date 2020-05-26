@@ -1399,6 +1399,7 @@ noodlesHorizontal.update = function(sum) {
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = 0; x < amountX; x += 1) {
+//     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 0;
             let oy = y + 250;
@@ -1418,6 +1419,39 @@ noodlesHorizontal.update = function(sum) {
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             i++;
+        }
+    }
+};
+
+noodlesHorizontal.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 0;
+            let oy = y + 250;
+            let dx = abs(cos(x) * 1) * 0.25;
+            let dy = abs(sin(y) * 1) * 0.25;
+            let xx = x - pow(cos((dx * ox * oy * 0.01) + t * 2), 200) * -5;
+            let yy = y + pow(sin((dy * oy * ox * 0.01) + t * 2), 200) * 0;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good            i++;
         }
     }
 };
@@ -1852,13 +1886,14 @@ eggs.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+            for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x;
             let oy = y;
             let dx = cos(x * 0.85 * 0.35);
             let dy = sin(y * 0.5 * 0.35);
-            let xx = x + pow(map(cos((sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20);
+            let xx = x - pow(map(cos((sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20);
             let yy = y + pow(map(sin((sin(dx * dy) + dy * dx) + t * 12), -1, 1, -0.01, 1), 20);
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
@@ -1868,7 +1903,9 @@ eggs.update = function(sum) {
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }
@@ -1945,13 +1982,14 @@ electronicDecorativeEggs.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+                for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x;
             let oy = y;
             let dx = cos(x * 0.8 * 0.35);
             let dy = sin(y * 0.5 * 0.35);
-            let xx = x + pow(map(cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
+            let xx = x - pow(map(cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
             let yy = y + pow(map(sin((dy) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
@@ -1961,7 +1999,9 @@ electronicDecorativeEggs.update = function(sum) {
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }
@@ -2193,13 +2233,14 @@ harmoniousEggs2.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 9;
             let oy = y + 29;
             let dx = cos(ox * 0.85 * 0.5);
             let dy = sin(oy * 0.5 * 0.5);
-            let xx = x + pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125;
+            let xx = x - pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125;
             let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125;
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
@@ -2209,7 +2250,9 @@ harmoniousEggs2.update = function(sum) {
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }
@@ -3382,14 +3425,18 @@ springsSlowerLessElastic.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10) * 0.025 * 0.35;
-    for (let x = 0; x < amountX; x += 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ny = Math.sin(y / y * 4.1);
-            let xx = x + (Math.pow(Math.cos(y * 0.25 + t * 0.25), 700) * ny) * 4.5;
+            let xx = x - (Math.pow(Math.cos(y * 0.25 + t * 0.25), 700) * ny) * 4.5;
             let yy = y + (Math.pow(Math.sin(x * 0.25 + t * 0.25), 700) * ny) * 4.5;
-            xx *= 0.95;
+//             xx *= 0.95;
 //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
+            xx *= 0.95;
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };

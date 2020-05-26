@@ -68,18 +68,20 @@ traffic3FadeIn.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10) * 0.025 * 0.5;
-    for (let x = 0; x < amountX; x += 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+        for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
 //             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
 //             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
-            let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * (1 / -x) * 200.5;
             let yy = y + Math.pow(Math.sin((x + 10) * 0.5 + t * 0.025), 700) * y * x * 200.5;
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
     // 
@@ -191,9 +193,12 @@ overture.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (0 + 10) * 0.025 * 0.5;
-    for (let x = 0; x < amountX; x += 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            if ((y < 18 || y > 30) || (x < 6 || x > 26)) {
+//         for (let x = 0; x < amountX; x += 1) {
+    
+//                     for (let y = amountY; y > 0; y -= 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+                for (let y = 0; y < amountY; y += 1) {
+            if ((y < 18 || y > 30) || (x < 6 || x > 28)) {
                 let dx = Math.abs(Math.cos(x) * 0.01 - 25);
                 let dy = Math.abs(Math.sin(y) * 0.01 - 25);
                 let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
@@ -203,7 +208,7 @@ overture.update = function(sum) {
                 xx += Math.random() * 0.01;
                 yy += Math.random() * 0.01;
                             xx *= 0.95;
-                this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -4) * 0.07 * 1.0 - 1.3);
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -4) * 0.07 - 1.32);
                 this.dotsToDisplay++;
             }
         }

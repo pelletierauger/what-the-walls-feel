@@ -46,12 +46,20 @@ xSheet = {
             traffic3FadeIn.run(rN);
         }
     },
-    trafficFadeIn2: { // This is a keeper.
-        d: 2000,
+//     trafficFadeIn2: { // This is a keeper.
+//         d: 500,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.trafficFadeIn);
+//             var coFade = cosineFade(sum, 100);
+//             springsSlowerLessElastic.blend(sum, traffic3FadeIn, rN, coFade);
+//         }
+//     },
+    nooTests: {
+        d: 1600,
         f: sum => {
             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-            var coFade = cosineFade(sum, 300);
-            springsSlowerLessElastic.mix(sum, traffic3FadeIn, rN, coFade);
+            var coFade = cosineFade(sum, 100);
+            noodlesHorizontal.mix(sum, traffic3FadeIn, rN, coFade);
         }
     },
 //     trafficAndNoodles: {
