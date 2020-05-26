@@ -655,31 +655,111 @@ blendyCavern.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10) * 0.0125 * 0.57;
+    let t = (drawCount - sum + 10) * 0.0125 * 0.57 * 1.5;
     let a = 0.00005;
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 100;
-            let oy = y - 100;
-            let dx = abs(cos(x) * 0.01 - 25);
-            let dy = abs(sin(y) * 0.01 - 25);
-            let xx = x + pow(cos(y * 0.1 + t * 0.25), 70) * y * 0.5;
-            let yy = y + pow(sin(x * 0.1 + t * 0.25), 70) * y * 0.5;
+//             let ox = x - 100;
+//             let oy = y - 100;
+//             let dx = abs(cos(x) * 0.01 - 25);
+//             let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x - Math.pow(Math.cos(y * 0.1 + t * 0.25), 70) * y * 0.5;
+            let yy = y + Math.pow(Math.sin(x * 0.1 + t * 0.25), 70) * y * 0.5;
             //              xx += cos(oy * 10) * sin(oy * 10)2
             //              yy += cos(oy * 10) * sin(oy * 10);
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
-            if (i == 0) {
-                oriX = xx;
-            }
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             if (i == 0) {
+//                 oriX = xx;
+//             }
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }
 };
 
 
+let blendyCavernB = new Scene("blendy-cavern-b");
+
+blendyCavernB.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.0125 * 0.57 * 1.5;
+    let a = 0.00005;
+    let i = 0;
+    let ma = map(drawCount - sum, 0, 600, 2, -6);
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+//             let ox = x - 100;
+//             let oy = y - 100;
+//             let dx = abs(cos(x) * 0.01 - 25);
+//             let dy = abs(sin(y) * 0.01 - 25);
+            let xx = x - pow(cos((y + 2) * 0.1 + t * 0.25), 70) * y * 0.5;
+            let yy = y + pow(sin((x -8) * 0.1 + t * 0.25), 70) * y * 0.5;
+            //              xx += cos(oy * 10) * sin(oy * 10)2
+            //              yy += cos(oy * 10) * sin(oy * 10);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+//             if (i == 0) {
+//                 oriX = xx;
+//             }
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            i++;
+        }
+    }
+};
+
+
+
+let blendyCavernC = new Scene("blendy-cavern-c");
+
+blendyCavernC.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum - 400) * 0.0125 * 0.57 * 2.5;
+    let ma = map(drawCount - sum, 0, 600, 2, -6);
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x - Math.pow(Math.cos((y + 2) * 0.1 + -t * 0.25), 20) * y * 0.25;
+            let yy = y + Math.pow(Math.sin((x -8) * 0.1 + -t * 0.25), 20) * y * 0.5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let blendyCavernD = new Scene("blendy-cavern-d");
+
+blendyCavernD.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum - 400) * 0.0125 * 0.57 * 4;
+    let ma = map(drawCount - sum, 0, 600, 2, -6);
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x - Math.pow(Math.cos((y + 10) * 0.1 + t * 0.25), 10) * y * 0.25;
+            let yy = y + Math.pow(Math.sin((x -6) * 0.1 + -t * 0.25), 10) * y * 0.5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
 
 
 blendyCavern.display = function(alpha) {

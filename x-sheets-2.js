@@ -55,10 +55,10 @@ xSheet = {
 //         }
 //     },
     nooTests: {
-        d: 1600,
+        d: 1200,
         f: sum => {
             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-            var coFade = cosineFade(sum, 100);
+            var coFade = cosineFade(sum, 600);
             noodlesHorizontal.mix(sum, traffic3FadeIn, rN, coFade);
         }
     },
@@ -73,55 +73,88 @@ xSheet = {
 //             noodlesHorizontal.mix(sum, traffic3FadeIn, rN + 0, coFade);
 //         }
 //     },
-    pillars: {
-        d: 650,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.trafficFadeIn);
-            var coFade = cosineFade(sum, 300);
-            pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
-        }
-    },
+//     pillars: {
+//         d: 650,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.trafficFadeIn);
+//             var coFade = cosineFade(sum, 300);
+//             pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
+//         }
+//     },
     pillars2: {
-        d: 450,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.pillars);
-            var coFade = cosineFade(sum, 100);
-            curvierPillars.mix(sum, pillarsInACavern, rN, coFade);
-        }
-    },
-    pillars3: {
         d: 650,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.pillars2);
+            var rN = getSum(xSheet, xSheet.nooTests);
             var coFade = cosineFade(sum, 100);
-            curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
+            curvierPillars.mix(sum, noodlesHorizontal, rN, coFade);
         }
     },
+//     pillars3: {
+//         d: 650,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.pillars2);
+//             var coFade = cosineFade(sum, 100);
+//             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
+//         }
+//     },
     blendyCav: {
-        d: 900,
+        d: 450,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.pillars3);
+            var rN = getSum(xSheet, xSheet.pillars2);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
             var coFade = cosineFade(sum, 100);
-            blendyCavern.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
+            blendyCavernB.mix(sum, curvierPillars, rN, coFade);
+        }
+    },
+//     blendyCavs: {
+//         d: 900,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.blendyCav);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             // concerto.run();
+//             var coFade = cosineFade(sum, 100);
+//             blendyCavern.mix(sum + 100, blendyCavernB, rN, coFade);
+//         }
+//     },
+    blendyCavs2: {
+        d: 300,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.blendyCav);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            var coFade = cosineFade(sum, 100);
+            blendyCavernC.mix(sum - 100, blendyCavernB, rN, coFade);
+        }
+    },
+    blendyCavs3: {
+        d: 340,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.blendyCavs2);
+            // oscillators[183].run(0);
+            // drawBG();
+            // concerto.run();
+            var coFade = cosineFade(sum, 100);
+            blendyCavernD.mix(sum - 100, blendyCavernC, rN - 100, coFade);
         }
     },
     blendyMuscles: {
-        d: 600,
+        d: 400,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.blendyCav);
+            var rN = getSum(xSheet, xSheet.blendyCavs3);
             var coFade = cosineFade(sum, 100);
-            muscleFibersRebuildingThemselves.mix(sum, blendyCavern, rN, coFade);
+            muscleFibersRebuildingThemselves.mix(sum + 500, blendyCavernD, rN - 100, coFade);
         }
     },
     travellers2: {
-        d: 500,
+        d: 900,
         f: sum => {
             var rN = getSum(xSheet, xSheet.blendyMuscles);
             var coFade = cosineFade(sum, 100);
-            travellers2.blend(sum, muscleFibersRebuildingThemselves, rN, coFade);
+            travellers2.blend(sum, muscleFibersRebuildingThemselves, rN + 500, coFade);
         }
     },
     jumpers: {

@@ -1091,13 +1091,16 @@ curvierPillars.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.015;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+//     logJavaScriptConsole(drawCount - sum);
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 1 * cos(t * 5);
             let oy = y + 1 * sin(t * 5);
             let dx = abs(cos(x) * 1 - 250);
             let dy = abs(sin(y) * 1 - 250);
-            let xx = x + pow(cos(cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20);
+            let xx = x + pow(cos(cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
             let yy = y + pow(sin(sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20);
             //             xx += map(cos(x * t), -1, 1, 0.5, 1) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 1) * 2;
@@ -1107,7 +1110,9 @@ curvierPillars.update = function(sum) {
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);           
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }
@@ -1149,27 +1154,32 @@ curvierPillarsEvenSmaller.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800) * 0.015 * 0.25;
-    let a = 0.005 * sin(t * 0.05);
-    let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    let t = (drawCount - sum + 120800) * 0.015 * 0.5;
+//     let a = 0.005 * sin(t * 0.05);
+//     let i = 0;
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x + 1 * cos(t * 5);
-            let oy = y + 1 * sin(t * 5);
-            let dx = abs(cos(x) * 1 - 25);
-            let dy = abs(sin(y) * 1 - 25);
-            let xx = x + pow(cos(cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 200);
-            let yy = y + pow(sin(sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 200);
+            let ox = x + 1 * Math.cos(t * 5);
+            let oy = y + 1 * Math.sin(t * 5);
+            let dx = Math.abs(Math.cos(x) * 1 - 25);
+            let dy = Math.abs(Math.sin(y) * 1 - 25);
+            let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 200);
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 200);
             //             xx += map(cos(x * t), -1, 1, 0.5, 1) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 1) * 2;
-            if (i == 0) {
-                oriX = xx;
-            }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
+//             if (i == 0) {
+//                 oriX = xx;
+//             }
+//             let ranX = Math.random() * 0.025 * 0.5;
+//             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
-            i++;
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             i++;
         }
     }
 };
@@ -1210,26 +1220,31 @@ muscleFibersRebuildingThemselves.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800) * 0.0025;
+    let t = (drawCount - sum + 12080) * 0.0025;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 1 * cos(t * 5);
-            let oy = y + 1 * sin(t * 5);
+            let oy = y + 10 * sin(t * 5);
             let dx = abs(cos(x) * 1 - 2) * 0.25;
             let dy = abs(sin(y) * 1 - 2) * 0.25;
-            let xx = x + pow(cos(cos(dx + oy * 0.1 + dy * 0.2) + t * 2), -1) * 0.25;
+            let xx = x - pow(cos(cos(dx + oy * 0.1 + dy * 0.2) + t * 2), -1) * 0.25;
             let yy = y + pow(sin(sin(dx + oy * 0.1 + dy * 0.2) + t * 2), -1) * 0.25;
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
             if (i == 0) {
                 oriX = xx;
             }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
+//             let ranX = Math.random() * 0.025 * 0.5;
+//             let ranY = Math.random() * 0.025 * 0.5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             //             this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }
@@ -3628,7 +3643,9 @@ horizontalJumpingDots2.update = function(sum) {
     let t = (drawCount - sum + 10) * 0.025;
     // let a = 0.00005;
     // let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    let amp = map(drawCount - sum, 0, 300, 1, 2);
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             //             let ox = x - 100;
             //             let oy = y - 100;
@@ -3636,7 +3653,7 @@ horizontalJumpingDots2.update = function(sum) {
             //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
             let nx = Math.cos(x / x * 4.1);
             let ny = Math.sin(y / y * 4.1);
-            let xx = x + (Math.pow(Math.cos(y * (1 + x) * 5 + t * 1e-1), 70000) * ny);
+            let xx = x + (Math.pow(Math.cos(y * (1 + x) * 5 + t * 1e-1), 70000) * ny) * amp;
             let yy = y + (Math.pow(Math.sin(x * (1 + y) * 5 + t * 1e-1), 70000) * nx);
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
@@ -3648,7 +3665,11 @@ horizontalJumpingDots2.update = function(sum) {
             //     oriX = xx;
             // }
             //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             // i++;
         }
     }
@@ -3803,7 +3824,12 @@ travellers2.update = function(sum) {
     let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
     // let a = 0.00005;
     // let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+    let amp = map(drawCount - sum, 0, 700, 0, 1);
+    amp = 1 - ((Math.cos((drawCount - sum) / 1500 * PI * 2) + 1) * 0.5);
+//     amp = Math.min(amp, 1);
+//     logJavaScriptConsole(drawCount - sum);
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             //             let ox = x - 100;
             //             let oy = y - 100;
@@ -3813,8 +3839,8 @@ travellers2.update = function(sum) {
             let ny = Math.sin(y * 4.1);
             let tt = Math.sin(t * 0.35) * 1000;
             let m = 4e3 + tt;
-            let xx = x + (Math.pow(Math.cos((m - x * 100) * 100) * Math.sin(t * y * 1e-5), 25));
-            let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-5), 25));
+            let xx = x + (Math.pow(Math.cos((m - x * 100) * 100) * Math.sin(t * y * 1e-5), 25)) * amp;
+            let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-5), 25)) * amp;
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
             //             xx *= 0.95;
@@ -3825,7 +3851,11 @@ travellers2.update = function(sum) {
             //     oriX = xx;
             // }
             //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             // i++;
         }
     }
@@ -3877,7 +3907,8 @@ travellers4Bigger.update = function(sum) {
     let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001 * 0.5;
     let a = 0.00005;
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             //             let ox = x - 100;
             //             let oy = y - 100;
@@ -3887,7 +3918,7 @@ travellers4Bigger.update = function(sum) {
             let ny = Math.sin(y * 4.1);
             let tt = Math.sin(t * 0.125) * 750;
             let m = 4e3 + tt;
-            let xx = x + (Math.pow(Math.cos((m - x * 100) * 1000) * Math.sin(t * y * 1e-3), 15));
+            let xx = x - (Math.pow(Math.cos((m - x * 100) * 1000) * Math.sin(t * y * 1e-3), 15));
             let yy = y + (Math.pow(Math.sin((m - y * 100) * 1000) * Math.sin(t * x * 1e-3), 15));
             //                         xx += cos(oy * 10) * sin(oy * 10);
             //             xx = lerp(x, xx, grow);
@@ -3895,12 +3926,16 @@ travellers4Bigger.update = function(sum) {
             //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
-            if (i == 0) {
-                oriX = xx;
-            }
+//             if (i == 0) {
+//                 oriX = xx;
+//             }
             //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
-            i++;
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             i++;
         }
     }
 };
