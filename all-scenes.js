@@ -2378,32 +2378,37 @@ strangelyStabilizedEggs.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.005 * 0.45;
-    let a = 0.005 * sin(t * 0.05);
-    let i = 0;
-    let oriX, oriY
-    for (let x = 0; x < amountX; x += 1) {
+//     let a = 0.005 * sin(t * 0.05);
+//     let i = 0;
+//     let oriX, oriY
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 9;
             let oy = y + 22;
-            let dx = cos(ox * 0.85 * 0.5);
-            let dy = sin(oy * 0.5 * 0.5);
-            let mx = pow(map(cos(sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 5;
-            let my = pow(map(sin(sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 5;
+            let dx = Math.cos(ox * 0.85 * 0.5);
+            let dy = Math.sin(oy * 0.5 * 0.5);
+            let mx = Math.pow(map(Math.cos(Math.sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 5;
+            let my = Math.pow(map(Math.sin(Math.sin(dx + dy) + t * 20), -1, 1, 0, 2), 0.5) * 0;
             //             mx = Math.sign(mx) * -1 * mx;
             //             my = Math.sign(my) * 1 * my;
-            let xx = x + mx;
+            let xx = x - mx;
             let yy = y + my;
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
-            if (i == 0) {
-                oriX = xx;
-                oriY = yy;
-            }
+//             if (i == 0) {
+//                 oriX = xx;
+//                 oriY = yy;
+//             }
             //             let ranX = Math.random() * 0.025 * 0.5;
             //             let ranY = Math.random() * 0.025 * 0.5;
             // this.vertices.push((xx - oriX + ranX) * 0.05 * 0.95 - 1.145, (yy - oriY + ranY) * 0.045 * 1.0 - 1.1, 0.0);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.75, (yy + -10) * 0.07 * 1.0 - 1.3);
-            i++;
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.75, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             i++;
         }
     }
 };
@@ -3503,7 +3508,8 @@ fastJumpingDots.update = function(sum) {
     let t = (drawCount - sum + 10) * 0.025;
     let a = 0.00005;
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             //             let ox = x - 100;
             //             let oy = y - 100;
@@ -3511,23 +3517,49 @@ fastJumpingDots.update = function(sum) {
             //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
             let nx = Math.cos(x / x * 4.1);
             let ny = Math.sin(y / y * 4.1);
-            let xx = x + (Math.pow(Math.cos(y + y * 5 + t * 0.25), 7000) * ny);
-            let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.25), 7000) * ny);
+            let xx = x - (Math.pow(Math.cos(x + y * 5 + t * 0.25), 7000) * ny) * 1.5;
+            let yy = y + (Math.pow(Math.sin(x + y * 5 + t * 0.25), 7000) * ny) * 2;
             //             xx += cos(oy * 10) * sin(oy * 10)2
             //             xx = lerp(x, xx, grow);
             //             xx *= 0.95;
             //             xx += 3.12;
             //             yy = lerp(y, yy, grow);
             //             yy += cos(oy * 10) * sin(oy * 10);
-            if (i == 0) {
-                oriX = xx;
-            }
+//             if (i == 0) {
+//                 oriX = xx;
+//             }
             //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
-            i++;
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             i++;
         }
     }
 };
+
+let fastJumpingDots2 = new Scene("Fast jumping dots 2");
+
+fastJumpingDots2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 10) * 0.025;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let nx = Math.sin(x * 10);
+            let ny = Math.cos(y * 10);
+            let xx = x + (Math.pow(Math.sin((x + 100) + (y - 100) * 500 + t * 0.25), 7000) * ny) * 2;
+            let yy = y + (Math.pow(Math.cos((x + 100) + (y - 100) * 500 + t * 0.25), 7000) * ny) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 
 let slowJumpingDots = new Scene("Slow jumping dots");
 

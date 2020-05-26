@@ -173,21 +173,29 @@ xSheet = {
             horizontalJumpingDots2.mix(sum + 1000, travellers4Bigger, rN, coFade);
         }
     },
-    jumpingDots: {
-        d: 300,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.travellers6);
-            var coFade = cosineFade(sum, 100);
-            fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
-        }
-    },
+//     jumpingDots: {
+//         d: 150,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.travellers6);
+//             var coFade = cosineFade(sum, 100);
+//             fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
+//         }
+//     },
+//     jumpingDots2: {
+//         d: 700,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.travellers6);
+//             var coFade = cosineFade(sum, 10);
+//             fastJumpingDots2.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
+//         }
+//     },
     //-------------------  The Egg Sequence -----------------------------------------//
     eggs0: {
         d: 300,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.jumpingDots);
+            var rN = getSum(xSheet, xSheet.travellers6);
             var coFade = cosineFade(sum, 100);
-            eggs.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
+            eggs.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
         }
     },
     eggs1: {
