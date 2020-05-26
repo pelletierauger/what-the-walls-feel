@@ -3434,6 +3434,8 @@ springsSlowerLessElastic.update = function(sum) {
 //             xx *= 0.95;
 //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
 //             this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             xx *= 0.95;
 //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
                 this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
