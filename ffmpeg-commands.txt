@@ -1,0 +1,24 @@
+ffmpeg -f image2 -framerate 24 -i /Volumes/Volumina/frames/wtwf/montage/test001/sketch-%05d.png -i /Volumes/Volumina/frames/wtwf/wtwf.wav -c:v libx264 -pix_fmt yuv420p -crf 16 -shortest /Volumes/Volumina/video-renders/wtwf/montage/intro-test-crf16.mp4
+
+
+ffmpeg -f image2 -framerate 24 \
+-i /Volumes/Volumina/frames/wtwf/montage/test001/sketch-%05d.png \
+-i /Volumes/Volumina/frames/wtwf/wtwf.wav \
+-c:v libx264 -pix_fmt yuv420p \
+-filter_complex "[0:0] colorbalance=bs=.0:bm=.0:bh=.125" \
+-color_range 1 -colorspace 1 -color_primaries 1 -color_trc 1 -s 2560x1440 \
+-crf 16 \
+-shortest /Volumes/Volumina/video-renders/wtwf/montage/intro-test-crf16-colorspace.mp4
+
+ffmpeg -f image2 -framerate 24 \
+-i /Volumes/Volumina/frames/wtwf/montage/test001/sketch-%05d.png \
+-i /Volumes/Volumina/frames/wtwf/wtwf.wav \
+-c:v libx264 -pix_fmt yuv420p -s 2560x1440 \
+-crf 19 \
+-shortest /Volumes/Volumina/video-renders/wtwf/montage/intro-test-crf19-2560x1440.mp4
+
+
+
+
+
+
