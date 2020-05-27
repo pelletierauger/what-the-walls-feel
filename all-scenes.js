@@ -1482,7 +1482,8 @@ beautifulOceanWaves.update = function(sum) {
     let i = 0;
     let ix = 1,
         iy = 1;
-    for (let x = 0; x < amountX; x += 1) {
+            for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 50;
             let oy = y + 50;
@@ -1492,8 +1493,8 @@ beautifulOceanWaves.update = function(sum) {
             let yy = y;
             //             xx += map(cos(x + t), -1, 1, 0.5, 0.4) * sin(ox);
             //             yy += map(sin(y + t), -1, 1, 0.5, 0.4) * sin(ox);
-            xx += cos(ix * ox * 0.0125 + ix + i * 0.1 + t);
-            yy += sin(iy * ox * 0.0125 + ix + iy + t);
+            xx -= cos(-ix * ox * 0.0125 - ix + i * 0.1 + t);
+            yy += sin(iy * ox * 0.0125 - ix + iy + t);
             if (i == 0) {
                 oriX = xx;
             }
@@ -1502,7 +1503,11 @@ beautifulOceanWaves.update = function(sum) {
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
             //             ix++;
         }
@@ -2537,23 +2542,50 @@ newFestive.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+    //     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x;
+            let ox = x + 0.5;
             let oy = y;
-            let dx = abs(cos(x) * 0.01) * 16;
-            let dy = abs(sin(y) * 0.01) * 16;
-            let xx = x + pow(cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            let dx = abs(cos(ox) * 0.01) * 16;
+            let dy = abs(sin(oy) * 0.01) * 16;
+            let xx = x - pow(cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
             let yy = y + pow(sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
             //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
             //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
             if (i == 0) {
                 oriX = xx;
             }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 0.8 - 1.05, (yy + ranY) * 0.045 * 1.0 - 1.2);
+//             let ranX = Math.random() * 0.025 * 0.5;
+//             let ranY = Math.random() * 0.025 * 0.5;
+//             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.8 - 1.05, (yy + ranY) * 0.045 * 1.0 - 1.2);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 5;
+            let oy = y + 5;
+            let dx = Math.abs(Math.cos(ox * 0.2) * 0.01) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.2) * 0.01) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.01) * 10;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.01) * 10;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };
@@ -2901,6 +2933,49 @@ tornSheetInTheWind.update = function(sum) {
     this.innerCount++;
 };
 
+tornSheetInTheWind.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (this.innerCount) * 0.015 * 0.5;
+    let i = 0;
+    let ix = 1,
+        iy = 1;
+    let sosc = function(i, min, max) {
+        return map(Math.sin(i), -1, 1, min, max);
+    };
+    let cosc = function(i, min, max) {
+        return map(Math.cos(i), -1, 1, min, max);
+    };
+    this.newArr = [];
+//     for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            let oX = this.oldArr[i].x;
+            let oY = this.oldArr[i].y;
+            xx += cos(oY * 0.25 + t * 2) * 4 + cos(oY * 0.5);
+            yy += sin(oX * 0.25 + t * 2) * 4 + sin(oX * 0.5);
+            this.newArr.push({ x: xx, y: yy });
+            //             
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.0, (yy + ranY) * 0.05 * 1.0 - 1.0);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            i++;
+            //             console.log(i);
+            //             ix++;
+        }
+    }
+    this.oldArr = this.newArr;
+    this.innerCount++;
+};
+
 let moreTorn = new Scene("More torn");
 
 moreTorn.init = function(sum) {
@@ -3034,7 +3109,8 @@ surprisinglyStableDynamicalLozenges.update = function(sum) {
         return map(Math.cos(i), -1, 1, min, max);
     };
     this.newArr = [];
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let xx = x;
             let yy = y;
@@ -3047,7 +3123,11 @@ surprisinglyStableDynamicalLozenges.update = function(sum) {
             let ranX = Math.random() * 0.025 * 0.5;
             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx + ranX) * 0.05 * 1.0 - 1.3, (yy + ranY) * 0.05 * 1.0 - 1.3);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
             //             console.log(i);
             //             ix++;

@@ -231,7 +231,7 @@ xSheet = {
             strangelyStabilizedEggs.mix(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
         }
     },
-    eggs3: {
+    dynamicalLozenges: {
         d: 1000,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggsTests);
@@ -254,6 +254,30 @@ xSheet = {
             var rN = getSum(xSheet, xSheet.oceanWaves);
             var coFade = cosineFade(sum, 200);
             plantsSofter.mix(sum + 1000, beautifulOceanWaves, rN + 1000, coFade);
+        }
+    },
+    torn: {
+        d: 3000,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.plantsSofter);
+            // oscillators[183].run(0);
+            // drawBG();
+            var coFade = cosineFade(sum, 100);
+            tornSheetInTheWind.mix(sum, plantsSofter, rN + 1000, coFade);
+            // concerto.run();
+            // fasterSubtleTrunk.run();
+        }
+    },
+    festive: {
+        d: 3000,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.plantsSofter);
+            // oscillators[183].run(0);
+            // drawBG();
+            var coFade = cosineFade(sum, 100);
+            newFestive.mix(sum, plantsSofter, rN + 1000, coFade);
+            // concerto.run();
+            // fasterSubtleTrunk.run();
         }
     },
     //     conclusion0: { //maybe
@@ -470,18 +494,6 @@ xSheet = {
 //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
 //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
             balancedDynamicalIntricate.mix(sum, fasterSubtleTrunk, rN, coFade);
-            // concerto.run();
-            // fasterSubtleTrunk.run();
-        }
-    },
-    torn: {
-        d: 3000,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            // oscillators[183].run(0);
-            // drawBG();
-            var coFade = cosineFade(sum, 10);
-            tornSheetInTheWind.mix(sum, fasterSubtleTrunk, rN, coFade);
             // concerto.run();
             // fasterSubtleTrunk.run();
         }
