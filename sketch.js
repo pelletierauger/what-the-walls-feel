@@ -1,7 +1,7 @@
 let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
-let fileName = "./frames/sketch";
+let fileName = "/Volumes/Volumina/frames/wtwf/montage/test001/sketch";
 // a shader variable
 let gl;
 let shaderProgram;
@@ -24,6 +24,7 @@ var animationStart;
 var framesRendered = 0;
 var framesOfASecond = 0;
 var secondStart, secondFrames;
+var fps = 5;
 
 let titledLoaded = false;
 
@@ -39,7 +40,7 @@ let vbuffer;
 
 function startAnimating() {
     // fpsInterval = 1000 / fps;
-    fpsInterval = 1000 / 24;
+    fpsInterval = 1000 / fps;
     then = Date.now();
     animationStart = Date.now();
     secondStart = Date.now();
@@ -82,8 +83,8 @@ function animate() {
             draw();
             framesRendered++;
             framesOfASecond++;
-            if (framesOfASecond == 24) {
-                secondFrames = 24 / ((Date.now() - secondStart) * 0.001);
+            if (framesOfASecond == fps) {
+                secondFrames = fps / ((Date.now() - secondStart) * 0.001);
                 // logJavaScriptConsole(secondFrames);
                 framesOfASecond = 0;
                 secondStart = Date.now();
@@ -264,6 +265,9 @@ draw = function() {
         }
     }
     // console.log("DRAWWWW!");
+    if (exporting) {
+        frameExport();
+    }
 }
 
 // function windowResized() {
