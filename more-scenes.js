@@ -709,3 +709,26 @@ newFestive.update = function(sum) {
         }
     }
 };
+
+// trying to center the previous one
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 19;
+            let dx = Math.cos(ox * 0.3);
+            let dy = Math.sin(oy * 0.3);
+            let xx = x - Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
+            let yy = y + Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 1.06, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
