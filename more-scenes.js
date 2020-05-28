@@ -119,3 +119,593 @@ newFestive.update = function(sum) {
         }
     }
 };
+
+// assez beau
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0.5;
+            let oy = y;
+            let dx = Math.abs(Math.cos(ox * 0.1) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.1) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// beautiful, centered
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 10;
+            let oy = y + 212;
+            let dx = Math.abs(Math.cos(ox * 0.1) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.1) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 5;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 10;
+            let oy = y + 212;
+            let dx = Math.abs(Math.cos(ox * 0.1) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.1) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// corn
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 15;
+            let oy = y + 17;
+            let dx = Math.abs(Math.cos(ox * 0.1) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.1) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// centered eye
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 15;
+            let oy = y + 17;
+            let dx = Math.abs(Math.cos(ox * 0.1) * 0.05) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.1) * 0.05) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// sunrise
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 11;
+            let oy = y + 17;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 0.05) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 0.05) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 11;
+            let oy = y + 17;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 15;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// diagonal eye
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 3;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005 * 2;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -4;
+            let oy = y + 21;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 0.025) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 0.025) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 8;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 8;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// beautiful and new diagonal
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -4;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 0.1) * 16;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 0.1) * 16;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -4;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 4) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 4) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -4;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 2) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 2) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -4;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 20 + t * 12) * 0.1, 0.02) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -4;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 8 + t * 12) * 0.1, 0.1) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 8 + t * 12) * 0.1, 0.1) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// beau, beau, beau
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075 * 2) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075 * 2) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// beau, more structured
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075 * 2) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075 * 2) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx * dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// plus loin
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075 * 4) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075 * 4) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx * dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// beau, structured, clouds substracted
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075 * 4) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075 * 4) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx * dy) * 2 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 2 + t * 12) * 10000, 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+
+// no need for Math.abs, maybe
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = (Math.cos(ox * 0.075 * 4) * 1) * 1;
+            let dy = (Math.sin(oy * 0.075 * 4) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx * dy) * 2 + t * 12), 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 2 + t * 12), 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// interesting and floaty
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = (Math.cos(ox * 0.075 * 4) * 1) * 1;
+            let dy = (Math.sin(oy * 0.075 * 4) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx * dy) * 2 + t * 12), 0.5) * 1;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 2 + t * 12), 0.5) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// well balanced
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = (Math.cos(ox * 0.075 * 4) * 1) * 1;
+            let dy = (Math.sin(oy * 0.075 * 4) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx * dy) * 4 + t * 12), 0.05) * 2;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 4 + t * 12), 0.05) * 2;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// slower might be better
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.cos(ox * 0.3);
+            let dy = Math.sin(oy * 0.3);
+            let xx = x - Math.pow(Math.cos((dx * dy) * 4 + t * 6), 0.05) * 2;
+            let yy = y + Math.pow(Math.sin((dx * dy) * 4 + t * 6), 0.05) * 2;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// curious result with tan
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.cos(ox * 0.3);
+            let dy = Math.sin(oy * 0.3);
+            let xx = x - Math.pow(Math.tan((dx * dy) * 4 + t * 6), 0.05) * 2;
+            let yy = y + Math.pow(Math.tan((dx * dy) * 4 + t * 6), 0.05) * 2;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.cos(ox * 0.3);
+            let dy = Math.sin(oy * 0.3);
+            let xx = x - Math.pow(Math.tan((dx * dy) * 2 + t * 6), 0.9) * 0.1;
+            let yy = y + Math.pow(Math.tan((dx * dy) * 2 + t * 6), 0.9) * 0.1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// ruche
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -3;
+            let oy = y + 19;
+            let dx = Math.cos(ox * 0.3);
+            let dy = Math.sin(oy * 0.3);
+            let xx = x - Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.9) * 0.1;
+            let yy = y + Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.9) * 0.1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newFestive.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -3;
+            let oy = y + 19;
+            let dx = Math.cos(ox * 0.3);
+            let dy = Math.sin(oy * 0.3);
+            let xx = x - Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
+            let yy = y + Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
