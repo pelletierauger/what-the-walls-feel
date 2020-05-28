@@ -24,7 +24,7 @@ var animationStart;
 var framesRendered = 0;
 var framesOfASecond = 0;
 var secondStart, secondFrames;
-var fps = 5;
+var fps = 24;
 
 let titledLoaded = false;
 
