@@ -513,9 +513,10 @@ xSheet = {
     }
 };
 if (xSheetInit) {
-    let list = Object.getOwnPropertyNames(xSheet);
-    let lastScene = xSheet[list[list.length - 2]];
-    xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
+    // let list = Object.getOwnPropertyNames(xSheet);
+    // let lastScene = xSheet[list[list.length - 2]];
+    // xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
+    xSheetDuration = sumXSheet(xSheet);
     displayTimeline();
     sheetSlider.elt.max = xSheetDuration;
 }
