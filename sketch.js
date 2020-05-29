@@ -240,6 +240,12 @@ function setup() {
     var lastScene = xSheet[list[list.length - 2]];
     xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
 
+    timelineIndex.addEventListener('click', function(event) {
+        var x = event.pageX - timelineIndex.offsetLeft;
+        logJavaScriptConsole(x);
+        drawCount = Math.floor(x / 685 * xSheetDuration);
+        repositionSong = true;
+    }, false);
 }
 
 // function gotSong() {
