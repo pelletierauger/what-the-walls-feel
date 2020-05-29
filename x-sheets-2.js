@@ -227,7 +227,7 @@ xSheet = {
         d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs2b);
-            var coFade = cosineFade(sum, 10);
+            var coFade = cosineFade(sum, 30);
             harmoniousEggs2.blend(rN + 1000, harmoniousEggs2Quieter, rN + 1000, coFade);
         }
     },
@@ -619,4 +619,25 @@ function getCurrentSceneBoundaries(sheet) {
     var elapsed = drawCount - sumOfPreviousScenes;
     var remaining = scene.d - elapsed;
     return "| " + elapsed + " ... " + remaining + " | (" + scene.d + ")";
+}
+
+function jumpTo(scene) {
+    drawCount = getSum(xSheet, xSheet[scene]);
+    if (!looping) {
+        drawCount--;
+        redraw();
+    }
+}
+
+function clipScene(scene) {
+    var start = getSum(xSheet, xSheet[scene]);
+    var end = start + xSheet[scene].d;
+    clip(start, end);
+}
+
+function clipSequence(start, end) {
+    var list = Object.getOwnPropertyNames(xSheet);
+    var s = getSum(xSheet, xSheet[list[start]]);
+    var e = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
+    clip(s, e);
 }
