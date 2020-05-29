@@ -88,7 +88,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.nooTests);
             var coFade = cosineFade(sum, 100);
-            curvierPillars.mix(sum, noodlesHorizontal, rN, coFade);
+            curvierPillars.blend(sum, noodlesHorizontal, rN, coFade);
         }
     },
     //     pillars3: {
@@ -436,11 +436,19 @@ xSheet = {
     distanceMuscles4: {
         d: 2000,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.muscles);
-            var coFade = cosineFade(sum, 10);
-            noodlesHorizontal.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+            var rN = getSum(xSheet, xSheet.distanceMuscles3);
+            var coFade = cosineFade(sum, 300);
+            bigTravelInABrokenLand.blend(sum, laceInTheVerticalMiddle, rN, coFade);
         }
     },
+    //     distanceMuscles4: {
+    //         d: 2000,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.muscles);
+    //             var coFade = cosineFade(sum, 10);
+    //             noodlesHorizontal.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+    //         }
+    //     },
     springsSlowerLessElastic: { // This is a keeper.
         d: 2000,
         f: sum => {
@@ -631,12 +639,12 @@ function getCurrentSceneBoundaries(sheet) {
     return "| " + elapsed + " ... " + remaining + " | (" + scene.d + ")";
 }
 
-function jumpTo(scene) {
+function jumpToScene(scene, startOffset = 0) {
     if (typeof scene == "string") {
-        drawCount = getSum(xSheet, xSheet[scene]);
+        drawCount = getSum(xSheet, xSheet[scene]) + startOffset;
     } else if (typeof scene == "number") {
         let list = Object.getOwnPropertyNames(xSheet);
-        drawCount = getSum(xSheet, xSheet[list[scene]]);
+        drawCount = getSum(xSheet, xSheet[list[scene]]) + startOffset;
     }
     repositionSong = true;
     if (!looping) {
@@ -645,7 +653,16 @@ function jumpTo(scene) {
     }
 }
 
-function clipScene(scene) {
+function jump(frame) {
+    drawCount = frame;
+    repositionSong = true;
+    if (!looping) {
+        drawCount--;
+        redraw();
+    }
+}
+
+function clipScene(scene, startOffset = 0, endOffset = 0) {
     let start, end;
     if (typeof scene == "string") {
         start = getSum(xSheet, xSheet[scene]);
@@ -655,7 +672,7 @@ function clipScene(scene) {
         start = getSum(xSheet, xSheet[list[scene]]);
         end = start + xSheet[list[scene]].d;
     }
-    clip(start, end);
+    clip(start + startOffset, end + endOffset);
 }
 
 function clipSequence(start, end) {
