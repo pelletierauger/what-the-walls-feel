@@ -41,7 +41,31 @@ function createInfoDiv() {
     infoDiv.style('line-height', '0.1em');
     infoDiv.style('font-size', '0.7em');
     infoDiv.style('color', '#000000');
-    infoDiv.style('background', "#CDCDCD");
+    // infoDiv.style('pointer-events', 'none');
+
+
+
+    let infoDivBack = createDiv('');
+    infoDivBack.style('position', 'absolute');
+    infoDivBack.style('right', '0');
+    infoDivBack.style('bottom', '35px');
+    infoDivBack.style('padding', '10px');
+    infoDivBack.style('padding-top', '0px');
+    // infoDivBack.style('margin-left', '10px');
+    infoDivBack.style('opacity', '1.0');
+    infoDivBack.style('z-index', '1');
+    infoDivBack.style('width', '690px');
+    infoDivBack.style('background', '#CDCDCD');
+    infoDivBack.style('font-family', 'Inconsolata');
+    infoDivBack.style('line-height', '0.1em');
+    infoDivBack.style('height', '35px');
+    infoDivBack.style('font-size', '0.7em');
+    infoDivBack.style('color', '#CDCDCD');
+    let infoBack = createP('Bonjour');
+    infoBack.parent(infoDivBack);
+
+
+    // infoDiv.style('background', "#CDCDCD");
     // info5 = createP('this is some text');
     // info5.parent(infoDiv);
     // info4 = createP('this is some text');

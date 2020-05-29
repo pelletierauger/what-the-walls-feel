@@ -22,14 +22,17 @@ canvas {
 }
 
 #timeline, #timeline-index {
+    margin: unset;
     display: block;
+    /*float: left;*/
     position: absolute;
     max-width: 686px;
     max-height: 50px;
-    top: 200;
-    bottom: 10;
-    left: 200;
-    right: 10;
+    /*top: 200;*/
+    top: unset;
+    bottom: 30px;
+    left: unset;
+    right: 12px;
     /*border: 1px solid black;*/
     background: #CDCDCD;
     z-index: 2;
@@ -39,4 +42,12 @@ canvas {
     /*background: #B7B7B7;*/
     background: none;
     z-index: 3;
+}
+
+#timelines {
+    float: left;
+    display: block;
+    width: 686px;
+    max-width: 686px;
+    max-height: 50px;
 }
