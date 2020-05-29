@@ -38,6 +38,10 @@ let texture, texture2, texture3, texture4, framebuf, framebuf2, framebuf3, frame
 
 let vbuffer;
 
+let timeline, timelineCtx, timelineIndex, timelineIndexCtx;
+
+let xSheetDuration;
+
 function startAnimating() {
     // fpsInterval = 1000 / fps;
     fpsInterval = 1000 / fps;
@@ -180,6 +184,7 @@ function setup() {
             jsArea.style.display = "block";
             displayMode = "js";
             autoRedraw = true;
+            getAllDurs();
         }
     }, 1000);
     // noLoop();
@@ -219,6 +224,22 @@ function setup() {
     ]);
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+
+    timeline = document.getElementById('timeline');
+    timelineCtx = timeline.getContext('2d');
+
+    timelineCtx.fillStyle = 'rgb(200, 0, 0)';
+    timelineCtx.fillRect(10, 10, 50, 50);
+
+    timelineIndex = document.getElementById('timeline-index');
+    timelineIndexCtx = timelineIndex.getContext('2d');
+
+    var list = Object.getOwnPropertyNames(xSheet);
+    var totalDuration;
+    var lastScene = xSheet[list[list.length - 2]];
+    xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
+
 }
 
 // function gotSong() {
@@ -251,7 +272,6 @@ draw = function() {
                 player.pause();
             }
         }
-
         // song.rate(24 / 24);
         repositionSong = false;
         //         syncToAudio();
@@ -259,6 +279,8 @@ draw = function() {
     sheetSlider.value(drawCount);
     var sceneBoundaries = getCurrentSceneBoundaries(xSheet);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount + " " + sceneBoundaries);
+    timelineIndexCtx.clearRect(0, 0, 1372, 100);
+    timelineIndexCtx.fillRect(drawCount / xSheetDuration * 1372, 0, 1, 100);
     drawCount += drawIncrement;
     if (clipping) {
         if (drawCount > clipMax) {

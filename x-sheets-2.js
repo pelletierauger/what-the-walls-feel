@@ -192,9 +192,10 @@ xSheet = {
     //-------------------  The Egg Sequence -----------------------------------------//
     eggs0: {
         d: 300,
+        tr: 100,
         f: sum => {
             var rN = getSum(xSheet, xSheet.travellers6);
-            var coFade = cosineFade(sum, 100);
+            var coFade = cosineFade(sum, xSheet["eggs0"].tr);
             eggs.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
         }
     },
@@ -623,6 +624,7 @@ function getCurrentSceneBoundaries(sheet) {
 
 function jumpTo(scene) {
     drawCount = getSum(xSheet, xSheet[scene]);
+    repositionSong = true;
     if (!looping) {
         drawCount--;
         redraw();
@@ -640,4 +642,28 @@ function clipSequence(start, end) {
     var s = getSum(xSheet, xSheet[list[start]]);
     var e = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
     clip(s, e);
+}
+
+getAllDurs = function() {
+    var list = Object.getOwnPropertyNames(xSheet);
+    var totalDuration;
+    var lastScene = xSheet[list[list.length - 2]];
+    totalDuration = getSum(xSheet, lastScene) + lastScene.d;
+    var norm = 1 / totalDuration * 1372;
+    var durSoFar = 0;
+    timelineCtx.fillStyle = 'rgb(255, 255, 255)';
+    timelineCtx.fillRect(0, 0, 1372, 100);
+    for (let i = 0; i < list.length - 1; i++) {
+        var dur = xSheet[list[i]].d;
+        logJavaScriptConsole(dur);
+        if (i % 2 == 0) {
+            timelineCtx.fillStyle = 'rgb(255, 255, 255)';
+        } else {
+            timelineCtx.fillStyle = 'rgb(235, 235, 235)';
+        }
+        timelineCtx.fillRect(durSoFar * norm, 0, dur * norm, 100);
+//         timelineCtx.fillStyle = 'rgb(0, 0, 0)';
+//         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
+        durSoFar += dur;
+    }
 }

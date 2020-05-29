@@ -20,3 +20,23 @@ canvas {
 .canvasOne {
     z-index: 1;
 }
+
+#timeline, #timeline-index {
+    display: block;
+    position: absolute;
+    max-width: 686px;
+    max-height: 50px;
+    top: 200;
+    bottom: 10;
+    left: 200;
+    right: 10;
+    /*border: 1px solid black;*/
+    background: #CDCDCD;
+    z-index: 2;
+}
+
+#timeline-index {
+    /*background: #B7B7B7;*/
+    background: none;
+    z-index: 3;
+}
