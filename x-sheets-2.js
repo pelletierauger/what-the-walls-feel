@@ -216,11 +216,19 @@ xSheet = {
     //     },
     //  Probably the conclusion of the Egg Sequence
     eggs2b: {
-        d: 700,
+        d: 400,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs1);
-            var coFade = cosineFade(sum, 100);
-            harmoniousEggs2.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+            var coFade = cosineFade(sum, 80);
+            harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+        }
+    },
+    eggs2c: {
+        d: 300,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.eggs2b);
+            var coFade = cosineFade(sum, 10);
+            harmoniousEggs2.blend(rN + 1000, harmoniousEggs2Quieter, rN + 1000, coFade);
         }
     },
     eggsTests: {

@@ -2282,7 +2282,40 @@ harmoniousEggs2.update = function(sum) {
         }
     }
 };
-// redraw();
+
+let harmoniousEggs2Quieter = new Scene("Harmonious eggs 2, quieter");
+
+harmoniousEggs2Quieter.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 9;
+            let oy = y + 29;
+            let dx = cos(ox * 0.85 * 0.5);
+            let dy = sin(oy * 0.5 * 0.5);
+            let xx = x - pow(map(cos((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125 * 0.5;
+            let yy = y + pow(map(sin((sin(dx + dy)) + t * 4), -1, 1, -0.25, 2), 6) * 0.125 * 0.5;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            let ranX = Math.random() * 0.025 * 0.5;
+            let ranY = Math.random() * 0.025 * 0.5;
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx *= 0.95;
+                this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            i++;
+        }
+    }
+};
 
 let harmoniousEggs2b = new Scene("Harmonious eggs 2b");
 
