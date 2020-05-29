@@ -179,6 +179,7 @@ function setup() {
             jsCmArea.style.height = "685px";
             jsArea.style.display = "block";
             displayMode = "js";
+            autoRedraw = true;
         }
     }, 1000);
     // noLoop();
@@ -256,7 +257,8 @@ draw = function() {
         //         syncToAudio();
     }
     sheetSlider.value(drawCount);
-    sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount);
+    var sceneBoundaries = getCurrentSceneBoundaries(xSheet);
+    sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount + " " + sceneBoundaries);
     drawCount += drawIncrement;
     if (clipping) {
         if (drawCount > clipMax) {

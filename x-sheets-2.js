@@ -590,3 +590,25 @@ function sumXSheet(sheet) {
     }
     return sum;
 }
+
+function getCurrentXSheetScene(sheet) {
+    var tL = Object.size(sheet);
+    for (var i = 0; i < tL; i++) {
+        var sum = 0;
+        for (var ii = 0; ii < i; ii++) {
+            sum += sheet.key(ii).d;
+        }
+        if (drawCount >= sum && drawCount < sum + sheet.key(i).d) {
+            var name = Object.getOwnPropertyNames(sheet);
+            return (name[i]);
+        }
+    }
+}
+
+function getCurrentSceneBoundaries(sheet) {
+    var scene = xSheet[getCurrentXSheetScene(xSheet)];
+    var sumOfPreviousScenes = getSum(xSheet, scene);
+    var elapsed = drawCount - sumOfPreviousScenes;
+    var remaining = scene.d - elapsed;
+    return "| " + elapsed + " ... " + remaining + " | (" + scene.d + ")";
+}
