@@ -956,3 +956,155 @@ void main() {
 `;
 mistyProgram.init();
 // redraw();
+
+
+
+let foggyProgram = new ShaderProgram("foggy-program");
+
+foggyProgram.vertText = `
+// beginGLSL
+attribute vec3 a_position;
+attribute vec2 a_texcoord;
+varying vec2 v_texcoord;
+void main() {
+  // Multiply the position by the matrix.
+  vec4 positionVec4 = vec4(a_position, 1.0);
+  // gl_Position = a_position;
+  positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
+  gl_Position = positionVec4;
+  // Pass the texcoord to the fragment shader.
+  v_texcoord = a_texcoord;
+}
+// endGLSL
+`;
+
+foggyProgram.fragText = `
+// beginGLSL
+precision mediump float;
+// Passed in from the vertex shader.
+uniform float time;
+uniform float alpha;
+varying vec2 v_texcoord;
+// The texture.
+uniform sampler2D u_texture;
+const float TURBULENCE = 0.009;
+//noise function from iq: https://www.shadertoy.com/view/Msf3WH
+vec2 hash(vec2 p) {
+    p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
+    return -1.0 + 2.0 * fract(sin(p) * 43758.5453123);
+}
+float noise(vec2 p) {
+    const float K1 = 0.366025404;
+    const float K2 = 0.211324865;
+    vec2 i = floor(p + (p.x + p.y) * K1);
+    vec2 a = p - i + (i.x + i.y) * K2;
+    float m = step(a.y, a.x);
+    vec2 o = vec2(m, 1.0 - m);
+    vec2 b = a - o + K2;
+    vec2 c = a - 1.0 + 2.0 * K2;
+    vec3 h = max(0.5 - vec3(dot(a, a), dot(b, b), dot(c, c)), 0.0);
+    vec3 n = h * h * h * h * vec3(dot(a, hash(i + 0.0)), dot(b, hash(i + o)), dot(c, hash(i + 1.0)));
+    return dot(n, vec3(70.0));
+}
+const mat2 m2 = mat2(1.6,  1.2, -1.2,  1.6);
+float fbm(vec2 p) {
+    float amp = 0.5;
+    float h = 0.0;
+    for (int i = 0; i < 8; i++) {
+        float n = noise(p);
+        h += amp * n;
+        amp *= 0.5;
+        p = m2 * p;
+    }
+    return  0.5 + 0.5 * h;
+}
+vec3 smokeEffect(vec2 uv) {
+    float t = (time + 2e2) * 1e-3;
+    vec3 col = vec3(0.0, 0.0, 0.0);
+    // time scale
+    float v = 0.0002;
+    vec3 smoke = vec3(1.0);
+    //uv += mo * 10.0;
+    vec2 scale = uv * 0.5;
+    vec2 turbulence = TURBULENCE * vec2(noise(vec2(uv.x * 3.5, uv.y * 3.2) * 1.), noise(vec2(uv.x * 2.2, uv.y * 1.5)));
+    scale += turbulence;
+    float n1 = fbm(vec2(scale.x - abs(sin(t * v * 1000.0)), scale.y - 50.0 * abs(sin(t * v * 410.0))));
+    col = mix(col, smoke, smoothstep(0.35, 0.9, n1));
+    //float y = fragCoord.y/iResolution.y;
+    //float fade = exp(-(y*y));
+    //col *= fade;
+//     col.r * 0.5;
+    col = clamp(col, vec3(0.0), vec3(1.0)) * 2.;
+    return col;
+}
+float circle(vec2 p, float r) {
+    float c = length(p) - r;
+    return smoothstep(r + 0.02, r, c);
+}
+float sinwave(vec2 p, float scale, float amp) {
+    float wave = cos(p.x * scale + 1.5 + time * 20.) + 0.25 * cos(p.x * scale * scale + time * 20.);
+    float s = smoothstep(amp + 0.01, amp, amp * wave * 0.5 - p.y * 0.5);
+    return s;
+}
+float plot(vec2 s, float p) {
+    float largeur = abs(sin(time * 0.01)) * 0.1 + 0.1;
+    return smoothstep(p - largeur, p, s.y) - smoothstep(p, p + largeur, s.y);
+}
+float circ(float speed, float size, float vx, float vy, float dist) {
+  // float x = cos(time * speed) * dist * 0.012 - 0.425;
+  // float y = sin(time * speed) * dist * 0.012 - 0.25;
+  float t = time;
+  float x = cos(t * speed * 1000.0) * dist * (sin(t)) * 0.12 - 0.425;
+  float y = sin(t * speed * 1000.0) * dist * (sin(t)) * 0.12 - 0.25;
+  // float x = cos(time * speed) * dist * abs(sin(time * 0.01) * 1.0) - 0.425;
+  // float y = sin(time * speed) * dist * abs(sin(time * 0.01) * 1.0) - 0.25;
+  vec2 v = vec2(vx + x, vy + y);
+  float d = 1.0 / length(v * size);
+     d = sin(d * cos(t * 5.) * 1.);
+  return d;
+}
+float Circle(vec2 uv, vec2 p, float r, float blur) {
+    float d = length(uv - p); 
+    float c = smoothstep(r, r - blur, d); 
+    return c;
+}
+vec3 CircleRGB(vec2 uv, vec2 p, float r, float blur, vec3 col) {
+    float d = length(uv - p); 
+    float c = smoothstep(r, r - blur, d); 
+    return col * c;
+}
+vec3 InvCircleRGB(vec2 uv, vec2 p, float r, float blur, vec3 col) {
+    float d = length(p - uv); 
+    float c = smoothstep(r - blur, r, d); 
+    return col * c;
+}
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453 * (2.0 + sin(time)));
+}
+void main() {
+    vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
+    float t = time * 1e2;
+    vec2 p2 = gl_FragCoord.xy / 1000.0;
+//     vec3 col = InvCircleRGB(uv, p2, 0.5, 0.2, vec3(1.0, 1.0, 0.7));
+    vec3 col = vec3(0.0);
+//     vec3 colb = InvCircleRGB(uv, p2, 0.5, 0.2, vec3(1.0, 0.0, 0.0));
+//     vec3 col2 = CircleRGB(uv, p2, 0.5, 0.4, vec3(1.0, 0.0, 0.0));
+    float rando = rand(vec2(uv.x, uv.y));
+    vec3 cloudCol = vec3(0.9, 0.0, 0.0);
+    vec3 smoke2 = smokeEffect(p2 + vec2(-1.0, -2.0));
+//     float cloud2 = 0.85;
+    vec4 tex = texture2D(u_texture, v_texcoord);
+    col = mix(tex.rgb, smoke2, cloudCol * smoke2 * 4.0 - smoke2 * 0.25);
+    gl_FragColor = vec4(col, alpha);
+//     gl_FragColor.rgb -= col * 0.75;
+//     gl_FragColor.rgb += col2 * 0.75;
+//     gl_FragColor.rgb += colb * 0.85;
+//     gl_FragColor.a *= alpha;
+    // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    // gl_FragColor.r = gl_FragColor.r * 2.5;
+    // gl_FragColor.a = 0.5;
+}
+// endGLSL
+`;
+foggyProgram.init();
+// redraw();
