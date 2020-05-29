@@ -245,6 +245,9 @@ function setup() {
         logJavaScriptConsole(x);
         drawCount = Math.floor(x / 685 * xSheetDuration);
         repositionSong = true;
+        if (!looping) {
+            redraw();
+        }
     }, false);
 }
 
