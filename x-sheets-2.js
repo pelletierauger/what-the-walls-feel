@@ -632,7 +632,12 @@ function getCurrentSceneBoundaries(sheet) {
 }
 
 function jumpTo(scene) {
-    drawCount = getSum(xSheet, xSheet[scene]);
+    if (typeof scene == "string") {
+        drawCount = getSum(xSheet, xSheet[scene]);
+    } else if (typeof scene == "number") {
+        let list = Object.getOwnPropertyNames(xSheet);
+        drawCount = getSum(xSheet, xSheet[list[scene]]);
+    }
     repositionSong = true;
     if (!looping) {
         drawCount--;
@@ -641,8 +646,15 @@ function jumpTo(scene) {
 }
 
 function clipScene(scene) {
-    var start = getSum(xSheet, xSheet[scene]);
-    var end = start + xSheet[scene].d;
+    let start, end;
+    if (typeof scene == "string") {
+        start = getSum(xSheet, xSheet[scene]);
+        end = start + xSheet[scene].d;
+    } else if (typeof scene == "number") {
+        let list = Object.getOwnPropertyNames(xSheet);
+        start = getSum(xSheet, xSheet[list[scene]]);
+        end = start + xSheet[list[scene]].d;
+    }
     clip(start, end);
 }
 
