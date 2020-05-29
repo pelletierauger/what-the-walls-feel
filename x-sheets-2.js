@@ -1,3 +1,5 @@
+let xSheetInit = false;
+
 xSheet = {
     // ailleurs00: {
     //     d: 6000,
@@ -46,14 +48,14 @@ xSheet = {
             traffic3FadeIn.run(rN);
         }
     },
-//     trafficFadeIn2: { // This is a keeper.
-//         d: 500,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-//             var coFade = cosineFade(sum, 100);
-//             springsSlowerLessElastic.blend(sum, traffic3FadeIn, rN, coFade);
-//         }
-//     },
+    //     trafficFadeIn2: { // This is a keeper.
+    //         d: 500,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.trafficFadeIn);
+    //             var coFade = cosineFade(sum, 100);
+    //             springsSlowerLessElastic.blend(sum, traffic3FadeIn, rN, coFade);
+    //         }
+    //     },
     nooTests: {
         d: 1200,
         f: sum => {
@@ -62,25 +64,25 @@ xSheet = {
             noodlesHorizontal.mix(sum, traffic3FadeIn, rN, coFade);
         }
     },
-//     trafficAndNoodles: {
-//         d: 1800,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-//             var coFade = cosineFade(sum, 300);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             // concerto.run();
-//             noodlesHorizontal.mix(sum, traffic3FadeIn, rN + 0, coFade);
-//         }
-//     },
-//     pillars: {
-//         d: 650,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-//             var coFade = cosineFade(sum, 300);
-//             pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
-//         }
-//     },
+    //     trafficAndNoodles: {
+    //         d: 1800,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.trafficFadeIn);
+    //             var coFade = cosineFade(sum, 300);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             // concerto.run();
+    //             noodlesHorizontal.mix(sum, traffic3FadeIn, rN + 0, coFade);
+    //         }
+    //     },
+    //     pillars: {
+    //         d: 650,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.trafficFadeIn);
+    //             var coFade = cosineFade(sum, 300);
+    //             pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
+    //         }
+    //     },
     pillars2: {
         d: 650,
         f: sum => {
@@ -89,14 +91,14 @@ xSheet = {
             curvierPillars.mix(sum, noodlesHorizontal, rN, coFade);
         }
     },
-//     pillars3: {
-//         d: 650,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.pillars2);
-//             var coFade = cosineFade(sum, 100);
-//             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
-//         }
-//     },
+    //     pillars3: {
+    //         d: 650,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.pillars2);
+    //             var coFade = cosineFade(sum, 100);
+    //             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
+    //         }
+    //     },
     blendyCav: {
         d: 450,
         f: function(sum) {
@@ -108,17 +110,17 @@ xSheet = {
             blendyCavernB.mix(sum, curvierPillars, rN, coFade);
         }
     },
-//     blendyCavs: {
-//         d: 900,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.blendyCav);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             // concerto.run();
-//             var coFade = cosineFade(sum, 100);
-//             blendyCavern.mix(sum + 100, blendyCavernB, rN, coFade);
-//         }
-//     },
+    //     blendyCavs: {
+    //         d: 900,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.blendyCav);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             // concerto.run();
+    //             var coFade = cosineFade(sum, 100);
+    //             blendyCavern.mix(sum + 100, blendyCavernB, rN, coFade);
+    //         }
+    //     },
     blendyCavs2: {
         d: 300,
         f: function(sum) {
@@ -173,22 +175,22 @@ xSheet = {
             horizontalJumpingDots2.mix(sum + 1000, travellers4Bigger, rN, coFade);
         }
     },
-//     jumpingDots: {
-//         d: 150,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.travellers6);
-//             var coFade = cosineFade(sum, 100);
-//             fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
-//         }
-//     },
-//     jumpingDots2: {
-//         d: 700,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.travellers6);
-//             var coFade = cosineFade(sum, 10);
-//             fastJumpingDots2.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
-//         }
-//     },
+    //     jumpingDots: {
+    //         d: 150,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.travellers6);
+    //             var coFade = cosineFade(sum, 100);
+    //             fastJumpingDots.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
+    //         }
+    //     },
+    //     jumpingDots2: {
+    //         d: 700,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.travellers6);
+    //             var coFade = cosineFade(sum, 10);
+    //             fastJumpingDots2.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
+    //         }
+    //     },
     //-------------------  The Egg Sequence -----------------------------------------//
     eggs0: {
         d: 300,
@@ -305,29 +307,28 @@ xSheet = {
     //             biggerHungryClouds.mix(sum + 1000, fastJumpingDots, rN + 1000, coFade);
     //         }
     //     },
-    
-//  Experimental bigger scenes -------------------------------------------------- //
-//     blurryFixed: {
-//         d: 180,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.blurryFixed);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             // concerto.run();
-//             blurryCavern2.run(rN + drawCount);
-//         }
-//     },
-//     blurry2: {
-//         d: 903 - 168,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.blurry2);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             // concerto.run();
-//             blurryCavern2.run(rN);
-//         }
-//     },
-//  ------------------------------------------------------------------------------ //
+    //  Experimental bigger scenes -------------------------------------------------- //
+    //     blurryFixed: {
+    //         d: 180,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.blurryFixed);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             // concerto.run();
+    //             blurryCavern2.run(rN + drawCount);
+    //         }
+    //     },
+    //     blurry2: {
+    //         d: 903 - 168,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.blurry2);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             // concerto.run();
+    //             blurryCavern2.run(rN);
+    //         }
+    //     },
+    //  ------------------------------------------------------------------------------ //
     // blurry: {
     //     d: 5000,
     //     f: function(sum) {
@@ -382,32 +383,32 @@ xSheet = {
     //             concerto.mix(sum - 100, traffic3FadeIn, rN, coFade);
     //         }
     //     },
-//     cavern: {
-//         d: 2000,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.cavern);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             // concerto.run();
-//             var coFade = cosineFade(sum, 300);
-//             // cavern.mix(sum, traffic3FadeIn, rN, coFade);
-//             cavern.run(rN + 100);
-//         }
-//     },
+    //     cavern: {
+    //         d: 2000,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.cavern);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             // concerto.run();
+    //             var coFade = cosineFade(sum, 300);
+    //             // cavern.mix(sum, traffic3FadeIn, rN, coFade);
+    //             cavern.run(rN + 100);
+    //         }
+    //     },
     //     pillars4: { d: 650, f: sum => {
     //             var rN = getSum(xSheet, xSheet.pillars3);
     //             var coFade = cosineFade(sum, 100);
     //             intricateFastPillars.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
     //         }
     //     },
-//     muscles: {
-//         d: 2000,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.pillars3);
-//             var coFade = cosineFade(sum, 100);
-//             muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
-//         }
-//     },
+    //     muscles: {
+    //         d: 2000,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.pillars3);
+    //             var coFade = cosineFade(sum, 100);
+    //             muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
+    //         }
+    //     },
     distanceMuscles: {
         d: 2000,
         f: sum => {
@@ -478,21 +479,21 @@ xSheet = {
             // fasterSubtleTrunk.run();
         }
     },
-//     endTests0: {
-//         d: 3000,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-//             // oscillators[183].run(0);
-//             // drawBG();
-//             var coFade = cosineFade(sum, 10);
-// //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
-// //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
-// //             escherLikeStaircases.mix(sum, fasterSubtleTrunk, rN, coFade);
-//             tinyJumpers.mix(sum, fasterSubtleTrunk, rN, coFade);
-//             // concerto.run();
-//             // fasterSubtleTrunk.run();
-//         }
-//     },
+    //     endTests0: {
+    //         d: 3000,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+    //             // oscillators[183].run(0);
+    //             // drawBG();
+    //             var coFade = cosineFade(sum, 10);
+    // //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
+    // //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
+    // //             escherLikeStaircases.mix(sum, fasterSubtleTrunk, rN, coFade);
+    //             tinyJumpers.mix(sum, fasterSubtleTrunk, rN, coFade);
+    //             // concerto.run();
+    //             // fasterSubtleTrunk.run();
+    //         }
+    //     },
     endTests: {
         d: 3000,
         f: function(sum) {
@@ -500,8 +501,8 @@ xSheet = {
             // oscillators[183].run(0);
             // drawBG();
             var coFade = cosineFade(sum, 10);
-//             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
-//             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
+            //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
+            //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
             balancedDynamicalIntricate.mix(sum, fasterSubtleTrunk, rN, coFade);
             // concerto.run();
             // fasterSubtleTrunk.run();
@@ -511,6 +512,13 @@ xSheet = {
         return this[Object.keys(this)[n]];
     }
 };
+if (xSheetInit) {
+    let list = Object.getOwnPropertyNames(xSheet);
+    let lastScene = xSheet[list[list.length - 2]];
+    xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
+    displayTimeline();
+    sheetSlider.elt.max = xSheetDuration;
+}
 
 var xSheet2 = {
     1: {
@@ -644,7 +652,7 @@ function clipSequence(start, end) {
     clip(s, e);
 }
 
-getAllDurs = function() {
+function displayTimeline() {
     var list = Object.getOwnPropertyNames(xSheet);
     var totalDuration;
     var lastScene = xSheet[list[list.length - 2]];
@@ -653,17 +661,17 @@ getAllDurs = function() {
     var durSoFar = 0;
     timelineCtx.fillStyle = 'rgb(255, 255, 255)';
     timelineCtx.fillRect(0, 0, 1372, 100);
-    for (let i = 0; i < list.length - 1; i++) {
+    for (let i = 0; i <  list.length - 1; i++) {
         var dur = xSheet[list[i]].d;
-        logJavaScriptConsole(dur);
+        // logJavaScriptConsole(dur);
         if (i % 2 == 0) {
             timelineCtx.fillStyle = 'rgb(255, 255, 255)';
         } else {
             timelineCtx.fillStyle = 'rgb(235, 235, 235)';
         }
         timelineCtx.fillRect(durSoFar * norm, 0, dur * norm, 100);
-//         timelineCtx.fillStyle = 'rgb(0, 0, 0)';
-//         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
+        //         timelineCtx.fillStyle = 'rgb(0, 0, 0)';
+        //         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
         durSoFar += dur;
     }
 }

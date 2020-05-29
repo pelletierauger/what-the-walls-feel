@@ -184,7 +184,8 @@ function setup() {
             jsArea.style.display = "block";
             displayMode = "js";
             autoRedraw = true;
-            getAllDurs();
+            displayTimeline();
+            xSheetInit = true;
         }
     }, 1000);
     // noLoop();
@@ -242,7 +243,7 @@ function setup() {
 
     timelineIndex.addEventListener('click', function(event) {
         var x = event.pageX - timelineIndex.offsetLeft;
-        logJavaScriptConsole(x);
+        // logJavaScriptConsole(x);
         drawCount = Math.floor(x / 685 * xSheetDuration);
         repositionSong = true;
         if (!looping) {
