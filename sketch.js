@@ -264,6 +264,9 @@ draw = function() {
         if (drawCount > clipMax) {
             drawCount = clipMin;
             repositionSong = true;
+        } else if (drawCount < clipMin) {
+            drawCount = clipMin;
+            repositionSong = true;
         }
     }
     // console.log("DRAWWWW!");
