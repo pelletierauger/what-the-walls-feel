@@ -48,7 +48,7 @@ function createInfoDiv() {
     let infoDivBack = createDiv('');
     infoDivBack.style('position', 'absolute');
     infoDivBack.style('right', '0');
-    infoDivBack.style('bottom', '35px');
+    infoDivBack.style('bottom', '30px');
     infoDivBack.style('padding', '10px');
     infoDivBack.style('padding-top', '0px');
     // infoDivBack.style('margin-left', '10px');
@@ -58,7 +58,7 @@ function createInfoDiv() {
     infoDivBack.style('background', '#CDCDCD');
     infoDivBack.style('font-family', 'Inconsolata');
     infoDivBack.style('line-height', '0.1em');
-    infoDivBack.style('height', '35px');
+    infoDivBack.style('height', '40px');
     infoDivBack.style('font-size', '0.7em');
     infoDivBack.style('color', '#CDCDCD');
     let infoBack = createP('Bonjour');
