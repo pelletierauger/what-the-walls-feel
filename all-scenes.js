@@ -680,6 +680,7 @@ bigTravelInABrokenLand.update = function(sum) {
     let t = (drawCount - sum + 20000) * 0.025 * 0.25 * 1e-2;
     let a = 0.005 * sin(t * 0.05);
 //     let i = 0;
+        let amp = map(drawCount - sum, 0, 2000, 0, 0.01);
     for (let x = amountX; x > 0; x -= 1) {
 //     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
@@ -687,7 +688,7 @@ bigTravelInABrokenLand.update = function(sum) {
             let oy = y + 100 * Math.sin(t * 0.5);
 //             let dx = abs(cos(x) * 0.01 - 25);
 //             let dy = abs(sin(y) * 0.01 - 25);
-            let xx = x + Math.pow(Math.cos(a * ox * oy + t * 0.000005), 70) * Math.sin(ox * oy) * ox * ox * 0.125 * 0.001;
+            let xx = x + Math.pow(Math.cos(a * ox * oy + t * 0.000005), 70) * Math.sin(ox * oy) * ox * ox * 0.125 * amp;
             let yy = y + Math.pow(Math.sin(a * ox * oy + t * 0.0005), 700) * Math.sin(ox * oy) * ox * ox * 2.5 * 0;
             //  xx += map(cos(x * t), -1, 1, 0.5, 1) * 0.5;
             //  yy += map(sin(y * t), -1, 1, 0.5, 1) * 0.5;
