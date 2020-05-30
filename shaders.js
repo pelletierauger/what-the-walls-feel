@@ -987,7 +987,7 @@ uniform float alpha;
 varying vec2 v_texcoord;
 // The texture.
 uniform sampler2D u_texture;
-const float TURBULENCE = 0.009;
+const float TURBULENCE = 0.00009;
 //noise function from iq: https://www.shadertoy.com/view/Msf3WH
 vec2 hash(vec2 p) {
     p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
@@ -1089,12 +1089,13 @@ void main() {
     vec3 col = vec3(0.0);
 //     vec3 colb = InvCircleRGB(uv, p2, 0.5, 0.2, vec3(1.0, 0.0, 0.0));
 //     vec3 col2 = CircleRGB(uv, p2, 0.5, 0.4, vec3(1.0, 0.0, 0.0));
-    float rando = rand(vec2(uv.x, uv.y));
+//     float rando = rand(vec2(uv.x, uv.y));
     vec3 cloudCol = vec3(0.9, 0.0, 0.0);
     vec3 smoke2 = smokeEffect(p2 + vec2(-1.0, -2.0));
 //     float cloud2 = 0.85;
+    float rando = rand(vec2(uv.x, uv.y) * 100.) * 0.05;
     vec4 tex = texture2D(u_texture, v_texcoord);
-    col = mix(tex.rgb, smoke2, cloudCol * smoke2 * 4.0 - smoke2 * 0.25);
+    col = mix(tex.rgb, smoke2, cloudCol * (smoke2 - rando) * 8.0 - smoke2 * 0.5);
     gl_FragColor = vec4(col, alpha);
 //     gl_FragColor.rgb -= col * 0.75;
 //     gl_FragColor.rgb += col2 * 0.75;
