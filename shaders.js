@@ -1190,12 +1190,13 @@ void main() {
     newV += cos(sin(uv * 20.));
     col *= sin(atan(newV.x, newV.y));
     col *= sin(sin(atan(newV.x, newV.y) * (sin(t * 100.) * 1.)) * 10. + sin(t * 10.) * 100.);
-    float rando = rand(uv) * 0.25 * 0.2;
+    float rando = rand(uv) * 0.25 * 0.25;
 // //     col.r -= rando * 1.;
 //      col.g *= 0.5;
 //     gl_FragColor = vec4((col- rando) * 1.0, 1.0);
     gl_FragColor = texture2D(u_texture, v_texcoord);
-    gl_FragColor.rgb -= max(col, -0.6) * 0.95;
+//     gl_FragColor.rgb -= max(col, -0.6) * 0.95;
+    gl_FragColor.r = min(max(gl_FragColor.r, col.r - rando), 1.0) - rando * col.r;
 //     gl_FragColor.rgb += col2 * 0.75;
 //     gl_FragColor.rgb += colb * 0.85;
     gl_FragColor.a *= alpha;
