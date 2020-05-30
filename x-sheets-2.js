@@ -267,6 +267,14 @@ xSheet = {
             plantsSofter.mix(sum + 1000, beautifulOceanWaves, rN + 1000, coFade);
         }
     },
+        distanceMuscles: {
+        d: 2000,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.plantsSofter);
+            var coFade = cosineFade(sum, 300);
+            middleOfTheMuscularDistanceField.blend(sum, plantsSofter, rN + 1000, coFade);
+        }
+    },
     torn: {
         d: 3000,
         f: function(sum) {
@@ -409,14 +417,6 @@ xSheet = {
     //             muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
     //         }
     //     },
-    distanceMuscles: {
-        d: 2000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.muscles);
-            var coFade = cosineFade(sum, 300);
-            middleOfTheMuscularDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
-        }
-    },
     distanceMuscles2: {
         d: 2000,
         f: sum => {
