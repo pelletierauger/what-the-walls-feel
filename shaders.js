@@ -1169,7 +1169,7 @@ float rand(vec2 co){
 }
 void main() {
     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
-    float t = time * 0.01;
+    float t = time * 0.0025;
 //     vec2 p2 = vec2(4.0, 0.2) * 0.1;
 //     vec3 col = InvCircleRGB(uv, p2, 0.5, 0.2, vec3(1.0, 1.0, 0.7));
 //     vec3 colb = InvCircleRGB(uv, p2, 0.5, 0.2, vec3(1.0, 0.0, 0.0));
@@ -1190,12 +1190,12 @@ void main() {
     newV += cos(sin(uv * 20.));
     col *= sin(atan(newV.x, newV.y));
     col *= sin(sin(atan(newV.x, newV.y) * (sin(t * 100.) * 1.)) * 10. + sin(t * 10.) * 100.);
-//     float rando = rand(uvf) * 0.075;
+    float rando = rand(uv) * 0.25 * 0.2;
 // //     col.r -= rando * 1.;
 //      col.g *= 0.5;
 //     gl_FragColor = vec4((col- rando) * 1.0, 1.0);
     gl_FragColor = texture2D(u_texture, v_texcoord);
-    gl_FragColor.rgb -= col * 0.75;
+    gl_FragColor.rgb -= max(col, -0.6) * 0.95;
 //     gl_FragColor.rgb += col2 * 0.75;
 //     gl_FragColor.rgb += colb * 0.85;
     gl_FragColor.a *= alpha;
