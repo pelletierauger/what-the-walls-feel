@@ -1,4 +1,4 @@
-let cyanDots = new ShaderProgram("cyan-dots");
+// let cyanDots = new ShaderProgram("cyan-dots");
 
 cyanDots.vertText = `
     // beginGLSL
