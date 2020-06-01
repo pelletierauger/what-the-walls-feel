@@ -525,6 +525,7 @@ blenderProgram.fragText = `
 // beginGLSL
 precision mediump float;
 // Passed in from the vertex shader.
+uniform float resolution;
 uniform float time;
 varying vec2 v_texcoord;
 // The texture.
@@ -814,6 +815,9 @@ void main() {
 //     
 // A wilder, pinker version
     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
+    if (resolution == 1.0) {
+        uv *= 0.5;
+    }
     vec4 texture = texture2D(u_texture, v_texcoord);
     vec4 texture2 = texture2D(u_texture2, v_texcoord);
     vec3 levels = LevelsControlInputRange(texture2.rgb, 0.2, 0.95);

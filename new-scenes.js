@@ -1050,6 +1050,8 @@ blendyCavern.display = function(alpha) {
     gl.uniform1i(textureLocation, 0);
     var textureLocation2 = gl.getUniformLocation(currentProgram, "u_texture2");
     gl.uniform1i(textureLocation2, 1);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
 
@@ -1388,6 +1390,8 @@ overture.display = function(alpha) {
     gl.uniform1i(textureLocation, 0);
     var textureLocation2 = gl.getUniformLocation(currentProgram, "u_texture2");
     gl.uniform1i(textureLocation2, 1);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
 
@@ -1922,6 +1926,8 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
     gl.uniform1i(textureLocation, 0);
     var textureLocation2 = gl.getUniformLocation(currentProgram, "u_texture2");
     gl.uniform1i(textureLocation2, 1);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
 
