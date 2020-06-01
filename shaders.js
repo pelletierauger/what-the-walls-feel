@@ -1139,6 +1139,7 @@ mistyProgram2.fragText = `
 // beginGLSL
 precision mediump float;
 // Passed in from the vertex shader.
+uniform float resolution;
 uniform float time;
 uniform float alpha;
 varying vec2 v_texcoord;
@@ -1175,6 +1176,9 @@ float rand(vec2 co){
 }
 void main() {
     vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
+    if (resolution == 1.0) {
+        uv *= 0.5;
+    }
     float t = time * 0.0025;
 //     vec2 p2 = vec2(4.0, 0.2) * 0.1;
 //     vec3 col = InvCircleRGB(uv, p2, 0.5, 0.2, vec3(1.0, 1.0, 0.7));

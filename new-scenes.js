@@ -1627,6 +1627,8 @@ bigTravelInABrokenLand.display = function(alpha) {
     // 
     textureLocation = gl.getUniformLocation(currentProgram, "u_texture");
     gl.uniform1i(textureLocation, 0);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
     alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
@@ -1963,6 +1965,8 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
 
     textureLocation = gl.getUniformLocation(currentProgram, "u_texture");
     gl.uniform1i(textureLocation, 0);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
     alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
