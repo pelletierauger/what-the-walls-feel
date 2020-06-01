@@ -1444,7 +1444,7 @@ pillarsInACavern.display = blendyCavern.display;
 curvierPillars.display = blendyCavern.display;
 curvierPillarsEvenSmaller.display = blendyCavern.display;
 muscleFibersRebuildingThemselves.display = blendyCavern.display;
-// harmoniousEggs2.display = blendyCavern.display;
+harmoniousEggs2.display = blendyCavern.display;
 
 
 
