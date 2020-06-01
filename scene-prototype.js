@@ -37,7 +37,7 @@ Scene.prototype.display = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
     // gl.clear(gl.COLOR_BUFFER_BIT);
     if (drawCount >= 5) {
@@ -71,7 +71,7 @@ Scene.prototype.display = function(alpha) {
 
     currentProgram = oneTextureProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.useProgram(currentProgram);
