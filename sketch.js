@@ -34,6 +34,9 @@ var envirLooping = false;
 let currentProgram;
 let cinemaMode = false;
 
+let resolutionScalar = 1;
+let resolutionBG;
+
 let texture, texture2, texture3, texture4, framebuf, framebuf2, framebuf3, framebuf4;
 
 let vbuffer;
@@ -110,8 +113,16 @@ function setup() {
     socket = io.connect('http://localhost:8080');
     // shaders require WEBGL mode to work
     pixelDensity(1);
+    noCanvas();
     // cnvs = createCanvas(windowWidth, windowWidth * 9 / 16, WEBGL);
-    cnvs = createCanvas(1280, 1280 * 9 / 16, WEBGL);
+    // cnvs = createCanvas(1280, 1280 * 9 / 16, WEBGL);
+    cnvs = document.createElement('canvas');
+
+    cnvs.id = "defaultCanvas0";
+    cnvs.width = 2560 * resolutionScalar;
+    cnvs.height = 1440 * resolutionScalar;
+    var body = document.getElementsByTagName("body")[0];
+    body.appendChild(cnvs);
     canvasDOM = document.getElementById('defaultCanvas0');
     canvasDOM.onclick = function() {
         if (envirLooping) {
@@ -128,7 +139,7 @@ function setup() {
         }
     };
 
-    gl = canvas.getContext('webgl');
+    gl = cnvs.getContext('webgl');
 
     // gl.cbf = gl.getExtension('WEBGL_color_buffer_float') || gl.getExtension('EXT_color_buffer_float');
     // gl.tf = gl.getExtension('OES_texture_float');
@@ -149,7 +160,7 @@ function setup() {
     gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
 
     // Set the view port
-    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     createInfoDiv();
     setupInfoDiv();
 
@@ -168,6 +179,7 @@ function setup() {
     shadersReadyToInitiate = true;
     initializeShaders();
     time = gl.getUniformLocation(getProgram("blue-background"), "time");
+    resolutionBG = gl.getUniformLocation(getProgram("blue-background"), "resolution");
     // Get the attribute location
     coord = gl.getAttribLocation(getProgram("cyan-dots"), "coordinates");
 
