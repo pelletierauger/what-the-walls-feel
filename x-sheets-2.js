@@ -267,7 +267,7 @@ xSheet = {
             plantsSofter.mix(sum + 1000, beautifulOceanWaves, rN + 1000, coFade);
         }
     },
-        distanceMuscles: {
+    distanceMuscles: {
         d: 2000,
         f: sum => {
             var rN = getSum(xSheet, xSheet.plantsSofter);
@@ -655,6 +655,15 @@ function jumpToScene(scene, startOffset = 0) {
 
 function jump(frame) {
     drawCount = frame;
+    repositionSong = true;
+    if (!looping) {
+        drawCount--;
+        redraw();
+    }
+}
+
+function jumpRelative(delta) {
+    drawCount += delta;
     repositionSong = true;
     if (!looping) {
         drawCount--;
