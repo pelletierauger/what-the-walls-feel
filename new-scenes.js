@@ -123,7 +123,7 @@ blurryCavern.display = function() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
 
     // if (drawCount >= 5) {
@@ -186,15 +186,15 @@ blurryCavern.display = function() {
 
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture2, framebuf2);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
 
 
 
     let name = "myBlur";
-    gl.uniform2f(resolutionLocation, 1280, 720);
-    gl.uniform2f(textureSizeLocation, 1280, 720);
+    gl.uniform2f(resolutionLocation, cnvs.width, cnvs.height);
+    gl.uniform2f(textureSizeLocation, cnvs.width, cnvs.height);
     gl.uniform2f(directionLocation, 8 * vb, 0);
     gl.uniform1f(flipYLocation, 1);
     gl.uniform1fv(kernelLocation, kernels[name]);
@@ -296,7 +296,7 @@ blurryCavern.display = function() {
 
     // unbind the buffer and draw the resulting texture....
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
     gl.bindTexture(gl.TEXTURE_2D, texture2);
 
@@ -405,7 +405,7 @@ blurryCavern2.display = function() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
 
     // if (drawCount >= 5) {
@@ -476,15 +476,15 @@ blurryCavern2.display = function() {
 
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture2, framebuf2);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
 
 
 
     let name = "myBlur";
-    gl.uniform2f(resolutionLocation, 1280, 720);
-    gl.uniform2f(textureSizeLocation, 1280, 720);
+    gl.uniform2f(resolutionLocation, cnvs.width, cnvs.height);
+    gl.uniform2f(textureSizeLocation, cnvs.width, cnvs.height);
     gl.uniform2f(directionLocation, 8 * vb, 0);
     gl.uniform1f(flipYLocation, 1);
     gl.uniform1fv(kernelLocation, kernels[name]);
@@ -600,7 +600,7 @@ blurryCavern2.display = function() {
 
     // unbind the buffer and draw the resulting texture....
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
     gl.bindTexture(gl.TEXTURE_2D, texture2);
 
@@ -775,7 +775,7 @@ blendyCavern.display = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
 
     // if (drawCount >= 5) {
@@ -823,7 +823,7 @@ blendyCavern.display = function(alpha) {
     // unbind the buffer and draw the resulting texture....
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture3, framebuf3);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
@@ -910,15 +910,15 @@ blendyCavern.display = function(alpha) {
 
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture2, framebuf2);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
 
 
 
     let name = "myBlur";
-    gl.uniform2f(resolutionLocation, 1280, 720);
-    gl.uniform2f(textureSizeLocation, 1280, 720);
+    gl.uniform2f(resolutionLocation, cnvs.width, cnvs.height);
+    gl.uniform2f(textureSizeLocation, cnvs.width, cnvs.height);
     gl.uniform2f(directionLocation, 8 * vb, 0);
     gl.uniform1f(flipYLocation, 1);
     gl.uniform1fv(kernelLocation, kernels[name]);
@@ -1031,7 +1031,7 @@ blendyCavern.display = function(alpha) {
     currentProgram = blenderProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture4, framebuf4);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture3);
     gl.activeTexture(gl.TEXTURE1);
@@ -1070,7 +1070,7 @@ blendyCavern.display = function(alpha) {
     // unbind the buffer and draw the resulting texture....
     currentProgram = oneTextureProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture4);
     gl.useProgram(currentProgram);
@@ -1110,7 +1110,7 @@ overture.display = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
 
     // if (drawCount >= 5) {
@@ -1160,7 +1160,7 @@ overture.display = function(alpha) {
     // unbind the buffer and draw the resulting texture....
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture3, framebuf3);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
@@ -1247,15 +1247,15 @@ overture.display = function(alpha) {
 
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture2, framebuf2);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
 
 
 
     let name = "myBlur";
-    gl.uniform2f(resolutionLocation, 1280, 720);
-    gl.uniform2f(textureSizeLocation, 1280, 720);
+    gl.uniform2f(resolutionLocation, cnvs.width, cnvs.height);
+    gl.uniform2f(textureSizeLocation, cnvs.width, cnvs.height);
     gl.uniform2f(directionLocation, 8 * vb, 0);
     gl.uniform1f(flipYLocation, 1);
     gl.uniform1fv(kernelLocation, kernels[name]);
@@ -1368,7 +1368,7 @@ overture.display = function(alpha) {
     currentProgram = blenderProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture4, framebuf4);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture3);
     gl.activeTexture(gl.TEXTURE1);
@@ -1407,7 +1407,7 @@ overture.display = function(alpha) {
     // unbind the buffer and draw the resulting texture....
     currentProgram = oneTextureProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture4);
     gl.useProgram(currentProgram);
@@ -1447,7 +1447,7 @@ noodlesHorizontal.displayExperimental = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     // gl.clear(gl.COLOR_BUFFER_BIT);
     if (drawCount >= 5) {
         currentProgram = getProgram("blue-background");
@@ -1482,7 +1482,7 @@ noodlesHorizontal.displayExperimental = function(alpha) {
 
     currentProgram = mistyProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.useProgram(currentProgram);
@@ -1512,7 +1512,7 @@ bigTravelInABrokenLand.display = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     // gl.clear(gl.COLOR_BUFFER_BIT);
     if (drawCount >= 5) {
         currentProgram = getProgram("blue-background");
@@ -1544,7 +1544,7 @@ bigTravelInABrokenLand.display = function(alpha) {
     // 
     currentProgram = foggyProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.useProgram(currentProgram);
@@ -1573,7 +1573,7 @@ bigTravelInABrokenLand.display = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     // gl.clear(gl.COLOR_BUFFER_BIT);
     if (drawCount >= 5) {
         currentProgram = getProgram("blue-background");
@@ -1605,7 +1605,7 @@ bigTravelInABrokenLand.display = function(alpha) {
     // 
     currentProgram = mistyProgram2;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.useProgram(currentProgram);
@@ -1642,7 +1642,7 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
     // gl.clear(gl.COLOR_BUFFER_BIT);
     // We bind the framebuffer...
     bindFrameBuffer(texture, framebuf);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
 
     // if (drawCount >= 5) {
@@ -1690,7 +1690,7 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
     // unbind the buffer and draw the resulting texture....
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture3, framebuf3);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
 
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
@@ -1777,15 +1777,15 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
 
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture2, framebuf2);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.bindTexture(gl.TEXTURE_2D, texture);
 
 
 
 
     let name = "myBlur";
-    gl.uniform2f(resolutionLocation, 1280, 720);
-    gl.uniform2f(textureSizeLocation, 1280, 720);
+    gl.uniform2f(resolutionLocation, cnvs.width, cnvs.height);
+    gl.uniform2f(textureSizeLocation, cnvs.width, cnvs.height);
     gl.uniform2f(directionLocation, 8 * vb, 0);
     gl.uniform1f(flipYLocation, 1);
     gl.uniform1fv(kernelLocation, kernels[name]);
@@ -1898,7 +1898,7 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
     currentProgram = blenderProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     bindFrameBuffer(texture4, framebuf4);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture3);
     gl.activeTexture(gl.TEXTURE1);
@@ -1938,7 +1938,7 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
     currentProgram = mistyProgram2;
     // currentProgram = oneTextureProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.viewport(0, 0, 1280, 720);
+    gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, texture4);
     gl.useProgram(currentProgram);
