@@ -1,6 +1,7 @@
 // let cyanDots = new ShaderProgram("cyan-dots");
 
-cyanDots.vertText = `
+if (resolutionScalar == 1) {
+    cyanDots.vertText = `
     // beginGLSL
     attribute vec2 coordinates;
     varying vec2 myposition;
@@ -14,7 +15,7 @@ cyanDots.vertText = `
     }
     // endGLSL
     `;
-cyanDots.fragText = `
+    cyanDots.fragText = `
     // beginGLSL
     precision mediump float;
     varying vec2 myposition;
@@ -50,4 +51,5 @@ cyanDots.fragText = `
     }
     // endGLSL
 `;
-cyanDots.init();
+    cyanDots.init();
+}
