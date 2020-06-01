@@ -26,6 +26,7 @@ blueBackground.fragText = `
     precision mediump float;
 varying vec2 vTexCoord;
 uniform float time;
+uniform float resolution;
 float plot(vec2 s, float p) {
   float largeur = abs(sin(time * 0.01)) * 0.1 + 0.1;
   return smoothstep(p - largeur, p, s.y) - smoothstep(p, p + largeur, s.y);
@@ -58,13 +59,14 @@ float rand(vec2 co){
 void main() {
     vec2 uv = gl_FragCoord.xy / vec2(1280, 800);
     uv -= vec2(0.5, 0.5);
-    uv.x *= 1280.0/800.0;
-//      uv *= 1.2;
-    vec2 uvf = uv * 10.;
-//     uv.x += 0.25;
-//     uv.y += 0.2;
-//     uv.x += 3.5;
+    uv.x *= 1280.0 / 800.0;
     uv *= 0.5;
+//  the formula to make the background twice as big and identical 
+    if (resolution == 1.0) {
+        uv *= 0.5;
+        uv -= vec2(0.5 * 1280.0 / 800.0, 0.5) * 0.25;      
+    }
+//  ------   
     float d = length(uv);
     float t = time * 0.125 * 0.06125 * 0.5;
     t *= 2.;
@@ -100,7 +102,7 @@ void main() {
 //             col += CircleRGB(uv, p2, 0.5, 0.2, vec3(0.5, 0.7, 0.0) * 0.75);
 //             col += CircleRGB(uv, p2, 0.5, 0.2, vec3(0.5, 0.7, 0.0));
 //     col -= InvCircleRGB(uv, p2, 0.6, 0.2, vec3(1.5, 1.7, 1.0));
-    float rando = rand(uvf) * 0.075;
+    float rando = rand(uv * 10.) * 0.075;
 //     col.r -= rando * 1.;
      col.g *= 0.5;
     gl_FragColor = vec4((col- rando) * 1.0, 1.0);

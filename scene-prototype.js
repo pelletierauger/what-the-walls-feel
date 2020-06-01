@@ -44,6 +44,9 @@ Scene.prototype.display = function(alpha) {
         currentProgram = getProgram("blue-background");
         gl.useProgram(currentProgram);
         // gl.uniform1f(time, drawCount * 0.00125);
+        resolutionBG = gl.getUniformLocation(getProgram("blue-background"), "resolution");
+        gl.uniform1f(resolutionBG, resolutionScalar);
+        time = gl.getUniformLocation(getProgram("blue-background"), "time");
         gl.uniform1f(time, 0.125 + drawCount * 0.00025);
         drawBG(currentProgram);
     }

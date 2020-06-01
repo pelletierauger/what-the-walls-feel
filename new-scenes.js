@@ -129,6 +129,7 @@ blurryCavern.display = function() {
     // if (drawCount >= 5) {
     currentProgram = getProgram("blue-background");
     gl.useProgram(currentProgram);
+    gl.uniform1f(resolutionBG, resolutionScalar);
     gl.uniform1f(time, drawCount * 0.00125);
     drawBG(currentProgram);
     // }
@@ -411,6 +412,7 @@ blurryCavern2.display = function() {
     // if (drawCount >= 5) {
     currentProgram = getProgram("blue-background");
     gl.useProgram(currentProgram);
+    gl.uniform1f(resolutionBG, resolutionScalar);
     gl.uniform1f(time, (drawCount + 4700) * 0.00125);
     drawBG(currentProgram);
     // }
@@ -782,6 +784,7 @@ blendyCavern.display = function(alpha) {
     currentProgram = getProgram("blue-background");
     gl.useProgram(currentProgram);
     // gl.uniform1f(time, (drawCount + 4700) * 0.00125);
+    gl.uniform1f(resolutionBG, resolutionScalar);
     gl.uniform1f(time, (drawCount + 700) * 0.00125);
     drawBG(currentProgram);
     // }
@@ -1116,6 +1119,7 @@ overture.display = function(alpha) {
     // if (drawCount >= 5) {
     currentProgram = getProgram("blue-background");
     gl.useProgram(currentProgram);
+    gl.uniform1f(resolutionBG, resolutionScalar);
     gl.uniform1f(time, (drawCount + 700) * 0.00125);
     drawBG(currentProgram);
     // }
@@ -1436,7 +1440,7 @@ pillarsInACavern.display = blendyCavern.display;
 curvierPillars.display = blendyCavern.display;
 curvierPillarsEvenSmaller.display = blendyCavern.display;
 muscleFibersRebuildingThemselves.display = blendyCavern.display;
-harmoniousEggs2.display = blendyCavern.display;
+// harmoniousEggs2.display = blendyCavern.display;
 
 
 
@@ -1453,6 +1457,7 @@ noodlesHorizontal.displayExperimental = function(alpha) {
         currentProgram = getProgram("blue-background");
         gl.useProgram(currentProgram);
         // gl.uniform1f(time, drawCount * 0.00125);
+        gl.uniform1f(resolutionBG, resolutionScalar);
         gl.uniform1f(time, 0.125 + drawCount * 0.00025);
         drawBG(currentProgram);
     }
@@ -1518,6 +1523,7 @@ bigTravelInABrokenLand.display = function(alpha) {
         currentProgram = getProgram("blue-background");
         gl.useProgram(currentProgram);
         // gl.uniform1f(time, drawCount * 0.00125);
+        gl.uniform1f(resolutionBG, resolutionScalar);
         gl.uniform1f(time, 0.125 + drawCount * 0.00025);
         drawBG(currentProgram);
     }
@@ -1579,6 +1585,7 @@ bigTravelInABrokenLand.display = function(alpha) {
         currentProgram = getProgram("blue-background");
         gl.useProgram(currentProgram);
         // gl.uniform1f(time, drawCount * 0.00125);
+        gl.uniform1f(resolutionBG, resolutionScalar);
         gl.uniform1f(time, 0.125 + drawCount * 0.00025);
         drawBG(currentProgram);
     }
@@ -1649,6 +1656,7 @@ middleOfTheMuscularDistanceField.display = function(alpha) {
     currentProgram = getProgram("blue-background");
     gl.useProgram(currentProgram);
     // gl.uniform1f(time, (drawCount + 4700) * 0.00125);
+    gl.uniform1f(resolutionBG, resolutionScalar);
     gl.uniform1f(time, (drawCount + 700) * 0.00125);
     drawBG(currentProgram);
     // }
