@@ -1,7 +1,7 @@
 let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
-let fileName = "/Volumes/Volumina/frames/wtwf/montage/test001/sketch";
+let fileName = "/Volumes/Volumina/frames/wtwf/montage/test002/sketch";
 // a shader variable
 let gl;
 let shaderProgram;
@@ -303,7 +303,9 @@ draw = function() {
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount + " " + sceneBoundaries);
     timelineIndexCtx.clearRect(0, 0, 1372, 100);
     timelineIndexCtx.fillRect(drawCount / xSheetDuration * 1372, 0, 1, 100);
-    drawCount += drawIncrement;
+    if (exporting) {
+        frameExport();
+    }
     if (clipping) {
         if (drawCount > clipMax) {
             drawCount = clipMin;
@@ -313,10 +315,7 @@ draw = function() {
             repositionSong = true;
         }
     }
-    // console.log("DRAWWWW!");
-    if (exporting) {
-        frameExport();
-    }
+    drawCount += drawIncrement;
 }
 
 // function windowResized() {
