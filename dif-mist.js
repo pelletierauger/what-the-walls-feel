@@ -261,6 +261,7 @@ varying vec2 v_texcoord;
 uniform sampler2D u_texture;
 // The hue shifting functions are taken from there:
 // https://gist.github.com/mairod/a75e7b44f68110e1576d77419d608786
+// https://stackoverflow.com/questions/9234724/how-to-change-hue-of-a-texture-with-glsl
 vec3 hueShift(vec3 color, float hue) {
 const vec3 k = vec3(0.57735, 0.57735, 0.57735);
 float cosAngle = cos(hue);
@@ -273,16 +274,36 @@ vec3 hueShift2( vec3 color, float hueAdjust ){
     const vec3  kYIQToR     = vec3 (1.0, 0.956, 0.621);
     const vec3  kYIQToG     = vec3 (1.0, -0.272, -0.647);
     const vec3  kYIQToB     = vec3 (1.0, -1.107, 1.704);
+    // Convert to YIQ
     float   YPrime  = dot (color, kRGBToYPrime);
     float   I       = dot (color, kRGBToI);
     float   Q       = dot (color, kRGBToQ);
+    // Calculate the hue and chroma
     float   hue     = atan (Q, I);
     float   chroma  = sqrt (I * I + Q * Q);
+    // Make the user's adjustments
     hue += hueAdjust;
+    // Convert back to YIQ
     Q = chroma * sin (hue);
     I = chroma * cos (hue);
+    // Convert back to RGB
     vec3    yIQ   = vec3 (YPrime, I, Q);
     return vec3( dot (yIQ, kYIQToR), dot (yIQ, kYIQToG), dot (yIQ, kYIQToB) );
+}
+vec3 rgb2hsv(vec3 c)
+{
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+vec3 hsv2rgb(vec3 c)
+{
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 float plot(vec2 s, float p) {
   float largeur = abs(sin(time * 0.01)) * 0.1 + 0.1;
@@ -351,8 +372,11 @@ void main() {
     // gl_FragColor.a = 0.5;
     wilder.rgb = wilder.bgr * 0.76;
     gl_FragColor.rgb = mix(gl_FragColor.rgb, wilder, 0.58);
-    
-    gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 0.5);
+//     gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 1.0);
+//     vec3 rrr = gl_FragColor.rgb;
+//     vec3 hsv = rgb2hsv(rrr);
+//     hsv.r += 0.5;
+//     gl_FragColor.rgb = hsv2rgb(hsv);
 }
 // endGLSL
 `;
