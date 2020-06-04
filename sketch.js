@@ -2,13 +2,10 @@ let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
 let fileName = "/Volumes/Volumina/frames/wtwf/montage/test002/sketch";
-// a shader variable
 let gl;
 let shaderProgram;
 let vertices = [];
 let drawCount = 0;
-let drawIncrement = 0.00125;
-drawIncrement = 1;
 let time, coord;
 let vertex_buffer;
 var drawingGeometry = true;
@@ -18,7 +15,6 @@ let repositionSong = false;
 let montage = true;
 
 var stop = false;
-// var frameCount = 0;
 var fps, fpsInterval, startTime, now, then, elapsed;
 var animationStart;
 var framesRendered = 0;
@@ -29,7 +25,6 @@ var fps = 24;
 let titledLoaded = false;
 
 // initialize the timer variables and start the animation
-
 var envirLooping = false;
 let currentProgram;
 let cinemaMode = false;
@@ -46,7 +41,6 @@ let timeline, timelineCtx, timelineIndex, timelineIndexCtx;
 let xSheetDuration;
 
 function startAnimating() {
-    // fpsInterval = 1000 / fps;
     fpsInterval = 1000 / fps;
     then = Date.now();
     animationStart = Date.now();
@@ -111,7 +105,6 @@ function setup() {
     //     song = loadSound("wtwf.mp3", gotSong);
     // }
     socket = io.connect('http://localhost:8080');
-    // shaders require WEBGL mode to work
     pixelDensity(1);
     noCanvas();
     // cnvs = createCanvas(windowWidth, windowWidth * 9 / 16, WEBGL);
@@ -164,18 +157,6 @@ function setup() {
     createInfoDiv();
     setupInfoDiv();
 
-
-    // sheetSlider.input(function() {
-    //     logJavaScriptConsole("Moving this thing!");
-
-    //     if (songPlay) {
-    //         repositionSong = true;
-    //     }
-    //     if (!looping) {
-    //         drawCount = sheetSlider.value;
-    //         draw();
-    //     }
-    // });
     shadersReadyToInitiate = true;
     initializeShaders();
     time = gl.getUniformLocation(getProgram("blue-background"), "time");
@@ -183,8 +164,7 @@ function setup() {
     // Get the attribute location
     coord = gl.getAttribLocation(getProgram("cyan-dots"), "coordinates");
 
-    // Hide the SuperCollider Editor because I will not need it
-    // for this project.
+    // Hide the SuperCollider Editor because I will not need it for this project.
     window.setTimeout(function() {
         if (!keysActive) {
             cmArea.style.width = "1200px";
@@ -200,13 +180,12 @@ function setup() {
             xSheetInit = true;
         }
     }, 1000);
-    // noLoop();
     if (!looping) {
         noLoop();
     }
     for (let i = 0; i < scenes.length; i++) {
         if (scenes[i].init) {
-            console.log("One scene is being initialized!");
+            // console.log("One scene is being initialized.");
             scenes[i].init();
         }
     }
@@ -218,9 +197,6 @@ function setup() {
     // audioElement.type = 'audio/mpeg';
     // var length = player.duration
     // var current_time = player.currentTime;
-
-
-
 
     texture = createTexture();
     framebuf = createFrameBuffer(texture);
@@ -266,19 +242,8 @@ function setup() {
 // }
 
 draw = function() {
-    // drawDots(currentProgram);
     runXSheet(xSheet);
-    //     if (frameCount == 1) {
-    // setDotsShaders();
-    //     }
-    //     setOverlayShaders();
-    //     gl.uniform1f(time, drawCount);
-    //     drawBG();sheetSlider.value(drawCount);
-    // info1.html();
-    if (repositionSong && songPlay && (looping ||  envirLooping)) {
-        // logJavaScriptConsole("repositioning!");
-        // song.jump(drawCount / 24);
-        // audioElement.currentTime = drawCount /  24;
+    if (repositionSong && songPlay && (looping || envirLooping)) {
         if (drawCount <= player.duration * 24) {
             player.currentTime = drawCount /  24;
             if (player.paused) {
@@ -290,9 +255,7 @@ draw = function() {
                 player.pause();
             }
         }
-        // song.rate(24 / 24);
         repositionSong = false;
-        //         syncToAudio();
     }
     sheetSlider.value(drawCount);
     var sceneBoundaries = getCurrentSceneBoundaries(xSheet);
@@ -311,7 +274,7 @@ draw = function() {
             repositionSong = true;
         }
     }
-    drawCount += drawIncrement;
+    drawCount++;
 }
 
 // function windowResized() {
@@ -423,7 +386,6 @@ function togglePlay() {
         startAnimating();
     }
 }
-
 
 let clipMin = 0,
     clipMax = 100,
