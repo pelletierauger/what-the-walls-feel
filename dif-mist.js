@@ -386,7 +386,8 @@ void main() {
 //     gl_FragColor.rgb = GammaCorrection(LevelsControlInputRange(gl_FragColor.rgb, 0.1, 0.9), 1.0);
 //     gl_FragColor.rgb = pow(gl_FragColor.rgb, 1.0 / vec3(1.2));
     gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 0.5);
-    gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.075, vec3(1.1), 0.95);
+       gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.0, vec3(1.0), 0.95);
+//     gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.075, vec3(1.1), 0.95);
 //     vec3 rrr = gl_FragColor.rgb;
 //     vec3 hsv = rgb2hsv(rrr);
 //     hsv.r += 0.5;
