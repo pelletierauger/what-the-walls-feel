@@ -238,13 +238,9 @@ function setup() {
     gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
-
+    // Setting the two canvases for the visual timeline.
     timeline = document.getElementById('timeline');
     timelineCtx = timeline.getContext('2d');
-
-    timelineCtx.fillStyle = 'rgb(200, 0, 0)';
-    timelineCtx.fillRect(10, 10, 50, 50);
-
     timelineIndex = document.getElementById('timeline-index');
     timelineIndexCtx = timelineIndex.getContext('2d');
 
