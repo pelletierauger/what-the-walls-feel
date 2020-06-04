@@ -259,6 +259,17 @@ uniform float alpha;
 varying vec2 v_texcoord;
 // The texture.
 uniform sampler2D u_texture;
+#define GammaCorrection(color, gamma)                               pow(color, 1.0 / gamma)
+// 
+/*
+** Levels control (input (+gamma), output)
+** Details: https://mouaif.wordpress.com/2009/01/28/levels-control-shader/
+*/
+// 
+#define LevelsControlInputRange(color, minInput, maxInput)              min(max(color - vec3(minInput), vec3(0.0)) / (vec3(maxInput) - vec3(minInput)), vec3(1.0))
+#define LevelsControlInput(color, minInput, gamma, maxInput)                GammaCorrection(LevelsControlInputRange(color, minInput, maxInput), gamma)
+#define LevelsControlOutputRange(color, minOutput, maxOutput)           mix(vec3(minOutput), vec3(maxOutput), color)
+#define LevelsControl(color, minInput, gamma, maxInput, minOutput, maxOutput)   LevelsControlOutputRange(LevelsControlInput(color, minInput, gamma, maxInput), minOutput, maxOutput)
 // The hue shifting functions are taken from there:
 // https://gist.github.com/mairod/a75e7b44f68110e1576d77419d608786
 // https://stackoverflow.com/questions/9234724/how-to-change-hue-of-a-texture-with-glsl
@@ -372,7 +383,10 @@ void main() {
     // gl_FragColor.a = 0.5;
     wilder.rgb = wilder.bgr * 0.76;
     gl_FragColor.rgb = mix(gl_FragColor.rgb, wilder, 0.58);
-//     gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 1.0);
+//     gl_FragColor.rgb = GammaCorrection(LevelsControlInputRange(gl_FragColor.rgb, 0.1, 0.9), 1.0);
+//     gl_FragColor.rgb = pow(gl_FragColor.rgb, 1.0 / vec3(1.2));
+    gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 0.5);
+    gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.075, vec3(1.1), 0.95);
 //     vec3 rrr = gl_FragColor.rgb;
 //     vec3 hsv = rgb2hsv(rrr);
 //     hsv.r += 0.5;
