@@ -41,5 +41,30 @@ ffmpeg -f image2 -framerate 24 \
 
 
 
+ffmpeg -f image2 -framerate 24 -start_number 10450 \
+-i /Volumes/Volumina/frames/wtwf/montage/test002/sketch-%05d.png \
+-c:v libx264 -pix_fmt yuv420p -frames:v 285 \
+/Volumes/Volumina/video-renders/wtwf/montage/intro-test-clip.mp4
+
+
+
+ffmpeg -f image2 -framerate 24 -start_number 10450 \
+-i /Volumes/Volumina/frames/wtwf/montage/test002/sketch-%05d.png \
+-c:v libx264 -pix_fmt yuv420p -frames:v 2175 \
+-filter_complex "[0:0] colorlevels=rimin=0.1:gimin=0.1:bimin=0.1:rimax=1.0:gimax=1.0:bimax=1.0" \
+-crf 19 \
+/Volumes/Volumina/video-renders/wtwf/montage/plants-tests.mp4
+
+ffmpeg -f image2 -framerate 24 -start_number 10450 \
+-i /Volumes/Volumina/frames/wtwf/montage/test002/sketch-%05d.png \
+-c:v libx264 -pix_fmt yuv420p -frames:v 2175 \
+-filter_complex "[0:0] colorlevels=rimin=0.1:gimin=0.1:bimin=0.1:rimax=1.0:gimax=1.0:bimax=1.0" \
+-crf 19 -threads 1 \
+/Volumes/Volumina/video-renders/wtwf/montage/plants-tests-threads.mp4
+
+
+[0:0] hue=h=0, colorlevels=rimin=0.1:gimin=0.1:bimin=0.1:rimax=0.9:gimax=0.9:bimax=0.9
+
+[0:0] hue=h=0:b=0.125, colorlevels=rimin=0.05:gimin=0.05:bimin=0.05 \ :rimax=0.95:gimax=0.95:bimax=0.95
 
 
