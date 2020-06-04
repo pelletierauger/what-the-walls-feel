@@ -91,21 +91,14 @@ function createInfoDiv() {
     }
 
     sheetSlider.input(function() {
-        setSheetSlider();
+        drawCount = sheetSlider.value();
+        repositionSong = true;
         if (!looping && !envirLooping) {
-            // drawCount = sheetSlider.value;
             draw();
         }
         // if (songPlay) {
-        repositionSong = true;
         // }
     });
-    // setSheetSlider();
-
-    function setSheetSlider() {
-        drawCount = sheetSlider.value();
-        sliderInfo1.html("drawCount : " + drawCount + " (" + sheetSlider.value() + ")");
-    }
 
 }
 
