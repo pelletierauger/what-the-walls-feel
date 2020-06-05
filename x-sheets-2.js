@@ -578,6 +578,7 @@ if (xSheetInit) {
     // xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
     xSheetDuration = sumXSheet(xSheet);
     displayTimeline();
+    sheetSlider.elt.min = 0;
     sheetSlider.elt.max = xSheetDuration;
 }
 
@@ -765,4 +766,33 @@ function displayTimeline() {
         //         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
         durSoFar += dur;
     }
+}
+
+displaySequence = function(start, end) {
+    var listOfScenes = Object.getOwnPropertyNames(xSheet);
+    var list = [];
+    var totalDuration = 0;
+    for (let i = start; i <= end; i++) {
+        list.push(i);
+//         logJavaScriptConsole(i);
+        totalDuration += xSheet[listOfScenes[i]].d;
+    }
+//     logJavaScriptConsole("totalDuration : " + totalDuration);
+    var norm = 1 / totalDuration * 1372;
+    var durSoFar = 0;
+    timelineCtx.fillStyle = 'rgb(255, 255, 255)';
+    timelineCtx.fillRect(0, 0, 1372, 100);
+    for (let i = 0; i < list.length; i++) {
+        var dur = xSheet[listOfScenes[list[i]]].d;
+//         logJavaScriptConsole("dur : " + dur);
+        if (i % 2 == 0) {
+            timelineCtx.fillStyle = 'rgb(255, 255, 255)';
+        } else {
+            timelineCtx.fillStyle = 'rgb(235, 235, 235)';
+        }
+        timelineCtx.fillRect(durSoFar * norm, 0, dur * norm, 100);
+        durSoFar += dur;
+    }
+    sheetSlider.elt.min = getSum(xSheet, xSheet[listOfScenes[start]]);
+    sheetSlider.elt.max = getSum(xSheet, xSheet[listOfScenes[start]]) + totalDuration;
 }
