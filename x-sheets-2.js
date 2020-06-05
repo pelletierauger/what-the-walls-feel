@@ -252,14 +252,14 @@ xSheet = {
             electronicDecorativeEggsFlip.run(sum);
         }
     },
-//     eggs1: {
-//         d: 300,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.eggs0);
-//             var coFade = cosineFade(sum, 100);
-//             electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
-//         }
-//     },
+    //     eggs1: {
+    //         d: 300,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.eggs0);
+    //             var coFade = cosineFade(sum, 100);
+    //             electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
+    //         }
+    //     },
     //     eggs2: {
     //         d: 500,
     //         f: sum => {
@@ -269,22 +269,22 @@ xSheet = {
     //         }
     //     },
     //  Probably the conclusion of the Egg Sequence
-//     eggs2b: {
-//         d: 400,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.eggs1);
-//             var coFade = cosineFade(sum, 80);
-//             harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
-//         }
-//     },
+    //     eggs2b: {
+    //         d: 400,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.eggs1);
+    //             var coFade = cosineFade(sum, 80);
+    //             harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+    //         }
+    //     },
     eggs2c: {
         d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs1f);
             var coFade = cosineFade(sum, 25);
             harmoniousEggs2.mix(sum - 40, electronicDecorativeEggsFlip, rN, coFade);
-//             harmoniousEggs2.run(rN + 1000);
-}
+            //             harmoniousEggs2.run(rN + 1000);
+        }
     },
     eggsTests: {
         d: 500,
@@ -573,11 +573,13 @@ xSheet = {
     }
 };
 if (xSheetInit) {
-    // let list = Object.getOwnPropertyNames(xSheet);
-    // let lastScene = xSheet[list[list.length - 2]];
-    // xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
     xSheetDuration = sumXSheet(xSheet);
-    displayTimeline();
+    if (clipping && clipType.type == "scene") {
+        clipScene(clipType.ind, clipType.startOffset, clipType.endOffset);
+    } else if (clipping && clipType.type == "sequence") {
+        clipSequence(clipType.firstInd, clipType.lastInd, clipType.startOffset, clipType.endOffset);
+    }
+    updateView();
 }
 
 var xSheet2 = {
@@ -723,28 +725,45 @@ function jumpRelative(delta) {
 }
 
 function clipScene(scene, startOffset = 0, endOffset = 0) {
-    let start, end;
+    let start, end, ind;
+    let list = Object.getOwnPropertyNames(xSheet);
     if (typeof scene == "string") {
         start = getSum(xSheet, xSheet[scene]);
         end = start + xSheet[scene].d;
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] == scene) {
+                ind = i;
+            }
+        }
     } else if (typeof scene == "number") {
-        let list = Object.getOwnPropertyNames(xSheet);
         start = getSum(xSheet, xSheet[list[scene]]);
         end = start + xSheet[list[scene]].d;
+        ind = scene;
     }
-    clip(start + startOffset, end + endOffset);
-    displayTimeline();
+    clip(start + startOffset, end + endOffset, {
+        type: "scene",
+        ind: ind,
+        startOffset: startOffset,
+        endOffset: endOffset
+    });
+    updateView();
 }
 
 function clipSequence(start, end, startOffset = 0, endOffset = 0) {
-    var list = Object.getOwnPropertyNames(xSheet);
-    var start = getSum(xSheet, xSheet[list[start]]);
-    var end = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
-    clip(start + startOffset, end + endOffset);
-    displayTimeline();
+    let list = Object.getOwnPropertyNames(xSheet);
+    let frameStart = getSum(xSheet, xSheet[list[start]]);
+    let frameEnd = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
+    clip(frameStart + startOffset, frameEnd + endOffset, {
+        type: "sequence",
+        firstInd: start,
+        lastInd: end,
+        startOffset: startOffset,
+        endOffset: endOffset
+    });
+    updateView();
 }
 
-displayTimeline = function() {
+function displayTimeline() {
     var list = Object.getOwnPropertyNames(xSheet);
     var totalDuration;
     var lastScene = xSheet[list[list.length - 2]];
@@ -755,15 +774,12 @@ displayTimeline = function() {
     timelineCtx.fillRect(0, 0, 1372, 100);
     for (let i = 0; i <  list.length - 1; i++) {
         var dur = xSheet[list[i]].d;
-        // logJavaScriptConsole(dur);
         if (i % 2 == 0) {
             timelineCtx.fillStyle = 'rgb(255, 255, 255)';
         } else {
             timelineCtx.fillStyle = 'rgb(235, 235, 235)';
         }
         timelineCtx.fillRect(durSoFar * norm, 0, dur * norm, 100);
-        //         timelineCtx.fillStyle = 'rgb(0, 0, 0)';
-        //         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
         durSoFar += dur;
     }
     if (clipping) {
@@ -774,23 +790,21 @@ displayTimeline = function() {
     sheetSlider.elt.max = xSheetDuration;
 }
 
-displaySequence = function(start, end) {
+function displaySequence(start, end) {
     var listOfScenes = Object.getOwnPropertyNames(xSheet);
     var list = [];
     var totalDuration = 0;
     for (let i = start; i <= end; i++) {
         list.push(i);
-//         logJavaScriptConsole(i);
         totalDuration += xSheet[listOfScenes[i]].d;
     }
-//     logJavaScriptConsole("totalDuration : " + totalDuration);
+    viewDur = totalDuration;
     var norm = 1 / totalDuration * 1372;
     var durSoFar = 0;
     timelineCtx.fillStyle = 'rgb(255, 255, 255)';
     timelineCtx.fillRect(0, 0, 1372, 100);
     for (let i = 0; i < list.length; i++) {
         var dur = xSheet[listOfScenes[list[i]]].d;
-//         logJavaScriptConsole("dur : " + dur);
         if (i % 2 == 0) {
             timelineCtx.fillStyle = 'rgb(255, 255, 255)';
         } else {
@@ -800,6 +814,7 @@ displaySequence = function(start, end) {
         durSoFar += dur;
     }
     var minVal = getSum(xSheet, xSheet[listOfScenes[start]]);
+    viewMin = minVal;
     var maxVal = getSum(xSheet, xSheet[listOfScenes[start]]) + totalDuration;
     if (clipping) {
         timelineCtx.strokeStyle = 'rgb(0, 0, 0)';
@@ -807,4 +822,28 @@ displaySequence = function(start, end) {
     }
     sheetSlider.elt.min = minVal;
     sheetSlider.elt.max = maxVal;
+}
+
+function showSequence(start, end) {
+    viewType = {
+        type: "sequence",
+        start: start,
+        end: end
+    };
+    displaySequence(start, end);
+}
+
+function showTimeline() {
+    viewType = {
+        type: "timeline"
+    };
+    displayTimeline();
+}
+
+function updateView() {
+    if (viewType.type == "sequence") {
+        displaySequence(viewType.start, viewType.end);
+    } else {
+        displayTimeline();
+    }
 }

@@ -39,6 +39,15 @@ let vbuffer;
 let timeline, timelineCtx, timelineIndex, timelineIndexCtx;
 
 let xSheetDuration;
+// let clipping = false;
+let clipType = {
+    type: "none"
+};
+let viewType = {
+    type: "timeline"
+};
+let viewDur = 0;
+let viewMin = 0;
 
 function startAnimating() {
     fpsInterval = 1000 / fps;
@@ -261,7 +270,12 @@ draw = function() {
     var sceneBoundaries = getCurrentSceneBoundaries(xSheet);
     sliderInfo1.html(queryXSheet(xSheet) + ": " + drawCount + " " + sceneBoundaries);
     timelineIndexCtx.clearRect(0, 0, 1372, 100);
-    timelineIndexCtx.fillRect(drawCount / xSheetDuration * 1372, 0, 1, 100);
+    if (viewType.type == "timeline") {
+        timelineIndexCtx.fillRect(drawCount / xSheetDuration * 1372, 0, 1, 100);
+    } else if (viewType.type == "sequence") {
+        let norm = 1 / viewDur * 1372;
+        timelineIndexCtx.fillRect((drawCount - viewMin) * norm, 0, 1, 100);
+    }
     if (exporting) {
         frameExport();
     }
@@ -297,8 +311,11 @@ function keyPressed() {
             frameExport();
         }
         if (key == 'q' || key == 'Q') {
-            drawCount = 0;
-            player.currentTime = 0;
+            if (clipping) {
+                drawCount = clipMin;
+            } else {
+                drawCount = 0;
+            }
             repositionSong = true;
         }
         if (key == '1') {
@@ -391,15 +408,19 @@ let clipMin = 0,
     clipMax = 100,
     clipping = false;
 
-function clip(min, max) {
+function clip(min, max, type) {
     clipMin = min;
     clipMax = max;
     clipping = true;
+    clipType = type;
 }
 
 function unClip() {
     clipping = false;
     displayTimeline();
+    clipType = {
+        type: "none"
+    };
 }
 
 function logLatency() {
