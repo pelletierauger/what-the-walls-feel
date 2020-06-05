@@ -29,7 +29,7 @@ var envirLooping = false;
 let currentProgram;
 let cinemaMode = false;
 
-let resolutionScalar = 1;
+let resolutionScalar = 0.5;
 let resolutionBG;
 
 let texture, texture2, texture3, texture4, framebuf, framebuf2, framebuf3, framebuf4;
@@ -399,6 +399,7 @@ function clip(min, max) {
 
 function unClip() {
     clipping = false;
+    displayTimeline();
 }
 
 function logLatency() {

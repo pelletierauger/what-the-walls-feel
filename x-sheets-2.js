@@ -733,6 +733,7 @@ function clipScene(scene, startOffset = 0, endOffset = 0) {
         end = start + xSheet[list[scene]].d;
     }
     clip(start + startOffset, end + endOffset);
+    displayTimeline();
 }
 
 function clipSequence(start, end, startOffset = 0, endOffset = 0) {
@@ -740,16 +741,17 @@ function clipSequence(start, end, startOffset = 0, endOffset = 0) {
     var start = getSum(xSheet, xSheet[list[start]]);
     var end = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
     clip(start + startOffset, end + endOffset);
+    displayTimeline();
 }
 
-function displayTimeline() {
+displayTimeline = function() {
     var list = Object.getOwnPropertyNames(xSheet);
     var totalDuration;
     var lastScene = xSheet[list[list.length - 2]];
     totalDuration = getSum(xSheet, lastScene) + lastScene.d;
     var norm = 1 / totalDuration * 1372;
     var durSoFar = 0;
-    timelineCtx.fillStyle = 'rgb(255, 255, 255)';
+    timelineCtx.fillStyle = 'rgba(255, 255, 255, 1.0)';
     timelineCtx.fillRect(0, 0, 1372, 100);
     for (let i = 0; i <  list.length - 1; i++) {
         var dur = xSheet[list[i]].d;
@@ -763,6 +765,10 @@ function displayTimeline() {
         //         timelineCtx.fillStyle = 'rgb(0, 0, 0)';
         //         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
         durSoFar += dur;
+    }
+    if (clipping) {
+        timelineCtx.strokeStyle = 'rgb(0, 0, 0)';
+        timelineCtx.strokeRect(clipMin * norm, 40, (clipMax - clipMin) * norm, 45);
     }
     sheetSlider.elt.min = 0;
     sheetSlider.elt.max = xSheetDuration;
@@ -793,6 +799,12 @@ displaySequence = function(start, end) {
         timelineCtx.fillRect(durSoFar * norm, 0, dur * norm, 100);
         durSoFar += dur;
     }
-    sheetSlider.elt.min = getSum(xSheet, xSheet[listOfScenes[start]]);
-    sheetSlider.elt.max = getSum(xSheet, xSheet[listOfScenes[start]]) + totalDuration;
+    var minVal = getSum(xSheet, xSheet[listOfScenes[start]]);
+    var maxVal = getSum(xSheet, xSheet[listOfScenes[start]]) + totalDuration;
+    if (clipping) {
+        timelineCtx.strokeStyle = 'rgb(0, 0, 0)';
+        timelineCtx.strokeRect((clipMin - minVal) * norm, 40, (clipMax - clipMin) * norm, 45);
+    }
+    sheetSlider.elt.min = minVal;
+    sheetSlider.elt.max = maxVal;
 }
