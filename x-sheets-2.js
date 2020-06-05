@@ -192,6 +192,18 @@ xSheet = {
     //         }
     //     },
     //-------------------  The Egg Sequence -----------------------------------------//
+    clouds: {
+        d: 125,
+        f: function(sum) {
+            yetMoreHungryClouds.run(sum);
+        }
+    },
+    cloudsB: {
+        d: 137,
+        f: function(sum) {
+            yetMoreHungryCloudsB.run(sum);
+        }
+    },
     eggs0: {
         d: 75,
         f: sum => {
@@ -229,9 +241,15 @@ xSheet = {
         }
     },
     eggs1: {
-        d: 300,
+        d: 133,
         f: sum => {
             electronicDecorativeEggs.run(sum);
+        }
+    },
+    eggs1f: {
+        d: 133,
+        f: sum => {
+            electronicDecorativeEggsFlip.run(sum);
         }
     },
 //     eggs1: {
@@ -251,21 +269,22 @@ xSheet = {
     //         }
     //     },
     //  Probably the conclusion of the Egg Sequence
-    eggs2b: {
-        d: 400,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.eggs1);
-            var coFade = cosineFade(sum, 80);
-            harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
-        }
-    },
+//     eggs2b: {
+//         d: 400,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.eggs1);
+//             var coFade = cosineFade(sum, 80);
+//             harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
+//         }
+//     },
     eggs2c: {
         d: 300,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.eggs2b);
-            var coFade = cosineFade(sum, 30);
-            harmoniousEggs2.blend(rN + 1000, harmoniousEggs2Quieter, rN + 1000, coFade);
-        }
+            var rN = getSum(xSheet, xSheet.eggs1f);
+            var coFade = cosineFade(sum, 25);
+            harmoniousEggs2.mix(sum - 40, electronicDecorativeEggsFlip, rN, coFade);
+//             harmoniousEggs2.run(rN + 1000);
+}
     },
     eggsTests: {
         d: 500,
@@ -318,18 +337,6 @@ xSheet = {
             tornSheetInTheWind.mix(sum, plantsSofter, rN + 1000, coFade);
             // concerto.run();
             // fasterSubtleTrunk.run();
-        }
-    },
-    clouds: {
-        d: 125,
-        f: function(sum) {
-            yetMoreHungryClouds.run(sum);
-        }
-    },
-    cloudsB: {
-        d: 137,
-        f: function(sum) {
-            yetMoreHungryCloudsB.run(sum);
         }
     },
     festive: {

@@ -1820,7 +1820,7 @@ yetMoreHungryClouds.update = function(sum) {
             let oy = y + 4;
             let dx = Math.cos(ox * 0.85 * 0.5);
             let dy = Math.sin(oy * 0.5 * 0.5);
-            let xx = x + Math.pow(map(Math.cos((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 100);
+            let xx = x - Math.pow(map(Math.cos((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 100) * 0.5;
             let yy = y + Math.pow(map(Math.sin((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 100) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
@@ -1843,7 +1843,7 @@ yetMoreHungryCloudsB.update = function(sum) {
             let oy = y + 4;
             let dx = Math.cos(ox * 0.85 * 0.5);
             let dy = Math.sin(oy * 0.5 * 0.5);
-            let xx = x - Math.pow(map(Math.cos((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 100) * 1.5;
+            let xx = x + Math.pow(map(Math.cos((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 100) * 1.5 * 0.5;
             let yy = y + Math.pow(map(Math.sin((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 100) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
@@ -2003,7 +2003,7 @@ eggsB.update = function(sum) {
             let oy = y;
             let dx = Math.cos(ox * 0.5 * 0.35);
             let dy = Math.sin(oy * 0.5 * 0.35);
-            let xx = x - Math.pow(map(Math.cos((Math.sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20);
+            let xx = x - Math.pow(map(Math.cos((Math.sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20) * 1.5;
             let yy = y + Math.pow(map(Math.sin((Math.sin(dx * dy) + dy * dx) + t * 12), -1, 1, -0.01, 1), 20) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
@@ -2150,7 +2150,7 @@ electronicDecorativeEggs.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + -80) * 0.005 * 0.75;
+    let t = (drawCount - sum + -60) * 0.005 * 0.75;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 6;
@@ -2158,6 +2158,29 @@ electronicDecorativeEggs.update = function(sum) {
             let dx = Math.cos(ox * 0.8 * 0.35);
             let dy = Math.sin(oy * 0.5 * 0.35);
             let xx = x - Math.pow(map(Math.cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
+            let yy = y + Math.pow(map(Math.sin((dy) + dy + t * 12), -1, 1, 0, 1), 50) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let electronicDecorativeEggsFlip = new Scene("Electronic decorative eggs, flip");
+
+electronicDecorativeEggsFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + -60) * 0.005 * 0.75;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 6;
+            let oy = y;
+            let dx = Math.cos(ox * 0.8 * 0.35);
+            let dy = Math.sin(oy * 0.5 * 0.35);
+            let xx = x + Math.pow(map(Math.cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
             let yy = y + Math.pow(map(Math.sin((dy) + dy + t * 12), -1, 1, 0, 1), 50) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
