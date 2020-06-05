@@ -75,7 +75,7 @@ newFestive.update = function(sum) {
     }
 };
 
-
+// Very mellow and intricate at the beginning
 newFestive.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
@@ -436,7 +436,9 @@ newFestive.update = function(sum) {
 };
 
 // beau, beau, beau
-newFestive.update = function(sum) {
+let newerFestive = new Scene("Newer festive");
+
+newerFestive.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
