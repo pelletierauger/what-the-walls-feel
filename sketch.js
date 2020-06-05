@@ -417,7 +417,7 @@ function clip(min, max, type) {
 
 function unClip() {
     clipping = false;
-    displayTimeline();
+    updateView();
     clipType = {
         type: "none"
     };
