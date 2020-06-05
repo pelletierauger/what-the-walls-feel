@@ -229,7 +229,6 @@ overture.update = function(sum) {
 // redraw();
 
 overture.display = function() {
-
     gl.clear(gl.COLOR_BUFFER_BIT);
     if (drawCount >= 5) {
         currentProgram = getProgram("blue-background");
@@ -239,7 +238,6 @@ overture.display = function() {
     }
     currentProgram = getProgram("cyan-dots");
     gl.useProgram(currentProgram);
-
     if (titledLoaded) {
         drawImage(withImage);
         let currentProgram = getProgram("cyan-dots");
