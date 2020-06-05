@@ -578,8 +578,6 @@ if (xSheetInit) {
     // xSheetDuration = getSum(xSheet, lastScene) + lastScene.d;
     xSheetDuration = sumXSheet(xSheet);
     displayTimeline();
-    sheetSlider.elt.min = 0;
-    sheetSlider.elt.max = xSheetDuration;
 }
 
 var xSheet2 = {
@@ -766,6 +764,8 @@ function displayTimeline() {
         //         timelineCtx.fillRect(drawCount * norm, 0, 1, 100);
         durSoFar += dur;
     }
+    sheetSlider.elt.min = 0;
+    sheetSlider.elt.max = xSheetDuration;
 }
 
 displaySequence = function(start, end) {
