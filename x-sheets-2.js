@@ -287,6 +287,18 @@ xSheet = {
             // fasterSubtleTrunk.run();
         }
     },
+    clouds: {
+        d: 125,
+        f: function(sum) {
+            yetMoreHungryClouds.run(sum);
+        }
+    },
+    cloudsB: {
+        d: 137,
+        f: function(sum) {
+            yetMoreHungryCloudsB.run(sum);
+        }
+    },
     festive: {
         d: 3000,
         f: function(sum) {
@@ -684,11 +696,11 @@ function clipScene(scene, startOffset = 0, endOffset = 0) {
     clip(start + startOffset, end + endOffset);
 }
 
-function clipSequence(start, end) {
+function clipSequence(start, end, startOffset = 0, endOffset = 0) {
     var list = Object.getOwnPropertyNames(xSheet);
-    var s = getSum(xSheet, xSheet[list[start]]);
-    var e = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
-    clip(s, e);
+    var start = getSum(xSheet, xSheet[list[start]]);
+    var end = getSum(xSheet, xSheet[list[end]]) + xSheet[list[end]].d;
+    clip(start + startOffset, end + endOffset);
 }
 
 function displayTimeline() {
