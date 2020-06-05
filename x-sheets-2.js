@@ -193,22 +193,55 @@ xSheet = {
     //     },
     //-------------------  The Egg Sequence -----------------------------------------//
     eggs0: {
-        d: 300,
-        tr: 100,
+        d: 75,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.travellers6);
-            var coFade = cosineFade(sum, xSheet["eggs0"].tr);
-            eggs.mix(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
+            eggs.run(sum);
+        }
+    },
+    eggs0f: {
+        d: 75,
+        f: sum => {
+            eggsFlip.run(sum);
+        }
+    },
+    eggs0b: {
+        d: 75,
+        f: sum => {
+            eggsB.run(sum);
+        }
+    },
+    eggs0bf: {
+        d: 75,
+        f: sum => {
+            eggsBFlip.run(sum);
+        }
+    },
+    eggs0c: {
+        d: 75,
+        f: sum => {
+            eggsC.run(sum);
+        }
+    },
+    eggs0cf: {
+        d: 75,
+        f: sum => {
+            eggsCFlip.run(sum);
         }
     },
     eggs1: {
         d: 300,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.eggs0);
-            var coFade = cosineFade(sum, 100);
-            electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
+            electronicDecorativeEggs.run(sum);
         }
     },
+//     eggs1: {
+//         d: 300,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.eggs0);
+//             var coFade = cosineFade(sum, 100);
+//             electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
+//         }
+//     },
     //     eggs2: {
     //         d: 500,
     //         f: sum => {
