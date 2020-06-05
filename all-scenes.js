@@ -2150,30 +2150,19 @@ electronicDecorativeEggs.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + -90) * 0.005 * 0.5;
-    let a = 0.005 * sin(t * 0.05);
-    let i = 0;
+    let t = (drawCount - sum + -80) * 0.005 * 0.75;
     for (let x = amountX; x > 0; x -= 1) {
-        //     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 6;
             let oy = y;
-            let dx = cos(ox * 0.8 * 0.35);
-            let dy = sin(oy * 0.5 * 0.35);
-            let xx = x - pow(map(cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
-            let yy = y + pow(map(sin((dy) + dy + t * 12), -1, 1, 0, 1), 50) * 0;
-            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
-            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
-            if (i == 0) {
-                oriX = xx;
-            }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
-            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            let dx = Math.cos(ox * 0.8 * 0.35);
+            let dy = Math.sin(oy * 0.5 * 0.35);
+            let xx = x - Math.pow(map(Math.cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
+            let yy = y + Math.pow(map(Math.sin((dy) + dy + t * 12), -1, 1, 0, 1), 50) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-            i++;
         }
     }
 };
