@@ -22,6 +22,9 @@ concerto.update = function(sum) {
             yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             if (x == amountX && y == 0) {
+//                 logJavaScriptConsole("concerto : " + xx);
+//             }
         }
     }
 };
@@ -33,20 +36,29 @@ fasterSubtleTrunk.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum) * 0.025 * 0.5;
-    let i = 0;
-    let ix = 1,
-        iy = 1;
-    let sosc = function(i, min, max) {
-        return map(Math.sin(i), -1, 1, min, max);
-    };
-    let cosc = function(i, min, max) {
-        return map(Math.cos(i), -1, 1, min, max);
-    };
-    let m = sosc(t * 1e-3 + 10, 0.01, 2);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let dx = x + max(cos(x * 0.125 + t * -10), sin(y + x * 0.25 + t * 0.5));
-            let dy = y + min(sin(y * 0.125 + t * -10), cos(x + x * 0.25 + t * 0.5));
+            let dx = x + Math.max(Math.cos(x * 0.125 + t * -10), Math.sin(y + x * 0.25 + t * 0.5));
+            let dy = y + Math.min(Math.sin(y * 0.125 + t * -10), Math.cos(x + x * 0.25 + t * 0.5));
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+fasterSubtleTrunk.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.5;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 9;
+            let oy = y - 1;
+            let dx = x + Math.max(Math.cos(ox * 0.125 + t * -10), Math.sin(oy * ox * 0.25 + t * 0.5));
+            let dy = y + Math.min(Math.sin(oy * 0.125 + t * -10), Math.cos(ox * ox * 0.25 + t * 0.5)) * 0;
             dx += Math.random() * 0.01;
             dy += Math.random() * 0.01;
             dx *= 0.95;

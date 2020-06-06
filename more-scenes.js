@@ -76,14 +76,17 @@ newFestive.update = function(sum) {
 };
 
 // Very mellow and intricate at the beginning
-newFestive.update = function(sum) {
+let mellowFestive = new Scene("mellow-festive");
+
+mellowFestive.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 1000000 - 100) * 0.00125;
+    let t = (drawCount - -sum + 10000000 - 100) * 0.00125 * 2 + 25167.05;
+//     logJavaScriptConsole(t);
     for (let x = amountX; x > 0; x -= 1) {
        for (let y = 0; y < amountY; y += 1) {
-            let ox = x;
+            let ox = x + 10;
             let oy = y;
             let dx = Math.cos(ox * t * 5e-1) * 0.2;
             let dy = Math.sin(oy * t * 5e-1) * 0.2;
@@ -92,7 +95,10 @@ newFestive.update = function(sum) {
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
-            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            this.vertices.push((xx + 7.2) * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             if (x == amountX && y == 0) {
+//                 logJavaScriptConsole("mellowFestive : " + (xx + 7.2));
+//             }
         }
     }
 };

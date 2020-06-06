@@ -520,9 +520,6 @@ xSheet = {
         d: 2000,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
             fasterSubtleTrunk.run(rN);
         }
     },
@@ -530,16 +527,16 @@ xSheet = {
         d: 400,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 20);
-            concerto.mix(sum, neutral, rN, coFade);
+            var coFade = cosineFade(sum, 48);
+            concerto.mix(sum, fasterSubtleTrunk, rN, coFade);
         }
     },
     concertoEnd: {
-        d: 120,
+        d: 600,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.concerto);
-            var coFade = cosineFade(sum, 20);
-            neutral.mix(sum, concerto, rN, coFade);
+            var coFade = cosineFade(sum, 48);
+            mellowFestive.mix(sum, concerto, rN, coFade);
         }
     },
     //     endTests0: {
