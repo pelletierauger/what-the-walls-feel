@@ -4317,18 +4317,35 @@ travellers2.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
+    let t = (drawCount - sum + 1e10) * 25e-7;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y - 3;
+            let m = Math.sin(t * 0.35) * 700;
+            let xx = x + (Math.pow(Math.cos((m - ox * 100) * 100) * Math.sin(t * oy * 1e-5), 25));
+            let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+travellers2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e12) * 25e-7;
     let amp = map(drawCount - sum, 0, 700, 0, 1);
     amp = 1 - ((Math.cos((drawCount - sum) /  1500 * PI * 2) + 1) * 0.5);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 0;
-            let oy = y - 2.5;
-            let nx = Math.cos(ox * 4.1);
-            let ny = Math.sin(oy * 4.1);
-            let tt = Math.sin(t * 0.35) * 1000;
-            let m = 4e3 + tt;
-            let xx = x + (Math.pow(Math.cos((m - ox * 100) * 100) * Math.sin(t * oy * 1e-5), 25)) * 1;
+            let oy = y + 3.5;
+            let m = Math.sin(t * 0.35) * 700;
+            let xx = x + (Math.pow(Math.cos((m + ox * 100) * 100) * Math.sin(t * oy * 1e-5 * 1.5), 25)) * 1;
             let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
