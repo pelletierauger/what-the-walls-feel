@@ -35,7 +35,7 @@ fasterSubtleTrunk.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.5;
+    let t = (drawCount - sum) * 0.025 * 0.5 * 0.75;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let dx = x + Math.max(Math.cos(x * 0.125 + t * -10), Math.sin(y + x * 0.25 + t * 0.5));
@@ -54,7 +54,7 @@ newSubtleTrunk.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.5;
+    let t = (drawCount - sum) * 0.025 * 0.5 * 0.75;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 9;
