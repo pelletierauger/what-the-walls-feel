@@ -1171,7 +1171,7 @@ curvierPillarsB.update = function(sum) {
             let oy = y + 1;
             let dx = Math.abs(cos(ox) * 1 - 250);
             let dy = Math.abs(sin(y) * 1 - 250);
-            let xx = x - Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
+            let xx = x - Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp * 2;
             let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
@@ -1195,8 +1195,56 @@ curvierPillarsBFlip.update = function(sum) {
             let oy = y + 1;
             let dx = Math.abs(cos(ox) * 1 - 250);
             let dy = Math.abs(sin(y) * 1 - 250);
-            let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp * 2;
+            let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp * 3;
             let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let curvierPillarsC = new Scene("curvier-pillars, c");
+
+curvierPillarsC.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 50) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 2;
+            let oy = y + 1;
+            let dx = Math.abs(cos(ox) * 1 - 250);
+            let dy = Math.abs(sin(y) * 1 - 250);
+            let xx = x - Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 100) * amp * 1.5;
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 100) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let curvierPillarsCFlip = new Scene("curvier-pillars, c, flip");
+
+curvierPillarsCFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 50) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 2;
+            let oy = y + 1;
+            let dx = Math.abs(cos(ox) * 1 - 250);
+            let dy = Math.abs(sin(y) * 1 - 250);
+            let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 100) * amp * 1.5;
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 100) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
