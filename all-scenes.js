@@ -4318,41 +4318,22 @@ travellers2.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
-    // let a = 0.00005;
-    // let i = 0;
-    //     for (let x = 0; x < amountX; x += 1) {
     let amp = map(drawCount - sum, 0, 700, 0, 1);
     amp = 1 - ((Math.cos((drawCount - sum) /  1500 * PI * 2) + 1) * 0.5);
-    //     amp = Math.min(amp, 1);
-    //     logJavaScriptConsole(drawCount - sum);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            //             let ox = x - 100;
-            //             let oy = y - 100;
-            //             let dx = abs(cos(x) * 0.1 - Math.tan(t * 0.0025));
-            //             let dy = abs(sin(y) * 0.1 - Math.tan(t * 0.0025));
-            let nx = Math.cos(x * 4.1);
-            let ny = Math.sin(y * 4.1);
+            let ox = x + 0;
+            let oy = y - 2.5;
+            let nx = Math.cos(ox * 4.1);
+            let ny = Math.sin(oy * 4.1);
             let tt = Math.sin(t * 0.35) * 1000;
             let m = 4e3 + tt;
-            let xx = x + (Math.pow(Math.cos((m - x * 100) * 100) * Math.sin(t * y * 1e-5), 25)) * amp;
-            let yy = y + (Math.pow(Math.sin((m - y * 100) * 100) * Math.sin(t * x * 1e-5), 25)) * amp;
-            //             xx += cos(oy * 10) * sin(oy * 10)2
-            //             xx = lerp(x, xx, grow);
-            //             xx *= 0.95;
-            //             xx += 3.12;
-            //             yy = lerp(y, yy, grow);
-            //             yy += cos(oy * 10) * sin(oy * 10);
-            // if (i == 0) {
-            //     oriX = xx;
-            // }
-            //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.2);
-            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2 - 0.001, (yy + -10) * 0.07 * 1.0 - 1.3);
+            let xx = x + (Math.pow(Math.cos((m - ox * 100) * 100) * Math.sin(t * oy * 1e-5), 25)) * 1;
+            let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-            // i++;
         }
     }
 };
