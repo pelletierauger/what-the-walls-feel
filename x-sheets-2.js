@@ -253,13 +253,13 @@ xSheet = {
         }
     },
     eggs1: {
-        d: 133,
+        d: 123,
         f: sum => {
             electronicDecorativeEggs.run(sum);
         }
     },
     eggs1f: {
-        d: 133,
+        d: 123,
         f: sum => {
             electronicDecorativeEggsFlip.run(sum);
         }
@@ -289,13 +289,22 @@ xSheet = {
     //             harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
     //         }
     //     },
-    eggs2c: {
+    harEggs2: {
         d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs1f);
             var coFade = cosineFade(sum, 25);
-            harmoniousEggs2.mix(sum - 40, electronicDecorativeEggsFlip, rN, coFade);
-            //             harmoniousEggs2.run(rN + 1000);
+//             harmoniousEggs2.mix(sum - 40, electronicDecorativeEggsFlip, rN, coFade);
+                        harmoniousEggs2.run(rN - 28 + 153);
+        }
+    },
+    harEggs2Flip: {
+        d: 300,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.harEggs2);
+            var coFade = cosineFade(sum, 25);
+//             harmoniousEggs2Flip.mix(sum - 40, harmoniousEggs2, rN - 40, coFade);
+         harmoniousEggs2Flip.run(rN - 28);
         }
     },
     eggsTests: {
