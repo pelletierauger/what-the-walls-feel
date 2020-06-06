@@ -527,15 +527,19 @@ xSheet = {
         }
     },
     concerto: {
-        d: 3000,
+        d: 400,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            // oscillators[183].run(0);
-            // drawBG();
-            var coFade = cosineFade(sum, 10);
-            concerto.mix(sum, fasterSubtleTrunk, rN, coFade);
-            // concerto.run();
-            // fasterSubtleTrunk.run();
+            var coFade = cosineFade(sum, 20);
+            concerto.mix(sum, neutral, rN, coFade);
+        }
+    },
+    concertoEnd: {
+        d: 120,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.concerto);
+            var coFade = cosineFade(sum, 20);
+            neutral.mix(sum, concerto, rN, coFade);
         }
     },
     //     endTests0: {

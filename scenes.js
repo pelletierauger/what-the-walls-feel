@@ -4,19 +4,24 @@ concerto.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 10000000000) * 0.025 * 0.0001;
-    for (let x = 0; x < amountX; x += 1) {
+    let t = (drawCount - sum + 10000000000 - 400 + 539 - 200) * 0.025 * 0.0001;
+    for (let x = amountX; x > 0; x -= 1) {
+//     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let nx = Math.cos(x * 4.1);
             let ny = Math.sin(y * 4.1);
             let tt = Math.sin(t * 0.125 * 0.0625) * 750;
             let m = 4e3 + tt;
-            let xx = x + (Math.pow(Math.sin(m * x * 100) * Math.sin(t * y * 1e3), 1));
+            let xx = x - (Math.pow(Math.sin(m * x * 100) * Math.sin(t * y * 1e3), 1));
             let yy = y + (Math.pow(Math.sin(m * y * 100) * Math.sin(t * x * 1e3), 1));
+//             xx *= 0.95;
+//             xx += 3.12;
+// //             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.3, yy * 0.05 * 1.0 - 1.3);
+//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             xx *= 0.95;
-            xx += 3.12;
-//             this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.3, yy * 0.05 * 1.0 - 1.3);
-            this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };
@@ -38,13 +43,14 @@ fasterSubtleTrunk.update = function(sum) {
         return map(Math.cos(i), -1, 1, min, max);
     };
     let m = sosc(t * 1e-3 + 10, 0.01, 2);
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let dx = x + max(cos(x * 0.125 + t * -10), sin(y + x * 0.25 + t * 0.5));
             let dy = y + min(sin(y * 0.125 + t * -10), cos(x + x * 0.25 + t * 0.5));
-//             this.vertices.push((dx * 0.05) - 1.25, (dy * 0.05) - 1.25);
-            this.vertices.push((dx - 0) * 0.075 * 1.0 - 1.2, (dy + -10) * 0.07 * 1.0 - 1.3);
-            i++;
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
         }
     }
 };
