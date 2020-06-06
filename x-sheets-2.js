@@ -73,15 +73,27 @@ xSheet = {
         }
     },
     curvyPillars: {
-        d: 108,
+        d: 106,
         f: sum => {
             curvierPillars.run(sum);
         }
     },
     curvyPillarsFlip: {
-        d: 108,
+        d: 106,
         f: sum => {
             curvierPillarsFlip.run(sum);
+        }
+    },
+    curvyPillarsB: {
+        d: 106,
+        f: sum => {
+            curvierPillarsB.run(sum);
+        }
+    },
+    curvyPillarsBf: {
+        d: 106,
+        f: sum => {
+            curvierPillarsBFlip.run(sum);
         }
     },
     //     pillars3: {

@@ -1157,6 +1157,54 @@ curvierPillarsFlip.update = function(sum) {
     }
 };
 
+let curvierPillarsB = new Scene("curvier-pillars, b");
+
+curvierPillarsB.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 50) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 2;
+            let oy = y + 1;
+            let dx = Math.abs(cos(ox) * 1 - 250);
+            let dy = Math.abs(sin(y) * 1 - 250);
+            let xx = x - Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let curvierPillarsBFlip = new Scene("curvier-pillars, b, flip");
+
+curvierPillarsBFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 50) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 2;
+            let oy = y + 1;
+            let dx = Math.abs(cos(ox) * 1 - 250);
+            let dy = Math.abs(sin(y) * 1 - 250);
+            let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp * 2;
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 let curvierPillarsSmaller = new Scene("curvier-pillars-smaller");
 
 curvierPillarsSmaller.update = function(sum) {
