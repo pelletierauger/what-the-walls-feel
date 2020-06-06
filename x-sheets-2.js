@@ -524,27 +524,27 @@ xSheet = {
         }
     },
     newSubtleTrunk: {
-        d: 200,
+        d: 224,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
             var coFade = cosineFade(sum, 48);
             newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
         }
     },
-    concerto: {
-        d: 400,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 48);
-            concerto.mix(sum, newSubtleTrunk, rN, coFade);
-        }
-    },
+//     concerto: {
+//         d: 400,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+//             var coFade = cosineFade(sum, 48);
+//             concerto.mix(sum, newSubtleTrunk, rN, coFade);
+//         }
+//     },
     concertoEnd: {
         d: 500,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.concerto);
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
             var coFade = cosineFade(sum, 48);
-            mellowFestive.mix(sum, concerto, rN, coFade);
+            mellowFestive.mix(sum, newSubtleTrunk, rN, coFade);
         }
     },
     //     endTests0: {
