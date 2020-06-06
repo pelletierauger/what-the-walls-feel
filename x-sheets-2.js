@@ -56,7 +56,7 @@ xSheet = {
     //             springsSlowerLessElastic.blend(sum, traffic3FadeIn, rN, coFade);
     //         }
     //     },
-    nooTests: {
+    noodles: {
         d: 1200,
         f: sum => {
             var rN = getSum(xSheet, xSheet.trafficFadeIn);
@@ -64,31 +64,24 @@ xSheet = {
             noodlesHorizontal.mix(sum, traffic3FadeIn, rN, coFade);
         }
     },
-    //     trafficAndNoodles: {
-    //         d: 1800,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-    //             var coFade = cosineFade(sum, 300);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             noodlesHorizontal.mix(sum, traffic3FadeIn, rN + 0, coFade);
-    //         }
-    //     },
-    //     pillars: {
-    //         d: 650,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-    //             var coFade = cosineFade(sum, 300);
-    //             pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
-    //         }
-    //     },
-    curvyPillars: {
-        d: 650,
+    neutral0: {
+        d: 60,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.nooTests);
-            var coFade = cosineFade(sum, 100);
-            curvierPillars.mix(sum, noodlesHorizontal, rN, coFade);
+            var rN = getSum(xSheet, xSheet.noodles);
+            var coFade = cosineFade(sum, 48);
+            neutral.mix(sum, noodlesHorizontal, rN, coFade);
+        }
+    },
+    curvyPillars: {
+        d: 108,
+        f: sum => {
+            curvierPillars.run(sum);
+        }
+    },
+    curvyPillarsFlip: {
+        d: 108,
+        f: sum => {
+            curvierPillarsFlip.run(sum);
         }
     },
     //     pillars3: {

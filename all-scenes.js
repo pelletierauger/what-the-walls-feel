@@ -1,3 +1,23 @@
+let neutral = new Scene("neutral");
+
+neutral.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 let beautifulBubbles = new Scene("beautiful-bubbles");
 
 beautifulBubbles.update = function(sum) {
@@ -1094,14 +1114,39 @@ curvierPillars.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800) * 0.015;
+    let t = (drawCount - sum + 50) * 0.015;
     let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x + 1 * cos(t * 5);
-            let oy = y + 1 * sin(t * 5);
-            let dx = Math.abs(cos(x) * 1 - 250);
-            let dy = Math.abs(sin(y) * 1 - 250);
+            let ox = x + 2;
+            let oy = y + 1;
+            let dx = Math.abs(cos(ox * 0.5) * 1 - 250);
+            let dy = Math.abs(sin(y * 0.5) * 1 - 250);
+            let xx = x - Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+
+let curvierPillarsFlip = new Scene("curvier-pillars, flip");
+
+curvierPillarsFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 50) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 2;
+            let oy = y + 1;
+            let dx = Math.abs(cos(ox * 0.5) * 1 - 250);
+            let dy = Math.abs(sin(y * 0.5) * 1 - 250);
             let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
             let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
             xx += Math.random() * 0.01;
