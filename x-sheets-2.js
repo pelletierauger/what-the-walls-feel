@@ -517,10 +517,18 @@ xSheet = {
         }
     },
     fasterSubtleTrunk: {
-        d: 2000,
+        d: 200,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            fasterSubtleTrunk.run(rN);
+            fasterSubtleTrunk.run(sum);
+        }
+    },
+    newSubtleTrunk: {
+        d: 200,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+            var coFade = cosineFade(sum, 48);
+            newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
         }
     },
     concerto: {
@@ -528,11 +536,11 @@ xSheet = {
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
             var coFade = cosineFade(sum, 48);
-            concerto.mix(sum, fasterSubtleTrunk, rN, coFade);
+            concerto.mix(sum, newSubtleTrunk, rN, coFade);
         }
     },
     concertoEnd: {
-        d: 600,
+        d: 500,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.concerto);
             var coFade = cosineFade(sum, 48);

@@ -82,7 +82,7 @@ mellowFestive.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - -sum + 10000000 - 100) * 0.00125 * 2 + 25167.05;
+    let t = (drawCount - sum + 10000000 - 100 + 181) * 0.00125 * 2 + 25167.05 + 50 + 167;
 //     logJavaScriptConsole(t);
     for (let x = amountX; x > 0; x -= 1) {
        for (let y = 0; y < amountY; y += 1) {

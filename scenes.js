@@ -48,7 +48,9 @@ fasterSubtleTrunk.update = function(sum) {
     }
 };
 
-fasterSubtleTrunk.update = function(sum) {
+let newSubtleTrunk = new Scene("new-subtle-trunk");
+
+newSubtleTrunk.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
@@ -56,9 +58,9 @@ fasterSubtleTrunk.update = function(sum) {
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 9;
-            let oy = y - 1;
-            let dx = x + Math.max(Math.cos(ox * 0.125 + t * -10), Math.sin(oy * ox * 0.25 + t * 0.5));
-            let dy = y + Math.min(Math.sin(oy * 0.125 + t * -10), Math.cos(ox * ox * 0.25 + t * 0.5)) * 0;
+            let oy = y - 4;
+            let dx = x + Math.max(Math.cos(ox * 0.125 + t * -10), Math.sin(oy * ox * 0.125 + t * 0.5));
+            let dy = y + Math.min(Math.sin(oy * 0.125 + t * -10), Math.cos(ox * ox * 0.125 + t * 0.5)) * 0;
             dx += Math.random() * 0.01;
             dy += Math.random() * 0.01;
             dx *= 0.95;
