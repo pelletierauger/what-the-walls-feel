@@ -307,6 +307,10 @@ function keyPressed() {
         if (key == 'm' || key == 'M') {
             redraw();
         }
+        if (key == 'n' || key == 'N') {
+            drawCount -= 2;
+            redraw();
+        }
         if (key == 'p' || key == 'P') {
             frameExport();
         }
