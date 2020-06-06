@@ -65,23 +65,11 @@ xSheet = {
         }
     },
     neutral0: {
-        d: 60,
+        d: 48,
         f: sum => {
             var rN = getSum(xSheet, xSheet.noodles);
             var coFade = cosineFade(sum, 48);
             neutral.mix(sum, noodlesHorizontal, rN, coFade);
-        }
-    },
-    curvyPillars: {
-        d: 106,
-        f: sum => {
-            curvierPillars.run(sum);
-        }
-    },
-    curvyPillarsFlip: {
-        d: 106,
-        f: sum => {
-            curvierPillarsFlip.run(sum);
         }
     },
     curvyPillarsB: {
@@ -91,21 +79,33 @@ xSheet = {
         }
     },
     curvyPillarsBf: {
-        d: 108,
+        d: 106,
         f: sum => {
             curvierPillarsBFlip.run(sum);
         }
     },
     curvyPillarsC: {
-        d: 106,
+        d: 101,
         f: sum => {
             curvierPillarsC.run(sum);
         }
     },
     curvyPillarsCf: {
-        d: 106,
+        d: 101,
         f: sum => {
             curvierPillarsCFlip.run(sum);
+        }
+    },
+    curvyPillars: {
+        d: 136,
+        f: sum => {
+            curvierPillars.run(sum);
+        }
+    },
+    curvyPillarsFlip: {
+        d: 136,
+        f: sum => {
+            curvierPillarsFlip.run(sum);
         }
     },
     //     pillars3: {
