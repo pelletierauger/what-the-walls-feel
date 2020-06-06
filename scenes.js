@@ -69,6 +69,48 @@ newSubtleTrunk.update = function(sum) {
     }
 };
 
+if (1 == 0) {
+
+newSubtleTrunk.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.5;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 9;
+            let oy = y - 4;
+            let dx = x + Math.max(Math.cos(ox * 0.125 + t * -10), Math.sin(oy * 0.25 + t * 0.5));
+            let dy = y + Math.min(Math.sin(oy * 0.125 + t * -10), Math.cos(ox * 0.25 + t * 0.5));
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+newSubtleTrunk.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.35;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y - 0;
+            let dx = x + Math.max(Math.cos(ox * 0.125 + t * -10), Math.sin(oy * 0.125 + t * 0.5));
+            let dy = y + Math.min(Math.sin(oy * 0.125 + t * -10), Math.cos(ox * 0.125 + t * 0.5));
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+}
+
 let traffic3FadeIn = new Scene("traffic-3-fade-in");
 
 traffic3FadeIn.update = function(sum) {
