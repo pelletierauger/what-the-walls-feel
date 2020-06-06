@@ -240,6 +240,18 @@ xSheet = {
             eggsCFlip.run(sum);
         }
     },
+    eggs0d: {
+        d: 75,
+        f: sum => {
+            eggsD.run(sum);
+        }
+    },
+    eggs0df: {
+        d: 75,
+        f: sum => {
+            eggsDFlip.run(sum);
+        }
+    },
     eggs1: {
         d: 133,
         f: sum => {

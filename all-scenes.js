@@ -2082,6 +2082,52 @@ eggsCFlip.update = function(sum) {
     }
 };
 
+let eggsD = new Scene("Eggs, d");
+
+eggsD.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 4;
+            let oy = y - 2;
+            let dx = Math.cos(ox * 0.85 * 0.35 * 1.5);
+            let dy = Math.sin(oy * 0.85 * 0.35 * 1.5);
+            let xx = x - Math.pow(map(Math.cos((Math.sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20) * 1.5;
+            let yy = y + Math.pow(map(Math.sin((Math.sin(dx * dy) + dy * dx) + t * 12), -1, 1, -0.01, 1), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let eggsDFlip = new Scene("Eggs, d, flip");
+
+eggsDFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 4;
+            let oy = y - 2;
+            let dx = Math.cos(ox * 0.85 * 0.35 * 1.5);
+            let dy = Math.sin(oy * 0.85 * 0.35 * 1.5);
+            let xx = x + Math.pow(map(Math.cos((Math.sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20) * 1.5;
+            let yy = y + Math.pow(map(Math.sin((Math.sin(dx * dy) + dy * dx) + t * 12), -1, 1, -0.01, 1), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 let eggs2 = new Scene("Eggs 2");
 
 eggs2.update = function(sum) {
