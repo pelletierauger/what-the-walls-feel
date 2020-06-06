@@ -85,46 +85,35 @@ xSheet = {
         }
     },
     curvyPillarsC: {
-        d: 101,
+        d: 91,
         f: sum => {
-            curvierPillarsC.run(sum);
+            curvierPillarsC.run(sum - 10);
         }
     },
     curvyPillarsCf: {
-        d: 101,
+        d: 91,
         f: sum => {
-            curvierPillarsCFlip.run(sum);
+            curvierPillarsCFlip.run(sum - 10);
         }
     },
     curvyPillars: {
-        d: 136,
+        d: 133,
         f: sum => {
-            curvierPillars.run(sum);
+            curvierPillars.run(sum - 5);
         }
     },
     curvyPillarsFlip: {
-        d: 136,
+        d: 133 - 24,
         f: sum => {
-            curvierPillarsFlip.run(sum);
+            curvierPillarsFlip.run(sum - 5);
         }
     },
-    //     pillars3: {
-    //         d: 650,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.pillars2);
-    //             var coFade = cosineFade(sum, 100);
-    //             curvierPillarsEvenSmaller.mix(sum, curvierPillars, rN, coFade);
-    //         }
-    //     },
     blendyCav: {
         d: 450,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.pillars2);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            var coFade = cosineFade(sum, 100);
-            blendyCavernB.mix(sum, curvierPillars, rN, coFade);
+            var rN = getSum(xSheet, xSheet.curvyPillarsFlip);
+            var coFade = cosineFade(sum, 48);
+            blendyCavernB.mix(sum, curvierPillarsFlip, rN - 5, coFade);
         }
     },
     //     blendyCavs: {
