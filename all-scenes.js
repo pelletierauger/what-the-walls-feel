@@ -1095,31 +1095,19 @@ curvierPillars.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.015;
-    let a = 0.005 * sin(t * 0.05);
-    let i = 0;
-    //     for (let x = 0; x < amountX; x += 1) {
-    //     logJavaScriptConsole(drawCount - sum);
     let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 1 * cos(t * 5);
             let oy = y + 1 * sin(t * 5);
-            let dx = abs(cos(x) * 1 - 250);
-            let dy = abs(sin(y) * 1 - 250);
-            let xx = x + pow(cos(cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
-            let yy = y + pow(sin(sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20);
-            //             xx += map(cos(x * t), -1, 1, 0.5, 1) * 2;
-            //             yy += map(sin(y * t), -1, 1, 0.5, 1) * 2;
-            if (i == 0) {
-                oriX = xx;
-            }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);           
-            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            let dx = Math.abs(cos(x) * 1 - 250);
+            let dy = Math.abs(sin(y) * 1 - 250);
+            let xx = x + Math.pow(Math.cos(Math.cos(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * amp;
+            let yy = y + Math.pow(Math.sin(Math.sin(dx + oy * 0.1 + dy * 0.02) + t * 2), 20) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-            i++;
         }
     }
 };

@@ -83,12 +83,12 @@ xSheet = {
     //             pillarsInACavern.mix(sum, traffic3FadeIn, rN + 0, coFade);
     //         }
     //     },
-    pillars2: {
+    curvyPillars: {
         d: 650,
         f: sum => {
             var rN = getSum(xSheet, xSheet.nooTests);
             var coFade = cosineFade(sum, 100);
-            curvierPillars.blend(sum, noodlesHorizontal, rN, coFade);
+            curvierPillars.mix(sum, noodlesHorizontal, rN, coFade);
         }
     },
     //     pillars3: {
@@ -253,60 +253,32 @@ xSheet = {
         }
     },
     eggs1: {
-        d: 123,
+        d: 118,
         f: sum => {
             electronicDecorativeEggs.run(sum);
         }
     },
     eggs1f: {
-        d: 123,
+        d: 118,
         f: sum => {
             electronicDecorativeEggsFlip.run(sum);
         }
     },
-    //     eggs1: {
-    //         d: 300,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.eggs0);
-    //             var coFade = cosineFade(sum, 100);
-    //             electronicDecorativeEggs.mix(sum + 1000, eggs, rN + 1000, coFade);
-    //         }
-    //     },
-    //     eggs2: {
-    //         d: 500,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.eggs1);
-    //             var coFade = cosineFade(sum, 100);
-    //             harmoniousEggs.mix(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
-    //         }
-    //     },
-    //  Probably the conclusion of the Egg Sequence
-    //     eggs2b: {
-    //         d: 400,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.eggs1);
-    //             var coFade = cosineFade(sum, 80);
-    //             harmoniousEggs2Quieter.blend(sum + 1000, electronicDecorativeEggs, rN + 1000, coFade);
-    //         }
-    //     },
     harEggs2: {
         d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs1f);
-            var coFade = cosineFade(sum, 25);
-//             harmoniousEggs2.mix(sum - 40, electronicDecorativeEggsFlip, rN, coFade);
-                        harmoniousEggs2.run(rN - 28 + 153);
+            harmoniousEggs2.run(rN - 28 + 153);
         }
     },
     harEggs2Flip: {
         d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.harEggs2);
-            var coFade = cosineFade(sum, 25);
-//             harmoniousEggs2Flip.mix(sum - 40, harmoniousEggs2, rN - 40, coFade);
-         harmoniousEggs2Flip.run(rN - 28);
+            harmoniousEggs2Flip.run(rN - 28);
         }
     },
+    //-------------------  End of the Egg Sequence -----------------------------------------//
     eggsTests: {
         d: 500,
         f: sum => {
