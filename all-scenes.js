@@ -3958,6 +3958,7 @@ escherLikeStaircases.update = function(sum) {
     }
 };
 
+} // 1 == 0
 
 escherLikeStaircases.update = function(sum) {
     this.vertices = [];
@@ -3978,7 +3979,6 @@ escherLikeStaircases.update = function(sum) {
     }
 };
 
-} // 1 == 0
 
 let undulatingWall3 = new Scene("Undulating wall 3");
 

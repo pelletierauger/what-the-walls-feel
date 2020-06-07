@@ -393,12 +393,20 @@ xSheet = {
     //             concerto.mix(sum, newSubtleTrunk, rN, coFade);
     //         }
     //     },
-    concertoEnd: {
+    mellowFestive: {
         d: 500,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
             var coFade = cosineFade(sum, 48);
             mellowFestive.mix(sum, newSubtleTrunk, rN, coFade);
+        }
+    },
+    escherLikeStaircases: {
+        d: 500,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.mellowFestive);
+            var coFade = cosineFade(sum, 48);
+            escherLikeStaircases.mix(sum, mellowFestive, rN, coFade);
         }
     },
 //     eggsTests: {
@@ -409,14 +417,14 @@ xSheet = {
 //             strangelyStabilizedEggs.mix(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
 //         }
 //     },
-    dynamicalLozenges: {
-        d: 1000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.eggsTests);
-            var coFade = cosineFade(sum, 100);
-            surprisinglyStableDynamicalLozenges.mix(sum + 1000, strangelyStabilizedEggs, rN + 1000, coFade);
-        }
-    },
+//     dynamicalLozenges: {
+//         d: 1000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.eggsTests);
+//             var coFade = cosineFade(sum, 100);
+//             surprisinglyStableDynamicalLozenges.mix(sum + 1000, strangelyStabilizedEggs, rN + 1000, coFade);
+//         }
+//     },
     //----------------------- A quiet, flowy sequence ------------------------------//
 //     oceanWaves: {
 //         d: 400,
@@ -429,17 +437,9 @@ xSheet = {
     plantsSofter: {
         d: 800,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.oceanWaves);
+            var rN = getSum(xSheet, xSheet.escherLikeStaircases);
             var coFade = cosineFade(sum, 200);
-            plantsSofter.mix(sum + 1000, beautifulOceanWaves, rN + 1000, coFade);
-        }
-    },
-    escherLikeStaircases: {
-        d: 800,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.oceanWaves);
-            var coFade = cosineFade(sum, 200);
-            escherLikeStaircases.run(sum);
+            plantsSofter.mix(sum + 1000, escherLikeStaircases, rN, coFade);
         }
     },
     distanceMuscles: {
