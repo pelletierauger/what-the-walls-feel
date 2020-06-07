@@ -3899,6 +3899,7 @@ escherLikeStaircases.update = function(sum) {
     }
 };
 
+// Beautiful intricate textile.
 escherLikeStaircases.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
@@ -3910,6 +3911,64 @@ escherLikeStaircases.update = function(sum) {
             let oy = y;
             let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
             let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.45;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x * 0.5 + y * 20;
+            let oy = y;
+            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.45;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x * 0.25 + y * 20;
+            let oy = y;
+            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.45;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x * 0.25 + y * 20;
+            let oy = y;
+            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 1.5)), 2) * 2;
+            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 1.5)), 2) * 2;
             dx += Math.random() * 0.01;
             dy += Math.random() * 0.01;
             dx *= 0.95;
