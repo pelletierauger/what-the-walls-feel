@@ -158,11 +158,51 @@ xSheet = {
         }
     },
     travellers2: {
-        d: 900,
+        d: 150,
         f: sum => {
             var rN = getSum(xSheet, xSheet.blendyMuscles);
             var coFade = cosineFade(sum, 100);
-            travellers2.blend(sum, muscleFibersRebuildingThemselves, rN + 500, coFade);
+            travellers2.mix(sum, muscleFibersRebuildingThemselves, rN + 500, coFade);
+        }
+    },
+    travellers2B: {
+        d: 150,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.travellers2);
+            var coFade = cosineFade(sum, 24);
+            travellers2B.mix(sum, travellers2, rN, coFade);
+        }
+    },
+    travellers2C: {
+        d: 150,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.travellers2B);
+            var coFade = cosineFade(sum, 24);
+            travellers2C.mix(sum, travellers2B, rN, coFade);
+        }
+    },
+    travellers2D: {
+        d: 48,
+        f: sum => {
+            travellers2D.run(sum);
+        }
+    },
+    travellers2DFlip: {
+        d: 48,
+        f: sum => {
+            travellers2DFlip.run(sum + 14);
+        }
+    },
+    travellers2E: {
+        d: 48 - 14,
+        f: sum => {
+            travellers2E.run(sum - 14);
+        }
+    },
+    travellers2EB: {
+        d: 48 - 14,
+        f: sum => {
+            travellers2EB.run(sum - 14);
         }
     },
     jumpers: {
