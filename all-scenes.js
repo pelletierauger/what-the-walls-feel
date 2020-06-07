@@ -3175,7 +3175,7 @@ floatingDynamical2.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (this.innerCount) * 0.025;
+    let t = (this.innerCount) * 0.025 * 0.75;
     let i = 0;
     let ix = 1,
         iy = 1;
@@ -3186,7 +3186,7 @@ floatingDynamical2.update = function(sum) {
         return map(Math.cos(i), -1, 1, min, max);
     };
     this.newArr = [];
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let xx = x;
             let yy = y;
@@ -3195,10 +3195,10 @@ floatingDynamical2.update = function(sum) {
             xx += cos(oX * 0.75) * cos(oY * 0.5 + t * 5) + cos(oY * 0.5);
             yy += sin(oY * 0.75) * sin(oX * 0.5 + t * 5) + sin(oX * 0.5);
             this.newArr.push({ x: xx, y: yy });
-            //             
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx + ranX) * 0.05 * 0.95 - 1.1, (yy + ranY) * 0.05 * 0.9 - 1.1);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
             //             console.log(i);
             //             ix++;
@@ -3811,26 +3811,114 @@ escherLikeStaircases.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum) * 0.025;
-    let i = 0;
-    let ix = 1,
-        iy = 1;
-    let sosc = function(i, min, max) {
-        return map(Math.sin(i), -1, 1, min, max);
-    };
-    let cosc = function(i, min, max) {
-        return map(Math.cos(i), -1, 1, min, max);
-    };
-    let m = sosc(t * 1e-3 + 10, 0.01, 2);
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let dx = x + tan(sin(y * 0.5 + t * 3));
-            let dy = y + tan(cos(x * 0.5 + t * 3));
-            this.vertices.push(((dx * 0.05) - 1.25) * 1.5, ((dy * 0.05) - 1.25) * 1.7);
-            i++;
-            //             ix++;
+            let dx = x - Math.tan(Math.sin(y * 0.5 + t * 3));
+            let dy = y + Math.tan(Math.cos(x * 0.5 + t * 3));
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
         }
     }
 };
+
+if (1 == 0) {
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x - Math.tan(Math.sin((y + x * 100) * 0.5 + t * 3));
+            let dy = y + Math.tan(Math.cos((x + x * 100) * 0.5 + t * 3));
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.5;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y + x;
+            let dx = x - Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3) * 1.2);
+            let dy = y + Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3) * 1.2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.5;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y + x;
+            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.5;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x;
+            let oy = y;
+            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+escherLikeStaircases.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025 * 0.45;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + y * 20;
+            let oy = y;
+            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+} // 1 == 0
 
 let undulatingWall3 = new Scene("Undulating wall 3");
 
