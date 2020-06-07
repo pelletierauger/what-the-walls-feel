@@ -328,27 +328,27 @@ xSheet = {
         }
     },
     eggs0d: {
-        d: 75,
+        d: 70,
         f: sum => {
             eggsD.run(sum);
         }
     },
     eggs0df: {
-        d: 75,
+        d: 70,
         f: sum => {
             eggsDFlip.run(sum);
         }
     },
     eggs1: {
-        d: 118,
+        d: 118 - 2,
         f: sum => {
-            electronicDecorativeEggs.run(sum);
+            electronicDecorativeEggs.run(sum - 2);
         }
     },
     eggs1f: {
-        d: 118,
+        d: 118 - 2,
         f: sum => {
-            electronicDecorativeEggsFlip.run(sum);
+            electronicDecorativeEggsFlip.run(sum - 2);
         }
     },
     harEggs2: {
