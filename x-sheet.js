@@ -286,7 +286,7 @@ xSheet = {
         }
     },
     cloudsB: {
-        d: 137,
+        d: 123,
         f: function(sum) {
             yetMoreHungryCloudsB.run(sum);
         }
