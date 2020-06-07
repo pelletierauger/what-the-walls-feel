@@ -2624,7 +2624,8 @@ harmoniousEggs2Flip.update = function(sum) {
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
-            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            // The xx value below is unusually shifted by 14.25 and this is important.
+            this.vertices.push((xx - 14.25) * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };
