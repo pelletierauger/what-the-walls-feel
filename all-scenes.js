@@ -4379,6 +4379,28 @@ travellers2C.update = function(sum) {
     }
 };
 
+let travellers2CFlip = new Scene("Travellers 2, c, flip");
+
+travellers2CFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e11) * 25e-7;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y - 0.25;
+            let m = Math.sin(t * 0.35 * 0.5) * 700;
+            let xx = x + (Math.pow(Math.cos((m - ox * 100) * 100) * Math.sin(t * oy * 1e-5), 25)) * 2;
+            let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 let travellers2D = new Scene("Travellers 2, d");
 
 travellers2D.update = function(sum) {
@@ -4468,6 +4490,49 @@ travellers2EB.update = function(sum) {
     }
 };
 
+let travellers2EC = new Scene("Travellers 2, ec");
+
+travellers2EC.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e11) * 25e-7;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -138;
+            let oy = y - 124.25;
+            let m = Math.sin(t * 0.35) * 70;
+            let xx = x + (Math.pow(Math.cos((m - ox * 100) * 1000) * Math.sin(t * oy * ox * 1e-8), 25));
+            let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+let travellers2ED = new Scene("Travellers 2, ed");
+
+travellers2ED.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e11) * 25e-7;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -138;
+            let oy = y + 124.25;
+            let m = Math.sin(t * 0.35) * 70;
+            let xx = x + (Math.pow(Math.cos((m + ox * 100) * 1000) * Math.sin(t * oy * ox * 1e-8), 25));
+            let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
 
 let travellers3 = new Scene("Travellers 3");
 

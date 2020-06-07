@@ -158,7 +158,7 @@ xSheet = {
         }
     },
     travellers2: {
-        d: 150,
+        d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.blendyMuscles);
             var coFade = cosineFade(sum, 100);
@@ -181,22 +181,47 @@ xSheet = {
             travellers2C.mix(sum, travellers2B, rN, coFade);
         }
     },
+    travellers2CFlip: {
+        d: 150,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.travellers2C);
+            var coFade = cosineFade(sum, 24);
+            travellers2CFlip.mix(sum, travellers2C, rN, coFade);
+        }
+    },
+//     travellersToNeutral: {
+//         d: 12,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.travellers2CFlip);
+//             var coFade = cosineFade(sum, 12);
+//             neutral.mix(sum, travellers2CFlip, rN, coFade);
+//         }
+//     },
+    travellers2DFlip: {
+        d: 48,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.travellers2CFlip);
+            var coFade = cosineFade(sum, 12);
+//             travellers2D.run(sum);
+            travellers2DFlip.mix(sum + 14, travellers2CFlip, rN, coFade);
+        }
+    },
     travellers2D: {
         d: 48,
         f: sum => {
             travellers2D.run(sum);
         }
     },
-    travellers2DFlip: {
-        d: 48,
+    travellers2EC: {
+        d: 48 - 6,
         f: sum => {
-            travellers2DFlip.run(sum + 14);
+            travellers2EC.run(sum - 14);
         }
     },
-    travellers4Bigger: {
-        d: 36,
+    travellers2ED: {
+        d: 48 - 6,
         f: sum => {
-            travellers4Bigger.run(sum - 8 - 5);
+            travellers2ED.run(sum - 14 - 16);
         }
     },
     travellers4BiggerFlip: {
@@ -205,16 +230,28 @@ xSheet = {
             travellers4BiggerFlip.run(sum - 8 - 5 - 17);
         }
     },
-    travellers2E: {
-        d: 48 - 14,
+    travellers4Bigger: {
+        d: 36,
         f: sum => {
-            travellers2E.run(sum - 14);
+            travellers4Bigger.run(sum - 8 - 5);
         }
     },
     travellers2EB: {
         d: 48 - 14,
         f: sum => {
             travellers2EB.run(sum - 14);
+        }
+    },
+    travellers2E: {
+        d: 48 - 14,
+        f: sum => {
+            travellers2E.run(sum - 14);
+        }
+    },
+    padding: {
+        d: 100,
+        f: sum => {
+            neutral.run(sum);
         }
     },
     travellers6: {
