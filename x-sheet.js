@@ -366,14 +366,14 @@ xSheet = {
         }
     },
     //-------------------  End of the Egg Sequence -----------------------------------------//
-    eggsTests: {
-        d: 500,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.eggs2b);
-            var coFade = cosineFade(sum, 100);
-            strangelyStabilizedEggs.mix(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
-        }
-    },
+//     eggsTests: {
+//         d: 500,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.eggs2b);
+//             var coFade = cosineFade(sum, 100);
+//             strangelyStabilizedEggs.mix(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
+//         }
+//     },
     dynamicalLozenges: {
         d: 1000,
         f: sum => {
@@ -383,20 +383,28 @@ xSheet = {
         }
     },
     //----------------------- A quiet, flowy sequence ------------------------------//
-    oceanWaves: {
-        d: 400,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.eggs3);
-            var coFade = cosineFade(sum, 100);
-            beautifulOceanWaves.mix(sum + 1000, surprisinglyStableDynamicalLozenges, rN + 1000, coFade);
-        }
-    },
+//     oceanWaves: {
+//         d: 400,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.eggs3);
+//             var coFade = cosineFade(sum, 100);
+//             beautifulOceanWaves.mix(sum + 1000, surprisinglyStableDynamicalLozenges, rN + 1000, coFade);
+//         }
+//     },
     plantsSofter: {
         d: 800,
         f: sum => {
             var rN = getSum(xSheet, xSheet.oceanWaves);
             var coFade = cosineFade(sum, 200);
             plantsSofter.mix(sum + 1000, beautifulOceanWaves, rN + 1000, coFade);
+        }
+    },
+    escherLikeStaircases: {
+        d: 800,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.oceanWaves);
+            var coFade = cosineFade(sum, 200);
+            escherLikeStaircases.run(sum);
         }
     },
     distanceMuscles: {
@@ -407,20 +415,20 @@ xSheet = {
             middleOfTheMuscularDistanceField.blend(sum, plantsSofter, rN + 1000, coFade);
         }
     },
-    torn: {
-        d: 3000,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.plantsSofter);
-            // oscillators[183].run(0);
-            // drawBG();
-            var coFade = cosineFade(sum, 100);
-            tornSheetInTheWind.mix(sum, plantsSofter, rN + 1000, coFade);
-            // concerto.run();
-            // fasterSubtleTrunk.run();
-        }
-    },
+//     torn: {
+//         d: 3000,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.plantsSofter);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             var coFade = cosineFade(sum, 100);
+//             tornSheetInTheWind.mix(sum, plantsSofter, rN + 1000, coFade);
+//             // concerto.run();
+//             // fasterSubtleTrunk.run();
+//         }
+//     },
     festive: {
-        d: 3000,
+        d: 1500,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.plantsSofter);
             // oscillators[183].run(0);
@@ -549,30 +557,30 @@ xSheet = {
     //             muscleFibersRebuildingThemselves.mix(sum, curvierPillarsEvenSmaller, rN, coFade);
     //         }
     //     },
-    distanceMuscles2: {
-        d: 2000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.muscles);
-            var coFade = cosineFade(sum, 300);
-            laceInTheDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
-        }
-    },
-    distanceMuscles3: {
-        d: 2000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.muscles);
-            var coFade = cosineFade(sum, 300);
-            laceInTheVerticalMiddle.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
-        }
-    },
-    distanceMuscles4: {
-        d: 2000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.distanceMuscles3);
-            var coFade = cosineFade(sum, 300);
-            bigTravelInABrokenLand.blend(sum, laceInTheVerticalMiddle, rN, coFade);
-        }
-    },
+//     distanceMuscles2: {
+//         d: 2000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.muscles);
+//             var coFade = cosineFade(sum, 300);
+//             laceInTheDistanceField.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+//         }
+//     },
+//     distanceMuscles3: {
+//         d: 2000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.muscles);
+//             var coFade = cosineFade(sum, 300);
+//             laceInTheVerticalMiddle.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+//         }
+//     },
+//     distanceMuscles4: {
+//         d: 2000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.distanceMuscles3);
+//             var coFade = cosineFade(sum, 300);
+//             bigTravelInABrokenLand.blend(sum, laceInTheVerticalMiddle, rN, coFade);
+//         }
+//     },
     //     distanceMuscles4: {
     //         d: 2000,
     //         f: sum => {
@@ -582,21 +590,21 @@ xSheet = {
     //         }
     //     },
     springsSlowerLessElastic: { // This is a keeper.
-        d: 2000,
+        d: 1000,
         f: sum => {
             var rN = getSum(xSheet, xSheet.muscles);
             var coFade = cosineFade(sum, 300);
             springsSlowerLessElastic.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
         }
     },
-    exploring: {
-        d: 4000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.muscles);
-            var coFade = cosineFade(sum, 300);
-            newBreakingApartAndGatheringAgain.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
-        }
-    },
+//     exploring: {
+//         d: 4000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.muscles);
+//             var coFade = cosineFade(sum, 300);
+//             newBreakingApartAndGatheringAgain.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+//         }
+//     },
     fasterSubtleTrunk: {
         d: 200,
         f: function(sum) {
@@ -643,20 +651,20 @@ xSheet = {
     //             // fasterSubtleTrunk.run();
     //         }
     //     },
-    endTests: {
-        d: 3000,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            // oscillators[183].run(0);
-            // drawBG();
-            var coFade = cosineFade(sum, 10);
-            //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
-            //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
-            balancedDynamicalIntricate.mix(sum, fasterSubtleTrunk, rN, coFade);
-            // concerto.run();
-            // fasterSubtleTrunk.run();
-        }
-    },
+//     endTests: {
+//         d: 3000,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             var coFade = cosineFade(sum, 10);
+//             //             surprisinglyStableDynamicalLozenges.mix(sum, fasterSubtleTrunk, rN, coFade);
+//             //             cicadas.mix(sum, fasterSubtleTrunk, rN, coFade);
+//             balancedDynamicalIntricate.mix(sum, fasterSubtleTrunk, rN, coFade);
+//             // concerto.run();
+//             // fasterSubtleTrunk.run();
+//         }
+//     },
     key: function(n) {
         return this[Object.keys(this)[n]];
     }
