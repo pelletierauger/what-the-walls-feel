@@ -439,15 +439,15 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeStaircases);
             var coFade = cosineFade(sum, 200);
-            plantsSofter.mix(sum + 1000, escherLikeStaircases, rN, coFade);
+            plantsSofter.mix(sum, escherLikeStaircases, rN, coFade);
         }
     },
-    distanceMuscles: {
+    middleOfTheMuscularDistanceField: {
         d: 2000,
         f: sum => {
             var rN = getSum(xSheet, xSheet.plantsSofter);
             var coFade = cosineFade(sum, 300);
-            middleOfTheMuscularDistanceField.blend(sum, plantsSofter, rN + 1000, coFade);
+            middleOfTheMuscularDistanceField.mix(sum, plantsSofter, rN, coFade);
         }
     },
 //     torn: {
@@ -465,11 +465,11 @@ xSheet = {
     festive: {
         d: 1500,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.plantsSofter);
+            var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
             // oscillators[183].run(0);
             // drawBG();
             var coFade = cosineFade(sum, 100);
-            newFestive.mix(sum, plantsSofter, rN + 1000, coFade);
+            newFestive.mix(sum, middleOfTheMuscularDistanceField, rN, coFade);
             // concerto.run();
             // fasterSubtleTrunk.run();
         }
