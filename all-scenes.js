@@ -1451,6 +1451,42 @@ middleOfTheMuscularDistanceField.update = function(sum) {
     }
 };
 
+let middleOfTheMuscularDistanceFieldB = new Scene("Middle of the muscular distance field, b");
+
+middleOfTheMuscularDistanceFieldB.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let a = 0.005 * sin(t * 0.05);
+    let i = 0;
+    for (let x = amountX; x > 0; x -= 1) {
+        //     for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 25;
+            let oy = y - 46;
+            let dx = abs(cos(x) * 1) * 0.25;
+            let dy = abs(sin(y) * 1) * 0.25;
+            let xx = x - pow(cos(cos(dx + oy * ox * 0.01) + t * 1.5), -1) * 1.25;
+            let yy = y + pow(sin(sin(dx + oy * ox * 0.01) + t * 1.5), -1) * 0;
+            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
+            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
+            if (i == 0) {
+                oriX = xx;
+            }
+            //             let ranX = Math.random() * 0.025 * 0.5;
+            //             let ranY = Math.random() * 0.025 * 0.5;
+            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            i++;
+        }
+    }
+};
+
 let laceInTheDistanceField = new Scene("Lace in the distance field");
 
 laceInTheDistanceField.update = function(sum) {
