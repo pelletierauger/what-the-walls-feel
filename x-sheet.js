@@ -352,17 +352,17 @@ xSheet = {
         }
     },
     harEggs2: {
-        d: 300,
+        d: 300 - 12,
         f: sum => {
             var rN = getSum(xSheet, xSheet.eggs1f);
-            harmoniousEggs2.run(rN - 28 + 153);
+            harmoniousEggs2.run(rN - 28 + 153 - 12);
         }
     },
     harEggs2Flip: {
-        d: 300,
+        d: 300 - 8,
         f: sum => {
             var rN = getSum(xSheet, xSheet.harEggs2);
-            harmoniousEggs2Flip.run(rN - 28);
+            harmoniousEggs2Flip.run(rN - 28 - 8);
         }
     },
     //-------------------  End of the Egg Sequence -----------------------------------------//
