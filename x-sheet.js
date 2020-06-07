@@ -443,11 +443,19 @@ xSheet = {
         }
     },
     middleOfTheMuscularDistanceField: {
-        d: 2000,
+        d: 1918 - 24 * 4,
         f: sum => {
             var rN = getSum(xSheet, xSheet.plantsSofter);
             var coFade = cosineFade(sum, 300);
             middleOfTheMuscularDistanceField.mix(sum, plantsSofter, rN, coFade);
+        }
+    },
+    endOfStormyMuscles: {
+        d: 24 * 5 + 24 * 4,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
+            var coFade = cosineFade(sum, 24 * 5);
+            neutral.mix(sum, middleOfTheMuscularDistanceField, rN, coFade);
         }
     },
 //     torn: {
