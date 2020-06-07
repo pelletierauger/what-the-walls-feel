@@ -193,6 +193,18 @@ xSheet = {
             travellers2DFlip.run(sum + 14);
         }
     },
+    travellers4Bigger: {
+        d: 36,
+        f: sum => {
+            travellers4Bigger.run(sum - 8 - 5);
+        }
+    },
+    travellers4BiggerFlip: {
+        d: 36,
+        f: sum => {
+            travellers4BiggerFlip.run(sum - 8 - 5 - 17);
+        }
+    },
     travellers2E: {
         d: 48 - 14,
         f: sum => {
@@ -203,14 +215,6 @@ xSheet = {
         d: 48 - 14,
         f: sum => {
             travellers2EB.run(sum - 14);
-        }
-    },
-    jumpers: {
-        d: 300,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.travellers2);
-            var coFade = cosineFade(sum, 100);
-            travellers4Bigger.mix(sum, travellers2, rN, coFade);
         }
     },
     travellers6: {
