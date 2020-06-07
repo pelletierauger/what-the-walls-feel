@@ -189,20 +189,20 @@ xSheet = {
             travellers2CFlip.mix(sum, travellers2C, rN, coFade);
         }
     },
-//     travellersToNeutral: {
-//         d: 12,
-//         f: sum => {
-//             var rN = getSum(xSheet, xSheet.travellers2CFlip);
-//             var coFade = cosineFade(sum, 12);
-//             neutral.mix(sum, travellers2CFlip, rN, coFade);
-//         }
-//     },
+    //     travellersToNeutral: {
+    //         d: 12,
+    //         f: sum => {
+    //             var rN = getSum(xSheet, xSheet.travellers2CFlip);
+    //             var coFade = cosineFade(sum, 12);
+    //             neutral.mix(sum, travellers2CFlip, rN, coFade);
+    //         }
+    //     },
     travellers2DFlip: {
         d: 48,
         f: sum => {
             var rN = getSum(xSheet, xSheet.travellers2CFlip);
             var coFade = cosineFade(sum, 12);
-//             travellers2D.run(sum);
+            //             travellers2D.run(sum);
             travellers2DFlip.mix(sum + 14, travellers2CFlip, rN, coFade);
         }
     },
@@ -612,14 +612,14 @@ xSheet = {
             newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
         }
     },
-//     concerto: {
-//         d: 400,
-//         f: function(sum) {
-//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-//             var coFade = cosineFade(sum, 48);
-//             concerto.mix(sum, newSubtleTrunk, rN, coFade);
-//         }
-//     },
+    //     concerto: {
+    //         d: 400,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+    //             var coFade = cosineFade(sum, 48);
+    //             concerto.mix(sum, newSubtleTrunk, rN, coFade);
+    //         }
+    //     },
     concertoEnd: {
         d: 500,
         f: function(sum) {
@@ -671,19 +671,6 @@ if (xSheetInit) {
     updateView();
 }
 
-var xSheet2 = {
-    1: {
-        d: 2000,
-        f: function(sum) {
-            modulatedDimension.run();
-            simple.output(modulatedDimension, 1);
-        }
-    },
-    key: function(n) {
-        return this[Object.keys(this)[n]];
-    }
-};
-
 Object.size = function(obj) {
     var size = 0,
         key;
@@ -697,7 +684,7 @@ function cosineFade(sum, dur) {
     var fade = map(drawCount, sum, sum + dur, 1, 0);
     var fadeCons = constrain(fade, 0, 1);
     var fadeSmooth = fadeCons * PI;
-    var coFade = map(cos(fadeSmooth), 1, -1, 0, 1);
+    var coFade = map(Math.cos(fadeSmooth), 1, -1, 0, 1);
     return coFade;
 }
 
