@@ -39,13 +39,13 @@ xSheet = {
         }
     },
     trafficFadeIn: {
-        d: 1600,
+        d: 1600 - 150,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.trafficFadeIn);
             // oscillators[183].run(0);
             // drawBG();
             // concerto.run();
-            traffic3FadeIn.run(rN);
+            traffic3FadeIn.run(sum - 150);
         }
     },
     //     trafficFadeIn2: { // This is a keeper.
@@ -60,8 +60,8 @@ xSheet = {
         d: 1200,
         f: sum => {
             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-            var coFade = cosineFade(sum, 600);
-            noodlesHorizontal.mix(sum, traffic3FadeIn, rN, coFade);
+            var coFade = cosineFade(sum, 72);
+            noodlesHorizontal.mix(sum, traffic3FadeIn, rN - 150, coFade);
         }
     },
     neutral0: {
@@ -127,42 +127,42 @@ xSheet = {
     //             blendyCavern.mix(sum + 100, blendyCavernB, rN, coFade);
     //         }
     //     },
-    blendyCavs2: {
-        d: 300,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.blendyCav);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            var coFade = cosineFade(sum, 100);
-            blendyCavernC.mix(sum - 100, blendyCavernB, rN, coFade);
-        }
-    },
-    blendyCavs3: {
-        d: 340,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.blendyCavs2);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
-            var coFade = cosineFade(sum, 100);
-            blendyCavernD.mix(sum - 100, blendyCavernC, rN - 100, coFade);
-        }
-    },
-    blendyMuscles: {
-        d: 400,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.blendyCavs3);
-            var coFade = cosineFade(sum, 100);
-            muscleFibersRebuildingThemselves.mix(sum + 500, blendyCavernD, rN - 100, coFade);
-        }
-    },
+//     blendyCavs2: {
+//         d: 300,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.blendyCav);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             // concerto.run();
+//             var coFade = cosineFade(sum, 100);
+//             blendyCavernC.mix(sum - 100, blendyCavernB, rN, coFade);
+//         }
+//     },
+//     blendyCavs3: {
+//         d: 340,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.blendyCavs2);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             // concerto.run();
+//             var coFade = cosineFade(sum, 100);
+//             blendyCavernD.mix(sum - 100, blendyCavernC, rN - 100, coFade);
+//         }
+//     },
+//     blendyMuscles: {
+//         d: 400,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.blendyCavs3);
+//             var coFade = cosineFade(sum, 100);
+//             muscleFibersRebuildingThemselves.mix(sum + 500, blendyCavernD, rN - 100, coFade);
+//         }
+//     },
     travellers2: {
         d: 300,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.blendyMuscles);
+            var rN = getSum(xSheet, xSheet.blendyCav);
             var coFade = cosineFade(sum, 100);
-            travellers2.mix(sum, muscleFibersRebuildingThemselves, rN + 500, coFade);
+            travellers2.mix(sum, blendyCavernB, rN, coFade);
         }
     },
     travellers2B: {
@@ -224,18 +224,18 @@ xSheet = {
             travellers2ED.run(sum - 14 - 16);
         }
     },
-    travellers4BiggerFlip: {
-        d: 36,
-        f: sum => {
-            travellers4BiggerFlip.run(sum - 8 - 5 - 17);
-        }
-    },
-    travellers4Bigger: {
-        d: 36,
-        f: sum => {
-            travellers4Bigger.run(sum - 8 - 5);
-        }
-    },
+//     travellers4BiggerFlip: {
+//         d: 36,
+//         f: sum => {
+//             travellers4BiggerFlip.run(sum - 8 - 5 - 17);
+//         }
+//     },
+//     travellers4Bigger: {
+//         d: 36,
+//         f: sum => {
+//             travellers4Bigger.run(sum - 8 - 5);
+//         }
+//     },
     travellers2EB: {
         d: 48 - 14,
         f: sum => {
@@ -248,20 +248,20 @@ xSheet = {
             travellers2E.run(sum - 14);
         }
     },
-    padding: {
-        d: 100,
-        f: sum => {
-            neutral.run(sum);
-        }
-    },
-    travellers6: {
-        d: 300,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.jumpers);
-            var coFade = cosineFade(sum, 100);
-            horizontalJumpingDots2.mix(sum + 1000, travellers4Bigger, rN, coFade);
-        }
-    },
+//     padding: {
+//         d: 100,
+//         f: sum => {
+//             neutral.run(sum);
+//         }
+//     },
+//     travellers6: {
+//         d: 300,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.jumpers);
+//             var coFade = cosineFade(sum, 100);
+//             horizontalJumpingDots2.mix(sum + 1000, travellers4Bigger, rN, coFade);
+//         }
+//     },
     //     jumpingDots: {
     //         d: 150,
     //         f: sum => {
@@ -280,9 +280,9 @@ xSheet = {
     //     },
     //-------------------  The Egg Sequence -----------------------------------------//
     clouds: {
-        d: 125,
+        d: 125 - 33,
         f: function(sum) {
-            yetMoreHungryClouds.run(sum);
+            yetMoreHungryClouds.run(sum - 33);
         }
     },
     cloudsB: {
@@ -303,18 +303,18 @@ xSheet = {
             eggsFlip.run(sum);
         }
     },
-    eggs0b: {
-        d: 75,
-        f: sum => {
-            eggsB.run(sum);
-        }
-    },
-    eggs0bf: {
-        d: 75,
-        f: sum => {
-            eggsBFlip.run(sum);
-        }
-    },
+//     eggs0b: {
+//         d: 75,
+//         f: sum => {
+//             eggsB.run(sum);
+//         }
+//     },
+//     eggs0bf: {
+//         d: 75,
+//         f: sum => {
+//             eggsBFlip.run(sum);
+//         }
+//     },
     eggs0c: {
         d: 75,
         f: sum => {

@@ -173,8 +173,10 @@ traffic3FadeIn.update = function(sum) {
         for (let y = 0; y < amountY; y += 1) {
 //             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
 //             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
-            let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * (1 / -x) * 200.5;
-            let yy = y + Math.pow(Math.sin((x + 10) * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let ox = x  + 1;
+            let oy = y;
+            let xx = x + Math.pow(Math.cos(oy * 0.5 + t * 0.025), 700) * oy * (1 / -ox) * 200.5;
+            let yy = y + Math.pow(Math.sin((ox + 10) * 0.5 + t * 0.025), 700) * oy * ox * 200.5;
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);
             xx += Math.random() * 0.01;
