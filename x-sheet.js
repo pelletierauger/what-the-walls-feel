@@ -365,7 +365,42 @@ xSheet = {
             harmoniousEggs2Flip.run(rN - 28 - 8);
         }
     },
-    //-------------------  End of the Egg Sequence -----------------------------------------//
+    //------------------- End of the Egg Sequence --------------------------------------//
+    //
+    //------------------- The Textile Sequence -----------------------------------------//
+    //
+    fasterSubtleTrunk: {
+        d: 400,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+            var coFade = cosineFade(sum, 48);
+            fasterSubtleTrunk.mix(sum, neutral, sum, coFade);
+        }
+    },
+    newSubtleTrunk: {
+        d: 224,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+            var coFade = cosineFade(sum, 48);
+            newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
+        }
+    },
+    //     concerto: {
+    //         d: 400,
+    //         f: function(sum) {
+    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+    //             var coFade = cosineFade(sum, 48);
+    //             concerto.mix(sum, newSubtleTrunk, rN, coFade);
+    //         }
+    //     },
+    concertoEnd: {
+        d: 500,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+            var coFade = cosineFade(sum, 48);
+            mellowFestive.mix(sum, newSubtleTrunk, rN, coFade);
+        }
+    },
 //     eggsTests: {
 //         d: 500,
 //         f: sum => {
@@ -605,37 +640,6 @@ xSheet = {
 //             newBreakingApartAndGatheringAgain.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
 //         }
 //     },
-    fasterSubtleTrunk: {
-        d: 200,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            fasterSubtleTrunk.run(sum);
-        }
-    },
-    newSubtleTrunk: {
-        d: 224,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 48);
-            newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
-        }
-    },
-    //     concerto: {
-    //         d: 400,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             var coFade = cosineFade(sum, 48);
-    //             concerto.mix(sum, newSubtleTrunk, rN, coFade);
-    //         }
-    //     },
-    concertoEnd: {
-        d: 500,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 48);
-            mellowFestive.mix(sum, newSubtleTrunk, rN, coFade);
-        }
-    },
     //     endTests0: {
     //         d: 3000,
     //         f: function(sum) {

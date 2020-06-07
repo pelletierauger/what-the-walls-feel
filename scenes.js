@@ -36,10 +36,12 @@ fasterSubtleTrunk.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum) * 0.025 * 0.5 * 0.75;
+    let amp = map(drawCount - sum, 0, 200, 0, 1);
+    amp = Math.min(amp, 1);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let dx = x + Math.max(Math.cos(x * 0.125 + t * -10), Math.sin(y + x * 0.25 + t * 0.5));
-            let dy = y + Math.min(Math.sin(y * 0.125 + t * -10), Math.cos(x + x * 0.25 + t * 0.5));
+            let dx = x + Math.max(Math.cos(x * 0.125 + t * -10), Math.sin(y + x * 0.25 + t * 0.5)) * amp;
+            let dy = y + Math.min(Math.sin(y * 0.125 + t * -10), Math.cos(x + x * 0.25 + t * 0.5)) * amp;
             dx += Math.random() * 0.01;
             dy += Math.random() * 0.01;
             dx *= 0.95;
