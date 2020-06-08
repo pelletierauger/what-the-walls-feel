@@ -530,7 +530,7 @@ xSheet = {
             var rN = getSum(xSheet, xSheet.newerfestive);
             var coFade = cosineFade(sum, 450);
 //             finalFestive.run(sum - 4);
-            finalFestive.interp(sum - 400, newerFestive, rN, coFade);
+            finalFestive.interp(sum - 400, newerFestive, rN - 2, coFade);
 //             logJavaScriptConsole(coFade);
         }
     },
