@@ -21,6 +21,30 @@ neutral.update = function(sum) {
     }
 };
 
+let empty = new Scene("empty");
+
+empty.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.015;
+    let amp = map(drawCount - sum, 0, 650, 0.5, 1.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let xx = x;
+            let yy = y;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            xx += 200;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             if (x == amountX && y == 0) {
+//                 logJavaScriptConsole(xx);
+//             }
+        }
+    }
+};
+
 let beautifulBubbles = new Scene("beautiful-bubbles");
 
 beautifulBubbles.update = function(sum) {

@@ -483,7 +483,7 @@ xSheet = {
 //         }
 //     },
     vanishingClouds: {
-        d: 300,
+        d: 292,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOfStormyMuscles);
             var coFade = cosineFade(sum, 48);
@@ -507,9 +507,9 @@ xSheet = {
 //         }
 //     },
     newerfestive: {
-        d: 600,
+        d: 600 - 2,
         f: function(sum) {
-            newerFestive.run(sum);
+            newerFestive.run(sum - 2);
         }
     },
 //     festive: {
@@ -525,12 +525,23 @@ xSheet = {
 //         }
 //     },
     finalfestive: {
-        d: 1400,
+        d: 1593,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.newerfestive);
-            var coFade = cosineFade(sum, 300);
+            var coFade = cosineFade(sum, 450);
 //             finalFestive.run(sum - 4);
-            finalFestive.interp(sum - 4, newerFestive, rN, coFade);
+            finalFestive.interp(sum - 400, newerFestive, rN, coFade);
+//             logJavaScriptConsole(coFade);
+        }
+    },
+    empty: {
+        d: 450,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.finalFestive);
+            var coFade = cosineFade(sum, 450);
+//             finalFestive.run(sum - 4);
+//             neutral.interp(sum, finalFestive, rN - 400, coFade);
+            empty.run(sum);
 //             logJavaScriptConsole(coFade);
         }
     },
@@ -684,14 +695,14 @@ xSheet = {
     //             noodlesHorizontal.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
     //         }
     //     },
-    springsSlowerLessElastic: { // This is a keeper.
-        d: 1000,
-        f: sum => {
-            var rN = getSum(xSheet, xSheet.muscles);
-            var coFade = cosineFade(sum, 300);
-            springsSlowerLessElastic.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
-        }
-    },
+//     springsSlowerLessElastic: { // This is a keeper.
+//         d: 1000,
+//         f: sum => {
+//             var rN = getSum(xSheet, xSheet.muscles);
+//             var coFade = cosineFade(sum, 300);
+//             springsSlowerLessElastic.mix(sum, muscleFibersRebuildingThemselves, rN, coFade);
+//         }
+//     },
 //     exploring: {
 //         d: 4000,
 //         f: sum => {

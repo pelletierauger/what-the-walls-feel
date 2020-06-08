@@ -795,6 +795,9 @@ finalFestive.update = function(sum) {
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.005;
     let appear = map(drawCount - sum, 0, 1000, 0.125, 1);
+    let disappear = map(Math.max(drawCount - sum - 400, 1000), 1000, 1600, 2, 0.1);
+//     disappear = Math.max(disappear, 2);
+//     logJavaScriptConsole(disappear);
     let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
@@ -802,12 +805,15 @@ finalFestive.update = function(sum) {
             let oy = y + 14;
             let dx = Math.cos(ox * 0.3 * appear);
             let dy = Math.sin(oy * 0.3 * appear);
-            let xx = x - Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
-            let yy = y + Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
+            let xx = x - Math.pow(Math.tan((dx + dy) * disappear + t * 6), 0.99) * 0.1;
+            let yy = y + Math.pow(Math.tan((dx + dy) * disappear + t * 6), 0.99) * 0.1;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 * 0.57 - 1.06, (yy + -10) * 0.07 - 1.32); // good
+//             if (x == amountX && y == 0) {
+//                 logJavaScriptConsole("final : " + xx);
+//             }
         }
     }
 };
