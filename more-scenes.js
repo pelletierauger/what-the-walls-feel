@@ -448,9 +448,17 @@ newerFestive.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 120800) * 0.005;
-    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
-    let vanish = map(drawCount - sum, 0, 300, 0.125, 1);
+    let t = (drawCount - sum + 120800) * 0.005 * 0.125 + (302.02) + 151 + 75.5;
+//     logJavaScriptConsole(t);
+//     let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    let vanish;
+    vanish = map(drawCount - sum, 0, 300, 0.125, 1);
+//     if ((drawCount - sum) < 700) {
+//         vanish = map(drawCount - sum, 0, 300, 0.125, 1);
+//         vanish = Math.min(vanish, 2);
+//     } else {
+//         vanish = map(drawCount - sum, 700, 800, 2, 0.125);
+//     }
 //     vanish = Math.max(1, vanish);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
@@ -473,7 +481,8 @@ newerFestive.update = function(sum) {
             this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
         }
     }
-    logJavaScriptConsole("ind : " + (drawCount - sum) + ", vanish: " + vanish);
+//     logJavaScriptConsole("ind : " + (drawCount - sum) + ", v : " + vanish);
+//     logJavaScriptConsole("ind : " + (drawCount - sum) + ", vanish: " + vanish);
 };
 
 let newerFestive0 = new Scene("Newer festive, 0");
@@ -785,13 +794,14 @@ finalFestive.update = function(sum) {
     let amountX = 50;
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.005;
+    let appear = map(drawCount - sum, 0, 1000, 0.125, 1);
     let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x + -5;
-            let oy = y + 19;
-            let dx = Math.cos(ox * 0.3);
-            let dy = Math.sin(oy * 0.3);
+            let ox = x - 26;
+            let oy = y + 14;
+            let dx = Math.cos(ox * 0.3 * appear);
+            let dy = Math.sin(oy * 0.3 * appear);
             let xx = x - Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
             let yy = y + Math.pow(Math.tan((dx + dy) * 2 + t * 6), 0.99) * 0.1;
             xx += Math.random() * 0.01;

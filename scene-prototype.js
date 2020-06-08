@@ -30,6 +30,24 @@ Scene.prototype.mix = function(sum, otherScene, sumOther, ratio) {
     this.display(1);
 };
 
+Scene.prototype.interp = function(sum, otherScene, sumOther, ratio) {
+    this.update(sum);
+//     logJavaScriptConsole(ratio * 1000);
+    otherScene.update(sumOther);
+    for (let i = 0; i < this.vertices.length; i++) {
+        let a = this.vertices[i];
+        let b = otherScene.vertices[i];
+        let valley = ((1 - ratio) * 5000) - 2500;
+        if (Math.abs(i - 2500) < valley) {
+            this.vertices[i] = a;
+        } else {
+            this.vertices[i] = b;
+        }
+    }
+    this.display(1);
+};
+
+
 Scene.prototype.display = function(alpha) {
 
     // We start by drawing the whole image on the first texture, "texture"

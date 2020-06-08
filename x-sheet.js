@@ -483,7 +483,7 @@ xSheet = {
 //         }
 //     },
     vanishingClouds: {
-        d: 145,
+        d: 300,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOfStormyMuscles);
             var coFade = cosineFade(sum, 48);
@@ -507,12 +507,9 @@ xSheet = {
 //         }
 //     },
     newerfestive: {
-        d: 605,
+        d: 600,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.newerFestive1);
-            var coFade = cosineFade(sum, 24);
             newerFestive.run(sum);
-//             newerFestive.mix(sum - 210, neutral, rN - 210, coFade);
         }
     },
 //     festive: {
@@ -528,9 +525,13 @@ xSheet = {
 //         }
 //     },
     finalfestive: {
-        d: 405,
+        d: 1400,
         f: function(sum) {
-            finalFestive.run(sum - 70);
+            var rN = getSum(xSheet, xSheet.newerfestive);
+            var coFade = cosineFade(sum, 300);
+//             finalFestive.run(sum - 4);
+            finalFestive.interp(sum - 4, newerFestive, rN, coFade);
+//             logJavaScriptConsole(coFade);
         }
     },
     //     conclusion0: { //maybe
