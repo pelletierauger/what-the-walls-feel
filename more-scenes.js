@@ -450,14 +450,48 @@ newerFestive.update = function(sum) {
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.005;
     let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    let vanish = map(drawCount - sum, 0, 300, 0.125, 1);
+//     vanish = Math.max(1, vanish);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075 * 2) * vanish) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075 * 2) * vanish) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+//             xx *= vanish;
+//             let scaleVanish = (x - 25);
+//             if (x > 25) {
+//                 xx += vanish * scaleVanish;
+//             } else {
+//                 xx -= vanish * scaleVanish;
+//             }
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+    logJavaScriptConsole("ind : " + (drawCount - sum) + ", vanish: " + vanish);
+};
+
+let newerFestive0 = new Scene("Newer festive, 0");
+
+newerFestive0.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + -5;
             let oy = y + 15;
             let dx = Math.abs(Math.cos(ox * 0.075 * 2) * 1) * 1;
             let dy = Math.abs(Math.sin(oy * 0.075 * 2) * 1) * 1;
-            let xx = x - Math.pow(Math.cos((dx + dy) * 8 + t * 12) * 10000, 0.05) * 1;
-            let yy = y + Math.pow(Math.sin((dx + dy) * 8 + t * 12) * 10000, 0.05) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 2 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 2 + t * 12) * 10000, 0.05) * 1;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
@@ -465,6 +499,31 @@ newerFestive.update = function(sum) {
         }
     }
 };
+
+let newerFestive1 = new Scene("Newer festive, 1");
+
+newerFestive1.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 120800) * 0.005;
+    let freq = map(drawCount - sum, 0, 2000, 0.1, 0.2);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + -5;
+            let oy = y + 15;
+            let dx = Math.abs(Math.cos(ox * 0.075 * 2) * 1) * 1;
+            let dy = Math.abs(Math.sin(oy * 0.075 * 2) * 1) * 1;
+            let xx = x - Math.pow(Math.cos((dx + dy) * 4 + t * 12) * 10000, 0.05) * 1;
+            let yy = y + Math.pow(Math.sin((dx + dy) * 4 + t * 12) * 10000, 0.05) * 1;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 * 0.57 - 0.99, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 
 // beau, more structured
 newFestive.update = function(sum) {
@@ -718,8 +777,10 @@ newFestive.update = function(sum) {
     }
 };
 
+let finalFestive = new Scene("Final festive");
+
 // trying to center the previous one
-newFestive.update = function(sum) {
+finalFestive.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;

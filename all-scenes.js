@@ -2107,7 +2107,7 @@ vanishingClouds.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 12) * 0.005 * 0.25;
+    let t = (drawCount - sum + 12) * 0.005 * 0.5;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 2.5;
@@ -2121,9 +2121,9 @@ vanishingClouds.update = function(sum) {
             xx *= 0.95;
             xx += 0.45
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-            if (x == amountX && y == 0) {
-                logJavaScriptConsole(xx);
-            }
+//             if (x == amountX && y == 0) {
+//                 logJavaScriptConsole(xx);
+//             }
         }
     }
 };

@@ -482,8 +482,8 @@ xSheet = {
 //             // fasterSubtleTrunk.run();
 //         }
 //     },
-    festiveStart: {
-        d: 300,
+    vanishingClouds: {
+        d: 145,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOfStormyMuscles);
             var coFade = cosineFade(sum, 48);
@@ -491,16 +491,46 @@ xSheet = {
             vanishingClouds.mix(sum, neutral, rN, coFade);
         }
     },
-    festive: {
-        d: 1500,
+//     newerfestive0: {
+//         d: 106 + 67,
+//         f: function(sum) {
+//             newerFestive0.run(sum - 70);
+//         }
+//     },
+//     newerfestive1: {
+//         d: 105,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.newerFestive0);
+//             var coFade = cosineFade(sum, 24);
+//             newerFestive1.run(sum - 210);
+// //             newerFestive1.mix(sum - 210, newerFestive0, rN - 70, coFade);
+//         }
+//     },
+    newerfestive: {
+        d: 605,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
-            // oscillators[183].run(0);
-            // drawBG();
-            var coFade = cosineFade(sum, 100);
-            newFestive.mix(sum, middleOfTheMuscularDistanceField, rN, coFade);
-            // concerto.run();
-            // fasterSubtleTrunk.run();
+            var rN = getSum(xSheet, xSheet.newerFestive1);
+            var coFade = cosineFade(sum, 24);
+            newerFestive.run(sum);
+//             newerFestive.mix(sum - 210, neutral, rN - 210, coFade);
+        }
+    },
+//     festive: {
+//         d: 1500,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
+//             // oscillators[183].run(0);
+//             // drawBG();
+//             var coFade = cosineFade(sum, 100);
+// //             newFestive.mix(sum, middleOfTheMuscularDistanceField, rN, coFade);
+//             newFestive.run(sum);
+//             // fasterSubtleTrunk.run();
+//         }
+//     },
+    finalfestive: {
+        d: 405,
+        f: function(sum) {
+            finalFestive.run(sum - 70);
         }
     },
     //     conclusion0: { //maybe
