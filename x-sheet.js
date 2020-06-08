@@ -38,14 +38,18 @@ xSheet = {
             overture.run(rN);
         }
     },
-    trafficFadeIn: {
-        d: 1600 - 150,
+    traffic3FadeIn: {
+        d: 1600 - 150 - 72 - 24,
         f: function(sum) {
-            var rN = getSum(xSheet, xSheet.trafficFadeIn);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
             traffic3FadeIn.run(sum - 150);
+        }
+    },
+    endOftraffic3FadeIn: {
+        d: 72,
+        f: function(sum) {
+            var rN = getSum(xSheet, xSheet.traffic3FadeIn);
+            var coFade = cosineFade(sum, 72);
+            neutral.mix(sum, traffic3FadeIn, rN - 150, coFade);
         }
     },
     //     trafficFadeIn2: { // This is a keeper.
@@ -59,9 +63,9 @@ xSheet = {
     noodles: {
         d: 1200,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.trafficFadeIn);
+            var rN = getSum(xSheet, xSheet.endOftraffic3FadeIn);
             var coFade = cosineFade(sum, 72);
-            noodlesHorizontal.mix(sum, traffic3FadeIn, rN - 150, coFade);
+            noodlesHorizontal.mix(sum, neutral, rN - 150, coFade);
         }
     },
     neutral0: {
