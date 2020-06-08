@@ -14,9 +14,9 @@ neutral.update = function(sum) {
             yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-//             if (x == amountX && y == 0) {
-//                 logJavaScriptConsole(xx);
-//             }
+            if (x == amountX && y == 0) {
+                logJavaScriptConsole(xx);
+            }
         }
     }
 };
@@ -1464,7 +1464,7 @@ middleOfTheMuscularDistanceFieldB.update = function(sum) {
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 15;
-            let oy = y - 46 + 8;
+            let oy = y - 46 + 0;
             let dx = abs(cos(x) * 1) * 0.25;
             let dy = abs(sin(y) * 1) * 0.25;
             let xx = x - pow(cos(cos(dx + oy * ox * 0.01) + t * 1.5), -1) * 1.25;
@@ -2097,6 +2097,33 @@ rectangularHungryCloudsSlower.update = function(sum) {
             let ranY = Math.random() * 0.025 * 0.5;
             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
             i++;
+        }
+    }
+};
+
+let vanishingClouds = new Scene("Vanishing clouds");
+
+vanishingClouds.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 12) * 0.005 * 0.25;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 2.5;
+            let oy = y + 4;
+            let dx = Math.cos(ox * 0.85 * 0.5);
+            let dy = Math.sin(oy * 0.5 * 0.5);
+            let xx = x - Math.pow(map(Math.cos((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 0.1) * 0.5;
+            let yy = y + Math.pow(map(Math.sin((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 0.1) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            xx += 0.45
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+            if (x == amountX && y == 0) {
+                logJavaScriptConsole(xx);
+            }
         }
     }
 };

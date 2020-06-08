@@ -455,7 +455,7 @@ xSheet = {
         }
     },
     middleOfTheMuscularDistanceFieldB: {
-        d: 802 - 24 * 3,
+        d: 730 - 100,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
             var coFade = cosineFade(sum, 120);
@@ -463,10 +463,10 @@ xSheet = {
         }
     },
     endOfStormyMuscles: {
-        d: 24 * 5 + 24 * 4,
+        d: 196,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceFieldB);
-            var coFade = cosineFade(sum, 24 * 5);
+            var coFade = cosineFade(sum, 96 + 100);
             neutral.mix(sum, middleOfTheMuscularDistanceFieldB, rN - 270, coFade);
         }
     },
@@ -482,6 +482,15 @@ xSheet = {
 //             // fasterSubtleTrunk.run();
 //         }
 //     },
+    festiveStart: {
+        d: 300,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.endOfStormyMuscles);
+            var coFade = cosineFade(sum, 48);
+//             vanishingClouds.run(sum);
+            vanishingClouds.mix(sum, neutral, rN, coFade);
+        }
+    },
     festive: {
         d: 1500,
         f: function(sum) {
