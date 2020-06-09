@@ -421,12 +421,12 @@ xSheet = {
             escherLikeRiver.mix(sum, escherLikeStaircases, rN, coFade);
         }
     },
-    escherLikeStaircasesFlowy: {
+    escherLikeRiver2: {
         d: 440 - 10,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeRiver);
-            var coFade = cosineFade(sum, 300);
-            escherLikeStaircasesFlowy.mix(sum, escherLikeRiver, rN, coFade);
+            var coFade = cosineFade(sum, 150);
+            escherLikeRiver2.mix(sum, escherLikeRiver, rN, coFade);
         }
     },
 //     eggsTests: {
@@ -457,9 +457,9 @@ xSheet = {
     plantsSofter: {
         d: 800 - 30 - 25 - 2,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.escherLikeStaircasesFlowy);
+            var rN = getSum(xSheet, xSheet.escherLikeRiver2);
             var coFade = cosineFade(sum, 200);
-            plantsSofter.mix(sum, escherLikeStaircasesFlowy, rN, coFade);
+            plantsSofter.mix(sum, escherLikeRiver2, rN, coFade);
         }
     },
     middleOfTheMuscularDistanceField: {

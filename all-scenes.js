@@ -3924,6 +3924,25 @@ escherLikeRiver.update = function(sum) {
     }
 };
 
+let escherLikeRiver2 = new Scene("Escher-like river 2");
+
+escherLikeRiver2.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum) * 0.025;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = x - Math.tan(Math.sin((-y + x * 100) * 0.5 + t * 3));
+            let dy = y + Math.tan(Math.cos((-y * 0.5 + x + x * 100) * 0.5 + t * 3));
+            dx += Math.random() * 0.01;
+            dy += Math.random() * 0.01;
+            dx *= 0.95;
+            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
 if (1 == 0) {
 
 escherLikeRiver.update = function(sum) {
