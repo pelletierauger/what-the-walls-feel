@@ -373,22 +373,22 @@ xSheet = {
     //
     //------------------- The Textile Sequence -----------------------------------------//
     //
-    fasterSubtleTrunk: {
-        d: 400,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 48);
-            fasterSubtleTrunk.mix(sum, neutral, sum, coFade);
-        }
-    },
-    newSubtleTrunk: {
-        d: 224,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 48);
-            newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
-        }
-    },
+//     fasterSubtleTrunk: {
+//         d: 400,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+//             var coFade = cosineFade(sum, 48);
+//             fasterSubtleTrunk.mix(sum, neutral, sum, coFade);
+//         }
+//     },
+//     newSubtleTrunk: {
+//         d: 224,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+//             var coFade = cosineFade(sum, 48);
+//             newSubtleTrunk.mix(rN, fasterSubtleTrunk, rN, coFade);
+//         }
+//     },
     //     concerto: {
     //         d: 400,
     //         f: function(sum) {
@@ -397,20 +397,36 @@ xSheet = {
     //             concerto.mix(sum, newSubtleTrunk, rN, coFade);
     //         }
     //     },
-    mellowFestive: {
-        d: 500,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-            var coFade = cosineFade(sum, 48);
-            mellowFestive.mix(sum, newSubtleTrunk, rN, coFade);
-        }
-    },
+//     mellowFestive: {
+//         d: 500,
+//         f: function(sum) {
+//             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
+//             var coFade = cosineFade(sum, 48);
+//             mellowFestive.mix(sum, newSubtleTrunk, rN, coFade);
+//         }
+//     },
     escherLikeStaircases: {
-        d: 500,
+        d: 440 - 10,
         f: sum => {
             var rN = getSum(xSheet, xSheet.mellowFestive);
-            var coFade = cosineFade(sum, 48);
-            escherLikeStaircases.mix(sum, mellowFestive, rN, coFade);
+            var coFade = cosineFade(sum, 72);
+            escherLikeStaircases.mix(sum, neutral, rN, coFade);
+        }
+    },
+    escherLikeRiver: {
+        d: 440 - 10,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.escherLikeStaircases);
+            var coFade = cosineFade(sum, 150);
+            escherLikeRiver.mix(sum, escherLikeStaircases, rN, coFade);
+        }
+    },
+    escherLikeStaircasesFlowy: {
+        d: 440 - 10,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.escherLikeRiver);
+            var coFade = cosineFade(sum, 300);
+            escherLikeStaircasesFlowy.mix(sum, escherLikeRiver, rN, coFade);
         }
     },
 //     eggsTests: {
@@ -439,11 +455,11 @@ xSheet = {
 //         }
 //     },
     plantsSofter: {
-        d: 800,
+        d: 800 - 30 - 25 - 2,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.escherLikeStaircases);
+            var rN = getSum(xSheet, xSheet.escherLikeStaircasesFlowy);
             var coFade = cosineFade(sum, 200);
-            plantsSofter.mix(sum, escherLikeStaircases, rN, coFade);
+            plantsSofter.mix(sum, escherLikeStaircasesFlowy, rN, coFade);
         }
     },
     middleOfTheMuscularDistanceField: {
