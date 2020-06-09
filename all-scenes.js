@@ -1487,8 +1487,8 @@ middleOfTheMuscularDistanceFieldB.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.005;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 15;
-            let oy = y - 46 + 0;
+            let ox = x - 15 + 10;
+            let oy = y - 46 - 20;
             let dx = abs(cos(x) * 1) * 0.25;
             let dy = abs(sin(y) * 1) * 0.25;
             let xx = x - pow(cos(cos(dx + oy * ox * 0.01) + t * 1.5), -1) * 1.25;
