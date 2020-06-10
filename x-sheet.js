@@ -477,7 +477,7 @@ xSheet = {
         d: 438 + 120,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
-            var coFade = cosineFade(sum, 180);
+            var coFade = cosineFade(sum, 185);
             muscleFibersRebuildingThemselves.mix(sum - 270 + 120, middleOfTheMuscularDistanceField, rN, coFade);
         }
     },
