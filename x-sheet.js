@@ -428,7 +428,7 @@ xSheet = {
         d: 440 - 10 + 15 + 60,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeRiver);
-            var coFade = cosineFade(sum, 150 + 60 + 60);
+            var coFade = cosineFade(sum, 150 + 60 + 60 + 60);
             escherLikeRiver2.mix(sum, escherLikeRiver, rN, coFade);
         }
     },
