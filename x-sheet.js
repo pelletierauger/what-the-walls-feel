@@ -417,7 +417,7 @@ xSheet = {
         }
     },
     escherLikeRiver: {
-        d: 440 - 10,
+        d: 440 - 10 + 15,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeStaircases);
             var coFade = cosineFade(sum, 150);
@@ -425,7 +425,7 @@ xSheet = {
         }
     },
     escherLikeRiver2: {
-        d: 440 - 10,
+        d: 440 - 10 + 15,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeRiver);
             var coFade = cosineFade(sum, 150);
@@ -458,7 +458,7 @@ xSheet = {
 //         }
 //     },
     plantsSofter: {
-        d: 800 - 25,
+        d: 800 - 25 + 25,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeRiver2);
             var coFade = cosineFade(sum, 200);
@@ -532,7 +532,7 @@ xSheet = {
 //         }
 //     },
     newerfestive: {
-        d: 600 - 2 + 17 + 7,
+        d: 600 - 2 + 17 + 7 - 55,
         f: function(sum) {
             newerFestive.run(sum - 2);
         }
