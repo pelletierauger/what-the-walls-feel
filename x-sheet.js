@@ -510,6 +510,12 @@ xSheet = {
             vanishingClouds.mix(sum, neutral, rN, coFade);
         }
     },
+    vanishingCloudsB: {
+        d: 175,
+        f: sum => {
+            vanishingCloudsB.run(sum - 125);
+        }
+    },
 //     newerfestive0: {
 //         d: 106 + 67,
 //         f: function(sum) {
@@ -526,7 +532,7 @@ xSheet = {
 //         }
 //     },
     newerfestive: {
-        d: 600 - 2,
+        d: 600 - 2 + 17,
         f: function(sum) {
             newerFestive.run(sum - 2);
         }

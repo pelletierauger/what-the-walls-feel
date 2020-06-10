@@ -2128,6 +2128,34 @@ vanishingClouds.update = function(sum) {
     }
 };
 
+let vanishingCloudsB = new Scene("Vanishing clouds, b");
+
+vanishingCloudsB.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 12) * 0.005 * 0.25;
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x - 2;
+            let oy = y + 6;
+            let dx = Math.cos(ox * 0.85 * 0.5 * 2);
+            let dy = Math.sin(oy * 0.5 * 0.5 * 2);
+            let xx = x - Math.pow(map(Math.cos((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 0.1) * 0.5;
+            let yy = y + Math.pow(map(Math.sin((Math.sin(dx + dy)) + t * 25), -1, 1, -0.25, 1), 0.1) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            xx += 0.45
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+//             if (x == amountX && y == 0) {
+//                 logJavaScriptConsole(xx);
+//             }
+        }
+    }
+};
+
+
 let eggs = new Scene("Eggs");
 
 eggs.update = function(sum) {
