@@ -660,28 +660,20 @@ anotherBreakingApartAndGatheringAgain.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 14000) * 0.025;
+    let t = (drawCount - sum + 14000 * 1.5) * 0.025 * 0.75;
     let a = 0.00005 * sin(t * 0.5);
-    let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
-            let ox = x - 100;
-            let oy = y - 50;
+            let ox = x - 48 - 40;
+            let oy = y + 42;
             let dx = abs(cos(x) * 0.01 - 25);
             let dy = abs(sin(y) * 0.01 - 25);
-            let xx = x + pow(cos(a * ox * oy + t * 0.0005), 700) * sin(ox * oy) * ox * ox * 2.5;
-            let yy = y + pow(sin(a * ox * oy + t * 0.0005), 700) * sin(ox * oy) * ox * ox * 2.5;
-            //  xx += map(cos(x * t), -1, 1, 0.5, 1) * 0.5;
-            //  yy += map(sin(y * t), -1, 1, 0.5, 1) * 0.5;
-            if (i == 0) {
-                oriX = xx;
-            }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            //             this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            let xx = x - pow(cos(a * ox * oy + t * 0.0005), 100) * sin(ox * oy * 10) * 20;
+            let yy = y + pow(sin(a * ox * oy + t * 0.0005), 300) * sin(ox * oy * 10) * ox * ox * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
             xx *= 0.95;
-            this.vertices.push((xx - 0) * 0.075 - 1.2, (yy + -10) * 0.07 - 1.3);
-            i++;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };
@@ -1384,30 +1376,18 @@ muscleFibersRebuildingThemselves.update = function(sum) {
     let amountY = 50;
     let t = (drawCount - sum + 12080) * 0.0025;
     let a = 0.005 * sin(t * 0.05);
-    let i = 0;
     for (let x = amountX; x > 0; x -= 1) {
-        //     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 1 * cos(t * 5);
-            let oy = y + 10 * sin(t * 5);
+            let oy = y + 20;
             let dx = abs(cos(x) * 1 - 2) * 0.25;
             let dy = abs(sin(y) * 1 - 2) * 0.25;
-            let xx = x - pow(cos(cos(dx + oy * 0.1 + dy * 0.2) + t * 2), -1) * 0.25;
+            let xx = x - pow(cos(cos(dx + oy * 0.1 + dy * 0.2) + t * 2), 1) * 4;
             let yy = y + pow(sin(sin(dx + oy * 0.1 + dy * 0.2) + t * 2), -1) * 0.25;
-            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
-            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
-            if (i == 0) {
-                oriX = xx;
-            }
-            //             let ranX = Math.random() * 0.025 * 0.5;
-            //             let ranY = Math.random() * 0.025 * 0.5;
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
-            //             this.vertices.push((xx) * 0.05 * 1.0 - 1.2, (yy) * 0.05 * 1.0 - 1.3);
-            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             xx *= 0.95;
-            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-            i++;
+            this.vertices.push((xx - 14.25 * 0) * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
         }
     }
 };
@@ -1421,22 +1401,18 @@ distanceFieldsAndMuscles.update = function(sum) {
     let t = (drawCount - sum + 120800) * 0.005;
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
-    for (let x = 0; x < amountX; x += 1) {
+    for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x;
             let oy = y;
             let dx = abs(cos(x) * 1) * 0.25;
             let dy = abs(sin(y) * 1) * 0.25;
             let xx = x + pow(cos(cos(dx + oy * ox * 0.01 + dy * 0.2) + t * 2), -1) * 0.25;
-            let yy = y + pow(sin(sin(dx + oy * ox * 0.01 + dy * 0.2) + t * 2), -1) * 0.25;
-            //             xx += map(cos(x * t), -1, 1, 0.5, 0.4) * 2;
-            //             yy += map(sin(y * t), -1, 1, 0.5, 0.4) * 2;
-            if (i == 0) {
-                oriX = xx;
-            }
-            let ranX = Math.random() * 0.025 * 0.5;
-            let ranY = Math.random() * 0.025 * 0.5;
-            this.vertices.push((xx - 0 + ranX) * 0.05 * 1.0 - 1.2, (yy + ranY) * 0.05 * 1.0 - 1.3);
+            let yy = y + pow(sin(sin(dx + oy * ox * 0.01 + dy * 0.2) + t * 2), -1) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
             i++;
         }
     }

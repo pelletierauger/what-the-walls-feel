@@ -466,7 +466,7 @@ xSheet = {
         }
     },
     middleOfTheMuscularDistanceField: {
-        d: 911 + 24 * 8,
+        d: (911 + 24 * 8) - 120,
         f: sum => {
             var rN = getSum(xSheet, xSheet.plantsSofter);
             var coFade = cosineFade(sum, 300);
@@ -474,11 +474,11 @@ xSheet = {
         }
     },
     middleOfTheMuscularDistanceFieldB: {
-        d: 730 - 100,
+        d: 438 + 120,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
-            var coFade = cosineFade(sum, 120);
-            middleOfTheMuscularDistanceFieldB.mix(sum - 270, middleOfTheMuscularDistanceField, rN, coFade);
+            var coFade = cosineFade(sum, 180);
+            muscleFibersRebuildingThemselves.mix(sum - 270 + 120, middleOfTheMuscularDistanceField, rN, coFade);
         }
     },
     endOfStormyMuscles: {
@@ -486,7 +486,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceFieldB);
             var coFade = cosineFade(sum, 96 + 100);
-            neutral.mix(sum, middleOfTheMuscularDistanceFieldB, rN - 270, coFade);
+            neutral.mix(sum, muscleFibersRebuildingThemselves, rN - 270 + 120, coFade);
         }
     },
 //     torn: {
