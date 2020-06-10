@@ -409,7 +409,7 @@ xSheet = {
 //         }
 //     },
     escherLikeStaircases: {
-        d: 440 - 10 - 57 + 25 - 30,
+        d: 440 - 10 - 57 + 25 - 30 - 100,
         f: sum => {
             var rN = getSum(xSheet, xSheet.mellowFestive);
             var coFade = cosineFade(sum, 72 * 2);
@@ -417,10 +417,10 @@ xSheet = {
         }
     },
     escherLikeRiver: {
-        d: 440 - 10 + 15 - 60 + 30,
+        d: 440 - 10 + 15 - 60 + 30 + 100,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeStaircases);
-            var coFade = cosineFade(sum, 150 + 30);
+            var coFade = cosineFade(sum, 150 + 30 + 100 + 100);
             escherLikeRiver.mix(sum, escherLikeStaircases, rN, coFade);
         }
     },
@@ -428,7 +428,7 @@ xSheet = {
         d: 440 - 10 + 15 + 60,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeRiver);
-            var coFade = cosineFade(sum, 150 + 60 + 60 + 60);
+            var coFade = cosineFade(sum, 150 + 60 + 60 + 60 + 100);
             escherLikeRiver2.mix(sum, escherLikeRiver, rN, coFade);
         }
     },
