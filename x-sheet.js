@@ -65,7 +65,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOftraffic3FadeIn);
 //             var coFade = cosineFade(sum + 12, 600) * ((1 - cosineFade(sum, 12)) * -1);
-            var coFade = cosineFade(sum - 12, 600);
+            var coFade = cosineFade(sum - 12, 600 - 100);
 //             var coFade = ;
 //             logJavaScriptConsole(coFade);
             noodlesHorizontal.mix(sum + 55 * 0, neutral, rN - 150, coFade);
