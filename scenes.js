@@ -157,7 +157,7 @@ traffic3FadeIn.update = function(sum) {
     this.vertices = [];
     let cutoff = 1000;
 //     let growth = (drawCount - sum < cutoff) ? drawCount - sum : cutoff - ((drawCount - sum) - cutoff) * 1;
-    let growth = (1 - ((Math.cos((drawCount - sum) / 1900 * Math.PI * 2) + 1) * 0.5)) * 1000;
+    let growth = (1 - ((Math.cos((drawCount - sum) / 2100 * Math.PI * 2) + 1) * 0.5)) * 1000;
 //     logJavaScriptConsole(growth);
     this.grow = logMap(Math.min(growth, 1000));
 //     this.grow = growth / 1000000;
@@ -176,8 +176,13 @@ traffic3FadeIn.update = function(sum) {
 //             let dx = Math.abs(Math.cos(x) * 0.01 - 25);
 //             let dy = Math.abs(Math.sin(y) * 0.01 - 25);
             let ox = x  + 1;
-            let oy = y;
-            let xx = x + Math.pow(Math.cos(oy * 0.5 + t * 0.025), 700) * oy * (1 / -ox) * 200.5;
+            let oy = y - 2;
+            let xx;
+            if (y == 14) {
+                xx = x;
+            } else {
+                xx = x + Math.pow(Math.cos(oy * 0.5 + t * 0.025), 700) * oy * (1 / -ox) * 200.5;
+            }
             let yy = y + Math.pow(Math.sin((ox + 10) * 0.5 + t * 0.025), 700) * oy * ox * 200.5;
             xx = lerp(x, xx, this.grow);
             yy = lerp(y, yy, this.grow);

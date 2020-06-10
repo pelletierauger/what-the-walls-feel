@@ -39,13 +39,13 @@ xSheet = {
         }
     },
     traffic3FadeIn: {
-        d: 1600 - 150 - 72 - 24,
+        d: 1600 - 150 - 72 - 24 + 200 - 50,
         f: function(sum) {
             traffic3FadeIn.run(sum - 150);
         }
     },
     endOftraffic3FadeIn: {
-        d: 72,
+        d: 72 - 5,
         f: function(sum) {
             var rN = getSum(xSheet, xSheet.traffic3FadeIn);
             var coFade = cosineFade(sum, 72);
@@ -61,11 +61,14 @@ xSheet = {
     //         }
     //     },
     noodles: {
-        d: 1200,
+        d: 1200 - 200 + 50 + 5,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOftraffic3FadeIn);
-            var coFade = cosineFade(sum, 72);
-            noodlesHorizontal.mix(sum, neutral, rN - 150, coFade);
+//             var coFade = cosineFade(sum + 12, 600) * ((1 - cosineFade(sum, 12)) * -1);
+            var coFade = cosineFade(sum - 12, 600);
+//             var coFade = ;
+//             logJavaScriptConsole(coFade);
+            noodlesHorizontal.mix(sum + 55 * 0, neutral, rN - 150, coFade);
         }
     },
     neutral0: {
@@ -73,7 +76,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.noodles);
             var coFade = cosineFade(sum, 48);
-            neutral.mix(sum, noodlesHorizontal, rN, coFade);
+            neutral.mix(sum, noodlesHorizontal, rN + 55 * 0, coFade);
         }
     },
     curvyPillarsB: {
