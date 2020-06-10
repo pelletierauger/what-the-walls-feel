@@ -61,7 +61,7 @@ xSheet = {
     //         }
     //     },
     noodles: {
-        d: 1200 - 200 + 50 + 5,
+        d: 1200 - 200 + 50 + 5 - 48,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOftraffic3FadeIn);
 //             var coFade = cosineFade(sum + 12, 600) * ((1 - cosineFade(sum, 12)) * -1);
@@ -72,10 +72,10 @@ xSheet = {
         }
     },
     neutral0: {
-        d: 48,
+        d: 48 + 48,
         f: sum => {
             var rN = getSum(xSheet, xSheet.noodles);
-            var coFade = cosineFade(sum, 48);
+            var coFade = cosineFade(sum, 48 + 48);
             neutral.mix(sum, noodlesHorizontal, rN + 55 * 0, coFade);
         }
     },
