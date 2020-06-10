@@ -1380,7 +1380,7 @@ muscleFibersRebuildingThemselves.update = function(sum) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 1 * cos(t * 5);
             let oy = y + 20;
-            let dx = abs(cos(x) * 1 - 2) * 0.25;
+            let dx = abs(cos(x - 1) * 1 - 2) * 0.25;
             let dy = abs(sin(y) * 1 - 2) * 0.25;
             let xx = x - pow(cos(cos(dx + oy * 0.1 + dy * 0.2) + t * 2), 1) * 4;
             let yy = y + pow(sin(sin(dx + oy * 0.1 + dy * 0.2) + t * 2), -1) * 0.25;
