@@ -34,11 +34,13 @@ Scene.prototype.centerWipe = function(sum, otherScene, sumOther, ratio) {
     this.update(sum);
     //     logJavaScriptConsole(ratio * 1000);
     otherScene.update(sumOther);
-    for (let i = 0; i < this.vertices.length; i++) {
+    let dotAmount = this.vertices.length;
+    let dotHalfAmount = dotAmount * 0.5;
+    for (let i = 0; i < dotAmount; i++) {
         let a = this.vertices[i];
         let b = otherScene.vertices[i];
-        let valley = ((1 - ratio) * 5000) - 2500;
-        if (Math.abs(i - 2500) < valley) {
+        let valley = ((1 - ratio) * dotAmount) - dotHalfAmount;
+        if (Math.abs(i - dotHalfAmount) < valley) {
             this.vertices[i] = a;
         } else {
             this.vertices[i] = b;
@@ -75,7 +77,7 @@ Scene.prototype.display = function(alpha) {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
     gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(coord);
-    gl.drawArrays(gl.POINTS, 0, 2500);
+    gl.drawArrays(gl.POINTS, 0, this.vertices.length * 0.5);
 
 
 

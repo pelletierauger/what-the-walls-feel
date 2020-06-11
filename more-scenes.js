@@ -446,7 +446,7 @@ let newerFestive = new Scene("Newer festive");
 
 newerFestive.update = function(sum) {
     this.vertices = [];
-    let amountX = 50;
+    let amountX = 52;
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.005 * 0.125 + (302.02) + 151 + 75.5;
 //     logJavaScriptConsole(t);
@@ -791,7 +791,7 @@ let finalFestive = new Scene("Final festive");
 // trying to center the previous one
 finalFestive.update = function(sum) {
     this.vertices = [];
-    let amountX = 50;
+    let amountX = 52;
     let amountY = 50;
     let t = (drawCount - sum + 120800) * 0.005;
     let appear = map(drawCount - sum, 0, 1000, 0.125, 1);
