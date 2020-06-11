@@ -19,7 +19,7 @@ Scene.prototype.update = function() {
 
 };
 
-Scene.prototype.mix = function(sum, otherScene, sumOther, ratio) {
+Scene.prototype.lerp = function(sum, otherScene, sumOther, ratio) {
     this.update(sum);
     otherScene.update(sumOther);
     for (let i = 0; i < this.vertices.length; i++) {
@@ -30,9 +30,9 @@ Scene.prototype.mix = function(sum, otherScene, sumOther, ratio) {
     this.display(1);
 };
 
-Scene.prototype.interp = function(sum, otherScene, sumOther, ratio) {
+Scene.prototype.centerWipe = function(sum, otherScene, sumOther, ratio) {
     this.update(sum);
-//     logJavaScriptConsole(ratio * 1000);
+    //     logJavaScriptConsole(ratio * 1000);
     otherScene.update(sumOther);
     for (let i = 0; i < this.vertices.length; i++) {
         let a = this.vertices[i];
