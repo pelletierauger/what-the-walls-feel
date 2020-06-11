@@ -52,3 +52,15 @@ canvas {
     max-width: 686px;
     max-height: 50px;
 }
+
+#screen-curtain {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    min-width: 100%;
+    background: black;
+    bottom: 0px;
+    left: 0px;
+    z-index: 100;
+}
