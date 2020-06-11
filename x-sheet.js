@@ -482,7 +482,7 @@ xSheet = {
         }
     },
     endOfStormyMuscles: {
-        d: 196,
+        d: 196 + 39,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceFieldB);
             var coFade = cosineFade(sum, 96 + 100);
@@ -502,12 +502,19 @@ xSheet = {
     //         }
     //     },
     vanishingClouds: {
-        d: 292,
+        d: 91,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOfStormyMuscles);
             var coFade = cosineFade(sum, 48);
             //             vanishingClouds.run(sum);
             vanishingClouds.lerp(sum, neutral, rN, coFade);
+        }
+    },
+    vanishingCloudsSecondHalf: {
+        d: 162,
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.vanishingClouds);
+            vanishingClouds.run(rN - 39);
         }
     },
     vanishingCloudsB: {
