@@ -31,6 +31,7 @@ let cinemaMode = false;
 
 let resolutionScalar = 0.5;
 let resolutionBG;
+let resetAllDisplayMethods = false;
 
 let texture, texture2, texture3, texture4, framebuf, framebuf2, framebuf3, framebuf4;
 
