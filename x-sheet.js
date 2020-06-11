@@ -420,7 +420,7 @@ xSheet = {
         d: 440 - 10 + 15 - 60 + 30 + 100,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeStaircases);
-            var coFade = cosineFade(sum, 150 + 30 + 100 + 100);
+            var coFade = cosineFade(sum, 150 + 30 + 100 + 100 + 50);
             escherLikeRiver.lerp(sum, escherLikeStaircases, rN, coFade);
         }
     },
@@ -428,7 +428,7 @@ xSheet = {
         d: 440 - 10 + 15 + 60,
         f: sum => {
             var rN = getSum(xSheet, xSheet.escherLikeRiver);
-            var coFade = cosineFade(sum, 150 + 60 + 60 + 60 + 100);
+            var coFade = cosineFade(sum, 150 + 60 + 60 + 60 + 100 + 100);
             escherLikeRiver2.lerp(sum, escherLikeRiver, rN, coFade);
         }
     },
