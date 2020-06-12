@@ -1,173 +1,100 @@
 let xSheetInit = false;
 
 xSheet = {
-    // ailleurs00: {
-    //     d: 6000,
-    //     f: function(sum) {
-    //         // var rN = getSum(xSheet, xSheet.grotte);
-    //         septembre.run();
-    //     }
-    // },
-    // test: {
-    //     d: 3000,
-    //     f: function(sum) {
-    //         var rN = getSum(xSheet, xSheet.test);
-    //         // oscillators[183].run(0);
-    //         // drawBG();
-    //         // concerto.run();
-    //         traffic3.run(rN);
-    //     }
-    // },
-    // blank: {
-    //     d: 5,
-    //     f: function(sum) {
-    //         var rN = getSum(xSheet, xSheet.blank);
-    //         // oscillators[183].run(0);
-    //         // drawBG();
-    //         // concerto.run();
-    //         // traffic3.run(rN);
-    //     }
-    // },
-    title: {
+    // ------------------------------------------------------------------------- //
+    // Introduction
+    // ------------------------------------------------------------------------- //   
+    overture: {
         d: 185,
-        f: function(sum) {
+        f: sum => {
             var rN = getSum(xSheet, xSheet.title);
-            // oscillators[183].run(0);
-            // drawBG();
-            // concerto.run();
             overture.run(rN);
         }
     },
     traffic3FadeIn: {
         d: 1600 - 150 - 72 - 24 + 200 - 50,
-        f: function(sum) {
+        f: sum => {
             traffic3FadeIn.run(sum - 150);
         }
     },
     endOftraffic3FadeIn: {
         d: 72 - 5,
-        f: function(sum) {
+        f: sum => {
             var rN = getSum(xSheet, xSheet.traffic3FadeIn);
             var coFade = cosineFade(sum, 72);
             neutral.lerp(sum, traffic3FadeIn, rN - 150, coFade);
         }
     },
-    //     trafficFadeIn2: { // This is a keeper.
-    //         d: 500,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.trafficFadeIn);
-    //             var coFade = cosineFade(sum, 100);
-    //             springsSlowerLessElastic.blend(sum, traffic3FadeIn, rN, coFade);
-    //         }
-    //     },
-    noodles: {
+    noodlesHorizontal: {
         d: 1200 - 200 + 50 + 5 - 48,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOftraffic3FadeIn);
-            //             var coFade = cosineFade(sum + 12, 600) * ((1 - cosineFade(sum, 12)) * -1);
             var coFade = cosineFade(sum - 12, 600 - 100);
-            //             var coFade = ;
-            //             logJavaScriptConsole(coFade);
             noodlesHorizontal.lerp(sum + 55 * 0, neutral, rN - 150, coFade);
         }
     },
     neutral0: {
         d: 48 + 48,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.noodles);
+            var rN = getSum(xSheet, xSheet.noodlesHorizontal);
             var coFade = cosineFade(sum, 48 + 48);
             neutral.lerp(sum, noodlesHorizontal, rN + 55 * 0, coFade);
         }
     },
+    // ------------------------------------------------------------------------- //
+    // The pillars sequence
+    // ------------------------------------------------------------------------- //   
     curvyPillarsB: {
         d: 106,
         f: sum => {
             curvierPillarsB.run(sum);
         }
     },
-    curvyPillarsBf: {
+    curvierPillarsBFlip: {
         d: 106,
         f: sum => {
             curvierPillarsBFlip.run(sum);
         }
     },
-    curvyPillarsC: {
+    curvierPillarsC: {
         d: 91,
         f: sum => {
             curvierPillarsC.run(sum - 10);
         }
     },
-    curvyPillarsCf: {
+    curvierPillarsCFlip: {
         d: 91,
         f: sum => {
             curvierPillarsCFlip.run(sum - 10);
         }
     },
-    curvyPillars: {
+    curvierPillars: {
         d: 133,
         f: sum => {
             curvierPillars.run(sum - 5);
         }
     },
-    curvyPillarsFlip: {
+    curvierPillarsFlip: {
         d: 133 - 24,
         f: sum => {
             curvierPillarsFlip.run(sum - 5);
         }
     },
-    blendyCav: {
+    blendyCavernB: {
         d: 450,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.curvyPillarsFlip);
+        f: sum => {
+            var rN = getSum(xSheet, xSheet.curvierPillarsFlip);
             var coFade = cosineFade(sum, 48);
             blendyCavernB.lerp(sum, curvierPillarsFlip, rN - 5, coFade);
         }
     },
-    //     blendyCavs: {
-    //         d: 900,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.blendyCav);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             var coFade = cosineFade(sum, 100);
-    //             blendyCavern.lerp(sum + 100, blendyCavernB, rN, coFade);
-    //         }
-    //     },
-    //     blendyCavs2: {
-    //         d: 300,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.blendyCav);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             var coFade = cosineFade(sum, 100);
-    //             blendyCavernC.lerp(sum - 100, blendyCavernB, rN, coFade);
-    //         }
-    //     },
-    //     blendyCavs3: {
-    //         d: 340,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.blendyCavs2);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             var coFade = cosineFade(sum, 100);
-    //             blendyCavernD.lerp(sum - 100, blendyCavernC, rN - 100, coFade);
-    //         }
-    //     },
-    //     blendyMuscles: {
-    //         d: 400,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.blendyCavs3);
-    //             var coFade = cosineFade(sum, 100);
-    //             muscleFibersRebuildingThemselves.lerp(sum + 500, blendyCavernD, rN - 100, coFade);
-    //         }
-    //     },
+    // ------------------------------------------------------------------------- //
+    // The travellers sequence
+    // ------------------------------------------------------------------------- //   
     travellers2: {
         d: 300,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.blendyCav);
+            var rN = getSum(xSheet, xSheet.blendyCavernB);
             var coFade = cosineFade(sum, 100);
             travellers2.lerp(sum, blendyCavernB, rN, coFade);
         }
@@ -196,20 +123,11 @@ xSheet = {
             travellers2CFlip.lerp(sum, travellers2C, rN, coFade);
         }
     },
-    //     travellersToNeutral: {
-    //         d: 12,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.travellers2CFlip);
-    //             var coFade = cosineFade(sum, 12);
-    //             neutral.lerp(sum, travellers2CFlip, rN, coFade);
-    //         }
-    //     },
     travellers2DFlip: {
         d: 48,
         f: sum => {
             var rN = getSum(xSheet, xSheet.travellers2CFlip);
             var coFade = cosineFade(sum, 12);
-            //             travellers2D.run(sum);
             travellers2DFlip.lerp(sum + 14, travellers2CFlip, rN, coFade);
         }
     },
@@ -231,18 +149,6 @@ xSheet = {
             travellers2ED.run(sum - 14 - 16);
         }
     },
-    //     travellers4BiggerFlip: {
-    //         d: 36,
-    //         f: sum => {
-    //             travellers4BiggerFlip.run(sum - 8 - 5 - 17);
-    //         }
-    //     },
-    //     travellers4Bigger: {
-    //         d: 36,
-    //         f: sum => {
-    //             travellers4Bigger.run(sum - 8 - 5);
-    //         }
-    //     },
     travellers2EB: {
         d: 48 - 14,
         f: sum => {
@@ -255,159 +161,86 @@ xSheet = {
             travellers2E.run(sum - 14);
         }
     },
-    //     padding: {
-    //         d: 100,
-    //         f: sum => {
-    //             neutral.run(sum);
-    //         }
-    //     },
-    //     travellers6: {
-    //         d: 300,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.jumpers);
-    //             var coFade = cosineFade(sum, 100);
-    //             horizontalJumpingDots2.lerp(sum + 1000, travellers4Bigger, rN, coFade);
-    //         }
-    //     },
-    //     jumpingDots: {
-    //         d: 150,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.travellers6);
-    //             var coFade = cosineFade(sum, 100);
-    //             fastJumpingDots.lerp(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
-    //         }
-    //     },
-    //     jumpingDots2: {
-    //         d: 700,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.travellers6);
-    //             var coFade = cosineFade(sum, 10);
-    //             fastJumpingDots2.lerp(sum + 1000, horizontalJumpingDots2, rN + 1000, coFade);
-    //         }
-    //     },
-    //-------------------  The Egg Sequence -----------------------------------------//
-    clouds: {
+    // ------------------------------------------------------------------------- //
+    // The eggs sequence
+    // ------------------------------------------------------------------------- //   
+    yetMoreHungryClouds: {
         d: 125 - 33,
-        f: function(sum) {
+        f: sum => {
             yetMoreHungryClouds.run(sum - 33);
         }
     },
-    cloudsB: {
+    yetMoreHungryCloudsB: {
         d: 123,
-        f: function(sum) {
+        f: sum => {
             yetMoreHungryCloudsB.run(sum);
         }
     },
-    eggs0: {
+    eggs: {
         d: 75,
         f: sum => {
             eggs.run(sum);
         }
     },
-    eggs0f: {
+    eggsFlip: {
         d: 75,
         f: sum => {
             eggsFlip.run(sum);
         }
     },
-    //     eggs0b: {
-    //         d: 75,
-    //         f: sum => {
-    //             eggsB.run(sum);
-    //         }
-    //     },
-    //     eggs0bf: {
-    //         d: 75,
-    //         f: sum => {
-    //             eggsBFlip.run(sum);
-    //         }
-    //     },
-    eggs0c: {
+    eggsC: {
         d: 75,
         f: sum => {
             eggsC.run(sum);
         }
     },
-    eggs0cf: {
+    eggsCFlip: {
         d: 75,
         f: sum => {
             eggsCFlip.run(sum);
         }
     },
-    eggs0d: {
+    eggsD: {
         d: 70,
         f: sum => {
             eggsD.run(sum);
         }
     },
-    eggs0df: {
+    eggsDFlip: {
         d: 70,
         f: sum => {
             eggsDFlip.run(sum);
         }
     },
-    eggs1: {
+    electronicDecorativeEggs: {
         d: 118 - 2,
         f: sum => {
             electronicDecorativeEggs.run(sum - 2);
         }
     },
-    eggs1f: {
+    electronicDecorativeEggsFlip: {
         d: 118 - 2,
         f: sum => {
             electronicDecorativeEggsFlip.run(sum - 2);
         }
     },
-    harEggs2: {
+    harmoniousEggs2: {
         d: 300 - 12,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.eggs1f);
+            var rN = getSum(xSheet, xSheet.electronicDecorativeEggsFlip);
             harmoniousEggs2.run(rN - 28 + 153 - 12);
         }
     },
-    harEggs2Flip: {
+    harmoniousEggs2Flip: {
         d: 300 - 8,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.harEggs2);
+            var rN = getSum(xSheet, xSheet.harmoniousEggs2);
             harmoniousEggs2Flip.run(rN - 28 - 8);
         }
     },
-    //------------------- End of the Egg Sequence --------------------------------------//
-    //
-    //------------------- The Textile Sequence -----------------------------------------//
-    //
-    //     fasterSubtleTrunk: {
-    //         d: 400,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             var coFade = cosineFade(sum, 48);
-    //             fasterSubtleTrunk.lerp(sum, neutral, sum, coFade);
-    //         }
-    //     },
-    //     newSubtleTrunk: {
-    //         d: 224,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             var coFade = cosineFade(sum, 48);
-    //             newSubtleTrunk.lerp(rN, fasterSubtleTrunk, rN, coFade);
-    //         }
-    //     },
-    //     concerto: {
-    //         d: 400,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             var coFade = cosineFade(sum, 48);
-    //             concerto.lerp(sum, newSubtleTrunk, rN, coFade);
-    //         }
-    //     },
-    //     mellowFestive: {
-    //         d: 500,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             var coFade = cosineFade(sum, 48);
-    //             mellowFestive.lerp(sum, newSubtleTrunk, rN, coFade);
-    //         }
-    //     },
+    // ------------------------------------------------------------------------- //
+    // The river sequence
+    // ------------------------------------------------------------------------- //   
     escherLikeStaircases: {
         d: 440 - 10 - 57 + 25 - 30 - 100,
         f: sum => {
@@ -432,31 +265,6 @@ xSheet = {
             escherLikeRiver2.lerp(sum, escherLikeRiver, rN, coFade);
         }
     },
-    //     eggsTests: {
-    //         d: 500,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.eggs2b);
-    //             var coFade = cosineFade(sum, 100);
-    //             strangelyStabilizedEggs.lerp(sum + 1000, harmoniousEggs2, rN + 1000, coFade);
-    //         }
-    //     },
-    //     dynamicalLozenges: {
-    //         d: 1000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.eggsTests);
-    //             var coFade = cosineFade(sum, 100);
-    //             surprisinglyStableDynamicalLozenges.lerp(sum + 1000, strangelyStabilizedEggs, rN + 1000, coFade);
-    //         }
-    //     },
-    //----------------------- A quiet, flowy sequence ------------------------------//
-    //     oceanWaves: {
-    //         d: 400,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.eggs3);
-    //             var coFade = cosineFade(sum, 100);
-    //             beautifulOceanWaves.lerp(sum + 1000, surprisinglyStableDynamicalLozenges, rN + 1000, coFade);
-    //         }
-    //     },
     plantsSofter: {
         d: 800 - 25 + 25,
         f: sum => {
@@ -465,6 +273,9 @@ xSheet = {
             plantsSofter.lerp(sum, escherLikeRiver2, rN, coFade);
         }
     },
+    // ------------------------------------------------------------------------- //
+    // The storm sequence
+    // ------------------------------------------------------------------------- //
     middleOfTheMuscularDistanceField: {
         d: (911 + 24 * 8) - 120 - 100,
         f: sum => {
@@ -473,7 +284,7 @@ xSheet = {
             middleOfTheMuscularDistanceField.lerp(sum, plantsSofter, rN, coFade);
         }
     },
-    middleOfTheMuscularDistanceFieldB: {
+    muscleFibersRebuildingThemselves: {
         d: 438 + 120 + 100,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
@@ -484,23 +295,14 @@ xSheet = {
     endOfStormyMuscles: {
         d: 196 + 39,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceFieldB);
+            var rN = getSum(xSheet, xSheet.muscleFibersRebuildingThemselves);
             var coFade = cosineFade(sum, 96 + 100);
             neutral.lerp(sum, muscleFibersRebuildingThemselves, rN - 270 + 120 + 100, coFade);
         }
     },
-    //     torn: {
-    //         d: 3000,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.plantsSofter);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             var coFade = cosineFade(sum, 100);
-    //             tornSheetInTheWind.lerp(sum, plantsSofter, rN + 1000, coFade);
-    //             // concerto.run();
-    //             // fasterSubtleTrunk.run();
-    //         }
-    //     },
+    // ------------------------------------------------------------------------- //
+    // The festive sequence
+    // ------------------------------------------------------------------------- //   
     vanishingClouds: {
         d: 91,
         f: sum => {
@@ -523,255 +325,26 @@ xSheet = {
             vanishingCloudsB.run(sum - 125);
         }
     },
-    //     newerfestive0: {
-    //         d: 106 + 67,
-    //         f: function(sum) {
-    //             newerFestive0.run(sum - 70);
-    //         }
-    //     },
-    //     newerfestive1: {
-    //         d: 105,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.newerFestive0);
-    //             var coFade = cosineFade(sum, 24);
-    //             newerFestive1.run(sum - 210);
-    // //             newerFestive1.lerp(sum - 210, newerFestive0, rN - 70, coFade);
-    //         }
-    //     },
     newerfestive: {
         d: 600 - 2 + 17 + 7 - 55,
-        f: function(sum) {
+        f: sum => {
             newerFestive.run(sum - 2);
         }
     },
-    //     festive: {
-    //         d: 1500,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             var coFade = cosineFade(sum, 100);
-    // //             newFestive.lerp(sum, middleOfTheMuscularDistanceField, rN, coFade);
-    //             newFestive.run(sum);
-    //             // fasterSubtleTrunk.run();
-    //         }
-    //     },
     finalfestive: {
         d: 1593,
-        f: function(sum) {
+        f: sum => {
             var rN = getSum(xSheet, xSheet.newerfestive);
             var coFade = cosineFade(sum, 450);
-            //             finalFestive.run(sum - 4);
             finalFestive.centerWipe(sum - 400, newerFestive, rN - 2, coFade);
-            //             logJavaScriptConsole(coFade);
         }
     },
     empty: {
         d: 450,
-        f: function(sum) {
-            var rN = getSum(xSheet, xSheet.finalFestive);
-            var coFade = cosineFade(sum, 450);
-            //             finalFestive.run(sum - 4);
-            //             neutral.interp(sum, finalFestive, rN - 400, coFade);
+        f: sum => {
             empty.run(sum);
-            //             logJavaScriptConsole(coFade);
         }
     },
-    //     conclusion0: { //maybe
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.jumpingDots);
-    //             var coFade = cosineFade(sum, 100);
-    //             biggerHungryClouds.lerp(sum + 1000, fastJumpingDots, rN + 1000, coFade);
-    //         }
-    //     },
-    //     conclusion: { //maybe
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.jumpingDots);
-    //             var coFade = cosineFade(sum, 100);
-    //             biggerHungryClouds.lerp(sum + 1000, fastJumpingDots, rN + 1000, coFade);
-    //         }
-    //     },
-    //  Experimental bigger scenes -------------------------------------------------- //
-    //     blurryFixed: {
-    //         d: 180,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.blurryFixed);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             blurryCavern2.run(rN + drawCount);
-    //         }
-    //     },
-    //     blurry2: {
-    //         d: 903 - 168,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.blurry2);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             blurryCavern2.run(rN);
-    //         }
-    //     },
-    //  ------------------------------------------------------------------------------ //
-    // blurry: {
-    //     d: 5000,
-    //     f: function(sum) {
-    //         var rN = getSum(xSheet, xSheet.blurry);
-    //         // oscillators[183].run(0);
-    //         // drawBG();
-    //         // concerto.run();
-    //         blurryCavern.run(rN);
-    //     }
-    // },
-    // title: {
-    //     d: 185,
-    //     f: function(sum) {
-    //         var rN = getSum(xSheet, xSheet.title);
-    //         // oscillators[183].run(0);
-    //         // drawBG();
-    //         // concerto.run();
-    //         overture.run(rN);
-    //     }
-    // },
-    // wait: {
-    //     d: 185,
-    //     f: function(sum) {
-    //         var rN = getSum(xSheet, xSheet.wait);
-    //         // oscillators[183].run(0);
-    //         // drawBG();
-    //         // concerto.run();
-    //         traffic3Static.run(rN);
-    //     }
-    // },
-    // fadeIn: {
-    //     d: 3000,
-    //     f: function(sum) {
-    //         var rN = getSum(xSheet, xSheet.fadeIn);
-    //         // oscillators[183].run(0);
-    //         // drawBG();
-    //         // concerto.run();
-    //         traffic3FadeIn.run(rN);
-    //     }
-    // },
-    //     muscleFibers: {
-    //         d: 3000,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fadeIn);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             var coFade = cosineFade(sum, 300);
-    // //             muscleFibersRebuildingThemselves.lerp(sum, traffic3FadeIn, rN, coFade);
-    // //             travellers5EvenBigger.lerp(sum, traffic3FadeIn, rN, coFade);
-    // //             travellers6.lerp(sum, traffic3FadeIn, rN, coFade);
-    //             concerto.lerp(sum - 100, traffic3FadeIn, rN, coFade);
-    //         }
-    //     },
-    //     cavern: {
-    //         d: 2000,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.cavern);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             // concerto.run();
-    //             var coFade = cosineFade(sum, 300);
-    //             // cavern.lerp(sum, traffic3FadeIn, rN, coFade);
-    //             cavern.run(rN + 100);
-    //         }
-    //     },
-    //     pillars4: { d: 650, f: sum => {
-    //             var rN = getSum(xSheet, xSheet.pillars3);
-    //             var coFade = cosineFade(sum, 100);
-    //             intricateFastPillars.lerp(sum, curvierPillarsEvenSmaller, rN, coFade);
-    //         }
-    //     },
-    //     muscles: {
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.pillars3);
-    //             var coFade = cosineFade(sum, 100);
-    //             muscleFibersRebuildingThemselves.lerp(sum, curvierPillarsEvenSmaller, rN, coFade);
-    //         }
-    //     },
-    //     distanceMuscles2: {
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.muscles);
-    //             var coFade = cosineFade(sum, 300);
-    //             laceInTheDistanceField.lerp(sum, muscleFibersRebuildingThemselves, rN, coFade);
-    //         }
-    //     },
-    //     distanceMuscles3: {
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.muscles);
-    //             var coFade = cosineFade(sum, 300);
-    //             laceInTheVerticalMiddle.lerp(sum, muscleFibersRebuildingThemselves, rN, coFade);
-    //         }
-    //     },
-    //     distanceMuscles4: {
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.distanceMuscles3);
-    //             var coFade = cosineFade(sum, 300);
-    //             bigTravelInABrokenLand.blend(sum, laceInTheVerticalMiddle, rN, coFade);
-    //         }
-    //     },
-    //     distanceMuscles4: {
-    //         d: 2000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.muscles);
-    //             var coFade = cosineFade(sum, 10);
-    //             noodlesHorizontal.lerp(sum, muscleFibersRebuildingThemselves, rN, coFade);
-    //         }
-    //     },
-    //     springsSlowerLessElastic: { // This is a keeper.
-    //         d: 1000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.muscles);
-    //             var coFade = cosineFade(sum, 300);
-    //             springsSlowerLessElastic.lerp(sum, muscleFibersRebuildingThemselves, rN, coFade);
-    //         }
-    //     },
-    //     exploring: {
-    //         d: 4000,
-    //         f: sum => {
-    //             var rN = getSum(xSheet, xSheet.muscles);
-    //             var coFade = cosineFade(sum, 300);
-    //             newBreakingApartAndGatheringAgain.lerp(sum, muscleFibersRebuildingThemselves, rN, coFade);
-    //         }
-    //     },
-    //     endTests0: {
-    //         d: 3000,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             var coFade = cosineFade(sum, 10);
-    // //             surprisinglyStableDynamicalLozenges.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    // //             cicadas.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    // //             escherLikeStaircases.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    //             tinyJumpers.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    //             // concerto.run();
-    //             // fasterSubtleTrunk.run();
-    //         }
-    //     },
-    //     endTests: {
-    //         d: 3000,
-    //         f: function(sum) {
-    //             var rN = getSum(xSheet, xSheet.fasterSubtleTrunk);
-    //             // oscillators[183].run(0);
-    //             // drawBG();
-    //             var coFade = cosineFade(sum, 10);
-    //             //             surprisinglyStableDynamicalLozenges.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    //             //             cicadas.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    //             balancedDynamicalIntricate.lerp(sum, fasterSubtleTrunk, rN, coFade);
-    //             // concerto.run();
-    //             // fasterSubtleTrunk.run();
-    //         }
-    //     },
     key: function(n) {
         return this[Object.keys(this)[n]];
     }
