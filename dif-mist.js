@@ -255,6 +255,7 @@ mistyProgram2.init();
 
 
     // ------------------------------------------------------------------------------//
+    // Deep sea blue (hue-shifted from mustard-like)
     // mustard-like and blending itself with blendyCavern.display()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
