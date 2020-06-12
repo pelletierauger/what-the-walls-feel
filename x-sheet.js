@@ -325,16 +325,16 @@ xSheet = {
             vanishingCloudsB.run(sum - 125);
         }
     },
-    newerfestive: {
+    newerFestive: {
         d: 600 - 2 + 17 + 7 - 55,
         f: sum => {
             newerFestive.run(sum - 2);
         }
     },
-    finalfestive: {
+    finalFestive: {
         d: 1593,
         f: sum => {
-            var rN = getSum(xSheet, xSheet.newerfestive);
+            var rN = getSum(xSheet, xSheet.newerFestive);
             var coFade = cosineFade(sum, 450);
             finalFestive.centerWipe(sum - 400, newerFestive, rN - 2, coFade);
         }
