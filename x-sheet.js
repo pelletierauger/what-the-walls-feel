@@ -277,7 +277,7 @@ xSheet = {
     // The storm sequence
     // ------------------------------------------------------------------------- //
     middleOfTheMuscularDistanceField: {
-        d: (911 + 24 * 8) - 120 - 100,
+        d: (911 + 24 * 8) - 120 - 100 + 8,
         f: sum => {
             var rN = getSum(xSheet, xSheet.plantsSofter);
             var coFade = cosineFade(sum, 300);
@@ -285,11 +285,11 @@ xSheet = {
         }
     },
     muscleFibersRebuildingThemselves: {
-        d: 438 + 120 + 100,
+        d: 438 + 120 + 100 - 8,
         f: sum => {
             var rN = getSum(xSheet, xSheet.middleOfTheMuscularDistanceField);
-            var coFade = cosineFade(sum, 185 + 100);
-            muscleFibersRebuildingThemselves.lerp(sum - 270 + 120 + 100, middleOfTheMuscularDistanceField, rN, coFade);
+            var coFade = cosineFade(sum, 185 + 100 - 8);
+            muscleFibersRebuildingThemselves.lerp(sum - 270 + 120 + 100 - 8, middleOfTheMuscularDistanceField, rN, coFade);
         }
     },
     endOfStormyMuscles: {
@@ -297,7 +297,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.muscleFibersRebuildingThemselves);
             var coFade = cosineFade(sum, 96 + 100);
-            neutral.blend(sum, muscleFibersRebuildingThemselves, rN - 270 + 120 + 100, coFade);
+            neutral.blend(sum, muscleFibersRebuildingThemselves, rN - 270 + 120 + 100 - 8, coFade);
         }
     },
     // ------------------------------------------------------------------------- //
