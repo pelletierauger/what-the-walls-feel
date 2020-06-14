@@ -29,7 +29,7 @@ var envirLooping = false;
 let currentProgram;
 let cinemaMode = false;
 
-let resolutionScalar = 0.5;
+let resolutionScalar = 1;
 let resolutionBG;
 let resetAllDisplayMethods = false;
 
@@ -244,6 +244,18 @@ function setup() {
             redraw();
         }
     }, false);
+
+    if (batchExport) {
+        drawCount = batchMin;
+        exporting = true;
+        redraw();
+        songPlay = false;
+    }
+    socket.on('getNextImage', function(data) {
+        if (drawCount <= batchMax) {
+            redraw();
+        }
+    });
 }
 
 // function gotSong() {

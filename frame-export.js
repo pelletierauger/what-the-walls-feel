@@ -9,6 +9,10 @@ for (let i = 0; i < query.length; i++) {
 }
 
 let exporting = (GET["exporting"] && GET["exporting"] == "true") ? true : false;
+// let batchexport = (GET["batchexport"] && GET["batchexport"] == "true") ? true : false;
+let batchMin = (GET["batchmin"]) ? parseInt(GET["batchmin"], 10) : null;
+let batchMax = (GET["batchmin"]) ? parseInt(GET["batchmax"], 10) : null;
+let batchExport = (batchMin && batchMax) ? true : false;
 
 function frameExport() {
     var formattedFrameCount = "" + drawCount;
@@ -20,5 +24,9 @@ function frameExport() {
         dataUrl: dataUrl,
         name: fileName + "-" + formattedFrameCount
     }
-    socket.emit('image', data);
+    if (batchExport) {
+        socket.emit('imageSequence', data);
+    } else {
+        socket.emit('image', data);
+    }
 }
