@@ -1,7 +1,14 @@
 const puppeteer = require('puppeteer');
 
 (async() => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: false,
+        args: [
+            '--headless',
+            '--hide-scrollbars',
+            '--mute-audio'
+        ]
+    });
     // await console.log("Puppeteer launched");
     const page = await browser.newPage();
     await page.setViewport({
