@@ -4,7 +4,7 @@ if (1 == 0) {
     // mustard-like when blended with plantsSofter using Scene.prototype.display()
     // or blendyCavern.display()
     // ------------------------------------------------------------------------------//
-    
+
     mistyProgram2.fragText = `
 // beginGLSL
 precision mediump float;
@@ -251,7 +251,7 @@ void main() {
 }
 // endGLSL
 `;
-mistyProgram2.init();
+    mistyProgram2.init();
 
 
     // ------------------------------------------------------------------------------//
@@ -405,14 +405,14 @@ void main() {
 }
 // endGLSL
 `;
-mistyProgram2.init();
+    mistyProgram2.init();
 
     // ------------------------------------------------------------------------------//
     // misty mint and purple
     // mustard-like and blending itself with blendyCavern.display()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
-mistyProgram2.fragText = `
+    mistyProgram2.fragText = `
 // beginGLSL
 precision mediump float;
 // Passed in from the vertex shader.
@@ -491,14 +491,14 @@ void main() {
 }
 // endGLSL
 `;
-mistyProgram2.init();
+    mistyProgram2.init();
 
     // ------------------------------------------------------------------------------//
     // soft lemon and ocean
     // mustard-like and blending itself with blendyCavern.display()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
-mistyProgram2.fragText = `
+    mistyProgram2.fragText = `
 // beginGLSL
 precision mediump float;
 // Passed in from the vertex shader.
@@ -644,14 +644,14 @@ void main() {
 }
 // endGLSL
 `;
-mistyProgram2.init();
+    mistyProgram2.init();
 
     // ------------------------------------------------------------------------------//
     // spicy lemon
     // mustard-like and blending itself with blendyCavern.display()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
-mistyProgram2.fragText = `
+    mistyProgram2.fragText = `
 // beginGLSL
 precision mediump float;
 // Passed in from the vertex shader.
@@ -798,14 +798,14 @@ void main() {
 }
 // endGLSL
 `;
-mistyProgram2.init();
+    mistyProgram2.init();
 
     // ------------------------------------------------------------------------------//
     // blue swirl over spicy lemon
     // mustard-like and blending itself with blendyCavern.display()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
-mistyProgram2.fragText = `
+    mistyProgram2.fragText = `
 // beginGLSL
 precision mediump float;
 // Passed in from the vertex shader.
@@ -954,9 +954,10 @@ void main() {
 }
 // endGLSL
 `;
-mistyProgram2.init();
+    mistyProgram2.init();
 
 }
+
 
 if (resetAllDisplayMethods) {
     for (let i = 0; i < scenes.length; i++) {
@@ -988,38 +989,42 @@ if (resetAllDisplayMethods) {
 
 if (1 == 0) {
 
-for (let i = 0; i < scenes.length; i++) {
-    if (scenes[i].name !== "overture") {
-        scenes[i].display = blendyCavern.display;
+    for (let i = 0; i < scenes.length; i++) {
+        if (scenes[i].name !== "overture") {
+            scenes[i].display = blendyCavern.display;
+        }
     }
-}
 
-for (let i = 0; i < scenes.length; i++) {
-    if (scenes[i].name !== "overture") {
-        scenes[i].display = Scene.prototype.display;
-    }
+    for (let i = 0; i < scenes.length; i++) {
+        if (scenes[i].name !== "overture") {
+            scenes[i].display = Scene.prototype.display;
+        }
         overture.display = function() {
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        if (drawCount >= 5) {
-            currentProgram = getProgram("blue-background");
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            if (drawCount >= 5) {
+                currentProgram = getProgram("blue-background");
+                gl.useProgram(currentProgram);
+                gl.uniform1f(time, drawCount * 0.00125);
+                drawBG(currentProgram);
+            }
+            currentProgram = getProgram("cyan-dots");
             gl.useProgram(currentProgram);
-            gl.uniform1f(time, drawCount * 0.00125);
-            drawBG(currentProgram);
-        }
-        currentProgram = getProgram("cyan-dots");
-        gl.useProgram(currentProgram);
-        if (titledLoaded) {
-            drawImage(withImage);
-            let currentProgram = getProgram("cyan-dots");
-            gl.useProgram(currentProgram);
-        }
-        gl.bindBuffer(gl.ARRAY_BUFFER, null);
-        gl.bindBuffer(gl.ARRAY_BUFFER, dotsVBuf);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
-        gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
-        gl.enableVertexAttribArray(coord);
-        gl.drawArrays(gl.POINTS, 0, this.dotsToDisplay);
-    };
-}
+            if (titledLoaded) {
+                drawImage(withImage);
+                let currentProgram = getProgram("cyan-dots");
+                gl.useProgram(currentProgram);
+            }
+            gl.bindBuffer(gl.ARRAY_BUFFER, null);
+            gl.bindBuffer(gl.ARRAY_BUFFER, dotsVBuf);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
+            gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
+            gl.enableVertexAttribArray(coord);
+            gl.drawArrays(gl.POINTS, 0, this.dotsToDisplay);
+        };
+    }
+
+    escherLikeRiver.display = deepSeaDisplay;
+    escherLikeRiver2.display = deepSeaDisplay;
+    escherLikeStaircases.display = deepSeaDisplay;
 
 }
