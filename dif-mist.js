@@ -1030,4 +1030,16 @@ if (1 == 0) {
     middleOfTheMuscularDistanceField.display = deepSeaDisplay;
     muscleFibersRebuildingThemselves.display = deepSeaDisplay;
 
+    travellers2.display = mistyDisplay2;
+    travellers2.display = mistyDisplay2;
+    travellers2B.display = mistyDisplay2;
+    travellers2C.display = mistyDisplay2;
+    travellers2CFlip.display = mistyDisplay2;
+    travellers2DFlip.display = mistyDisplay2;
+    travellers2D.display = mistyDisplay2;
+    travellers2EC.display = mistyDisplay2;
+    travellers2ED.display = mistyDisplay2;
+    travellers2EB.display = mistyDisplay2;
+    travellers2E.display = mistyDisplay2;
+
 }
