@@ -1026,5 +1026,8 @@ if (1 == 0) {
     escherLikeRiver.display = deepSeaDisplay;
     escherLikeRiver2.display = deepSeaDisplay;
     escherLikeStaircases.display = deepSeaDisplay;
+    plantsSofter.display = deepSeaDisplay;
+    middleOfTheMuscularDistanceField.display = deepSeaDisplay;
+    muscleFibersRebuildingThemselves.display = deepSeaDisplay;
 
 }
