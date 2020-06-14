@@ -246,7 +246,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.mellowFestive);
             var coFade = cosineFade(sum, 72 * 2);
-            escherLikeStaircases.lerp(sum, neutral, rN, coFade);
+            escherLikeStaircases.blend(sum, neutral, rN, coFade);
         }
     },
     escherLikeRiver: {
@@ -297,7 +297,7 @@ xSheet = {
         f: sum => {
             var rN = getSum(xSheet, xSheet.muscleFibersRebuildingThemselves);
             var coFade = cosineFade(sum, 96 + 100);
-            neutral.lerp(sum, muscleFibersRebuildingThemselves, rN - 270 + 120 + 100, coFade);
+            neutral.blend(sum, muscleFibersRebuildingThemselves, rN - 270 + 120 + 100, coFade);
         }
     },
     // ------------------------------------------------------------------------- //
