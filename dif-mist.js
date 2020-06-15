@@ -1045,14 +1045,14 @@ if (1 == 0) {
 }
 
 
-    for (let i = 0; i < scenes.length; i++) {
-        if (scenes[i].name !== "overture") {
-            scenes[i].display = blendyCavern.display;
-        }
+for (let i = 0; i < scenes.length; i++) {
+    if (scenes[i].name !== "overture" && scenes[i].name !== "credits") {
+        scenes[i].display = blendyCavern.display;
     }
-    escherLikeRiver.display = deepSeaDisplay;
-    escherLikeRiver2.display = deepSeaDisplay;
-    escherLikeStaircases.display = deepSeaDisplay;
-    plantsSofter.display = deepSeaDisplay;
-    middleOfTheMuscularDistanceField.display = deepSeaDisplay;
-    muscleFibersRebuildingThemselves.display = deepSeaDisplay;
+}
+escherLikeRiver.display = deepSeaDisplay;
+escherLikeRiver2.display = deepSeaDisplay;
+escherLikeStaircases.display = deepSeaDisplay;
+plantsSofter.display = deepSeaDisplay;
+middleOfTheMuscularDistanceField.display = deepSeaDisplay;
+muscleFibersRebuildingThemselves.display = deepSeaDisplay;
