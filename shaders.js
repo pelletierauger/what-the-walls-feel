@@ -196,11 +196,12 @@ withImage.fragText = `
     }
     // endGLSL
 `;
+withImage.imgURL = "title.png";
 withImage.init = function() {
     if (shadersReadyToInitiate) {
         // Asynchronously load an image
         this.image = new Image();
-        this.image.src = "title.png";
+        this.image.src = this.imgURL;
         let that = this;
         this.image.addEventListener('load', function() {
             titledLoaded = true;
@@ -267,6 +268,15 @@ withImage.init = function() {
 };
 withImage.init();
 
+let creditsShaders = [];
+for (let i = 0; i < 5; i++) {
+    let sh = new ShaderProgram("credits, " + i);
+    sh.vertText = withImage.vertText;
+    sh.fragText = withImage.fragText;
+    sh.imgURL = "credits-" + i + ".png";
+    sh.init = withImage.init;
+    creditsShaders.push(sh);
+}
 
 let textureShader = new ShaderProgram("textu");
 

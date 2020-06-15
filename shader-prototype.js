@@ -143,12 +143,12 @@ drawImage = function(sh) {
     // // gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 64, 64, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.image);
     // gl.generateMipmap(gl.TEXTURE_2D);
 
-    gl.vertexAttribPointer(withImage.texcoordLocation, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(withImage.texcoordLocation);
+    gl.vertexAttribPointer(sh.texcoordLocation, 2, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(sh.texcoordLocation);
 
 
-    gl.useProgram(withImage.program);
-    gl.uniform1i(withImage.textureLocation, 0);
+    gl.useProgram(sh.program);
+    gl.uniform1i(sh.textureLocation, 0);
     let aspect = cnvs.width / cnvs.height;
     // let vertices = new Float32Array([-1, 1, 1, 1, 1, -1, // Triangle 1
     //     -1, 1, 1, -1, -1, 1 // Triangle 2
@@ -158,13 +158,13 @@ drawImage = function(sh) {
     // gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
     // gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
-    gl.bindBuffer(gl.ARRAY_BUFFER, withImage.buffer);
+    gl.bindBuffer(gl.ARRAY_BUFFER, sh.buffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     let itemSize = 2;
     let numItems = vertices.length / itemSize;
-    withImage.program.aVertexPosition = gl.getAttribLocation(withImage.program, "a_position");
-    gl.vertexAttribPointer(withImage.program.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(withImage.program.aVertexPosition);
+    sh.program.aVertexPosition = gl.getAttribLocation(sh.program, "a_position");
+    gl.vertexAttribPointer(sh.program.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(sh.program.aVertexPosition);
     gl.drawArrays(gl.TRIANGLES, 0, numItems);
     // console.log("Yrup");
 }

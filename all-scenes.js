@@ -14,9 +14,9 @@ neutral.update = function(sum) {
             yy += Math.random() * 0.01;
             xx *= 0.95;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-//             if (x == amountX && y == 0) {
-//                 logJavaScriptConsole(xx);
-//             }
+            //             if (x == amountX && y == 0) {
+            //                 logJavaScriptConsole(xx);
+            //             }
         }
     }
 };
@@ -38,12 +38,14 @@ empty.update = function(sum) {
             xx *= 0.95;
             xx += 200;
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-//             if (x == amountX && y == 0) {
-//                 logJavaScriptConsole(xx);
-//             }
+            //             if (x == amountX && y == 0) {
+            //                 logJavaScriptConsole(xx);
+            //             }
         }
     }
 };
+
+let credits = new Scene("credits");
 
 let beautifulBubbles = new Scene("beautiful-bubbles");
 
@@ -1472,9 +1474,9 @@ middleOfTheMuscularDistanceFieldB.update = function(sum) {
             xx *= 0.95;
             xx -= 1.2; // Adjustement to make it fit with the neutral scene.
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-//             if (x == amountX && y == 0) {
-//                 logJavaScriptConsole(xx);
-//             }
+            //             if (x == amountX && y == 0) {
+            //                 logJavaScriptConsole(xx);
+            //             }
         }
     }
 };
@@ -1907,7 +1909,7 @@ hungryClouds.update = function(sum) {
     let a = 0.005 * sin(t * 0.05);
     let i = 0;
     for (let x = amountX; x > 0; x -= 1) {
-//     for (let x = 0; x < amountX; x += 1) {
+        //     for (let x = 0; x < amountX; x += 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 3.5;
             let oy = y;
@@ -1920,10 +1922,10 @@ hungryClouds.update = function(sum) {
             if (i == 0) {
                 oriX = xx;
             }
-//             let ranX = Math.random() * 0.025 * 0.5;
-//             let ranY = Math.random() * 0.025 * 0.5;
+            //             let ranX = Math.random() * 0.025 * 0.5;
+            //             let ranY = Math.random() * 0.025 * 0.5;
             //             this.vertices.push((xx - 0 + ranX) * 0.05 * 0.95 - 1.045, (yy + ranY) * 0.045 * 1.0 - 1.2);
-//             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
+            //             this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -10) * 0.07 * 1.0 - 1.3);
             xx += Math.random() * 0.01;
             yy += Math.random() * 0.01;
             xx *= 0.95;
@@ -2121,9 +2123,9 @@ vanishingClouds.update = function(sum) {
             xx *= 0.95;
             xx += 0.45
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-//             if (x == amountX && y == 0) {
-//                 logJavaScriptConsole(xx);
-//             }
+            //             if (x == amountX && y == 0) {
+            //                 logJavaScriptConsole(xx);
+            //             }
         }
     }
 };
@@ -2148,9 +2150,9 @@ vanishingCloudsB.update = function(sum) {
             xx *= 0.95;
             xx += 0.45
             this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
-//             if (x == amountX && y == 0) {
-//                 logJavaScriptConsole(xx);
-//             }
+            //             if (x == amountX && y == 0) {
+            //                 logJavaScriptConsole(xx);
+            //             }
         }
     }
 };
@@ -3949,101 +3951,101 @@ escherLikeRiver2.update = function(sum) {
 
 if (1 == 0) {
 
-escherLikeRiver.update = function(sum) {
-    this.vertices = [];
-    let amountX = 50;
-    let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.5;
-    for (let x = amountX; x > 0; x -= 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            let ox = x;
-            let oy = y + x;
-            let dx = x - Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3) * 1.2);
-            let dy = y + Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3) * 1.2);
-            dx += Math.random() * 0.01;
-            dy += Math.random() * 0.01;
-            dx *= 0.95;
-            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+    escherLikeRiver.update = function(sum) {
+        this.vertices = [];
+        let amountX = 50;
+        let amountY = 50;
+        let t = (drawCount - sum) * 0.025 * 0.5;
+        for (let x = amountX; x > 0; x -= 1) {
+            for (let y = 0; y < amountY; y += 1) {
+                let ox = x;
+                let oy = y + x;
+                let dx = x - Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3) * 1.2);
+                let dy = y + Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3) * 1.2);
+                dx += Math.random() * 0.01;
+                dy += Math.random() * 0.01;
+                dx *= 0.95;
+                this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+            }
         }
-    }
-};
+    };
 
-escherLikeRiver.update = function(sum) {
-    this.vertices = [];
-    let amountX = 50;
-    let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.5;
-    for (let x = amountX; x > 0; x -= 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            let ox = x;
-            let oy = y + x;
-            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
-            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
-            dx += Math.random() * 0.01;
-            dy += Math.random() * 0.01;
-            dx *= 0.95;
-            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+    escherLikeRiver.update = function(sum) {
+        this.vertices = [];
+        let amountX = 50;
+        let amountY = 50;
+        let t = (drawCount - sum) * 0.025 * 0.5;
+        for (let x = amountX; x > 0; x -= 1) {
+            for (let y = 0; y < amountY; y += 1) {
+                let ox = x;
+                let oy = y + x;
+                let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+                let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+                dx += Math.random() * 0.01;
+                dy += Math.random() * 0.01;
+                dx *= 0.95;
+                this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+            }
         }
-    }
-};
+    };
 
-escherLikeRiver.update = function(sum) {
-    this.vertices = [];
-    let amountX = 50;
-    let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.5;
-    for (let x = amountX; x > 0; x -= 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            let ox = x;
-            let oy = y;
-            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
-            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
-            dx += Math.random() * 0.01;
-            dy += Math.random() * 0.01;
-            dx *= 0.95;
-            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+    escherLikeRiver.update = function(sum) {
+        this.vertices = [];
+        let amountX = 50;
+        let amountY = 50;
+        let t = (drawCount - sum) * 0.025 * 0.5;
+        for (let x = amountX; x > 0; x -= 1) {
+            for (let y = 0; y < amountY; y += 1) {
+                let ox = x;
+                let oy = y;
+                let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+                let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+                dx += Math.random() * 0.01;
+                dy += Math.random() * 0.01;
+                dx *= 0.95;
+                this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+            }
         }
-    }
-};
+    };
 
 
-escherLikeStaircases.update = function(sum) {
-    this.vertices = [];
-    let amountX = 50;
-    let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.45;
-    for (let x = amountX; x > 0; x -= 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            let ox = x * 0.5 + y * 20;
-            let oy = y;
-            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
-            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
-            dx += Math.random() * 0.01;
-            dy += Math.random() * 0.01;
-            dx *= 0.95;
-            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+    escherLikeStaircases.update = function(sum) {
+        this.vertices = [];
+        let amountX = 50;
+        let amountY = 50;
+        let t = (drawCount - sum) * 0.025 * 0.45;
+        for (let x = amountX; x > 0; x -= 1) {
+            for (let y = 0; y < amountY; y += 1) {
+                let ox = x * 0.5 + y * 20;
+                let oy = y;
+                let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+                let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+                dx += Math.random() * 0.01;
+                dy += Math.random() * 0.01;
+                dx *= 0.95;
+                this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+            }
         }
-    }
-};
+    };
 
-escherLikeStaircases.update = function(sum) {
-    this.vertices = [];
-    let amountX = 50;
-    let amountY = 50;
-    let t = (drawCount - sum) * 0.025 * 0.45;
-    for (let x = amountX; x > 0; x -= 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            let ox = x * 0.25 + y * 20;
-            let oy = y;
-            let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
-            let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
-            dx += Math.random() * 0.01;
-            dy += Math.random() * 0.01;
-            dx *= 0.95;
-            this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+    escherLikeStaircases.update = function(sum) {
+        this.vertices = [];
+        let amountX = 50;
+        let amountY = 50;
+        let t = (drawCount - sum) * 0.025 * 0.45;
+        for (let x = amountX; x > 0; x -= 1) {
+            for (let y = 0; y < amountY; y += 1) {
+                let ox = x * 0.25 + y * 20;
+                let oy = y;
+                let dx = x - Math.pow(Math.tan(Math.sin((oy + ox * 100) * 0.5 + t * 3)), 2);
+                let dy = y + Math.pow(Math.tan(Math.cos((ox + ox * 100) * 0.5 + t * 3)), 2);
+                dx += Math.random() * 0.01;
+                dy += Math.random() * 0.01;
+                dx *= 0.95;
+                this.vertices.push(dx * 0.075 - 1.2115, (dy + -10) * 0.07 - 1.32); // good
+            }
         }
-    }
-};
+    };
 
 } // 1 == 0
 
@@ -4664,7 +4666,7 @@ travellers2D.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 1e11 ) * 25e-7;
+    let t = (drawCount - sum + 1e11) * 25e-7;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 0;
@@ -4686,7 +4688,7 @@ travellers2DFlip.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
     let amountY = 50;
-    let t = (drawCount - sum + 1e11 ) * 25e-7;
+    let t = (drawCount - sum + 1e11) * 25e-7;
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x + 0;

@@ -340,9 +340,39 @@ xSheet = {
         }
     },
     empty: {
-        d: 450,
+        d: 50 * 2,
         f: sum => {
             empty.run(sum);
+        }
+    },
+    credits0: {
+        d: 24 * 5,
+        f: sum => {
+            credits.display(1, creditsShaders[0]);
+        }
+    },
+    credits1: {
+        d: 24 * 5,
+        f: sum => {
+            credits.display(1, creditsShaders[1]);
+        }
+    },
+    credits2: {
+        d: 24 * 5,
+        f: sum => {
+            credits.display(1, creditsShaders[2]);
+        }
+    },
+    credits3: {
+        d: 24 * 5,
+        f: sum => {
+            credits.display(1, creditsShaders[3]);
+        }
+    },
+    credits4: {
+        d: 24 * 5,
+        f: sum => {
+            credits.display(1, creditsShaders[4]);
         }
     },
     key: function(n) {
