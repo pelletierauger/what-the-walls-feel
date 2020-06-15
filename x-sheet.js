@@ -346,7 +346,7 @@ xSheet = {
         }
     },
     credits0: {
-        d: 24 * 5,
+        d: 24 * 7,
         f: sum => {
             credits.display(1, creditsShaders[0]);
         }
@@ -358,7 +358,7 @@ xSheet = {
         }
     },
     credits2: {
-        d: 24 * 5,
+        d: 24 * 6,
         f: sum => {
             credits.display(1, creditsShaders[2]);
         }
@@ -370,7 +370,7 @@ xSheet = {
         }
     },
     credits4: {
-        d: 24 * 5,
+        d: 24 * 4,
         f: sum => {
             credits.display(1, creditsShaders[4]);
         }
