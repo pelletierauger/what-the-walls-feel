@@ -189,9 +189,7 @@ withImage.vertText = `
 withImage.fragText = `
     // beginGLSL
     precision mediump float;
-    // Passed in from the vertex shader.
     varying vec2 v_texcoord;
-    // The texture.
     uniform sampler2D u_texture;
     void main() {
         gl_FragColor = texture2D(u_texture, v_texcoord);
@@ -203,9 +201,7 @@ withImage.init = function() {
         // Asynchronously load an image
         this.image = new Image();
         this.image.src = "title.png";
-        // this.image.src = "https://webglfundamentals.org/webgl/resources/f-texture.png";
         let that = this;
-        // console.log(that);
         this.image.addEventListener('load', function() {
             titledLoaded = true;
             // this.image.onload = function() {
@@ -270,8 +266,6 @@ withImage.init = function() {
     }
 };
 withImage.init();
-// redraw();
-
 
 
 let textureShader = new ShaderProgram("textu");
