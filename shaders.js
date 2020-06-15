@@ -178,10 +178,11 @@ withImage.vertText = `
     attribute vec2 a_texcoord;
     varying vec2 v_texcoord;
     void main() {
-        v_texcoord = a_texcoord * vec2(1.0, -1.0) + vec2(1.11, 0.485);
-        vec4 positionVec4 = vec4(a_position * vec3(0.22, 0.1, 1.0), 1.0);
-        positionVec4.xy = positionVec4.xy * -7.0;
-        gl_Position = positionVec4 + vec4(0.88 * 0.7, 0.1 * 0.7, 0.0, 0.0);
+        v_texcoord = a_texcoord;
+        v_texcoord.y = 0.5 - v_texcoord.y;
+        vec4 positionVec4 = vec4(a_position, 1.0);
+        positionVec4.xy = (positionVec4.xy - vec2(0.5, 0.)) * 2.0;
+        gl_Position = positionVec4;
     }
     // endGLSL
     `;
@@ -201,7 +202,7 @@ withImage.init = function() {
     if (shadersReadyToInitiate) {
         // Asynchronously load an image
         this.image = new Image();
-        this.image.src = "f-texture-title-a8.png";
+        this.image.src = "title.png";
         // this.image.src = "https://webglfundamentals.org/webgl/resources/f-texture.png";
         let that = this;
         // console.log(that);
@@ -251,6 +252,10 @@ withImage.init = function() {
             gl.activeTexture(gl.TEXTURE0);
             that.texture = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, that.texture);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
             // Fill the texture with a 1x1 blue pixel.
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
                 new Uint8Array([0, 0, 255, 255]));
