@@ -440,13 +440,13 @@ void main() {
     // gl_FragColor.b = min(max(gl_FragColor.g * 0.4, 0.0 - rando), 1.0);
 //     gl_FragColor.rgb += col2 * 0.75;
 //     gl_FragColor.rgb += colb * 0.85;
-    // gl_FragColor.r *= 1.125;
+    gl_FragColor.r *= 1.125;
     // gl_FragColor.g *= 1.05;
     // gl_FragColor.b *= 6.0;
     gl_FragColor.b = mix(gl_FragColor.b, b, 0.7 * (1.0 - uv.x * 1.2));
     // gl_FragColor.rgb = col;
     gl_FragColor.a *= alpha;
-        gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.1, vec3(1.05), 0.95);
+        gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.25 * (1. - uv.x), vec3(1.05), 0.95);
     gl_FragColor.rgb += abs(col * 0.125) * 0.75;
         // gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * -0.25);
     // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
