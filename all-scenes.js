@@ -4594,6 +4594,7 @@ travellers2.update = function(sum) {
 
 let travellers2B = new Scene("Travellers 2, b");
 
+// The original one
 travellers2B.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
@@ -4616,8 +4617,37 @@ travellers2B.update = function(sum) {
     }
 };
 
+if (1 == 0) {
+
+// The better one
+travellers2B.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e12) * 25e-7;
+    let amp = map(drawCount - sum, 0, 700, 0, 1);
+    amp = 1 - ((Math.cos((drawCount - sum) /  1500 * PI * 2) + 1) * 0.5);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y + 3.5;
+            let m = Math.sin(t * 0.35) * 700;
+            let xx = x + (Math.pow(Math.cos((m + ox * 100) * 100) * Math.sin(t * oy * 1e-5 * 1.5), 25)) * 1;
+            xx = xx + (Math.pow(Math.cos((m + (ox + 5) * 100) * 100) * Math.sin(t * (oy + 7) * 1e-5 * 1.5), 25)) * 1;
+            let yy = y + (Math.pow(Math.sin((m - oy * 100) * 100) * Math.sin(t * ox * 1e-5), 25)) * 0;
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+}
+
 let travellers2C = new Scene("Travellers 2, c");
 
+// The original one
 travellers2C.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
@@ -4638,8 +4668,100 @@ travellers2C.update = function(sum) {
     }
 };
 
+if (1 == 0) {
+
+// The better one
+travellers2C.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e11) * 25e-7 * 0.75;
+    t += (125000 * 2) - 187500;
+    // logJavaScriptConsole(t);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y - 2;
+            let m = Math.sin(t * 0.35) * 700;
+            let xx = x;
+            let yy = y;
+            if (y == 29) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy += 9;
+            ox += 5;
+            if (y == 20) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy -= 18;
+            ox -= 10;
+            if (y == 38) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy -= 9;
+            ox -= 5;
+            // if (y == 38 + 9) {
+                // xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            // }
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+// The best one
+travellers2C.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e11) * 25e-7 * 0.75;
+    t += (125000 * 2) - 187500;
+    // logJavaScriptConsole(t);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y - 2;
+            let m = Math.sin(t * 0.35) * 700;
+            let xx = x;
+            let yy = y;
+            if (y == 29) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy += 6;
+            ox += 5;
+            if (y == 23) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy -= 12;
+            ox -= 10;
+            if (y == 35) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy -= 6;
+            ox -= 5;
+            if (y == 35 + 6) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy += 24;
+            ox -= 10;
+            if (y == 35 + 6 - 24) {
+                xx += (Math.pow(Math.cos((m + ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+}
+
 let travellers2CFlip = new Scene("Travellers 2, c, flip");
 
+// The original one
 travellers2CFlip.update = function(sum) {
     this.vertices = [];
     let amountX = 50;
@@ -4659,6 +4781,56 @@ travellers2CFlip.update = function(sum) {
         }
     }
 };
+
+if (1 == 0) {
+
+// The better one
+travellers2CFlip.update = function(sum) {
+    this.vertices = [];
+    let amountX = 50;
+    let amountY = 50;
+    let t = (drawCount - sum + 1e11) * 25e-7;
+    // t += (125000 * 2) - 187500;
+    // logJavaScriptConsole(t);
+    for (let x = amountX; x > 0; x -= 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let ox = x + 0;
+            let oy = y - 2;
+            let m = Math.sin(t * 0.35 * 0.5) * 700;
+            let xx = x;
+            let yy = y;
+            if (y == 29) {
+                xx += (Math.pow(Math.cos((m - ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy += 6;
+            ox += 5;
+            if (y == 23) {
+                xx += (Math.pow(Math.cos((m - ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy -= 12;
+            ox -= 10;
+            if (y == 35) {
+                xx += (Math.pow(Math.cos((m - ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy -= 6;
+            ox -= 5;
+            if (y == 35 + 6) {
+                xx += (Math.pow(Math.cos((m - ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            oy += 24;
+            ox -= 10;
+            if (y == 35 + 6 - 24) {
+                xx += (Math.pow(Math.cos((m - ox * 100) * 100) * Math.max(Math.sin(oy), 0) * Math.sin(t * oy * 1e-5), 25)) * 4;
+            }
+            xx += Math.random() * 0.01;
+            yy += Math.random() * 0.01;
+            xx *= 0.95;
+            this.vertices.push(xx * 0.075 - 1.2115, (yy + -10) * 0.07 - 1.32); // good
+        }
+    }
+};
+
+}
 
 let travellers2D = new Scene("Travellers 2, d");
 
