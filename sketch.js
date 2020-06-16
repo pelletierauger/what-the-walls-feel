@@ -1,7 +1,7 @@
 let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
-let fileName = "/Volumes/Volumina/frames/wtwf/montage/test002/sketch";
+let fileName = "/Volumes/Volumina/frames/wtwf/montage/test004/sketch";
 let gl;
 let shaderProgram;
 let vertices = [];
@@ -449,4 +449,21 @@ function logLatency() {
 
 function syncToAudio() {
     drawCount -= Math.floor(((drawCount /  24) - player.currentTime) * 24);
+}
+
+function reval(i) {
+    eval(jsLog[i]);
+    drawCount--;
+    redraw();
+}
+
+let revaluationToggle = true;
+
+function toggleReval(i, j) {
+    if (revaluationToggle) {
+        reval(i);
+    } else {
+        reval(j);
+    };
+    revaluationToggle = !revaluationToggle;
 }
