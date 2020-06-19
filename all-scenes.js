@@ -2168,7 +2168,7 @@ eggs.update = function(sum) {
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 6;
-            let oy = y;
+            let oy = y - 1;
             let dx = Math.cos(ox * 0.85 * 0.35);
             let dy = Math.sin(oy * 0.5 * 0.35);
             let xx = x - Math.pow(map(Math.cos((Math.sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20);
@@ -2191,7 +2191,7 @@ eggsFlip.update = function(sum) {
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 6;
-            let oy = y;
+            let oy = y - 1;
             let dx = Math.cos(ox * 0.85 * 0.35);
             let dy = Math.sin(oy * 0.5 * 0.35);
             let xx = x + Math.pow(map(Math.cos((Math.sin(dx * dy) + dx * dx) + t * 12), -1, 1, -0.01, 1), 20) * 1.25;
