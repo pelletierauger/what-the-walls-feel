@@ -764,7 +764,7 @@ blendyCavernD.update = function(sum) {
 };
 
 
-blendyCavern.display = function(alpha) {
+function sunriseDisplay(alpha) {
 
     var vb = map(cos(frameCount * 0.01), -1, 1, 0, 0.75);
 
@@ -1438,15 +1438,6 @@ overture.display = function(alpha) {
     gl.drawArrays(gl.TRIANGLES, 0, numItems);
 
 };
-
-traffic3FadeIn.display = blendyCavern.display;
-pillarsInACavern.display = blendyCavern.display;
-curvierPillars.display = blendyCavern.display;
-curvierPillarsEvenSmaller.display = blendyCavern.display;
-muscleFibersRebuildingThemselves.display = blendyCavern.display;
-harmoniousEggs2.display = blendyCavern.display;
-plantsSofter.display = blendyCavern.display;
-
 
 
 noodlesHorizontal.displayExperimental = function(alpha) {

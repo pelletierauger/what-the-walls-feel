@@ -2,7 +2,7 @@ if (1 == 0) {
 
     // ------------------------------------------------------------------------------//
     // mustard-like when blended with plantsSofter using Scene.prototype.display()
-    // or blendyCavern.display()
+    // or sunriseDisplay()
     // ------------------------------------------------------------------------------//
 
     mistyProgram2.fragText = `
@@ -169,7 +169,7 @@ void main() {
     mistyProgram2.init();
 
     // ------------------------------------------------------------------------------//
-    // mustard-like and blending itself with blendyCavern.display()
+    // mustard-like and blending itself with sunriseDisplay()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
     mistyProgram2.fragText = `
@@ -256,7 +256,7 @@ void main() {
 
     // ------------------------------------------------------------------------------//
     // Deep sea blue (hue-shifted from mustard-like)
-    // mustard-like and blending itself with blendyCavern.display()
+    // mustard-like and blending itself with sunriseDisplay()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
     mistyProgram2.fragText = `
@@ -409,7 +409,7 @@ void main() {
 
     // ------------------------------------------------------------------------------//
     // misty mint and purple
-    // mustard-like and blending itself with blendyCavern.display()
+    // mustard-like and blending itself with sunriseDisplay()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
     mistyProgram2.fragText = `
@@ -495,7 +495,7 @@ void main() {
 
     // ------------------------------------------------------------------------------//
     // soft lemon and ocean
-    // mustard-like and blending itself with blendyCavern.display()
+    // mustard-like and blending itself with sunriseDisplay()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
     mistyProgram2.fragText = `
@@ -648,7 +648,7 @@ void main() {
 
     // ------------------------------------------------------------------------------//
     // spicy lemon
-    // mustard-like and blending itself with blendyCavern.display()
+    // mustard-like and blending itself with sunriseDisplay()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
     mistyProgram2.fragText = `
@@ -802,7 +802,7 @@ void main() {
 
     // ------------------------------------------------------------------------------//
     // blue swirl over spicy lemon
-    // mustard-like and blending itself with blendyCavern.display()
+    // mustard-like and blending itself with sunriseDisplay()
     // using the mix() function.
     // ------------------------------------------------------------------------------//
     mistyProgram2.fragText = `
@@ -991,7 +991,7 @@ if (1 == 0) {
 
     for (let i = 0; i < scenes.length; i++) {
         if (scenes[i].name !== "overture") {
-            scenes[i].display = blendyCavern.display;
+            scenes[i].display = sunriseDisplay;
         }
     }
 
@@ -1047,7 +1047,7 @@ if (1 == 0) {
 
 for (let i = 0; i < scenes.length; i++) {
     if (scenes[i].name !== "overture" && scenes[i].name !== "credits") {
-        scenes[i].display = blendyCavern.display;
+        scenes[i].display = sunriseDisplay;
     }
 }
 escherLikeRiver.display = deepSeaDisplay;
