@@ -1,7 +1,7 @@
 let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
-let fileName = "/Volumes/Volumina/frames/wtwf/montage/test004/sketch";
+let fileName = "/Volumes/Volumina/frames/wtwf/montage/test005/sketch";
 let gl;
 let shaderProgram;
 let vertices = [];
@@ -253,7 +253,10 @@ function setup() {
     }
     socket.on('getNextImage', function(data) {
         if (drawCount <= batchMax) {
-            redraw();
+            // redraw();
+            window.setTimeout(function() {
+                redraw();
+            }, 3000);
         }
     });
 }
