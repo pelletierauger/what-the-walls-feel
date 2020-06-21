@@ -567,7 +567,7 @@ void main() {
     }
     float t = time * 0.0025;
     vec2 p = vec2(10.0, 1.004);
-    vec2 p2 = vec2(0.0, 0.0);
+    vec2 p2 = vec2(0.75, 0.0);
     vec3 col = CircleRGB(uv, p2, 1.9, 0.2, vec3(1.05, 0.4, 2.0));
     col.r *= sin(length(uv - p2) * (6. + sin(1. * 20.) * 0.01));
 //     col.g *= sin(length(uv - p) * (6. + sin(1. * 20.) * 0.01));
