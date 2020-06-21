@@ -769,6 +769,7 @@ function sunriseDisplay(alpha) {
     var vb = map(cos(frameCount * 0.01), -1, 1, 0, 0.75);
 
     let oneTextureProgram = getProgram("one-texture-program");
+    let sunriseLevelsProgram = getProgram("sunrise-levels-program");
     var textureShader = getProgram("textu");
     let processProgram = getProgram("process");
     let blenderProgram = getProgram("blender-program");
@@ -1073,7 +1074,7 @@ function sunriseDisplay(alpha) {
 
 
     // unbind the buffer and draw the resulting texture....
-    currentProgram = oneTextureProgram;
+    currentProgram = sunriseLevelsProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
