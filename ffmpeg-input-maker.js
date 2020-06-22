@@ -1,6 +1,6 @@
 var fs = require('fs');
 let computedInput = "";
-let fileName = "montage";
+let fileName = "montage007";
 
 let sequences = [{
         path: `/Volumes/Volumina/frames/wtwf/montage/test005/sketch-`,
@@ -9,7 +9,7 @@ let sequences = [{
         copies: 12
     },
     {
-        path: `/Volumes/Volumina/frames/wtwf/montage/test005/sketch-`,
+        path: `/Volumes/Volumina/frames/wtwf/montage/test007/sketch-`,
         start: 1,
         end: 5000,
         copies: 1
