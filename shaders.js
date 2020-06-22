@@ -839,6 +839,7 @@ void main() {
 //     col = (col * 0.9) + (texture2.rgb * 0.1);
 //     gl_FragColor = vec4(col, 1.0);
     gl_FragColor = vec4(col, 1.01);
+    gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.0125, vec3(1.), 0.925);
 }
 // endGLSL
 `;
@@ -1701,7 +1702,7 @@ void main() {
    float rando = rand(vec2(uv.x, uv.y));
    gl_FragColor = texture2D(u_texture, v_texcoord);
    gl_FragColor.a *= alpha;
-    gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.0, vec3(1.0), 0.925);
+    // gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.0, vec3(1.0), 0.925);
    // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
    // gl_FragColor.r = gl_FragColor.r * 2.5;
    // gl_FragColor.a = 0.5;
@@ -1709,3 +1710,49 @@ void main() {
 // endGLSL
 `;
 sunriseLevelsProgram.init();
+
+let oneTextureProgramB = new ShaderProgram("one-texture-program-b");
+
+oneTextureProgramB.vertText = `
+attribute vec3 a_position;
+attribute vec2 a_texcoord;
+varying vec2 v_texcoord;
+
+void main() {
+  // Multiply the position by the matrix.
+  vec4 positionVec4 = vec4(a_position, 1.0);
+  // gl_Position = a_position;
+  positionVec4.xy = positionVec4.xy * 2.0 - 1.0;
+  gl_Position = positionVec4;
+
+  // Pass the texcoord to the fragment shader.
+  v_texcoord = a_texcoord;
+}
+`;
+
+oneTextureProgramB.fragText = `
+precision mediump float;
+
+// Passed in from the vertex shader.
+uniform float time;
+uniform float alpha;
+varying vec2 v_texcoord;
+
+// The texture.
+uniform sampler2D u_texture;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453 * (2.0 + sin(time)));
+}
+
+void main() {
+    vec2 uv = vec2(gl_FragCoord.xy) / vec2(1600, 1600);
+   float rando = rand(vec2(uv.x, uv.y));
+   gl_FragColor = texture2D(u_texture, v_texcoord);
+   gl_FragColor.a *= alpha;
+   // gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+   // gl_FragColor.r = gl_FragColor.r * 2.5;
+   // gl_FragColor.a = 0.5;
+}
+`;
+oneTextureProgramB.init();
