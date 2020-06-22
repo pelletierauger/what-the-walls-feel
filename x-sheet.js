@@ -18,7 +18,7 @@ xSheet = {
         }
     },
     endOftraffic3FadeIn: {
-        d: 72 - 5,
+        d: 72 - 5 + 24,
         f: sum => {
             var rN = getSum(xSheet, xSheet.traffic3FadeIn);
             var coFade = cosineFade(sum, 72);
@@ -26,10 +26,10 @@ xSheet = {
         }
     },
     noodlesHorizontal: {
-        d: 1200 - 200 + 50 + 5 - 48,
+        d: 1200 - 200 + 50 + 5 - 48 - 24,
         f: sum => {
             var rN = getSum(xSheet, xSheet.endOftraffic3FadeIn);
-            var coFade = cosineFade(sum - 12, 600 - 100);
+            var coFade = cosineFade(sum, 100);
             noodlesHorizontal.lerp(sum + 55 * 0, neutral, rN - 150, coFade);
         }
     },
