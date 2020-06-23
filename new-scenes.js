@@ -1983,7 +1983,7 @@ deepSeaDisplay = function(alpha) {
     let oneTextureProgram = getProgram("one-texture-program");
     var textureShader = getProgram("textu");
     let processProgram = getProgram("process");
-    let blenderProgram = getProgram("blender-program");
+    let blenderProgram = getProgram("blender-program-b");
     let deepSeaProgram = getProgram("deep-sea-program");
 
     // We start by drawing the whole image on the first texture, "texture"
