@@ -1,7 +1,7 @@
 let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
-let fileName = "/Volumes/Volumina/frames/wtwf/montage/test005/sketch";
+let fileName = "/Volumes/Volumina/frames/wtwf/montage/test007/sketch";
 let gl;
 let shaderProgram;
 let vertices = [];
@@ -454,7 +454,7 @@ function syncToAudio() {
     drawCount -= Math.floor(((drawCount /  24) - player.currentTime) * 24);
 }
 
-function reval(i) {
+function reval(i = 0) {
     eval(jsLog[i]);
     drawCount--;
     redraw();
@@ -462,7 +462,7 @@ function reval(i) {
 
 let revaluationToggle = true;
 
-function toggleReval(i, j) {
+function toggleReval(i = 0, j = 1) {
     if (revaluationToggle) {
         reval(i);
     } else {
