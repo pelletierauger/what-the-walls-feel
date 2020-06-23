@@ -2414,7 +2414,7 @@ electronicDecorativeEggs.update = function(sum) {
     for (let x = amountX; x > 0; x -= 1) {
         for (let y = 0; y < amountY; y += 1) {
             let ox = x - 6;
-            let oy = y - 0;
+            let oy = y - 1;
             let dx = Math.cos(ox * 0.8 * 0.35);
             let dy = Math.sin(oy * 0.5 * 0.35);
             let xx = x - Math.pow(map(Math.cos((dx) + dy + t * 12), -1, 1, 0, 1), 50) * 2;
