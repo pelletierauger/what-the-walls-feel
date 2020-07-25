@@ -1113,6 +1113,8 @@ overture.display = function(alpha) {
     var textureShader = getProgram("textu");
     let processProgram = getProgram("process");
     let blenderProgram = getProgram("blender-program");
+    let deepSeaProgram = getProgram("deep-sea-program");
+
 
     // We start by drawing the whole image on the first texture, "texture"
     // gl.clear(gl.COLOR_BUFFER_BIT);
@@ -1416,7 +1418,8 @@ overture.display = function(alpha) {
 
 
     // unbind the buffer and draw the resulting texture....
-    currentProgram = oneTextureProgram;
+    // currentProgram = oneTextureProgram;
+    currentProgram = deepSeaProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
@@ -1429,6 +1432,8 @@ overture.display = function(alpha) {
 
     textureLocation = gl.getUniformLocation(currentProgram, "u_texture");
     gl.uniform1i(textureLocation, 0);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
     alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
@@ -2324,6 +2329,8 @@ credits.display = function(alpha, sh) {
     var textureShader = getProgram("textu");
     let processProgram = getProgram("process");
     let blenderProgram = getProgram("blender-program");
+    blenderProgram = getProgram("blender-program-b");
+    let deepSeaProgram = getProgram("deep-sea-program");
 
     // We start by drawing the whole image on the first texture, "texture"
     // gl.clear(gl.COLOR_BUFFER_BIT);
@@ -2337,7 +2344,7 @@ credits.display = function(alpha, sh) {
     gl.uniform1f(time, (drawCount + 700) * 0.00125);
     drawBG(currentProgram);
 
-    if (titledLoaded) {
+    if (titledLoaded && sh.name !== "credits, 3") {
         drawImage(sh);
     }
     // currentProgram = getProgram("cyan-dots");
@@ -2593,6 +2600,17 @@ credits.display = function(alpha, sh) {
 
     gl.useProgram(currentProgram);
 
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+    // let itemSize = 2;
+    // let numItems = vertices.length / itemSize;
+    // processProgram.aVertexPosition = gl.getAttribLocation(processProgram, "a_position");
+    // gl.enableVertexAttribArray(processProgram.aVertexPosition);
+    // gl.vertexAttribPointer(processProgram.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
+
+
+
+
     currentProgram.aVertexPosition = gl.getAttribLocation(currentProgram, "a_position");
     gl.enableVertexAttribArray(currentProgram.aVertexPosition);
     gl.vertexAttribPointer(currentProgram.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
@@ -2624,7 +2642,8 @@ credits.display = function(alpha, sh) {
 
 
     // unbind the buffer and draw the resulting texture....
-    currentProgram = oneTextureProgram;
+    currentProgram = deepSeaProgram;
+    // currentProgram = oneTextureProgram;
     gl.bindFramebuffer(gl.FRAMEBUFFER, null);
     gl.viewport(0, 0, cnvs.width, cnvs.height);
     gl.activeTexture(gl.TEXTURE0);
@@ -2637,6 +2656,8 @@ credits.display = function(alpha, sh) {
 
     textureLocation = gl.getUniformLocation(currentProgram, "u_texture");
     gl.uniform1i(textureLocation, 0);
+    resolutionLocation = gl.getUniformLocation(currentProgram, "resolution");
+    gl.uniform1f(resolutionLocation, resolutionScalar);
     timeLocation = gl.getUniformLocation(currentProgram, "time");
     gl.uniform1f(timeLocation, drawCount * 0.01);
     alphaLocation = gl.getUniformLocation(currentProgram, "alpha");
@@ -2647,5 +2668,7 @@ credits.display = function(alpha, sh) {
     gl.vertexAttribPointer(texcoordLocation, 2, gl.FLOAT, false, 0, 0);
 
     gl.drawArrays(gl.TRIANGLES, 0, numItems);
-
+    if (titledLoaded && sh.name == "credits, 3") {
+        drawImage(sh);
+    }
 };
