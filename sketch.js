@@ -454,19 +454,19 @@ function syncToAudio() {
     drawCount -= Math.floor(((drawCount /  24) - player.currentTime) * 24);
 }
 
-function reval(i = 0) {
-    eval(jsLog[i]);
-    drawCount--;
-    redraw();
-}
+// function reval(i = 0) {
+//     eval(jsLog[i]);
+//     drawCount--;
+//     redraw();
+// }
 
-let revaluationToggle = true;
+// let revaluationToggle = true;
 
-function toggleReval(i = 0, j = 1) {
-    if (revaluationToggle) {
-        reval(i);
-    } else {
-        reval(j);
-    };
-    revaluationToggle = !revaluationToggle;
-}
+// function toggleReval(i = 0, j = 1) {
+//     if (revaluationToggle) {
+//         reval(i);
+//     } else {
+//         reval(j);
+//     };
+//     revaluationToggle = !revaluationToggle;
+// }
