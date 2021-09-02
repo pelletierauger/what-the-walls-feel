@@ -1130,10 +1130,10 @@ overture.display = function(alpha) {
     gl.uniform1f(time, (drawCount + 700) * 0.00125);
     drawBG(currentProgram);
     // }
-    if (titledLoaded) {
-        drawImage(withImage);
+    // if (titledLoaded) {
+    //     drawImage(withImage);
 
-    }
+    // }
     currentProgram = getProgram("cyan-dots");
     gl.useProgram(currentProgram);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);

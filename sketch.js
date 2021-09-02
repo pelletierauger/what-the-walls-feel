@@ -1,7 +1,7 @@
 let looping = false;
 let keysActive = true;
 let socket, cnvs, ctx, canvasDOM;
-let fileName = "/Volumes/Volumina/frames/wtwf/montage/test009/sketch";
+let fileName = "/Volumes/Volumina 1/frames/wtwf/bow/sketch";
 let gl;
 let shaderProgram;
 let vertices = [];
@@ -21,6 +21,11 @@ var framesRendered = 0;
 var framesOfASecond = 0;
 var secondStart, secondFrames;
 var fps = 24;
+
+
+let video;
+let poseNet;
+let poses = [];
 
 let titledLoaded = false;
 
@@ -117,6 +122,7 @@ function setup() {
     socket = io.connect('http://localhost:8080');
     pixelDensity(1);
     noCanvas();
+
     // cnvs = createCanvas(windowWidth, windowWidth * 9 / 16, WEBGL);
     // cnvs = createCanvas(1280, 1280 * 9 / 16, WEBGL);
     cnvs = document.createElement('canvas');
@@ -124,6 +130,20 @@ function setup() {
     cnvs.id = "defaultCanvas0";
     cnvs.width = 2560 * resolutionScalar;
     cnvs.height = 1440 * resolutionScalar;
+
+
+    // video = createCapture(VIDEO);
+    // video.size(cnvs.width * 0.5, cnvs.height * 0.5);
+      // poseNet = ml5.poseNet(video, modelReady);
+  // This sets up an event that fills the global variable "poses"
+  // with an array every time new poses are detected
+  // poseNet.on('pose', function(results) {
+  //   poses = results;
+  // });
+  // Hide the video element, and just show the canvas
+  // video.hide();
+
+
     var body = document.getElementsByTagName("body")[0];
     body.appendChild(cnvs);
     canvasDOM = document.getElementById('defaultCanvas0');
@@ -260,6 +280,13 @@ function setup() {
         }
     });
 }
+
+
+function modelReady() {
+  console.log('Model Loaded');
+}
+
+
 
 // function gotSong() {
 //     // song.rate(24 / 24);

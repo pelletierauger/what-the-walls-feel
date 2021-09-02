@@ -1,3 +1,171 @@
+
+let overture = new Scene("overture");
+
+overture.states = [];
+
+overture.update = function(sum) {
+    this.vertices = [];
+    this.dotsToDisplay = 0;
+     // We can call both functions to draw all keypoints and the skeletons
+  // drawKeypoints();
+  // Loop through all the poses detected
+  let scX = 3e-3;
+  let scY = 6e-3;
+  let tX = -350;
+  let tY = -250;
+  for (let i = 0; i < poses.length; i++) {
+    // For each pose detected, loop through all the keypoints
+    let pose = poses[i].pose;
+    for (let j = 0; j < pose.keypoints.length; j++) {
+      // A keypoint is an object describing a body part (like rightArm or leftShoulder)
+      let keypoint = pose.keypoints[j];
+      // Only draw an ellipse is the pose probability is bigger than 0.2
+      if (keypoint.score > 0.2) {
+        // fill(255, 0, 0);
+        // noStroke();
+        this.vertices.push((keypoint.position.x + tX) * scX * -1, (keypoint.position.y + tY) * scY * -1);
+        this.dotsToDisplay++;
+      }
+    }
+  }
+  // drawSkeleton();
+  // Loop through all the skeletons detected
+  for (let i = 0; i < poses.length; i++) {
+    let skeleton = poses[i].skeleton;
+    // For every skeleton, loop through all body connections
+    for (let j = 0; j < skeleton.length; j++) {
+      let partA = skeleton[j][0];
+      let partB = skeleton[j][1];
+      // stroke(255, 0, 0);
+      // line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+      // let d = dist(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+      for (let i = 0; i < 1; i += 0.1) {
+        let lerpX = lerp(partA.position.x, partB.position.x, i);
+        let lerpY = lerp(partA.position.y, partB.position.y, i);
+        this.vertices.push((lerpX + tX) * scX * -1, (lerpY + tY) * scY * -1);
+        this.dotsToDisplay++;
+      }
+    }
+  }
+  this.states.push(this.vertices);
+};
+
+overture.counter = 0;
+overture.update = function(sum) {
+    this.vertices = [];
+    this.dotsToDisplay = 0;
+    for (let i = 0; i < this.states[this.counter].length; i += 2) {
+        let s = this.states[this.counter];
+        this.vertices.push(s[i], s[i + 1]);
+        this.dotsToDisplay++;
+    }
+    this.counter += 2;
+    if (this.counter >= this.states.length) {
+        this.counter = 0;
+    }
+};
+
+
+// overture.update = function(sum) {
+//     this.vertices = [];
+//     this.dotsToDisplay = 0;
+//     this.grow = logMap(Math.min(0, 1500));
+//     let amountX = 50;
+//     let amountY = 50;
+//     let t = (0 + 10) * 0.025 * 0.5;
+// //         for (let x = 0; x < amountX; x += 1) {
+    
+// //                     for (let y = amountY; y > 0; y -= 1) {
+//     for (let x = amountX; x > 0; x -= 1) {
+//                 for (let y = 0; y < amountY; y += 1) {
+//             if ((y < 18 || y > 30) || (x < 6 || x > 28)) {
+//                 let dx = Math.abs(Math.cos(x) * 0.01 - 25);
+//                 let dy = Math.abs(Math.sin(y) * 0.01 - 25);
+//                 let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+//                 let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
+//                 xx = lerp(x, xx, this.grow);
+//                 yy = lerp(y, yy, this.grow);
+//                 xx += Math.random() * 0.01;
+//                 yy += Math.random() * 0.01;
+//                             xx *= 0.95;
+//                 this.vertices.push(xx * 0.075 - 1.2115, (yy + -4) * 0.07 - 1.32);
+//                 this.dotsToDisplay++;
+//             }
+//         }
+//     }
+//     // 
+//     function logMap(position) {
+//         // position will be between minp and maxp
+//         var minp = 0;
+//         var maxp = 1500;
+//         // The result should be between minv an maxv
+//         var minv = Math.log(1e-7);
+//         var maxv = Math.log(0.3852774978347468);
+//         // calculate adjustment factor
+//         var scale = (maxv - minv) / (maxp - minp);
+//         return Math.exp(minv + scale * (position - minp));
+//     }
+// };
+// redraw();
+
+// overture.display = function() {
+//     gl.clear(gl.COLOR_BUFFER_BIT);
+//     if (drawCount >= 5) {
+//         currentProgram = getProgram("blue-background");
+//         gl.useProgram(currentProgram);
+//         gl.uniform1f(time, drawCount * 0.00125);
+//         drawBG(currentProgram);
+//     }
+//     currentProgram = getProgram("cyan-dots");
+//     gl.useProgram(currentProgram);
+//     // if (titledLoaded) {
+//     //     drawImage(withImage);
+//     //     let currentProgram = getProgram("cyan-dots");
+//     //     gl.useProgram(currentProgram);
+//     // }
+//     gl.bindBuffer(gl.ARRAY_BUFFER, null);
+//     gl.bindBuffer(gl.ARRAY_BUFFER, dotsVBuf);
+//     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
+//     gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
+//     gl.enableVertexAttribArray(coord);
+//     gl.drawArrays(gl.POINTS, 0, this.dotsToDisplay);
+// };
+
+
+let traffic3Static = new Scene("traffic-3-static");
+
+traffic3Static.update = function(sum) {
+    this.vertices = [];
+    this.grow = logMap(Math.min(0, 1500));
+    //     logJavaScriptConsole(this.grow);
+    let amountX = 50;
+    let amountY = 50;
+    let t = (0 + 10) * 0.025 * 0.5;
+    for (let x = 0; x < amountX; x += 1) {
+        for (let y = 0; y < amountY; y += 1) {
+            let dx = Math.abs(Math.cos(x) * 0.01 - 25);
+            let dy = Math.abs(Math.sin(y) * 0.01 - 25);
+            let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
+            xx = lerp(x, xx, this.grow);
+            yy = lerp(y, yy, this.grow);
+            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
+        }
+    }
+    // 
+    function logMap(position) {
+        // position will be between minp and maxp
+        var minp = 0;
+        var maxp = 1500;
+        // The result should be between minv an maxv
+        var minv = Math.log(1e-7);
+        var maxv = Math.log(0.3852774978347468);
+        // calculate adjustment factor
+        var scale = (maxv - minv) / (maxp - minp);
+        return Math.exp(minv + scale * (position - minp));
+    }
+};
+
 let concerto = new Scene("concerto");
 
 concerto.update = function(sum) {
@@ -255,142 +423,3 @@ traffic3FadeInNoodles.update = function(sum) {
     }
 };
 
-
-let overture = new Scene("overture");
-
-overture.update = function(sum) {
-    this.vertices = [];
-    this.dotsToDisplay = 0;
-    this.grow = logMap(Math.min(0, 1500));
-    let amountX = 50;
-    let amountY = 50;
-    let t = (0 + 10) * 0.025 * 0.5;
-    for (let x = 0; x < amountX; x += 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            if (y < 12 || y > 16) {
-                let dx = Math.abs(Math.cos(x) * 0.01 - 25);
-                let dy = Math.abs(Math.sin(y) * 0.01 - 25);
-                let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
-                let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
-                xx = lerp(x, xx, this.grow);
-                yy = lerp(y, yy, this.grow);
-                xx += Math.random() * 0.01;
-                yy += Math.random() * 0.01;
-                this.vertices.push((xx - 0) * 0.075 * 1.0 - 1.2, (yy + -4) * 0.07 * 1.0 - 1.3);
-                this.dotsToDisplay++;
-            }
-        }
-    }
-    // 
-    function logMap(position) {
-        // position will be between minp and maxp
-        var minp = 0;
-        var maxp = 1500;
-        // The result should be between minv an maxv
-        var minv = Math.log(1e-7);
-        var maxv = Math.log(0.3852774978347468);
-        // calculate adjustment factor
-        var scale = (maxv - minv) / (maxp - minp);
-        return Math.exp(minv + scale * (position - minp));
-    }
-};
-
-overture.update = function(sum) {
-    this.vertices = [];
-    this.dotsToDisplay = 0;
-    this.grow = logMap(Math.min(0, 1500));
-    let amountX = 50;
-    let amountY = 50;
-    let t = (0 + 10) * 0.025 * 0.5;
-//         for (let x = 0; x < amountX; x += 1) {
-    
-//                     for (let y = amountY; y > 0; y -= 1) {
-    for (let x = amountX; x > 0; x -= 1) {
-                for (let y = 0; y < amountY; y += 1) {
-            if ((y < 18 || y > 30) || (x < 6 || x > 28)) {
-                let dx = Math.abs(Math.cos(x) * 0.01 - 25);
-                let dy = Math.abs(Math.sin(y) * 0.01 - 25);
-                let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
-                let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
-                xx = lerp(x, xx, this.grow);
-                yy = lerp(y, yy, this.grow);
-                xx += Math.random() * 0.01;
-                yy += Math.random() * 0.01;
-                            xx *= 0.95;
-                this.vertices.push(xx * 0.075 - 1.2115, (yy + -4) * 0.07 - 1.32);
-                this.dotsToDisplay++;
-            }
-        }
-    }
-    // 
-    function logMap(position) {
-        // position will be between minp and maxp
-        var minp = 0;
-        var maxp = 1500;
-        // The result should be between minv an maxv
-        var minv = Math.log(1e-7);
-        var maxv = Math.log(0.3852774978347468);
-        // calculate adjustment factor
-        var scale = (maxv - minv) / (maxp - minp);
-        return Math.exp(minv + scale * (position - minp));
-    }
-};
-// redraw();
-
-overture.display = function() {
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    if (drawCount >= 5) {
-        currentProgram = getProgram("blue-background");
-        gl.useProgram(currentProgram);
-        gl.uniform1f(time, drawCount * 0.00125);
-        drawBG(currentProgram);
-    }
-    currentProgram = getProgram("cyan-dots");
-    gl.useProgram(currentProgram);
-    if (titledLoaded) {
-        drawImage(withImage);
-        let currentProgram = getProgram("cyan-dots");
-        gl.useProgram(currentProgram);
-    }
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
-    gl.bindBuffer(gl.ARRAY_BUFFER, dotsVBuf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
-    gl.vertexAttribPointer(coord, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(coord);
-    gl.drawArrays(gl.POINTS, 0, this.dotsToDisplay);
-};
-
-
-let traffic3Static = new Scene("traffic-3-static");
-
-traffic3Static.update = function(sum) {
-    this.vertices = [];
-    this.grow = logMap(Math.min(0, 1500));
-    //     logJavaScriptConsole(this.grow);
-    let amountX = 50;
-    let amountY = 50;
-    let t = (0 + 10) * 0.025 * 0.5;
-    for (let x = 0; x < amountX; x += 1) {
-        for (let y = 0; y < amountY; y += 1) {
-            let dx = Math.abs(Math.cos(x) * 0.01 - 25);
-            let dy = Math.abs(Math.sin(y) * 0.01 - 25);
-            let xx = x + Math.pow(Math.cos(y * 0.5 + t * 0.025), 700) * y * x * 200.5;
-            let yy = y + Math.pow(Math.sin(x * 0.5 + t * 0.025), 700) * y * x * 200.5;
-            xx = lerp(x, xx, this.grow);
-            yy = lerp(y, yy, this.grow);
-            this.vertices.push((xx - 0) * 0.05 * 1.0 - 1.2, yy * 0.05 * 1.0 - 1.3);
-        }
-    }
-    // 
-    function logMap(position) {
-        // position will be between minp and maxp
-        var minp = 0;
-        var maxp = 1500;
-        // The result should be between minv an maxv
-        var minv = Math.log(1e-7);
-        var maxv = Math.log(0.3852774978347468);
-        // calculate adjustment factor
-        var scale = (maxv - minv) / (maxp - minp);
-        return Math.exp(minv + scale * (position - minp));
-    }
-};

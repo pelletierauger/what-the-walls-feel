@@ -368,3 +368,94 @@ ffmpeg -i /Volumes/Volumina/video-renders/wtwf/montage/pelletier-auger-what-the-
 /Volumes/Volumina/video-renders/wtwf/montage/pelletier-auger-what-the-walls-feel-alac.mp4
 
 -----------------------------------------------------------------------------------------------------
+
+Ottawa 2021
+
+-----------------------------------------------------------------------------------------------------
+
+ffmpeg -ss 00:00:30.0 -i /Volumes/Volumina/video-renders/wtwf/montage/pelletier-auger-what-the-walls-feel.mp4 \
+-c:v libx264 \
+-x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p -frames:v 250 \
+-sws_flags spline+accurate_rnd+full_chroma_int \
+-vf "colorspace=bt709:iall=bt601-6-625:fast=1" \
+-color_range 1 -colorspace 1 -color_primaries 1 -color_trc 1 \
+-crf 21 -preset medium \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina/video-renders/wtwf/montage/GuillaumePelletier-Auger-WhatTheWallsFeel-H264-1920x1080.mp4
+
+
+
+ffmpeg -ss 00:01:44.0 -i /Volumes/Volumina/video-renders/wtwf/montage/pelletier-auger-what-the-walls-feel.mp4 \
+-i /Volumes/Volumina/frames/wtwf/wtwf-with-silence.m4a \
+-c:v libx264 \
+-x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p -frames:v 250 \
+-crf 19 -preset medium \
+-c:a copy \
+-map 0:v:0 -map 1:a:0 \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina/video-renders/wtwf/montage/GuillaumePelletierAuger-WhatTheWallsFeel-H264-1min44sec.mp4
+
+
+
+ffmpeg -f concat -safe 0 -r 24 \
+-i /Users/guillaumepelletier/Desktop/Dropbox/Art/p5/what-the-walls-feel/ottawa.txt \
+-c:v libx264 -x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p -frames:v 1000 \
+-sws_flags spline+accurate_rnd+full_chroma_int \
+-vf "colorspace=bt709:iall=bt601-6-625:fast=1" \
+-color_range 1 -colorspace 1 -color_primaries 1 -color_trc 1 \
+-crf 21 -preset medium \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina/video-renders/wtwf/montage/test-ottawa-1920x1080.mp4
+
+
+
+ffmpeg -i /Volumes/Volumina\ 1/video-renders/wtwf/montage/pelletier-auger-what-the-walls-feel.mp4 \
+-i /Volumes/Volumina\ 1/frames/wtwf/wtwf-with-silence.m4a \
+-c:v libx264 \
+-x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p \
+-crf 19 -preset medium \
+-c:a copy \
+-map 0:v:0 -map 1:a:0 \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina\ 1/video-renders/wtwf/montage/GuillaumePelletierAuger-WhatTheWallsFeel-H264-final.mp4
+
+
+ffmpeg -ss 00:01:44.0 -i /Volumes/Volumina\ 1/video-renders/wtwf/montage/pelletier-auger-what-the-walls-feel.mp4 \
+-i /Volumes/Volumina\ 1/frames/wtwf/wtwf-with-silence.m4a \
+-c:v libx264 \
+-x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p -frames:v 250 \
+-crf 16 -preset slow \
+-c:a copy \
+-map 0:v:0 -map 1:a:0 \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina\ 1/video-renders/wtwf/montage/GuillaumePelletierAuger-WhatTheWallsFeel-H264-1min44sec-crf16.mp4
+
+
+
+ffmpeg -f concat -safe 0 -r 24 \
+-i /Users/guillaumepelletier/Desktop/Dropbox/Art/p5/what-the-walls-feel/bow.txt \
+-c:v libx264 -x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p -frames:v 1000 \
+-sws_flags spline+accurate_rnd+full_chroma_int \
+-vf "colorspace=bt709:iall=bt601-6-625:fast=1" \
+-color_range 1 -colorspace 1 -color_primaries 1 -color_trc 1 \
+-crf 21 -preset medium \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina\ 1/video-renders/wtwf/montage/bow.mp4
+
+
+ffmpeg -f concat -safe 0 -r 24 \
+-i /Users/guillaumepelletier/Desktop/Dropbox/Art/p5/what-the-walls-feel/bow.txt \
+-c:v libx264 -x264-params "keyint=15:no-deblock=1" -pix_fmt yuv420p -frames:v 1000 \
+-sws_flags spline+accurate_rnd+full_chroma_int \
+-vf "colorspace=bt709:iall=bt601-6-625:fast=1" \
+-color_range 1 -colorspace 1 -color_primaries 1 -color_trc 1 \
+-crf 18 -preset medium \
+-threads 1 \
+-s 1920x1080 \
+/Volumes/Volumina\ 1/video-renders/wtwf/montage/bow.mp4

@@ -107,7 +107,7 @@ void main() {
     float rando = rand(uv * 10.) * 0.075;
 //     col.r -= rando * 1.;
      col.g *= 0.5;
-    gl_FragColor = vec4((col + col2 * 0. - rando) * 1., 1.0);
+    gl_FragColor = vec4((col + col2 * 0. - rando) * 0.25, 1.0);
     // gl_FragColor = vec4(col * 1.0, 1.0);
 }
     // endGLSL
@@ -1364,6 +1364,7 @@ void main() {
     vec2 p2 = vec2(0.0, 0.0);
     vec3 col = CircleRGB(uv, p2, 1.9, 0.2, vec3(0.75, 0.4, 2.0));
     col.r *= sin(length(uv - p2) * (6. + sin(1. * 20.) * 0.01));
+    // col = vec3(0.0);
     // col.r -= abs(sin(uv.x * uv.x * tan((uv.x - uv.y) * 0.2) * sin(uv.y) * 1e2));
 //     col.g *= sin(length(uv - p) * (6. + sin(1. * 20.) * 0.01));
     vec2 newV = (uv + vec2(11.0, 0.1) + tan(uv.y * 1.)) - (p * 1.1 + sin(uv.x * 13.));
@@ -1394,12 +1395,12 @@ void main() {
     gl_FragColor.rgb = mix(gl_FragColor.rgb, wilder, 0.58);
 //     gl_FragColor.rgb = GammaCorrection(LevelsControlInputRange(gl_FragColor.rgb, 0.1, 0.9), 1.0);
 //     gl_FragColor.rgb = pow(gl_FragColor.rgb, 1.0 / vec3(1.2));
-    gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 0.5);
+    // gl_FragColor.rgb = hueShift2(gl_FragColor.rgb, PI * 0.5);
        gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.0, vec3(1.0), 0.95);
 //     gl_FragColor.rgb = LevelsControlInput(gl_FragColor.rgb, 0.075, vec3(1.1), 0.95);
 //     vec3 rrr = gl_FragColor.rgb;
     // gl_FragColor.r *= 1.05;
-    // gl_FragColor.b *= 1.1;
+    gl_FragColor.b *= 0.5;
 //     vec3 hsv = rgb2hsv(rrr);
 //     hsv.r += 0.5;
 //     gl_FragColor.rgb = hsv2rgb(hsv);
