@@ -270,7 +270,7 @@ draw = function() {
     runXSheet(xSheet);
     if (repositionSong && songPlay && (looping || envirLooping)) {
         if (drawCount <= player.duration * 24) {
-            player.currentTime = drawCount /  24;
+            player.currentTime = drawCount / 24;
             if (player.paused) {
                 player.play();
             }
@@ -444,14 +444,14 @@ function unClip() {
 }
 
 function logLatency() {
-    let seconds = (drawCount /  24) - player.currentTime;
-    let frames = Math.floor(((drawCount /  24) - player.currentTime) * 24);
+    let seconds = (drawCount / 24) - player.currentTime;
+    let frames = Math.floor(((drawCount / 24) - player.currentTime) * 24);
     let frameWord = (frames > 1) ? "frames" : "frame";
     logJavaScriptConsole(seconds + " seconds, or " + frames + " " + frameWord + ".");
 }
 
 function syncToAudio() {
-    drawCount -= Math.floor(((drawCount /  24) - player.currentTime) * 24);
+    drawCount -= Math.floor(((drawCount / 24) - player.currentTime) * 24);
 }
 
 // function reval(i = 0) {
